@@ -24,9 +24,9 @@
     {
       "id": "forward.letterboxd",
       "title": "Letterboxd电影爱好者平台",
-      "description": "解析Letterboxd片单/演员页影片【v2.2：三级缓存+24h结果缓存，任意片单URL高速加载】",
+      "description": "解析Letterboxd片单/演员页影片【v2.3：冷启动加固——列表页重试×3+映射软超时防阻塞+并行预热，清理缓存后首开不报错】",
       "requiredVersion": "0.0.1",
-      "version": "2.2.0",
+      "version": "2.3.0",
       "author": "huangxd｜MakkaPakka（v2优化：Tea）",
       "url": "https://cdn.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/letterboxd.js"
     },
