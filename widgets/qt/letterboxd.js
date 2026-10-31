@@ -1,9 +1,9 @@
 WidgetMetadata = {
     id: "forward.letterboxd",
     title: "Letterboxd电影爱好者平台",
-    version: "2.0.0",
+    version: "2.1.0",
     requiredVersion: "0.0.1",
-    description: "解析Letterboxd片单/演员页影片【v2优化：本地缓存IMDb映射，翻页提速10倍+】",
+    description: "解析Letterboxd片单/演员页影片【v2.1：三级缓存(映射7天+列表页24h+增量回写)，任意片单URL高速加载】",
     author: "huangxd｜MakkaPakka（v2优化：Tea）",
     site: "https://t.me/MakkaPakkaOvO",
     modules: [
@@ -444,11 +444,12 @@ WidgetMetadata = {
     ],
 };
 
-// ================= v2.0 优化说明 =================
+// ============ v2.1 优化说明（在 v2 基础上新增） ============
 // 1) IMDb 映射表(968KB/14338条)首次下载后存入 Widget.storage，7天TTL，翻页零下载
 // 2) 移除 Cache-Control:no-cache 强制头，HTTP 缓存恢复生效
 // 3) 列表页/详情页解析改用正则提取，跳过 DOM 构建；失败自动降级 Widget.html.load
-// 4) 详情页并发限流 6，防 Cloudflare 掐断；未命中结果增量写回本地缓存，越用越快
+// 5) 列表页解析结果缓存24h：同一片单翻页/重进 0 列表请求
+// 4) 详情页并发限流 8 + 失败自动重试1次（无setTimeout环境自动降级立即重试）；未命中结果增量写回缓存
 // =================================================
 
 var LB_ORIGIN = "https://letterboxd.com";
@@ -457,8 +458,10 @@ var UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KH
 var KEY_GIST = "lb_gist_map_v2";
 var KEY_DELTA = "lb_delta_map_v2";
 var KEY_GIST_TIME = "lb_gist_time_v2";
+var KEY_LIST = "lb_list_pages_v2";
 var GIST_TTL = 7 * 24 * 3600 * 1000;
-var CONCURRENCY = 6;
+var LIST_TTL = 24 * 3600 * 1000;
+var CONCURRENCY = 8;
 
 function _sget(key, fallback) {
     try {
@@ -526,6 +529,48 @@ function extractImdbId(html) {
     return m ? m[1] : null;
 }
 
+// 列表页解析缓存：同一片单同一页 24h 内 0 请求
+function listCacheKey(url) {
+    var h = 5381, i = url.length;
+    while (i) h = (h * 33) ^ url.charCodeAt(--i);
+    return KEY_LIST + "_" + (h >>> 0);
+}
+
+async function fetchListPaths(url) {
+    var key = listCacheKey(url);
+    var cached = _sget(key, null);
+    if (cached && cached.paths && cached.paths.length && (Date.now() - (cached.t || 0)) < LIST_TTL) {
+        console.log("[LB] 列表页缓存命中（" + cached.paths.length + " 部），本次 0 请求");
+        return cached.paths;
+    }
+    var resp = await Widget.http.get(url, { headers: { "User-Agent": UA, "Accept": "text/html,application/xhtml+xml" } });
+    var paths = extractFilmPaths(resp && resp.data ? resp.data : "");
+    _sset(key, { t: Date.now(), paths: paths });
+    return paths;
+}
+
+function _delay(ms) {
+    return new Promise(function (resolve) {
+        if (typeof setTimeout === "function") setTimeout(resolve, ms);
+        else resolve();
+    });
+}
+
+async function fetchImdbIdWithRetry(url) {
+    for (var attempt = 0; attempt < 2; attempt++) {
+        try {
+            var resp = await Widget.http.get(url, { headers: { "User-Agent": UA, "Accept": "text/html,application/xhtml+xml" } });
+            var id = extractImdbId(resp && resp.data);
+            if (id) return id;
+            if (attempt === 1) return null;
+        } catch (e) {
+            if (attempt === 1) { console.log("[LB] 详情抓取失败: " + url + " → " + e); return null; }
+        }
+        await _delay(400);
+    }
+    return null;
+}
+
 function mapLimit(items, limit, fn) {
     var ret = new Array(items.length), i = 0;
     function worker() {
@@ -554,11 +599,8 @@ async function resolveImdbItems(paths) {
     if (misses.length) {
         var dirty = false;
         await mapLimit(misses, CONCURRENCY, async function (idx) {
-            try {
-                var resp = await Widget.http.get(urls[idx], { headers: { "User-Agent": UA, "Accept": "text/html,application/xhtml+xml" } });
-                var id2 = extractImdbId(resp && resp.data);
-                if (id2) { results[idx] = id2; delta[urls[idx]] = id2; dirty = true; }
-            } catch (e) { console.log("[LB] 详情抓取失败: " + urls[idx] + " → " + e); }
+            var id2 = await fetchImdbIdWithRetry(urls[idx]);
+            if (id2) { results[idx] = id2; delta[urls[idx]] = id2; dirty = true; }
         });
         if (dirty) _sset(KEY_DELTA, delta);
     }
@@ -599,8 +641,7 @@ async function loadList(params) {
         if (lbPage > 1) url += "page/" + lbPage + "/";
         console.log("[LB] 请求列表页: " + url);
 
-        var resp = await Widget.http.get(url, { headers: { "User-Agent": UA, "Accept": "text/html,application/xhtml+xml" } });
-        var paths = extractFilmPaths(resp && resp.data ? resp.data : "");
+        var paths = await fetchListPaths(url);
         console.log("[LB] 列表页共解析到 " + paths.length + " 部影片，取第 " + minNum + "-" + maxNum + " 位");
         if (minNum > paths.length) return [];
         var slice = paths.slice(minNum - 1, Math.min(maxNum, paths.length));
