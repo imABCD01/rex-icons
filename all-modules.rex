@@ -114,9 +114,9 @@
     {
       "id": "youku.video.pc.makka",
       "title": "优酷片库",
-      "description": "优酷片库：按频道 + 地区 + 年份筛选，自动翻页，输出 TMDB 条目（含封面）。需配合 youku-worker 中转（优酷签名在浏览器环境算不了）",
+      "description": "优酷片库：按频道 + 地区 + 年份筛选，自动翻页，输出 TMDB 条目（含封面）。需配合 youku-worker 中转（优酷签名在浏览器环境算不了）。v1.2.1：请求重试×3 冷启动加固（Tea）",
       "requiredVersion": "0.0.1",
-      "version": "1.2.0",
+      "version": "1.2.1",
       "author": "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
       "url": "https://cdn.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/makka-youku-library.js"
     },
