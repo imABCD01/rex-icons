@@ -1,13 +1,18 @@
 WidgetMetadata = {
-    id: "Letterboxd",
+    id: "forward.letterboxd",
     title: "Letterboxd电影爱好者平台",
+    version: "2.0.0",
+    requiredVersion: "0.0.1",
+    description: "解析Letterboxd片单/演员页影片【v2优化：本地缓存IMDb映射，翻页提速10倍+】",
+    author: "huangxd｜MakkaPakka（v2优化：Tea）",
+    site: "https://t.me/MakkaPakkaOvO",
     modules: [
         {
-            id: "letterboxdList",
-            title: "Letterboxd片单",
-            requiresWebView: false,
-            functionName: "loadListItems",
-            cacheDuration: 86400,
+            id: "loadList",
+            title: "获取列表",
+            functionName: "loadList",
+            description: "选择片单或输入自定义URL，返回影片列表（IMDb内置详情）",
+            cacheDuration: 1800,
             params: [
                 {
                     name: "input_type",
@@ -437,177 +442,171 @@ WidgetMetadata = {
             ],
         },
     ],
-    version: "1.2.0", // 🚀 版本升级，记录修复 Actor/Director 页面无法解析的 Bug
-    requiredVersion: "0.0.1",
-    description: "解析Letterboxd片单内的影片【置顶新增大量特色片单及演员库】",
-    author: "huangxd｜𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
-    site: "https://t.me/MakkaPakkaOvO"
 };
 
-async function extractLetterboxdUrlsFromResponse(responseData, minNum, maxNum) {
-    let $ = Widget.html.load(responseData);
-    
-    // 🛠️ 核心修复区：放宽选择器限制，兼容 Lists / Actors / Directors 各种页面排版
-    let filmContainers = $('div[data-target-link], div.film-poster[data-target-link], div.react-component[data-target-link]');
+// ================= v2.0 优化说明 =================
+// 1) IMDb 映射表(968KB/14338条)首次下载后存入 Widget.storage，7天TTL，翻页零下载
+// 2) 移除 Cache-Control:no-cache 强制头，HTTP 缓存恢复生效
+// 3) 列表页/详情页解析改用正则提取，跳过 DOM 构建；失败自动降级 Widget.html.load
+// 4) 详情页并发限流 6，防 Cloudflare 掐断；未命中结果增量写回本地缓存，越用越快
+// =================================================
 
-    if (!filmContainers.length) {
-        throw new Error("未找到包含 data-target-link 属性的电影容器");
-    }
+var LB_ORIGIN = "https://letterboxd.com";
+var GIST_URL = "https://gist.githubusercontent.com/huangxd-/60712812d3d8b3c4422d46c6bc07046c/raw/letterboxd_url2imdb.json";
+var UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
+var KEY_GIST = "lb_gist_map_v2";
+var KEY_DELTA = "lb_delta_map_v2";
+var KEY_GIST_TIME = "lb_gist_time_v2";
+var GIST_TTL = 7 * 24 * 3600 * 1000;
+var CONCURRENCY = 6;
 
-    let letterboxdUrls = Array.from(new Set(
-        filmContainers
-            .map((i, el) => {
-                const targetLink = $(el).data('target-link') || $(el).attr('data-target-link');
-                if (!targetLink || !targetLink.startsWith('/film/')) {
-                    // console.warn(`跳过无效的影片链接：${targetLink}`);
-                    return null;
-                }
-                return `https://letterboxd.com${targetLink}`;
-            })
-            .get()
-            .filter(Boolean)
-    ));
-
-    const start = Math.max(0, minNum - 1);
-    const end = Math.min(maxNum, letterboxdUrls.length);
-    return letterboxdUrls.slice(start, end);
-}
-
-async function loadLetterboxdToImdbCache() {
+function _sget(key, fallback) {
     try {
-        const response = await Widget.http.get('https://gist.githubusercontent.com/huangxd-/60712812d3d8b3c4422d46c6bc07046c/raw/letterboxd_url2imdb.json');
-        const letterboxdToImdbCache = response.data;
-        console.log('已加载 Letterboxd 到 IMDb ID 缓存');
-        return letterboxdToImdbCache;
-    } catch (error) {
-        console.error('加载 Letterboxd 到 IMDb ID 缓存失败:', error);
-    }
+        var v = Widget.storage.get(key);
+        return (v === undefined || v === null) ? fallback : v;
+    } catch (e) { return fallback; }
+}
+function _sset(key, value) {
+    try { Widget.storage.set(key, value); return true; } catch (e) { return false; }
 }
 
-async function fetchImdbIdsFromLetterboxdUrls(letterboxdUrls) {
-    const letterboxdToImdbCache = await loadLetterboxdToImdbCache();
-    let imdbIdPromises = letterboxdUrls.map(async (url) => {
+var _gistPromise = null;
+function loadGistMap() {
+    if (_gistPromise) return _gistPromise;
+    _gistPromise = (async function () {
+        var cached = _sget(KEY_GIST, null);
+        var ts = _sget(KEY_GIST_TIME, 0) || 0;
+        if (cached && (Date.now() - ts) < GIST_TTL) {
+            console.log("[LB] gist 本地缓存命中，本次 0 下载");
+            return cached;
+        }
         try {
-            if (letterboxdToImdbCache && letterboxdToImdbCache[url]) {
-                console.log(`使用缓存获取 IMDb ID: ${letterboxdToImdbCache[url]} (来自 ${url})`);
-                return letterboxdToImdbCache[url];
+            var resp = await Widget.http.get(GIST_URL);
+            var data = resp && resp.data;
+            if (data && typeof data === "object" && Object.keys(data).length > 1000) {
+                var ok = _sset(KEY_GIST, data);
+                if (ok) _sset(KEY_GIST_TIME, Date.now());
+                console.log("[LB] gist 已下载(" + Object.keys(data).length + "条)，storage=" + (ok ? "已持久化" : "失败(仅本会话可用)"));
+                return data;
             }
-
-            let detailResponse = await Widget.http.get(url, {
-                headers: {
-                    "User-Agent":
-                        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
-                    "Cache-Control": "no-cache, no-store, must-revalidate",
-                    "Pragma": "no-cache",
-                    "Expires": "0",
-                },
-            });
-
-            let $ = Widget.html.load(detailResponse.data);
-            let imdbLinkEl = $('a[data-track-action="IMDb"]').first();
-
-            if (!imdbLinkEl.length) return null;
-
-            let href = imdbLinkEl.attr('href');
-            let match = href.match(/title\/(tt\d+)/);
-
-            return match ? `${match[1]}` : null;
-        } catch {
-            return null;
+            throw new Error("gist 数据异常");
+        } catch (e) {
+            console.log("[LB] gist 下载失败，回退本地旧缓存: " + e);
+            _gistPromise = null;
+            if (cached) return cached;
+            return {};
         }
-    });
-
-    let imdbIds = [...new Set(
-        (await Promise.all(imdbIdPromises))
-            .filter(Boolean)
-            .map((item) => item)
-    )].map((id) => ({
-        id,
-        type: "imdb",
-    }));
-    console.log("请求imdbIds:", imdbIds);
-    return imdbIds;
+    })();
+    return _gistPromise;
 }
 
-async function fetchLetterboxdData(url, headers = {}, minNum, maxNum) {
+function extractFilmPaths(html) {
+    var re = /data-target-link="(\/film\/[^"]+)"/g;
+    var seen = {}, out = [], m;
+    while ((m = re.exec(html)) !== null) {
+        if (!seen[m[1]]) { seen[m[1]] = 1; out.push(m[1]); }
+    }
+    if (out.length) return out;
     try {
-        const response = await Widget.http.get(url, {
-            headers: {
-                "User-Agent":
-                    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
-                "Cache-Control": "no-cache, no-store, must-revalidate",
-                "Pragma": "no-cache",
-                "Expires": "0",
-                ...headers,
-            },
+        var $ = Widget.html.load(html);
+        var links = [];
+        $("div[data-target-link]").each(function (i, el) {
+            var t = $(el).attr("data-target-link");
+            if (t && t.indexOf("/film/") === 0 && !seen[t]) { seen[t] = 1; links.push(t); }
         });
-
-        // 仅在调试时打开，避免日志爆炸
-        // console.log("请求结果:", response.data); 
-
-        let letterboxdUrls = await extractLetterboxdUrlsFromResponse(response.data, minNum, maxNum);
-
-        return await fetchImdbIdsFromLetterboxdUrls(letterboxdUrls);
-    } catch (error) {
-        console.error("处理失败:", error);
-        throw error;
+        if (!links.length) throw new Error("未找到影片容器");
+        return links;
+    } catch (e) {
+        throw new Error("列表页解析失败（可能被 Cloudflare 拦截或页面结构变化）: " + e);
     }
 }
 
-async function loadListItems(params = {}) {
+function extractImdbId(html) {
+    var m = String(html || "").match(/imdb\.com\/title\/(tt\d+)/i);
+    return m ? m[1] : null;
+}
+
+function mapLimit(items, limit, fn) {
+    var ret = new Array(items.length), i = 0;
+    function worker() {
+        if (i >= items.length) return Promise.resolve();
+        var idx = i++;
+        return Promise.resolve().then(function () { return fn(items[idx], idx); })
+            .then(function (v) { ret[idx] = v; })
+            .then(worker);
+    }
+    var ws = [];
+    for (var w = 0; w < Math.min(limit, items.length); w++) ws.push(worker());
+    return Promise.all(ws).then(function () { return ret; });
+}
+
+async function resolveImdbItems(paths) {
+    var gist = await loadGistMap();
+    var delta = _sget(KEY_DELTA, {}) || {};
+    var urls = paths.map(function (p) { return LB_ORIGIN + p; });
+    var results = new Array(urls.length), misses = [];
+    for (var k = 0; k < urls.length; k++) {
+        var id = gist[urls[k]] || delta[urls[k]] || null;
+        results[k] = id;
+        if (!id) misses.push(k);
+    }
+    console.log("[LB] 本页 " + urls.length + " 部：缓存命中 " + (urls.length - misses.length) + "，需抓详情 " + misses.length);
+    if (misses.length) {
+        var dirty = false;
+        await mapLimit(misses, CONCURRENCY, async function (idx) {
+            try {
+                var resp = await Widget.http.get(urls[idx], { headers: { "User-Agent": UA, "Accept": "text/html,application/xhtml+xml" } });
+                var id2 = extractImdbId(resp && resp.data);
+                if (id2) { results[idx] = id2; delta[urls[idx]] = id2; dirty = true; }
+            } catch (e) { console.log("[LB] 详情抓取失败: " + urls[idx] + " → " + e); }
+        });
+        if (dirty) _sset(KEY_DELTA, delta);
+    }
+    var seen = {}, items = [];
+    for (var j = 0; j < results.length; j++) {
+        var id3 = results[j];
+        if (id3 && !seen[id3]) { seen[id3] = 1; items.push({ id: id3, type: "imdb" }); }
+    }
+    return items;
+}
+
+async function loadList(params) {
+    params = params || {};
     try {
-        const page = params.page;
-        const inputType = params.input_type || "";
-        const listSelect = params.list_select || "";
-        const actorSelect = params.actor_select || ""; // 🚀 接收演员数据
-        const urlCustomize = params.url_customize || "";
-        const sortBy = params.sort_by || "default";
-        const genre = params.genre || "default";
-        const decade = params.decade || "default";
-        const count = 20;
-        const minNum = ((page - 1) % 5) * count + 1;
-        const maxNum = ((page - 1) % 5) * count + 20;
-        const letterboxdPage = Math.floor((page - 1) / 5) + 1;
+        var page = params.page || 1;
+        var inputType = params.input_type || "";
+        var listSelect = params.list_select || "";
+        var actorSelect = params.actor_select || "";
+        var urlCustomize = params.url_customize || "";
+        var sortBy = params.sort_by || "default";
+        var genre = params.genre || "default";
+        var decade = params.decade || "default";
+        var count = 20;
+        var minNum = ((page - 1) % 5) * count + 1;
+        var maxNum = ((page - 1) % 5) * count + 20;
+        var lbPage = Math.floor((page - 1) / 5) + 1;
 
-        // 🚀 根据选择框动态赋值 URL
-        let listUrl;
-        if (inputType === "select") {
-            listUrl = listSelect;
-        } else if (inputType === "actor") {
-            listUrl = actorSelect;
-        } else {
-            listUrl = urlCustomize;
-        }
+        var listUrl;
+        if (inputType === "select") listUrl = listSelect;
+        else if (inputType === "actor") listUrl = actorSelect;
+        else listUrl = urlCustomize;
+        if (!listUrl) throw new Error("必须提供 Letterboxd 片单或演员完整 URL");
 
-        if (!listUrl) {
-            throw new Error("必须提供 Letterboxd 片单或演员完整URL");
-        }
+        var url = listUrl.endsWith("/") ? listUrl : listUrl + "/";
+        if (decade !== "default") url += "decade/" + decade + "/";
+        if (genre !== "default") url += "genre/" + genre + "/";
+        if (sortBy !== "default") url += "by/" + sortBy + "/";
+        if (lbPage > 1) url += "page/" + lbPage + "/";
+        console.log("[LB] 请求列表页: " + url);
 
-        // 确保 URL 以斜杠结尾
-        let baseUrl = listUrl.endsWith('/') ? listUrl : `${listUrl}/`;
-        let url = baseUrl;
-        
-        // 1. 严格按照 Letterboxd 格式：先拼接年份、类型和排序
-        if (decade !== "default") {
-            url += `decade/${decade}/`;
-        }
-        if (genre !== "default") {
-            url += `genre/${genre}/`;
-        }
-        if (sortBy !== "default") {
-            url += `by/${sortBy}/`;
-        }
-        
-        // 2. 避免404：Letterboxd 拒绝第一页带有 /page/1/，只有在大于第一页时才拼接
-        if (letterboxdPage > 1) {
-            url += `page/${letterboxdPage}/`;
-        }
-
-        console.log("最终请求的 Letterboxd URL: ", url);
-
-        return await fetchLetterboxdData(url, {}, minNum, maxNum);
+        var resp = await Widget.http.get(url, { headers: { "User-Agent": UA, "Accept": "text/html,application/xhtml+xml" } });
+        var paths = extractFilmPaths(resp && resp.data ? resp.data : "");
+        console.log("[LB] 列表页共解析到 " + paths.length + " 部影片，取第 " + minNum + "-" + maxNum + " 位");
+        if (minNum > paths.length) return [];
+        var slice = paths.slice(minNum - 1, Math.min(maxNum, paths.length));
+        return await resolveImdbItems(slice);
     } catch (error) {
-        console.error("处理失败:", error);
+        console.error("[LB] 处理失败:", error);
         throw error;
     }
 }
