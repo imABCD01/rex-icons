@@ -1,9 +1,9 @@
 WidgetMetadata = {
     id: "forward.letterboxd",
     title: "Letterboxd电影爱好者平台",
-    version: "2.2.0",
+    version: "2.3.0",
     requiredVersion: "0.0.1",
-    description: "解析Letterboxd片单/演员页影片【v2.2：三级缓存+24h结果缓存，任意片单URL高速加载】",
+    description: "解析Letterboxd片单/演员页影片【v2.3：冷启动加固——列表页重试×3+映射软超时防阻塞+并行预热，清理缓存后首开不报错】",
     author: "huangxd｜MakkaPakka（v2优化：Tea）",
     site: "https://t.me/MakkaPakkaOvO",
     modules: [
@@ -473,6 +473,7 @@ function _sset(key, value) {
 }
 
 var _gistPromise = null;
+var GIST_SOFT_TIMEOUT = 8000; // v2.3: 软超时——冷启动防 968KB 慢下载阻塞首屏
 function loadGistMap() {
     if (_gistPromise) return _gistPromise;
     _gistPromise = (async function () {
@@ -483,17 +484,27 @@ function loadGistMap() {
             return cached;
         }
         try {
-            var resp = await Widget.http.get(GIST_URL);
-            var data = resp && resp.data;
-            if (data && typeof data === "object" && Object.keys(data).length > 1000) {
-                var ok = _sset(KEY_GIST, data);
-                if (ok) _sset(KEY_GIST_TIME, Date.now());
-                console.log("[LB] gist 已下载(" + Object.keys(data).length + "条)，storage=" + (ok ? "已持久化" : "失败(仅本会话可用)"));
-                return data;
-            }
-            throw new Error("gist 数据异常");
+            // v2.3: 下载与软超时竞速；超时后后台继续下载落盘（promise 不会被取消），
+            // 本轮改走详情页直抓兜底，下次打开直接吃缓存。
+            var dl = (async function () {
+                var resp = await Widget.http.get(GIST_URL);
+                var data = resp && resp.data;
+                if (data && typeof data === "object" && Object.keys(data).length > 1000) {
+                    _sset(KEY_GIST, data);
+                    _sset(KEY_GIST_TIME, Date.now());
+                    console.log("[LB] gist 已下载(" + Object.keys(data).length + "条)，storage=" + (_sget(KEY_GIST, null) ? "已持久化" : "失败(仅本会话)"));
+                    return data;
+                }
+                throw new Error("gist 数据异常");
+            })();
+            var timer = (typeof setTimeout === "function")
+                ? new Promise(function (_, rej) { setTimeout(function () { rej(new Error("gist 软超时" + GIST_SOFT_TIMEOUT + "ms")); }, GIST_SOFT_TIMEOUT); })
+                : null;
+            var data = timer ? await Promise.race([dl, timer]) : await dl;
+            timer = null;
+            return data;
         } catch (e) {
-            console.log("[LB] gist 下载失败，回退本地旧缓存: " + e);
+            console.log("[LB] gist 下载失败/超时（后台续存），本次回退详情直抓: " + e);
             _gistPromise = null;
             if (cached) return cached;
             return {};
@@ -542,10 +553,21 @@ async function fetchListPaths(url) {
         console.log("[LB] 列表页缓存命中（" + cached.paths.length + " 部），本次 0 请求");
         return cached.paths;
     }
-    var resp = await Widget.http.get(url, { headers: { "User-Agent": UA, "Accept": "text/html,application/xhtml+xml" } });
-    var paths = extractFilmPaths(resp && resp.data ? resp.data : "");
-    _sset(key, { t: Date.now(), paths: paths });
-    return paths;
+    // v2.3: 重试×3（原仅 1 次，冷启动全网并发拥塞下首抓失败即整卡报错）
+    var lastErr = null;
+    for (var attempt = 0; attempt < 3; attempt++) {
+        try {
+            var resp = await Widget.http.get(url, { headers: { "User-Agent": UA, "Accept": "text/html,application/xhtml+xml" } });
+            var paths = extractFilmPaths(resp && resp.data ? resp.data : "");
+            _sset(key, { t: Date.now(), paths: paths });
+            return paths;
+        } catch (e) {
+            lastErr = e;
+            console.log("[LB] 列表页抓取失败(第" + (attempt + 1) + "次): " + e);
+            if (attempt < 2) await _delay(800);
+        }
+    }
+    throw lastErr;
 }
 
 function _delay(ms) {
@@ -640,7 +662,11 @@ async function loadList(params) {
         if (lbPage > 1) url += "page/" + lbPage + "/";
         console.log("[LB] 请求列表页: " + url);
 
-        var paths = await fetchListPaths(url);
+        var pathsPromise = fetchListPaths(url);
+        // v2.3: 与列表页并行预热 gist 映射（_gistPromise 复用，resolveImdbItems 里 await 同一 promise），
+        // 冷启动总耗时 = max(列表页, gist) + 详情，替代原串行叠加。
+        loadGistMap().catch(function () {});
+        var paths = await pathsPromise;
         console.log("[LB] 列表页共解析到 " + paths.length + " 部影片，取第 " + minNum + "-" + maxNum + " 位");
         if (minNum > paths.length) return [];
         var slice = paths.slice(minNum - 1, Math.min(maxNum, paths.length));
