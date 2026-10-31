@@ -1,9 +1,9 @@
 WidgetMetadata = {
     id: "forward.letterboxd",
     title: "Letterboxd电影爱好者平台",
-    version: "2.1.0",
+    version: "2.2.0",
     requiredVersion: "0.0.1",
-    description: "解析Letterboxd片单/演员页影片【v2.1：三级缓存(映射7天+列表页24h+增量回写)，任意片单URL高速加载】",
+    description: "解析Letterboxd片单/演员页影片【v2.2：三级缓存+24h结果缓存，任意片单URL高速加载】",
     author: "huangxd｜MakkaPakka（v2优化：Tea）",
     site: "https://t.me/MakkaPakkaOvO",
     modules: [
@@ -12,7 +12,7 @@ WidgetMetadata = {
             title: "获取列表",
             functionName: "loadList",
             description: "选择片单或输入自定义URL，返回影片列表（IMDb内置详情）",
-            cacheDuration: 1800,
+            cacheDuration: 86400,
             params: [
                 {
                     name: "input_type",
@@ -444,12 +444,11 @@ WidgetMetadata = {
     ],
 };
 
-// ============ v2.1 优化说明（在 v2 基础上新增） ============
+// ================= v2.0 优化说明 =================
 // 1) IMDb 映射表(968KB/14338条)首次下载后存入 Widget.storage，7天TTL，翻页零下载
 // 2) 移除 Cache-Control:no-cache 强制头，HTTP 缓存恢复生效
 // 3) 列表页/详情页解析改用正则提取，跳过 DOM 构建；失败自动降级 Widget.html.load
-// 5) 列表页解析结果缓存24h：同一片单翻页/重进 0 列表请求
-// 4) 详情页并发限流 8 + 失败自动重试1次（无setTimeout环境自动降级立即重试）；未命中结果增量写回缓存
+// 4) 详情页并发限流 6，防 Cloudflare 掐断；未命中结果增量写回本地缓存，越用越快
 // =================================================
 
 var LB_ORIGIN = "https://letterboxd.com";
