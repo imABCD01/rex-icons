@@ -28,7 +28,7 @@
       "requiredVersion": "0.0.1",
       "version": "2.4.0",
       "author": "huangxd｜MakkaPakka（v2优化：Tea）",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/letterboxd.js?v=2.4.0"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@f2c9b4ec6f5ccd351592629c9f75403bb0ae368e/widgets/list/letterboxd.js"
     },
     {
       "id": "cinephile_hub_ultimate",
