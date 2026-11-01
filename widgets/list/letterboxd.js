@@ -1,9 +1,9 @@
 WidgetMetadata = {
     id: "forward.letterboxd",
     title: "Letterboxd电影爱好者平台",
-    version: "2.3.0",
+    version: "2.4.0",
     requiredVersion: "0.0.1",
-    description: "解析Letterboxd片单/演员页影片【v2.3：冷启动加固——列表页重试×3+映射软超时防阻塞+并行预热，清理缓存后首开不报错】",
+    description: "解析Letterboxd片单/演员页影片【v2.4：失败降级不炸卡——退避重试+移动UA轮换+lastGood快照+占位卡兜底，冷启动/拥塞均不报错】",
     author: "huangxd｜MakkaPakka（v2优化：Tea）",
     site: "https://t.me/MakkaPakkaOvO",
     modules: [
@@ -454,10 +454,12 @@ WidgetMetadata = {
 var LB_ORIGIN = "https://letterboxd.com";
 var GIST_URL = "https://gist.githubusercontent.com/huangxd-/60712812d3d8b3c4422d46c6bc07046c/raw/letterboxd_url2imdb.json";
 var UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
+var UA_MOBILE = "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1";
 var KEY_GIST = "lb_gist_map_v2";
 var KEY_DELTA = "lb_delta_map_v2";
 var KEY_GIST_TIME = "lb_gist_time_v2";
 var KEY_LIST = "lb_list_pages_v2";
+var KEY_LASTGOOD = "lb_lastgood_paths_v2"; // v2.4: 最后一次成功快照（无 TTL，全败时降级用）
 var GIST_TTL = 7 * 24 * 3600 * 1000;
 var LIST_TTL = 24 * 3600 * 1000;
 var CONCURRENCY = 8;
@@ -553,19 +555,27 @@ async function fetchListPaths(url) {
         console.log("[LB] 列表页缓存命中（" + cached.paths.length + " 部），本次 0 请求");
         return cached.paths;
     }
-    // v2.3: 重试×3（原仅 1 次，冷启动全网并发拥塞下首抓失败即整卡报错）
+    // v2.4: 重试×3 退避(800/1600ms)+第3次换移动UA；成功时写 lastGood 快照；
+    // 全败时若有快照则降级返回（数据可能略旧但总比整卡报错强）
     var lastErr = null;
     for (var attempt = 0; attempt < 3; attempt++) {
         try {
-            var resp = await Widget.http.get(url, { headers: { "User-Agent": UA, "Accept": "text/html,application/xhtml+xml" } });
+            var ua = (attempt >= 2) ? UA_MOBILE : UA; // v2.4: 第三次换移动 UA，提高绕过 CF 挑战概率
+            var resp = await Widget.http.get(url, { headers: { "User-Agent": ua, "Accept": "text/html,application/xhtml+xml" } });
             var paths = extractFilmPaths(resp && resp.data ? resp.data : "");
             _sset(key, { t: Date.now(), paths: paths });
+            _sset(KEY_LASTGOOD, { t: Date.now(), paths: paths });
             return paths;
         } catch (e) {
             lastErr = e;
             console.log("[LB] 列表页抓取失败(第" + (attempt + 1) + "次): " + e);
-            if (attempt < 2) await _delay(800);
+            if (attempt < 2) await _delay(attempt === 0 ? 800 : 1600);
         }
+    }
+    var lastGood = _sget(KEY_LASTGOOD, null);
+    if (lastGood && lastGood.paths && lastGood.paths.length) {
+        console.log("[LB] 首抓全败，降级返回 lastGood 快照(" + lastGood.paths.length + "部, 存于 " + new Date(lastGood.t).toISOString() + ")");
+        return lastGood.paths;
     }
     throw lastErr;
 }
@@ -673,6 +683,13 @@ async function loadList(params) {
         return await resolveImdbItems(slice);
     } catch (error) {
         console.error("[LB] 处理失败:", error);
-        throw error;
+        var msg = String((error && error.message) || error || "");
+        // v2.4: 配置类错误照常抛给 rex 提示；运行时网络失败不炸卡，返回占位卡片引导刷新
+        if (msg.indexOf("必须提供") !== -1) throw error;
+        console.log("[LB] 降级为占位卡片（不报错）");
+        return [{
+            title: "Letterboxd 暂时没连上",
+            description: "冷启动网络拥塞或站点限流，下拉刷新一次即可恢复"
+        }];
     }
 }
