@@ -10,7 +10,7 @@
       "requiredVersion": "0.0.1",
       "version": "1.0.0",
       "author": "Tea",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/douban-rating.js"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/douban-rating.js?v=1.0.0"
     },
     {
       "id": "forward.haokan.short-drama",
@@ -19,16 +19,16 @@
       "requiredVersion": "0.0.1",
       "version": "1.0.1",
       "author": "balge",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/haokan-short-drama.js"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/haokan-short-drama.js?v=1.0.1"
     },
     {
       "id": "forward.letterboxd",
       "title": "Letterboxd电影爱好者平台",
       "description": "解析Letterboxd片单/演员页影片【v2.3：冷启动加固——列表页重试×3+映射软超时防阻塞+并行预热，清理缓存后首开不报错】",
       "requiredVersion": "0.0.1",
-      "version": "2.4.0",
+      "version": "2.3.0",
       "author": "huangxd｜MakkaPakka（v2优化：Tea）",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/letterboxd.js"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/letterboxd.js?v=2.3.0"
     },
     {
       "id": "cinephile_hub_ultimate",
@@ -37,7 +37,7 @@
       "requiredVersion": "0.0.1",
       "version": "1.0.5",
       "author": "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/makka-cinephile-hub.js"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/makka-cinephile-hub.js?v=1.0.5"
     },
     {
       "id": "discover_hub_ultimate",
@@ -46,7 +46,7 @@
       "requiredVersion": "0.0.1",
       "version": "1.0.6",
       "author": "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/makka-discover-hub.js"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/makka-discover-hub.js?v=1.0.6"
     },
     {
       "id": "makka_global_networks",
@@ -55,7 +55,7 @@
       "requiredVersion": "0.0.1",
       "version": "1.2.5",
       "author": "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/makka-global-networks.js"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/makka-global-networks.js?v=1.2.5"
     },
     {
       "id": "imdb_cn_fix_",
@@ -64,7 +64,7 @@
       "requiredVersion": "0.0.1",
       "version": "1.0.5",
       "author": "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/makka-imdb-hot.js"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/makka-imdb-hot.js?v=1.0.5"
     },
     {
       "id": "iqiyi.video.pc.makka",
@@ -73,7 +73,7 @@
       "requiredVersion": "0.0.1",
       "version": "1.0.0",
       "author": "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/makka-iqiyi-library.js"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/makka-iqiyi-library.js?v=1.0.0"
     },
     {
       "id": "movie_ultimate_makka_v2",
@@ -82,7 +82,7 @@
       "requiredVersion": "0.0.1",
       "version": "1.4.0",
       "author": "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/makka-movie-charts.js"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/makka-movie-charts.js?v=1.4.0"
     },
     {
       "id": "qq.video.pc.makka",
@@ -91,7 +91,7 @@
       "requiredVersion": "0.0.1",
       "version": "1.0.0",
       "author": "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/makka-qq-library.js"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/makka-qq-library.js?v=1.0.0"
     },
     {
       "id": "tmdb_upcoming_center_makka",
@@ -100,7 +100,7 @@
       "requiredVersion": "0.0.1",
       "version": "1.0.1",
       "author": "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/makka-tmdb-upcoming.js"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/makka-tmdb-upcoming.js?v=1.0.1"
     },
     {
       "id": "super_ultime_media_hub_makka",
@@ -109,7 +109,7 @@
       "requiredVersion": "0.0.1",
       "version": "1.3.0",
       "author": "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/makka-ultimate-aggregate.js"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/makka-ultimate-aggregate.js?v=1.3.0"
     },
     {
       "id": "youku.video.pc.makka",
@@ -118,7 +118,7 @@
       "requiredVersion": "0.0.1",
       "version": "1.2.1",
       "author": "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/makka-youku-library.js"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/makka-youku-library.js?v=1.2.1"
     },
     {
       "id": "tea.subtitle.highmatch",
@@ -127,7 +127,7 @@
       "requiredVersion": "0.0.1",
       "version": "1.1.0",
       "author": "Tea",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/subtitle/subtitle-highmatch.js"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/subtitle/subtitle-highmatch.js?v=1.1.0"
     },
     {
       "id": "xunlei.subtitle",
@@ -136,7 +136,7 @@
       "requiredVersion": "0.0.1",
       "version": "1.2.0",
       "author": "EL",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/subtitle/xunlei-subtitle.js"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/subtitle/xunlei-subtitle.js?v=1.2.0"
     }
   ]
 }
