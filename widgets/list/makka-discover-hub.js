@@ -136,8 +136,8 @@ function buildItem({ id, tmdbId, type, title, date, poster, backdrop, rating, ge
         // 传递给内核提取横版年份
         releaseDate: date,
         
-        posterPath: poster ? `https://image.tmdb.org/t/p/w500${poster}` : "",
-        backdropPath: backdrop ? `https://image.tmdb.org/t/p/w780${backdrop}` : "",
+        posterPath: poster ? `https://imabcd.dpdns.org/t/p/w500${poster}` : "",
+        backdropPath: backdrop ? `https://imabcd.dpdns.org/t/p/w780${backdrop}` : "",
         rating: parseFloat(rating) || 0,
         subTitle: subTitle // 备用保留
     };

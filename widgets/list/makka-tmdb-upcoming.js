@@ -101,9 +101,9 @@ function buildItem(item, mediaType) {
         genreTitle: displaySubtitle, 
         subTitle: displaySubtitle,
         
-        coverUrl: item.poster_path ? `https://image.tmdb.org/t/p/w500${item.poster_path}` : "",
-        posterPath: item.poster_path ? `https://image.tmdb.org/t/p/w500${item.poster_path}` : "", // 兼容标准字段
-        backdropPath: item.backdrop_path ? `https://image.tmdb.org/t/p/w780${item.backdrop_path}` : "",
+        coverUrl: item.poster_path ? `https://imabcd.dpdns.org/t/p/w500${item.poster_path}` : "",
+        posterPath: item.poster_path ? `https://imabcd.dpdns.org/t/p/w500${item.poster_path}` : "", // 兼容标准字段
+        backdropPath: item.backdrop_path ? `https://imabcd.dpdns.org/t/p/w780${item.backdrop_path}` : "",
         
         // 将原先的倒计时魔法和评分放进简介，不丢失信息！
         description: `${dateLabel} | ⭐ 评分: ${score}\n${item.overview || "这部影片目前还没有中文简介，敬请期待！"}`,

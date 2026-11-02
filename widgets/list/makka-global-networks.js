@@ -152,8 +152,8 @@ function buildItem(item, isMovie, platformName) {
         releaseDate: releaseDate, 
         
         // 🔑 魔法 4：彻底抛弃 coverUrl，严格使用 posterPath 和 backdropPath
-        posterPath: item.poster_path ? `https://image.tmdb.org/t/p/w500${item.poster_path}` : "",
-        backdropPath: item.backdrop_path ? `https://image.tmdb.org/t/p/w780${item.backdrop_path}` : "",
+        posterPath: item.poster_path ? `https://imabcd.dpdns.org/t/p/w500${item.poster_path}` : "",
+        backdropPath: item.backdrop_path ? `https://imabcd.dpdns.org/t/p/w780${item.backdrop_path}` : "",
         
         rating: score
     };
