@@ -1,7 +1,7 @@
 var WidgetMetadata = {
   id: "youku.video.pc.makka",
   title: "优酷片库",
-  version: "1.2.1",
+  version: "1.2.2",
   requiredVersion: "0.0.1",
   description: "优酷片库：按频道 + 地区 + 年份筛选，自动翻页，输出 TMDB 条目（含封面）。需配合 youku-worker 中转（优酷签名在浏览器环境算不了）。v1.2.1：请求重试×3 冷启动加固（Tea）",
   author: "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
@@ -250,8 +250,8 @@ async function ykMatchOne(card, kind) {
 }
 
 function ykToItem(card, hit) {
-  var poster = hit.poster ? "https://shrill-poetry-07fc.svipqq888.workers.dev/t/p/w500" + hit.poster : "";
-  var backdrop = hit.backdrop ? "https://shrill-poetry-07fc.svipqq888.workers.dev/t/p/w780" + hit.backdrop : poster;
+  var poster = hit.poster ? "https://image.tmdb.org/t/p/w500" + hit.poster : "";
+  var backdrop = hit.backdrop ? "https://image.tmdb.org/t/p/w780" + hit.backdrop : poster;
   if (!poster && !backdrop) return null;
   return {
     id: hit.id,
