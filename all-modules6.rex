@@ -19,7 +19,7 @@
       "requiredVersion": "0.0.1",
       "version": "1.0.1",
       "author": "balge",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/haokan-short-drama.js?v=1.0.1"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-shortdrama@main/modules/forward.haokan.short-drama.js"
     },
     {
       "id": "forward.letterboxd",
@@ -100,7 +100,7 @@
       "requiredVersion": "0.0.1",
       "version": "1.0.1",
       "author": "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@b552125f39f63904b922188cc14f1e674d52e312/widgets/list/makka-tmdb-upcoming.js?v=1.0.1"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@3fe524c270eccb0f151e3c6fdca6673a23b74003/widgets/list/makka-tmdb-upcoming.js?v=1.0.1"
     },
     {
       "id": "super_ultime_media_hub_makka",
