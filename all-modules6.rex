@@ -55,7 +55,7 @@
       "requiredVersion": "0.0.1",
       "version": "1.2.5",
       "author": "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@9db3021cc3a2dac625186d6e894f7cf9c01d3bfa/widgets/list/makka-global-networks.js?v=1.2.5"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@3fe524c270eccb0f151e3c6fdca6673a23b74003/widgets/list/makka-global-networks.js?v=1.2.5"
     },
     {
       "id": "imdb_cn_fix_",
@@ -82,7 +82,7 @@
       "requiredVersion": "0.0.1",
       "version": "1.4.0",
       "author": "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@3fe524c270eccb0f151e3c6fdca6673a23b74003/widgets/list/makka-movie-charts.js?v=1.4.0"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@a867357079a79bb23dc0dc550c5015dcaaa0e778/widgets/list/makka-movie-charts.js?v=1.4.0"
     },
     {
       "id": "qq.video.pc.makka",
