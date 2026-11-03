@@ -46,7 +46,7 @@
       "requiredVersion": "0.0.1",
       "version": "1.0.6",
       "author": "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@3fe524c270eccb0f151e3c6fdca6673a23b74003/widgets/list/makka-discover-hub.js?v=1.0.6"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@b83b1832d1014585abf3db5ee8b4b5df572a77d5/widgets/list/makka-discover-hub.js?v=1.0.6"
     },
     {
       "id": "makka_global_networks",
