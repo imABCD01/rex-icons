@@ -46,7 +46,7 @@
       "requiredVersion": "0.0.1",
       "version": "1.0.6",
       "author": "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/makka-discover-hub.js?v=1.0.6"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@3fe524c270eccb0f151e3c6fdca6673a23b74003/widgets/list/makka-discover-hub.js?v=1.0.6"
     },
     {
       "id": "makka_global_networks",
@@ -55,7 +55,7 @@
       "requiredVersion": "0.0.1",
       "version": "1.2.5",
       "author": "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/makka-global-networks.js?v=1.2.5"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@3fe524c270eccb0f151e3c6fdca6673a23b74003/widgets/list/makka-global-networks.js?v=1.2.5"
     },
     {
       "id": "imdb_cn_fix_",
@@ -64,7 +64,7 @@
       "requiredVersion": "0.0.1",
       "version": "1.0.5",
       "author": "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/makka-imdb-hot.js?v=1.0.5"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@3fe524c270eccb0f151e3c6fdca6673a23b74003/widgets/list/makka-imdb-hot.js?v=1.0.5"
     },
     {
       "id": "iqiyi.video.pc.makka",
@@ -82,7 +82,7 @@
       "requiredVersion": "0.0.1",
       "version": "1.4.0",
       "author": "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/makka-movie-charts.js?v=1.4.0"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@3fe524c270eccb0f151e3c6fdca6673a23b74003/widgets/list/makka-movie-charts.js?v=1.4.0"
     },
     {
       "id": "qq.video.pc.makka",
@@ -100,7 +100,7 @@
       "requiredVersion": "0.0.1",
       "version": "1.0.1",
       "author": "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/makka-tmdb-upcoming.js?v=1.0.1"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@3fe524c270eccb0f151e3c6fdca6673a23b74003/widgets/list/makka-tmdb-upcoming.js?v=1.0.1"
     },
     {
       "id": "super_ultime_media_hub_makka",
@@ -118,7 +118,7 @@
       "requiredVersion": "0.0.1",
       "version": "1.2.1",
       "author": "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/makka-youku-library.js?v=1.2.1"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@3fe524c270eccb0f151e3c6fdca6673a23b74003/widgets/list/makka-youku-library.js?v=1.2.1"
     },
     {
       "id": "tea.subtitle.highmatch",
