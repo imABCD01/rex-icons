@@ -1,5 +1,5 @@
 {
-  "title": "Tea’s Modules",
+  "title": "𝙏𝙚𝙖'𝙨 𝙈𝙤𝙙𝙪𝙡𝙚𝙨",
   "description": "自建模块合集：Letterboxd/终极聚合/全能电影榜/探索发现/新片追踪/全球平台/IMDb热榜/影迷宝藏/三大片库/好看短剧/豆瓣评分/迅雷字幕/高匹配字幕",
   "icon": "",
   "widgets": [
@@ -28,7 +28,7 @@
       "requiredVersion": "0.0.1",
       "version": "2.4.1",
       "author": "huangxd｜MakkaPakka（v2优化：Tea）",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/letterboxd.js"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@27a829777961b020ae2c6ec1cee5d403eca27eaa/widgets/list/letterboxd.js"
     },
     {
       "id": "cinephile_hub_ultimate",
@@ -116,9 +116,9 @@
       "title": "优酷片库",
       "description": "优酷片库：按频道 + 地区 + 年份筛选，自动翻页，输出 TMDB 条目（含封面）。需配合 youku-worker 中转（优酷签名在浏览器环境算不了）。v1.2.1：请求重试×3 冷启动加固（Tea）",
       "requiredVersion": "0.0.1",
-      "version": "1.2.2",
+      "version": "1.2.1",
       "author": "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/makka-youku-library.js"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@3fe524c270eccb0f151e3c6fdca6673a23b74003/widgets/list/makka-youku-library.js?v=1.2.1"
     },
     {
       "id": "tea.subtitle.highmatch",
