@@ -28,7 +28,7 @@
       "requiredVersion": "0.0.1",
       "version": "2.4.0",
       "author": "huangxd｜MakkaPakka（v2优化：Tea）",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@f2c9b4ec6f5ccd351592629c9f75403bb0ae368e/widgets/list/letterboxd.js"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@7bedc01b06ae5222cf88036d18c6086ff2bb4246/widgets/list/letterboxd.js"
     },
     {
       "id": "cinephile_hub_ultimate",
@@ -118,7 +118,7 @@
       "requiredVersion": "0.0.1",
       "version": "1.2.1",
       "author": "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@3fe524c270eccb0f151e3c6fdca6673a23b74003/widgets/list/makka-youku-library.js?v=1.2.1"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@7bedc01b06ae5222cf88036d18c6086ff2bb4246/widgets/list/makka-youku-library.js?v=1.2.1"
     },
     {
       "id": "tea.subtitle.highmatch",
