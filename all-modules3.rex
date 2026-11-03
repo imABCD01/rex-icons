@@ -26,9 +26,9 @@
       "title": "Letterboxd电影爱好者平台",
       "description": "解析Letterboxd片单/演员页影片【v2.3：冷启动加固——列表页重试×3+映射软超时防阻塞+并行预热，清理缓存后首开不报错】",
       "requiredVersion": "0.0.1",
-      "version": "2.4.0",
+      "version": "2.4.1",
       "author": "huangxd｜MakkaPakka（v2优化：Tea）",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@7bedc01b06ae5222cf88036d18c6086ff2bb4246/widgets/list/letterboxd.js"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@f8fe14d9667baa280f2875e62a976242ccc9bf1d/widgets/list/letterboxd.js"
     },
     {
       "id": "cinephile_hub_ultimate",
@@ -116,9 +116,9 @@
       "title": "优酷片库",
       "description": "优酷片库：按频道 + 地区 + 年份筛选，自动翻页，输出 TMDB 条目（含封面）。需配合 youku-worker 中转（优酷签名在浏览器环境算不了）。v1.2.1：请求重试×3 冷启动加固（Tea）",
       "requiredVersion": "0.0.1",
-      "version": "1.2.1",
+      "version": "1.2.2",
       "author": "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@7bedc01b06ae5222cf88036d18c6086ff2bb4246/widgets/list/makka-youku-library.js?v=1.2.1"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@f8fe14d9667baa280f2875e62a976242ccc9bf1d/widgets/list/makka-youku-library.js?v=1.2.1"
     },
     {
       "id": "tea.subtitle.highmatch",
