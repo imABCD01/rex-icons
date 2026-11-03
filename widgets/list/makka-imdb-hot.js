@@ -85,8 +85,8 @@ function buildItem(item, forceType) {
         // 传递给内核，提取横版年份
         releaseDate: fullDate,
         
-        posterPath: item.poster_path ? `https://imabcd.dpdns.org/t/p/w500${item.poster_path}` : "",
-        backdropPath: item.backdrop_path ? `https://imabcd.dpdns.org/t/p/w780${item.backdrop_path}` : "",
+        posterPath: item.poster_path ? `https://shrill-poetry-07fc.svipqq888.workers.dev/t/p/w500${item.poster_path}` : "",
+        backdropPath: item.backdrop_path ? `https://shrill-poetry-07fc.svipqq888.workers.dev/t/p/w780${item.backdrop_path}` : "",
         rating: parseFloat(score) || 0,
         year: year,
         genreTitle: genre || (type === "tv" ? "剧集" : "电影") // 优化横版类型显示
