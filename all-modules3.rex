@@ -1,5 +1,5 @@
 {
-  "title": "Tea’s Modules (v5)",
+  "title": "Tea’s Modules",
   "description": "自建模块合集：Letterboxd/终极聚合/全能电影榜/探索发现/新片追踪/全球平台/IMDb热榜/影迷宝藏/三大片库/好看短剧/豆瓣评分/迅雷字幕/高匹配字幕",
   "icon": "",
   "widgets": [
@@ -28,7 +28,7 @@
       "requiredVersion": "0.0.1",
       "version": "2.4.1",
       "author": "huangxd｜MakkaPakka（v2优化：Tea）",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@f588680d450c68d07fb5b7b0fd150019942298a3/widgets/list/letterboxd.js"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/letterboxd.js"
     },
     {
       "id": "cinephile_hub_ultimate",
@@ -118,7 +118,7 @@
       "requiredVersion": "0.0.1",
       "version": "1.2.2",
       "author": "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@f588680d450c68d07fb5b7b0fd150019942298a3/widgets/list/makka-youku-library.js"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/makka-youku-library.js"
     },
     {
       "id": "tea.subtitle.highmatch",
