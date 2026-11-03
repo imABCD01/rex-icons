@@ -1,7 +1,7 @@
 WidgetMetadata = {
     id: "forward.letterboxd",
     title: "Letterboxd电影爱好者平台",
-    version: "2.4.0",
+    version: "2.4.1",
     requiredVersion: "0.0.1",
     description: "解析Letterboxd片单/演员页影片【v2.4：失败降级不炸卡——退避重试+移动UA轮换+lastGood快照+占位卡兜底，冷启动/拥塞均不报错】",
     author: "huangxd｜MakkaPakka（v2优化：Tea）",
