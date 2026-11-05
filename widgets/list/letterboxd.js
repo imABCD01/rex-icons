@@ -1,7 +1,7 @@
 WidgetMetadata = {
     id: "forward.letterboxd",
     title: "Letterboxd电影爱好者平台",
-    version: "2.4.1",
+    version: "2.5.0",
     requiredVersion: "0.0.1",
     description: "解析Letterboxd片单/演员页影片【v2.4：失败降级不炸卡——退避重试+移动UA轮换+lastGood快照+占位卡兜底，冷启动/拥塞均不报错】",
     author: "huangxd｜MakkaPakka（v2优化：Tea）",
@@ -452,7 +452,8 @@ WidgetMetadata = {
 // =================================================
 
 var LB_ORIGIN = "https://letterboxd.com";
-var GIST_URL = "https://gist.githubusercontent.com/huangxd-/60712812d3d8b3c4422d46c6bc07046c/raw/letterboxd_url2imdb.json";
+var GIST_URL = "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/letterboxd-url2imdb.json"; // v2.5: 镜像自家仓库，CF 直连 468KB/s（原 gist 60-190KB/s 且偶发 TLS 重置）
+var GIST_FALLBACK_URL = "https://gist.githubusercontent.com/huangxd-/60712812d3d8b3c4422d46c6bc07046c/raw/letterboxd_url2imdb.json"; // v2.5: 镜像失效时降级回源 gist
 var UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
 var UA_MOBILE = "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1";
 var KEY_GIST = "lb_gist_map_v2";
@@ -489,8 +490,18 @@ function loadGistMap() {
             // v2.3: 下载与软超时竞速；超时后后台继续下载落盘（promise 不会被取消），
             // 本轮改走详情页直抓兜底，下次打开直接吃缓存。
             var dl = (async function () {
-                var resp = await Widget.http.get(GIST_URL);
-                var data = resp && resp.data;
+                // v2.5: 镜像优先，失败降级原 gist
+                var resp = null, data = null;
+                try {
+                    resp = await Widget.http.get(GIST_URL);
+                    data = resp && resp.data;
+                } catch (e1) {
+                    console.log("[LB] 镜像下载失败，降级原 gist: " + e1);
+                }
+                if (!(data && typeof data === "object" && Object.keys(data).length > 1000)) {
+                    resp = await Widget.http.get(GIST_FALLBACK_URL);
+                    data = resp && resp.data;
+                }
                 if (data && typeof data === "object" && Object.keys(data).length > 1000) {
                     _sset(KEY_GIST, data);
                     _sset(KEY_GIST_TIME, Date.now());
