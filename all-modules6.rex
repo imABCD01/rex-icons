@@ -26,9 +26,9 @@
       "title": "Letterboxd电影爱好者平台",
       "description": "解析Letterboxd片单/演员页影片【v2.3：冷启动加固——列表页重试×3+映射软超时防阻塞+并行预热，清理缓存后首开不报错】",
       "requiredVersion": "0.0.1",
-      "version": "2.4.1",
+      "version": "2.5.0",
       "author": "huangxd｜MakkaPakka（v2优化：Tea）",
-      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@9cb371281bdbe47d5b30476067eff4bcaa97bb0d/widgets/list/letterboxd.js"
+      "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@7e60e5a78335d2bd33660a9ccc4ab4f822a335d3/widgets/list/letterboxd.js"
     },
     {
       "id": "cinephile_hub_ultimate",
