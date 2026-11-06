@@ -105,9 +105,9 @@
     {
       "id": "super_ultime_media_hub_makka",
       "title": "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖·终极聚合",
-      "description": "动漫、影剧、综艺、流行风向与平台分流一网打尽",
+      "description": "动漫、影剧、综艺、流行风向与平台分流一网打尽（v1.4：未混淆源码+镜像降级+翻页缓存）",
       "requiredVersion": "0.0.1",
-      "version": "1.3.0",
+      "version": "1.4.0",
       "author": "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
       "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/list/makka-ultimate-aggregate.js?v=1.3.0"
     },

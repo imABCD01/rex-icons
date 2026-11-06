@@ -14,7 +14,7 @@ https://cdn.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/<类型>/<文件名>
 |---|---|---|---|---|---|
 | `letterboxd.js` | `forward.letterboxd` | Letterboxd 片单/演员页解析；三级缓存（映射 7 天+列表页 24h+增量回写） | 2.2.0 | huangxd\|MakkaPakka，v2 重写优化 | ✅ 可用 |
 | `douban-rating.js` | `tea.douban.rating` | 豆瓣榜单浏览与评分注入 | 1.0.0 | 自建（Tea） | ✅ 可用 |
-| `makka-ultimate-aggregate.js` | `super_ultime_media_hub_makka` | 终极聚合：影剧流行风向（Trakt）、流媒体 TOP10 | 1.3.0 | MakkaPakka（自备份提取解密） | ✅ 可用 |
+| `makka-ultimate-aggregate.js` | `super_ultime_media_hub_makka` | 终极聚合：动漫/影剧/综艺/流行风向/平台分流 | 1.4.0 | MakkaPakka 官方发布版（+镜像降级&翻页缓存优化） | ✅ 可用 |
 | `makka-movie-charts.js` | `movie_ultimate_makka_v2` | 全能电影榜：票房/奥斯卡/高分 | 1.4.0 | MakkaPakka | ✅ 可用 |
 | `makka-discover-hub.js` | `discover_hub_ultimate` | 探索发现：历史上今天上映、随机推荐 | 1.0.6 | MakkaPakka | ✅ 可用 |
 | `makka-tmdb-upcoming.js` | `tmdb_upcoming_center_makka` | 新片追踪：即将上映与热映 | 1.0.1 | MakkaPakka | ✅ 可用 |
