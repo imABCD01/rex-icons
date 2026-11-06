@@ -40,3 +40,14 @@ https://cdn.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/<类型>/<文件名>
 - 模块开发规范见 `/var/minis/skills-archive/writing-forward-widgets/SKILL.md`（WidgetMetadata 首行裸赋值、id 反向域名、防御 setTimeout/fetch、cacheDuration 逐项对照原版）
 
 <!-- worker-fresh-check 20261107T0435 -->
+
+
+## 固定入口（Rex 导入用）
+
+| 优先级 | 地址 | 说明 |
+|---|---|---|
+| ★ 主 | `https://cdn.imabcd.dpdns.org/m/all-modules.rex` | 自定义域（Cloudflare 边缘，无缓存，push 即生效） |
+| 备 | `https://rex-mod-cdn.svipqq888.workers.dev/m/all-modules.rex` | workers.dev（国内偶发阻断时备用） |
+| 备 | `https://cdn.jsdelivr.net/gh/imABCD01/rex-icons@main/all-modules.rex` | jsdelivr（12h 缓存，需 purge） |
+
+模块直链格式：`<固定入口>/m/widgets/<类型>/<文件>.js`
