@@ -451,7 +451,7 @@ WidgetMetadata = {
 // 4) 详情页并发限流 6，防 Cloudflare 掐断；未命中结果增量写回本地缓存，越用越快
 // =================================================
 
-var LB_ORIGIN = "https://letterboxd.com"; // fresh-check-20261107T0400
+var LB_ORIGIN = "https://letterboxd.com";
 var GIST_URL = "https://testingcf.jsdelivr.net/gh/imABCD01/rex-icons@main/letterboxd-url2imdb.json"; // v2.5: 镜像自家仓库，CF 直连 468KB/s（原 gist 60-190KB/s 且偶发 TLS 重置）
 var GIST_FALLBACK_URL = "https://gist.githubusercontent.com/huangxd-/60712812d3d8b3c4422d46c6bc07046c/raw/letterboxd_url2imdb.json"; // v2.5: 镜像失效时降级回源 gist
 var UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
