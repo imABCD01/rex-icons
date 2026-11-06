@@ -38,3 +38,5 @@ https://cdn.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/<类型>/<文件名>
 - 新模块按类型入目录，文件名 kebab-case；**保持原模块 metadata id 不变**（首页布局按 id 绑定卡片）
 - 转载他人模块保留作者署名于 README 与 metadata.author
 - 模块开发规范见 `/var/minis/skills-archive/writing-forward-widgets/SKILL.md`（WidgetMetadata 首行裸赋值、id 反向域名、防御 setTimeout/fetch、cacheDuration 逐项对照原版）
+
+<!-- purge-test 20261107T0345 -->
