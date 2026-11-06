@@ -40,5 +40,3 @@ https://cdn.jsdelivr.net/gh/imABCD01/rex-icons@main/widgets/<类型>/<文件名>
 - 模块开发规范见 `/var/minis/skills-archive/writing-forward-widgets/SKILL.md`（WidgetMetadata 首行裸赋值、id 反向域名、防御 setTimeout/fetch、cacheDuration 逐项对照原版）
 
 <!-- worker-fresh-check 20261107T0435 -->
-
-<!-- final-check 20261107T0510 -->
