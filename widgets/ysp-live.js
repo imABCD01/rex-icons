@@ -1,24 +1,23 @@
 /**
- * forward.ysp-live — 央视频全频道直播 v9.5 (S1 版：Apple TV 本地 127.0.0.1)
- * 依赖：Apple TV 运行 APTV 服务（ysp-live 监听 8767）
- * 频道：央视 33 路 + 卫视 33 路 = 66 路，真 4K/1080p，7 天时移
- * 参考：demo.js（官方权威示例）
+ * forward.ysp-live -- CCTV Live TV (S1: Apple TV local 127.0.0.1)
+ * Requires: Apple TV running APTV service (ysp-live on port 8767)
+ * Channels: 66 channels (33 CCTV + 33 Satellite), 4K/1080p, 7-day timeshift
+ * Reference: demo.js (official example)
  */
 
 WidgetMetadata = {
   id: "forward.ysp-live",
-  title: "央视频直播",
+  title: "CCTV Live TV",
   version: "1.0.0",
   requiredVersion: "0.0.1",
-  description: "央视频全频道直播（央视 33+ 卫视 33，4K/1080p，7 天时移）。需 Apple TV 侧 APTV 跑 ysp-live 服务。",
+  description: "CCTV Live TV (33 CCTV + 33 Satellite, 4K/1080p, 7-day timeshift). Requires APTV on Apple TV.",
   author: "Tea",
   site: "https://t.me/garysclub",
   detailCacheDuration: 300,
   modules: [
     {
-      // id 必须固定为 loadResource，type: "stream" 表示起播时动态解析
       id: "loadResource",
-      title: "加载资源",
+      title: "Load Resource",
       functionName: "loadResource",
       type: "stream",
       cacheDuration: 0,
@@ -26,15 +25,15 @@ WidgetMetadata = {
     },
     {
       id: "loadList",
-      title: "频道列表",
+      title: "Channel List",
       functionName: "loadList",
       params: [
-        { name: "group", title: "分组", type: "input", value: "" },
+        { name: "group", title: "Group", type: "input", value: "" },
       ],
     },
     {
       id: "loadDetail",
-      title: "频道详情",
+      title: "Channel Detail",
       functionName: "loadDetail",
       params: [],
     },
@@ -42,172 +41,164 @@ WidgetMetadata = {
   globalParams: [
     {
       key: "server",
-      title: "直播服务地址",
+      title: "Live Server Address",
       type: "text",
       value: "127.0.0.1:8767",
-      description: "默认 127.0.0.1:8767（Apple TV 本地 APTV）。如用局域网/Tailscale，填 IP:端口或域名:端口。",
+      description: "Default 127.0.0.1:8767 (Apple TV local APTV). For LAN/Tailscale, use IP:port or domain:port.",
     },
   ],
 };
 
 const LOGO_BASE = "https://garysclub.sharewithyou.dpdns.org/logos/ysp-live-logos";
 
-// 频道定义：66 路（央视 33 + 卫视 33）
 const CHANNELS = [
-  // 央视 33 路
-  { id: "cctv1", name: "CCTV-1 综合", group: "央视", logo: "cctv1.png", tvgId: "CCTV1", shift: true },
-  { id: "cctv2", name: "CCTV-2 财经", group: "央视", logo: "cctv2.png", tvgId: "CCTV2", shift: true },
-  { id: "cctv3", name: "CCTV-3 综艺", group: "央视", logo: "cctv3.png", tvgId: "CCTV3", shift: true },
-  { id: "cctv4", name: "CCTV-4 中文国际", group: "央视", logo: "cctv4.png", tvgId: "CCTV4", shift: true },
-  { id: "cctv5", name: "CCTV-5 体育", group: "央视", logo: "cctv5.png", tvgId: "CCTV5", shift: true },
-  { id: "cctv5p", name: "CCTV-5+ 体育赛事", group: "央视", logo: "cctv5p.png", tvgId: "CCTV5+", shift: true },
-  { id: "cctv6", name: "CCTV-6 电影", group: "央视", logo: "cctv6.png", tvgId: "CCTV6", shift: true },
-  { id: "cctv7", name: "CCTV-7 国防军事", group: "央视", logo: "cctv7.png", tvgId: "CCTV7", shift: true },
-  { id: "cctv8", name: "CCTV-8 电视剧", group: "央视", logo: "cctv8.png", tvgId: "CCTV8", shift: true },
-  { id: "cctv9", name: "CCTV-9 纪录", group: "央视", logo: "cctv9.png", tvgId: "CCTV9", shift: true },
-  { id: "cctv10", name: "CCTV-10 科教", group: "央视", logo: "cctv10.png", tvgId: "CCTV10", shift: true },
-  { id: "cctv11", name: "CCTV-11 戏曲", group: "央视", logo: "cctv11.png", tvgId: "CCTV11", shift: true },
-  { id: "cctv12", name: "CCTV-12 社会与法", group: "央视", logo: "cctv12.png", tvgId: "CCTV12", shift: true },
-  { id: "cctv13", name: "CCTV-13 新闻", group: "央视", logo: "cctv13.png", tvgId: "CCTV13", shift: true },
-  { id: "cctv14", name: "CCTV-14 少儿", group: "央视", logo: "cctv14.png", tvgId: "CCTV14", shift: true },
-  { id: "cctv15", name: "CCTV-15 音乐", group: "央视", logo: "cctv15.png", tvgId: "CCTV15", shift: true },
-  { id: "cctv16", name: "CCTV-16 奥林匹克", group: "央视", logo: "cctv16.png", tvgId: "CCTV16", shift: true },
-  { id: "cctv17", name: "CCTV-17 农业农村", group: "央视", logo: "cctv17.png", tvgId: "CCTV17", shift: true },
-  { id: "cctv17b", name: "CCTV-4K 超高清", group: "央视", logo: "cctv4k.png", tvgId: "CCTV4K", shift: true },
-  { id: "cctv17c", name: "CCTV-8K 超高清", group: "央视", logo: "cctv8k.png", tvgId: "CCTV8K", shift: true },
-  { id: "cctv18", name: "CCTV-18 国防军事", group: "央视", logo: "cctv18.png", tvgId: "CCTV18", shift: true },
-  { id: "cctv19", name: "CCTV-19 农业农村", group: "央视", logo: "cctv19.png", tvgId: "CCTV19", shift: true },
-  { id: "cctv20", name: "CCTV-20 女性", group: "央视", logo: "cctv20.png", tvgId: "CCTV20", shift: true },
-  { id: "cctv21", name: "CCTV-21 体育赛事", group: "央视", logo: "cctv21.png", tvgId: "CCTV21", shift: true },
-  { id: "cctv22", name: "CCTV-22 纪录", group: "央视", logo: "cctv22.png", tvgId: "CCTV22", shift: true },
-  { id: "cctv23", name: "CCTV-23 科教", group: "央视", logo: "cctv23.png", tvgId: "CCTV23", shift: true },
-  { id: "cctv24", name: "CCTV-24 戏曲", group: "央视", logo: "cctv24.png", tvgId: "CCTV24", shift: true },
-  { id: "cctv25", name: "CCTV-25 社会与法", group: "央视", logo: "cctv25.png", tvgId: "CCTV25", shift: true },
-  { id: "cctv26", name: "CCTV-26 少儿", group: "央视", logo: "cctv26.png", tvgId: "CCTV26", shift: true },
-  { id: "cctv27", name: "CCTV-27 音乐", group: "央视", logo: "cctv27.png", tvgId: "CCTV27", shift: true },
-  { id: "cctv28", name: "CCTV-28 奥林匹克", group: "央视", logo: "cctv28.png", tvgId: "CCTV28", shift: true },
-  { id: "cctv29", name: "CCTV-29 国防军事", group: "央视", logo: "cctv29.png", tvgId: "CCTV29", shift: true },
-  { id: "cctv30", name: "CCTV-30 农业农村", group: "央视", logo: "cctv30.png", tvgId: "CCTV30", shift: true },
-  // 卫视 33 路（省级卫视）
-  { id: "bstv", name: "北京卫视", group: "卫视", logo: "bstv.png", tvgId: "BSTV", shift: true },
-  { id: "hunan", name: "湖南卫视", group: "卫视", logo: "hunan.png", tvgId: "HUNANTV", shift: true },
-  { id: "zjstv", name: "浙江卫视", group: "卫视", logo: "zjstv.png", tvgId: "ZJSTV", shift: true },
-  { id: "jstv", name: "江苏卫视", group: "卫视", logo: "jstv.png", tvgId: "JSTV", shift: true },
-  { id: "dgstv", name: "东方卫视", group: "卫视", logo: "dgstv.png", tvgId: "DGSTV", shift: true },
-  { id: "hbtv", name: "湖北卫视", group: "卫视", logo: "hbtv.png", tvgId: "HBTV", shift: true },
-  { id: "sctv", name: "四川卫视", group: "卫视", logo: "sctv.png", tvgId: "SCTV", shift: true },
-  { id: "sdtv", name: "山东卫视", group: "卫视", logo: "sdtv.png", tvgId: "SDTV", shift: true },
-  { id: "hntv", name: "河南卫视", group: "卫视", logo: "hntv.png", tvgId: "HNTV", shift: true },
-  { id: "gatv", name: "广东卫视", group: "卫视", logo: "gatv.png", tvgId: "GATV", shift: true },
-  { id: "ahtv", name: "安徽卫视", group: "卫视", logo: "ahtv.png", tvgId: "AHTV", shift: true },
-  { id: "hljtv", name: "黑龙江卫视", group: "卫视", logo: "hljtv.png", tvgId: "HLJTV", shift: true },
-  { id: "jltv", name: "吉林卫视", group: "卫视", logo: "jltv.png", tvgId: "JLTV", shift: true },
-  { id: "lnvtv", name: "辽宁卫视", group: "卫视", logo: "lnvtv.png", tvgId: "LNTV", shift: true },
-  { id: "hbtv2", name: "河北卫视", group: "卫视", logo: "hbtv2.png", tvgId: "HBTV2", shift: true },
-  { id: "scctv", name: "重庆卫视", group: "卫视", logo: "scctv.png", tvgId: "CQTV", shift: true },
-  { id: "tjstv", name: "天津卫视", group: "卫视", logo: "tjstv.png", tvgId: "TJTV", shift: true },
-  { id: "nmgtv", name: "内蒙古卫视", group: "卫视", logo: "nmgtv.png", tvgId: "NMTV", shift: true },
-  { id: "xmtv", name: "厦门卫视", group: "卫视", logo: "xmtv.png", tvgId: "XMTV", shift: true },
-  { id: "sxtv", name: "陕西卫视", group: "卫视", logo: "sxtv.png", tvgId: "SXTV", shift: true },
-  { id: "gxtv", name: "广西卫视", group: "卫视", logo: "gxtv.png", tvgId: "GXTV", shift: true },
-  { id: "gztv", name: "贵州卫视", group: "卫视", logo: "gztv.png", tvgId: "GZTV", shift: true },
-  { id: "ynvtv", name: "云南卫视", group: "卫视", logo: "ynvtv.png", tvgId: "YNTV", shift: true },
-  { id: "xjtv", name: "新疆卫视", group: "卫视", logo: "xjtv.png", tvgId: "XJTV", shift: true },
-  { id: "qhtv", name: "青海卫视", group: "卫视", logo: "qhtv.png", tvgId: "QHTV", shift: true },
-  { id: "nxtv", name: "宁夏卫视", group: "卫视", logo: "nxtv.png", tvgId: "NXTV", shift: true },
-  { id: "cctv4eu", name: "CCTV-4 欧洲", group: "卫视", logo: "cctv4eu.png", tvgId: "CCTV4E", shift: true },
-  { id: "cctv4as", name: "CCTV-4 美洲", group: "卫视", logo: "cctv4as.png", tvgId: "CCTV4A", shift: true },
-  { id: "cctv4af", name: "CCTV-4 非洲", group: "卫视", logo: "cctv4af.png", tvgId: "CCTV4F", shift: true },
-  { id: "hkstv", name: "香港卫视", group: "卫视", logo: "hkstv.png", tvgId: "HKSTV", shift: true },
-  { id: "mactv", name: "澳门卫视", group: "卫视", logo: "mactv.png", tvgId: "MACTV", shift: true },
-  { id: "twwtv", name: "台湾卫视", group: "卫视", logo: "twwtv.png", tvgId: "TWTV", shift: true },
-  { id: "cctv5p2", name: "CCTV-5+ 备用", group: "卫视", logo: "cctv5p2.png", tvgId: "CCTV5P2", shift: true },
+  { id: "cctv1", name: "CCTV-1", group: "CCTV", logo: "cctv1.png", shift: true },
+  { id: "cctv2", name: "CCTV-2", group: "CCTV", logo: "cctv2.png", shift: true },
+  { id: "cctv3", name: "CCTV-3", group: "CCTV", logo: "cctv3.png", shift: true },
+  { id: "cctv4", name: "CCTV-4", group: "CCTV", logo: "cctv4.png", shift: true },
+  { id: "cctv5", name: "CCTV-5", group: "CCTV", logo: "cctv5.png", shift: true },
+  { id: "cctv5p", name: "CCTV-5+", group: "CCTV", logo: "cctv5p.png", shift: true },
+  { id: "cctv6", name: "CCTV-6", group: "CCTV", logo: "cctv6.png", shift: true },
+  { id: "cctv7", name: "CCTV-7", group: "CCTV", logo: "cctv7.png", shift: true },
+  { id: "cctv8", name: "CCTV-8", group: "CCTV", logo: "cctv8.png", shift: true },
+  { id: "cctv9", name: "CCTV-9", group: "CCTV", logo: "cctv9.png", shift: true },
+  { id: "cctv10", name: "CCTV-10", group: "CCTV", logo: "cctv10.png", shift: true },
+  { id: "cctv11", name: "CCTV-11", group: "CCTV", logo: "cctv11.png", shift: true },
+  { id: "cctv12", name: "CCTV-12", group: "CCTV", logo: "cctv12.png", shift: true },
+  { id: "cctv13", name: "CCTV-13", group: "CCTV", logo: "cctv13.png", shift: true },
+  { id: "cctv14", name: "CCTV-14", group: "CCTV", logo: "cctv14.png", shift: true },
+  { id: "cctv15", name: "CCTV-15", group: "CCTV", logo: "cctv15.png", shift: true },
+  { id: "cctv16", name: "CCTV-16", group: "CCTV", logo: "cctv16.png", shift: true },
+  { id: "cctv17", name: "CCTV-17", group: "CCTV", logo: "cctv17.png", shift: true },
+  { id: "cctv17b", name: "CCTV-4K", group: "CCTV", logo: "cctv4k.png", shift: true },
+  { id: "cctv17c", name: "CCTV-8K", group: "CCTV", logo: "cctv8k.png", shift: true },
+  { id: "cctv18", name: "CCTV-18", group: "CCTV", logo: "cctv18.png", shift: true },
+  { id: "cctv19", name: "CCTV-19", group: "CCTV", logo: "cctv19.png", shift: true },
+  { id: "cctv20", name: "CCTV-20", group: "CCTV", logo: "cctv20.png", shift: true },
+  { id: "cctv21", name: "CCTV-21", group: "CCTV", logo: "cctv21.png", shift: true },
+  { id: "cctv22", name: "CCTV-22", group: "CCTV", logo: "cctv22.png", shift: true },
+  { id: "cctv23", name: "CCTV-23", group: "CCTV", logo: "cctv23.png", shift: true },
+  { id: "cctv24", name: "CCTV-24", group: "CCTV", logo: "cctv24.png", shift: true },
+  { id: "cctv25", name: "CCTV-25", group: "CCTV", logo: "cctv25.png", shift: true },
+  { id: "cctv26", name: "CCTV-26", group: "CCTV", logo: "cctv26.png", shift: true },
+  { id: "cctv27", name: "CCTV-27", group: "CCTV", logo: "cctv27.png", shift: true },
+  { id: "cctv28", name: "CCTV-28", group: "CCTV", logo: "cctv28.png", shift: true },
+  { id: "cctv29", name: "CCTV-29", group: "CCTV", logo: "cctv29.png", shift: true },
+  { id: "cctv30", name: "CCTV-30", group: "CCTV", logo: "cctv30.png", shift: true },
+  { id: "bstv", name: "Beijing TV", group: "Satellite", logo: "bstv.png", shift: true },
+  { id: "hunan", name: "Hunan TV", group: "Satellite", logo: "hunan.png", shift: true },
+  { id: "zjstv", name: "Zhejiang TV", group: "Satellite", logo: "zjstv.png", shift: true },
+  { id: "jstv", name: "Jiangsu TV", group: "Satellite", logo: "jstv.png", shift: true },
+  { id: "dgstv", name: "Dragon TV", group: "Satellite", logo: "dgstv.png", shift: true },
+  { id: "hbtv", name: "Hubei TV", group: "Satellite", logo: "hbtv.png", shift: true },
+  { id: "sctv", name: "Sichuan TV", group: "Satellite", logo: "sctv.png", shift: true },
+  { id: "sdtv", name: "Shandong TV", group: "Satellite", logo: "sdtv.png", shift: true },
+  { id: "hntv", name: "Henan TV", group: "Satellite", logo: "hntv.png", shift: true },
+  { id: "gatv", name: "Guangdong TV", group: "Satellite", logo: "gatv.png", shift: true },
+  { id: "ahtv", name: "Anhui TV", group: "Satellite", logo: "ahtv.png", shift: true },
+  { id: "hljtv", name: "Heilongjiang TV", group: "Satellite", logo: "hljtv.png", shift: true },
+  { id: "jltv", name: "Jilin TV", group: "Satellite", logo: "jltv.png", shift: true },
+  { id: "lnvtv", name: "Liaoning TV", group: "Satellite", logo: "lnvtv.png", shift: true },
+  { id: "hbtv2", name: "Hebei TV", group: "Satellite", logo: "hbtv2.png", shift: true },
+  { id: "scctv", name: "Chongqing TV", group: "Satellite", logo: "scctv.png", shift: true },
+  { id: "tjstv", name: "Tianjin TV", group: "Satellite", logo: "tjstv.png", shift: true },
+  { id: "nmgtv", name: "Neimenggu TV", group: "Satellite", logo: "nmgtv.png", shift: true },
+  { id: "xmtv", name: "Xiamen TV", group: "Satellite", logo: "xmtv.png", shift: true },
+  { id: "sxtv", name: "Shaanxi TV", group: "Satellite", logo: "sxtv.png", shift: true },
+  { id: "gxtv", name: "Guangxi TV", group: "Satellite", logo: "gxtv.png", shift: true },
+  { id: "gztv", name: "Guizhou TV", group: "Satellite", logo: "gztv.png", shift: true },
+  { id: "ynvtv", name: "Yunnan TV", group: "Satellite", logo: "ynvtv.png", shift: true },
+  { id: "xjtv", name: "Xinjiang TV", group: "Satellite", logo: "xjtv.png", shift: true },
+  { id: "qhtv", name: "Qinghai TV", group: "Satellite", logo: "qhtv.png", shift: true },
+  { id: "nxtv", name: "Ningxia TV", group: "Satellite", logo: "nxtv.png", shift: true },
+  { id: "cctv4eu", name: "CCTV-4 Europe", group: "Satellite", logo: "cctv4eu.png", shift: true },
+  { id: "cctv4as", name: "CCTV-4 America", group: "Satellite", logo: "cctv4as.png", shift: true },
+  { id: "cctv4af", name: "CCTV-4 Africa", group: "Satellite", logo: "cctv4af.png", shift: true },
+  { id: "hkstv", name: "Hong Kong TV", group: "Satellite", logo: "hkstv.png", shift: true },
+  { id: "mactv", name: "Macau TV", group: "Satellite", logo: "mactv.png", shift: true },
+  { id: "twwtv", name: "Taiwan TV", group: "Satellite", logo: "twwtv.png", shift: true },
+  { id: "cctv5p2", name: "CCTV-5+ Backup", group: "Satellite", logo: "cctv5p2.png", shift: true },
 ];
 
-// 解析 globalParams.server
 function getServer() {
   const raw = (Widget.globalParams && Widget.globalParams.server) || "127.0.0.1:8767";
   return raw.trim().replace(/^https?:\/\//, "");
 }
 
-// 生成 m3u8 播放地址
 function buildM3U8Url(chId) {
   const server = getServer();
-  return `http://${server}/${chId}.m3u8`;
+  return "http://" + server + "/" + chId + ".m3u8";
 }
 
-// ── loadList：返回 66 个频道 VideoItem ──
-async function loadList(params = {}) {
+async function loadList(params) {
+  params = params || {};
   const filterGroup = (params.group || "").trim();
-  let items = CHANNELS.map((ch) => ({
-    id: `ysplive:${ch.id}`,
-    type: "url",
-    mediaType: "tv",
-    title: ch.name,
-    coverUrl: `${LOGO_BASE}/${ch.logo}`,
-    posterPath: `${LOGO_BASE}/${ch.logo}`,
-    backdropPath: `${LOGO_BASE}/${ch.logo}`,
-    link: `ysplive:${ch.id}`,
-    genreItems: [{ id: ch.group, title: ch.group }],
-    description: `${ch.group} · ${ch.name}${ch.shift ? " · 支持 7 天时移" : ""}`,
-    releaseDate: "",
-    rating: 0,
-    _group: ch.group,
-  }));
+  let items = CHANNELS.map(function(ch) {
+    return {
+      id: "ysplive:" + ch.id,
+      type: "url",
+      mediaType: "tv",
+      title: ch.name,
+      coverUrl: LOGO_BASE + "/" + ch.logo,
+      posterPath: LOGO_BASE + "/" + ch.logo,
+      backdropPath: LOGO_BASE + "/" + ch.logo,
+      link: "ysplive:" + ch.id,
+      genreItems: [{ id: ch.group, title: ch.group }],
+      description: ch.group + " - " + ch.name + (ch.shift ? " - 7-day timeshift" : ""),
+      releaseDate: "",
+      rating: 0,
+      _group: ch.group,
+    };
+  });
   if (filterGroup) {
-    items = items.filter((i) => i._group === filterGroup);
+    items = items.filter(function(i) { return i._group === filterGroup; });
   }
   return items;
 }
 
-// ── loadDetail：link 是字符串，返回单个 VideoItem ──
 async function loadDetail(link) {
   if (!link || !link.startsWith("ysplive:")) return null;
   const chId = link.slice("ysplive:".length);
-  const ch = CHANNELS.find((c) => c.id === chId);
+  const ch = CHANNELS.find(function(c) { return c.id === chId; });
   if (!ch) return null;
 
   const now = new Date();
-  const timeStr = `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
+  const timeStr = String(now.getHours()).padStart(2, "0") + ":" + String(now.getMinutes()).padStart(2, "0");
 
   return {
-    id: `ysplive:${chId}`,
+    id: "ysplive:" + chId,
     type: "url",
     mediaType: "tv",
-    title: `${ch.name} · 正在直播`,
-    coverUrl: `${LOGO_BASE}/${ch.logo}`,
-    posterPath: `${LOGO_BASE}/${ch.logo}`,
-    backdropPath: `${LOGO_BASE}/${ch.logo}`,
-    link: `ysplive:${chId}`,
+    title: ch.name + " - Live Now",
+    coverUrl: LOGO_BASE + "/" + ch.logo,
+    posterPath: LOGO_BASE + "/" + ch.logo,
+    backdropPath: LOGO_BASE + "/" + ch.logo,
+    link: "ysplive:" + chId,
     genreItems: [{ id: ch.group, title: ch.group }],
-    description: `📺 ${ch.group} · ${ch.name}\n⏰ ${timeStr} 直播中${ch.shift ? " · 支持 7 天时移回看" : ""}\n🔗 点击播放`,
+    description: "TV: " + ch.group + " - " + ch.name + "\nTime: " + timeStr + " Live" + (ch.shift ? " - 7-day timeshift" : "") + "\nTap to play",
     releaseDate: "",
     rating: 0,
   };
 }
 
-// ── loadResource：type="stream"，起播时动态返回 HLS 直播流 ──
-// 参考 demo.js：HLS/m3u8 直播流不需要 X-Forward-Skip-Redirect-Probe（仅 HTTP-FLV 一次性 URL 需要）
 async function loadResource(params) {
-  const link = params && params.link ? params.link : "";
+  params = params || {};
+  const link = params.link || "";
   if (!link.startsWith("ysplive:")) return [];
   const chId = link.slice("ysplive:".length);
 
   const m3u8Url = buildM3U8Url(chId);
-  const ch = CHANNELS.find((c) => c.id === chId);
+  const ch = CHANNELS.find(function(c) { return c.id === chId; });
   const name = ch ? ch.name : chId;
 
-  return [
-    {
-      name: name,
-      description: `HLS 直播 · ${ch ? ch.group : ""} · 自动刷新签名`,
-      url: m3u8Url,
-      customHeaders: {
-        "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15",
-        "Referer": "https://garysclub.sharewithyou.dpdns.org/",
-        // HLS live 标准流不需要 X-Forward-Skip-Redirect-Probe（参考 demo.js 注释）
-      },
-      playerType: "app",
+  return [{
+    name: name,
+    description: "HLS Live - " + (ch ? ch.group : "") + " - Auto refresh signature",
+    url: m3u8Url,
+    customHeaders: {
+      "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15",
+      "Referer": "https://garysclub.sharewithyou.dpdns.org/",
     },
-  ];
+    playerType: "app",
+  }];
 }
