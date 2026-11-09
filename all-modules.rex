@@ -110,6 +110,15 @@
    "version": "1.1.0",
    "author": "yingqiao",
    "url": "https://cdn.imabcd.dpdns.org/m/widgets/list/yingqiao-fw.js"
+  },
+  {
+   "id": "forward.hema.short-drama",
+   "title": "河马剧场",
+   "description": "河马短剧的分类、搜索和播放",
+   "requiredVersion": "0.0.1",
+   "version": "1.0.0",
+   "author": "balge",
+   "url": "https://cdn.imabcd.dpdns.org/m/widgets/list/forward.hema.short-drama.js"
   }
  ]
 }
