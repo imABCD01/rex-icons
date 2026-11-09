@@ -249,6 +249,19 @@ async function loadResource(params) {
   if (!link.startsWith("ysplive:")) return [];
   const chId = link.slice("ysplive:".length);
 
+  // 起播前探测本机服务（127.0.0.1 本地回路 <5ms，失败 <3s 超时）
+  // 服务未开启时给出明确指引，而不是干巴巴的"加载失败"
+  let healthy = true;
+  try {
+    const h = await Widget.http.get("http://" + getServer() + "/health");
+    if (h && h.data && h.data.ok === false) healthy = false;
+  } catch (e) {
+    healthy = false;
+  }
+  if (!healthy) {
+    throw new Error("直播服务未开启。iPhone：请在 Minis 里说「打开直播」；Apple TV：请在 APTV 检查 ysp-live 服务开关");
+  }
+
   const m3u8Url = buildM3U8Url(chId);
   const ch = CHANNELS.find(function(c) { return c.id === chId; });
   const name = ch ? ch.name : chId;
