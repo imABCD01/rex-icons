@@ -23,6 +23,12 @@ WidgetMetadata = {
       functionName: "loadList",
       params: [],
     },
+    {
+      id: "loadDetail",
+      title: "Channel Detail",
+      functionName: "loadDetail",
+      params: [],
+    },
   ],
 };
 
@@ -30,6 +36,7 @@ const LOGO_BASE = "https://garysclub.sharewithyou.dpdns.org/logos/ysp-live-logos
 const CHANNELS = [
   { id: "cctv1", name: "CCTV-1", logo: "cctv1.png" },
   { id: "cctv2", name: "CCTV-2", logo: "cctv2.png" },
+  { id: "bstv", name: "北京卫视", logo: "bstv.png" },
 ];
 
 function getServer() { return "127.0.0.1:8767"; }
@@ -50,6 +57,26 @@ async function loadList() {
       rating: 0,
     };
   });
+}
+
+async function loadDetail(link) {
+  const linkStr = (typeof link === "string") ? link : (link && link.link);
+  if (!linkStr || !linkStr.startsWith("ysplive:")) return null;
+  const chId = linkStr.slice("ysplive:".length);
+  const ch = CHANNELS.find(function(c) { return c.id === chId; });
+  if (!ch) return null;
+  return {
+    id: "ysplive:" + chId,
+    type: "url",
+    mediaType: "tv",
+    title: ch.name,
+    coverUrl: LOGO_BASE + "/" + ch.logo,
+    posterPath: LOGO_BASE + "/" + ch.logo,
+    backdropPath: LOGO_BASE + "/" + ch.logo,
+    link: "ysplive:" + chId,
+    releaseDate: "",
+    rating: 0,
+  };
 }
 
 async function loadResource(params) {
