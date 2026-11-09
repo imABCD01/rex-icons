@@ -18,7 +18,6 @@ WidgetMetadata = {
       title: "Load Resource",
       functionName: "loadResource",
       type: "stream",
-      cacheDuration: 0,
       params: [],
     },
     {
@@ -66,11 +65,12 @@ WidgetMetadata = {
   ],
   globalParams: [
     {
-      key: "server",
+      name: "server",
       title: "Live Server Address",
-      type: "text",
-      value: "127.0.0.1:8767",
-      description: "Default 127.0.0.1:8767 (Apple TV local APTV). For LAN/Tailscale, use IP:port or domain:port.",
+      type: "input",
+      placeholders: [
+        { title: "Apple TV Local", value: "127.0.0.1:8767" },
+      ],
     },
   ],
 };
