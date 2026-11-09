@@ -92,7 +92,8 @@ function parseM3U(m3uText) {
       const name = extinf.substring(commaIdx + 1);
 
       current = { name };
-      const attrRegex = /(\w+)="([^"]*)"/g;
+      // 修复：支持带连字符的属性名 (tvg-id, tvg-name, group-title, catchup-days, catchup-source 等)
+      const attrRegex = /([\w-]+)="([^"]*)"/g;
       let match;
       while ((match = attrRegex.exec(attrs)) !== null) {
         current[match[1]] = match[2];
