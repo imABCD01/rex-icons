@@ -155,15 +155,6 @@
    "version": "1.0.0",
    "author": "MakkaPakka",
    "url": "https://cdn.imabcd.dpdns.org/m/widgets/list/forward_combined_makkapakka.js"
-  },
-  {
-   "id": "ysp.live.v9.5",
-   "title": "央视频全频道直播 v9.5",
-   "description": "64路频道（央视30+卫视34），真4K超高清，7天时移回看，SWR毫秒秒开",
-   "requiredVersion": "0.0.1",
-   "version": "9.5.0",
-   "author": "GarysClub",
-   "url": "https://cdn.imabcd.dpdns.org/m/widgets/list/ysp-live-v9.5.js"
   }
  ]
 }
