@@ -218,8 +218,10 @@ async function loadList(params) {
 }
 
 async function loadDetail(link) {
-  if (!link || !link.startsWith("ysplive:")) return null;
-  const chId = link.slice("ysplive:".length);
+  // 兼容：Rex 可能传字符串直接，也可能传 {link: "..."} 对象
+  const linkStr = (typeof link === "string") ? link : (link && link.link);
+  if (!linkStr || !linkStr.startsWith("ysplive:")) return null;
+  const chId = linkStr.slice("ysplive:".length);
   const ch = CHANNELS.find(function(c) { return c.id === chId; });
   if (!ch) return null;
 
