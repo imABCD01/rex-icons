@@ -125,7 +125,7 @@
    "widgetId": "forward.hema.short-drama",
    "functionId": "discover",
    "style": "fullWidthBackdrop",
-   "widgetURL": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-shortdrama@main/modules/forward.hema.short-drama.js",
+   "widgetURL": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-shortdrama@main/widgets/forward/hema/short-drama.js",
    "params": {
     "category": "0"
    },
@@ -342,6 +342,34 @@
     4
    ],
    "count": 19
+  },
+  {
+   "widgetId": "subtitle.assrt",
+   "functionId": "search",
+   "style": "cover",
+   "widgetURL": "https://cdn.imabcd.dpdns.org/m/widgets/list/subtitle-assrt.js",
+   "params": {},
+   "name": "高匹配字幕",
+   "iconUrl": "",
+   "gridSize": [
+    -1,
+    2
+   ],
+   "count": 0
+  },
+  {
+   "widgetId": "subtitle.xunlei",
+   "functionId": "search",
+   "style": "cover",
+   "widgetURL": "https://cdn.imabcd.dpdns.org/m/widgets/list/subtitle-xunlei.js",
+   "params": {},
+   "name": "迅雷看看 字幕",
+   "iconUrl": "",
+   "gridSize": [
+    -1,
+    2
+   ],
+   "count": 0
   }
  ]
 }
