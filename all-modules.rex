@@ -73,7 +73,7 @@
    "requiredVersion": "0.0.1",
    "version": "1.0.0",
    "author": "Auto",
-   "url": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-shortdrama@main/widgets/forward/hema/short-drama.js"
+   "url": "https://cdn.imabcd.dpdns.org/m/widgets/forward/hema/short-drama.js"
   },
   {
    "id": "discover_hub_ultimate_1983eb1d19b621d2c98b054c355aa346_posterWall",
