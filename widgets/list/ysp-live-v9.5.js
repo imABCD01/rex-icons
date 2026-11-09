@@ -116,7 +116,6 @@ async function loadList(params) {
     console.log('[ysp-live] 请求 M3U:', m3uUrl);
     const resp = await Widget.http.get(m3uUrl, { headers: { 'User-Agent': UA } });
     
-    // 修复：Widget.http.get 可能不返回标准 status，直接判断 data 是否存在
     const m3uText = resp?.data;
     console.log('[ysp-live] 响应数据长度:', m3uText?.length || 0);
     
@@ -157,7 +156,7 @@ async function loadList(params) {
         posterPath: logo,
         coverUrl: logo,
         mediaType: "tv",
-        videoUrl: ch.url,
+        videoUrl: ch.url,  // M3U 里直接就是可播放的 m3u8 地址
         genreItems: group ? [{ id: group, title: group }] : [],
         link: `channel:${channelId}`
       };
@@ -191,14 +190,17 @@ async function loadDetail(link) {
 
 async function loadResource(params) {
   const p = params || {};
-  const link = p.link || p.id || p.videoUrl;
-  const timeShift = p.timeShift;
+  // 兼容多种参数名：Rex 可能把 videoUrl 放在不同字段
+  const videoUrl = p.videoUrl || p.url || p.video_url || p.streamUrl;
+  const link = p.link || p.id || p.itemId || p.channelId;
+  const timeShift = p.timeShift || p.time_shift;
   const host = p.host || p.globalParams?.host || "127.0.0.1:8767";
   const baseUrl = `http://${host}`;
 
-  console.log('[ysp-live] loadResource params:', JSON.stringify(p));
+  console.log('[ysp-live] loadResource 收到参数:', JSON.stringify(p));
+  console.log('[ysp-live] 解析出 videoUrl:', videoUrl, 'link:', link);
 
-  // 如果是时移请求
+  // 如果是时移请求（频道支持 catchup）
   if (timeShift && link) {
     const tsUrl = `${getBaseUrl({host})}/timeshift/${encodeURIComponent(link.replace('channel:', ''))}/${timeShift}.m3u8`;
     return [{
@@ -209,13 +211,21 @@ async function loadResource(params) {
     }];
   }
 
-  // 普通直播流
-  let streamUrl = p.videoUrl;
+  // 优先使用 loadList 传过来的 videoUrl（M3U 里直接就是完整的 m3u8 地址）
+  let streamUrl = videoUrl;
+  
   if (!streamUrl && link) {
+    // 兜底：通过频道 ID 拼接（ysp-live 支持 /stream/频道ID.m3u8）
     streamUrl = `${getBaseUrl({host})}/stream/${encodeURIComponent(link.replace('channel:', ''))}.m3u8`;
   } else if (!streamUrl) {
-    // 兜底：返回第一个频道的流
     streamUrl = `${getBaseUrl({host})}/stream/`;
+  }
+
+  console.log('[ysp-live] 最终播放地址:', streamUrl);
+
+  if (!streamUrl) {
+    console.error('[ysp-live] 无法获取播放地址');
+    return [];
   }
 
   return [{
