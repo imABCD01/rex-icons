@@ -1,17 +1,8 @@
 {
- "title": "Tea's Modules (Minimal Working)",
- "description": "Core modules only: TMDB, Makka, Letterboxd, Subtitles",
+ "title": "Tea's ForwardWidget Modules",
+ "description": "ForwardWidget modules: Makka, Letterboxd, Subtitles",
  "icon": "https://cdn.jsdelivr.net/gh/imABCD01/rex-icons@main/icons/xiyuliu509/Player-Icon/Logo/Origin.png",
  "widgets": [
-  {
-   "id": "rex.tmdb",
-   "title": "Rex TMDB",
-   "description": "TMDB 官方模块：热映、分类、影业、电视网、区域剧集",
-   "requiredVersion": "0.0.1",
-   "version": "1.0.0",
-   "author": "Rex Team",
-   "url": "https://assets.rexnow.tv/scripts/rex-tmdb.js"
-  },
   {
    "id": "tmdb_upcoming_center_makka",
    "title": "即将上映与热映榜",
