@@ -1,6 +1,6 @@
 {
  "title": "Tea's ForwardWidget Modules",
- "description": "ForwardWidget modules: Makka, Letterboxd, Subtitles",
+ "description": "ForwardWidget modules: Makka, Letterboxd, Subtitles, Short-drama, yingqiao",
  "icon": "https://cdn.jsdelivr.net/gh/imABCD01/rex-icons@main/icons/xiyuliu509/Player-Icon/Logo/Origin.png",
  "widgets": [
   {
@@ -92,6 +92,24 @@
    "version": "1.4.0",
    "author": "MakkaPakka",
    "url": "https://cdn.imabcd.dpdns.org/m/widgets/list/makka-ultimate-aggregate.js"
+  },
+  {
+   "id": "haokan.short-drama",
+   "title": "好看免费短剧",
+   "description": "好看短剧的分类、搜索和播放",
+   "requiredVersion": "0.0.1",
+   "version": "1.0.1",
+   "author": "balge",
+   "url": "https://cdn.imabcd.dpdns.org/m/widgets/list/haokan-short-drama.js"
+  },
+  {
+   "id": "yingqiao.fw",
+   "title": "影桥",
+   "description": "影桥模块，需在全局参数填面板地址与访问令牌",
+   "requiredVersion": "0.0.1",
+   "version": "1.1.0",
+   "author": "yingqiao",
+   "url": "https://cdn.imabcd.dpdns.org/m/widgets/list/yingqiao-fw.js"
   }
  ]
 }
