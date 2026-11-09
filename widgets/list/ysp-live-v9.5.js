@@ -112,13 +112,23 @@ async function loadList(params) {
   const m3uUrl = `${baseUrl}/all.m3u`;
 
   try {
+    console.log('[ysp-live] 请求 M3U:', m3uUrl);
     const resp = await Widget.http.get(m3uUrl, { headers: { 'User-Agent': UA } });
+    console.log('[ysp-live] 响应状态:', resp?.status, '数据长度:', resp?.data?.length || 0);
+    
     if (!resp || resp.status !== 200) {
-      console.error('获取 M3U 失败:', resp?.status);
+      console.error('[ysp-live] 获取 M3U 失败:', resp?.status, resp?.data);
       return [];
     }
 
-    let channels = parseM3U(resp.data);
+    const m3uText = resp.data;
+    if (!m3uText || typeof m3uText !== 'string') {
+      console.error('[ysp-live] M3U 数据为空或非字符串:', typeof m3uText);
+      return [];
+    }
+
+    let channels = parseM3U(m3uText);
+    console.log('[ysp-live] 解析频道数:', channels.length);
 
     // 搜索过滤
     const keyword = (params?.keyword || '').toLowerCase();
@@ -136,7 +146,7 @@ async function loadList(params) {
     const start = (page - 1) * count;
     channels = channels.slice(start, start + count);
 
-    return channels.map((ch, idx) => {
+    const items = channels.map((ch, idx) => {
       const channelId = ch['tvg-id'] || `channel_${idx}`;
       const logo = ch['tvg-logo'] || '';
       const group = ch['group-title'] || '其他';
@@ -154,8 +164,11 @@ async function loadList(params) {
         link: `channel:${channelId}`
       };
     });
+    
+    console.log('[ysp-live] 返回条目数:', items.length);
+    return items;
   } catch (e) {
-    console.error('loadList error:', e);
+    console.error('[ysp-live] loadList error:', e?.message || e, 'stack:', e?.stack);
     return [];
   }
 }
@@ -179,12 +192,17 @@ async function loadDetail(link) {
 }
 
 async function loadResource(params) {
-  const { link, videoUrl, timeShift, host, quality } = params;
-  const baseHost = host || (params && params.host) || "127.0.0.1:8767";
-  const baseUrl = `http://${baseHost}`;
+  const p = params || {};
+  const link = p.link || p.id || p.videoUrl;
+  const timeShift = p.timeShift;
+  const host = p.host || p.globalParams?.host || "127.0.0.1:8767";
+  const baseUrl = `http://${host}`;
 
-  if (timeShift) {
-    const tsUrl = `${baseUrl}/timeshift/${encodeURIComponent(link.replace('channel:', ''))}/${timeShift}.m3u8`;
+  console.log('[ysp-live] loadResource params:', JSON.stringify(p));
+
+  // 如果是时移请求
+  if (timeShift && link) {
+    const tsUrl = `${getBaseUrl({host})}/timeshift/${encodeURIComponent(link.replace('channel:', ''))}/${timeShift}.m3u8`;
     return [{
       name: "时移流",
       url: tsUrl,
@@ -193,7 +211,14 @@ async function loadResource(params) {
     }];
   }
 
-  const streamUrl = params?.videoUrl || `${baseUrl}/stream/${encodeURIComponent(link.replace('channel:', ''))}.m3u8`;
+  // 普通直播流
+  let streamUrl = p.videoUrl;
+  if (!streamUrl && link) {
+    streamUrl = `${getBaseUrl({host})}/stream/${encodeURIComponent(link.replace('channel:', ''))}.m3u8`;
+  } else if (!streamUrl) {
+    // 兜底：返回第一个频道的流
+    streamUrl = `${getBaseUrl({host})}/stream/`;
+  }
 
   return [{
     name: "直播源",
@@ -202,7 +227,7 @@ async function loadResource(params) {
     playerType: "app",
     headers: {
       "User-Agent": UA,
-      "Referer": baseUrl
+      "Referer": getBaseUrl({host})
     }
   }];
 }
