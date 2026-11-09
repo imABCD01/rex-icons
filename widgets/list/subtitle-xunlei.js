@@ -64,4 +64,3 @@ async function loadSubtitle(params) {
 }
 
 // 导出供 Rex 调用
-global.loadSubtitle = loadSubtitle;
