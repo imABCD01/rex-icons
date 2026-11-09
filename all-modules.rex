@@ -4,7 +4,7 @@
  "icon": "https://testingcf.jsdelivr.net/gh/imABCD01/rex-shortdrama@main/logo.png",
  "widgets": [
   {
-   "id": "rex.tmdb",
+   "id": "tea.tmdb",
    "title": "Rex TMDB",
    "description": "rex.tmdb | nowPlaying | banner",
    "requiredVersion": "0.0.1",
