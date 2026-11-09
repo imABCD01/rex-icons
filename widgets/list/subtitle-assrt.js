@@ -11,7 +11,7 @@
  */
 
 WidgetMetadata = {
-  id: "tea.subtitle.highmatch",
+  id: "subtitle.assrt",
   title: "高匹配字幕",
   version: "1.1.0",
   requiredVersion: "0.0.1",
