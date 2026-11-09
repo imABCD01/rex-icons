@@ -225,21 +225,17 @@ async function loadDetail(link) {
   const ch = CHANNELS.find(function(c) { return c.id === chId; });
   if (!ch) return null;
 
-  const now = new Date();
-  const timeStr = String(now.getHours()).padStart(2, "0") + ":" + String(now.getMinutes()).padStart(2, "0");
-  const label = getSubGroupLabel(ch.main, ch.sub);
-
+  // 极简返回：仅核心必填字段，避免任何可能导致 tvOS 校验失败的字段
   return {
     id: "ysplive:" + chId,
     type: "url",
     mediaType: "tv",
-    title: ch.name + " - Live Now",
+    title: ch.name,
     coverUrl: LOGO_BASE + "/" + ch.logo,
     posterPath: LOGO_BASE + "/" + ch.logo,
     backdropPath: LOGO_BASE + "/" + ch.logo,
     link: "ysplive:" + chId,
-    genreItems: [{ id: label, title: label }],
-    description: "Category: " + label + "\nChannel: " + ch.name + "\nTime: " + timeStr + " Live" + (ch.shift ? " [7-day timeshift]" : "") + "\nTap to play",
+    // genreItems 暂时去掉，避免 id 格式问题
     releaseDate: "",
     rating: 0,
   };
