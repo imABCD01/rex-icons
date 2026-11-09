@@ -81,8 +81,9 @@ async function loadDetail(link) {
 
 async function loadResource(params) {
   params = params || {};
-  const link = params.link || "";
-  if (!link.startsWith("ysplive:")) return [];
+  // 兼容：Rex 可能把 link 放在不同字段
+  const link = params.link || params.id || params.videoUrl || "";
+  if (!link || !link.startsWith("ysplive:")) return [];
   const chId = link.slice("ysplive:".length);
   return [{ name: chId, url: buildM3U8Url(chId), playerType: "app" }];
 }
