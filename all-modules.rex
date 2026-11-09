@@ -119,6 +119,96 @@
    "version": "1.0.0",
    "author": "balge",
    "url": "https://cdn.imabcd.dpdns.org/m/widgets/list/forward.hema.short-drama.js"
+  },
+  {
+   "id": "cinephile_hub_ultimate",
+   "title": "影迷宝藏 | 系列与流派",
+   "description": "动漫、影剧、综艺、流行风向与平台分流一网打尽",
+   "requiredVersion": "0.0.1",
+   "version": "1.0.5",
+   "author": "MakkaPakka",
+   "url": "https://cdn.imabcd.dpdns.org/m/widgets/list/cinephile_hub_ultimate.js"
+  },
+  {
+   "id": "platform.originals.ui.fix",
+   "title": "爱奇艺片库",
+   "description": "爱奇艺片库：按频道 + 地区 + 年份筛选，自动翻页",
+   "requiredVersion": "0.0.1",
+   "version": "1.0.0",
+   "author": "MakkaPakka",
+   "url": "https://cdn.imabcd.dpdns.org/m/widgets/list/platform_originals_ui_fix.js"
+  },
+  {
+   "id": "makka.platform.originals",
+   "title": "平台聚合片库",
+   "description": "爱奇艺/腾讯/优酷/芒果聚合：按频道+地区+年份筛选",
+   "requiredVersion": "0.0.1",
+   "version": "1.0.0",
+   "author": "MakkaPakka",
+   "url": "https://cdn.imabcd.dpdns.org/m/widgets/list/makka_platform_originals.js"
+  },
+  {
+   "id": "global_series_makka",
+   "title": "全球剧集日历",
+   "description": "全球热门剧集播出日历，追更不漏剧",
+   "requiredVersion": "0.0.1",
+   "version": "1.0.0",
+   "author": "MakkaPakka",
+   "url": "https://cdn.imabcd.dpdns.org/m/widgets/list/global_series_makka.js"
+  },
+  {
+   "id": "ultimate_media_hub_pro_ui",
+   "title": "全媒体聚合 Pro",
+   "description": "多源聚合：热门、高分、分类、平台、榜单",
+   "requiredVersion": "0.0.1",
+   "version": "1.0.0",
+   "author": "MakkaPakka",
+   "url": "https://cdn.imabcd.dpdns.org/m/widgets/list/ultimate_media_hub_pro_ui.js"
+  },
+  {
+   "id": "vod_max_engine_makka",
+   "title": "VodMax 引擎",
+   "description": "多源视频引擎：电影、剧集、动漫、综艺",
+   "requiredVersion": "0.0.1",
+   "version": "1.0.0",
+   "author": "MakkaPakka",
+   "url": "https://cdn.imabcd.dpdns.org/m/widgets/list/vod_max_engine_makka.js"
+  },
+  {
+   "id": "anime_omni_fix_pro",
+   "title": "动漫全境聚合 Pro",
+   "description": "Bangumi/Bilibili/AniList/MAL 多源动漫聚合",
+   "requiredVersion": "0.0.1",
+   "version": "1.0.0",
+   "author": "MakkaPakka",
+   "url": "https://cdn.imabcd.dpdns.org/m/widgets/list/anime_omni_fix_pro.js"
+  },
+  {
+   "id": "global_tv_calendar_ultimate",
+   "title": "全球电视日历",
+   "description": "全球电视台/流媒体首播日历",
+   "requiredVersion": "0.0.1",
+   "version": "1.0.0",
+   "author": "MakkaPakka",
+   "url": "https://cdn.imabcd.dpdns.org/m/widgets/list/global_tv_calendar_ultimate.js"
+  },
+  {
+   "id": "variety_hub_ultimate_v4_fix",
+   "title": "全球综艺聚合",
+   "description": "全球综艺/真人秀/访谈聚合追更",
+   "requiredVersion": "0.0.1",
+   "version": "1.0.0",
+   "author": "MakkaPakka",
+   "url": "https://cdn.imabcd.dpdns.org/m/widgets/list/variety_hub_ultimate_v4_fix.js"
+  },
+  {
+   "id": "forward.combined.makkapakka",
+   "title": "Makka 综合聚合",
+   "description": "MakkaPakka 全系列模块综合入口",
+   "requiredVersion": "0.0.1",
+   "version": "1.0.0",
+   "author": "MakkaPakka",
+   "url": "https://cdn.imabcd.dpdns.org/m/widgets/list/forward_combined_makkapakka.js"
   }
  ]
 }
