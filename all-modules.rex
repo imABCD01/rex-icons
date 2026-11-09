@@ -1,7 +1,7 @@
 {
  "title": "Tea's ForwardWidget Modules",
  "description": "ForwardWidget modules: Makka, Letterboxd, Subtitles, Short-drama, yingqiao",
- "icon": "https://cdn.jsdelivr.net/gh/imABCD01/rex-icons@main/icons/xiyuliu509/Player-Icon/Logo/Origin.png",
+ "icon": "https://cdn.jsdelivr.net/gh/imABCD01/rex-icons@7ac93f0/tea-rex-icon.svg",
  "widgets": [
   {
    "id": "tmdb_upcoming_center_makka",
