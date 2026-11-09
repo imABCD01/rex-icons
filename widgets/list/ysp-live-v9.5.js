@@ -92,7 +92,7 @@ function parseM3U(m3uText) {
       const name = extinf.substring(commaIdx + 1);
 
       current = { name };
-      // 修复：支持带连字符的属性名 (tvg-id, tvg-name, group-title, catchup-days, catchup-source 等)
+      // 支持带连字符的属性名 (tvg-id, tvg-name, group-title, catchup-days, catchup-source 等)
       const attrRegex = /([\w-]+)="([^"]*)"/g;
       let match;
       while ((match = attrRegex.exec(attrs)) !== null) {
@@ -115,14 +115,11 @@ async function loadList(params) {
   try {
     console.log('[ysp-live] 请求 M3U:', m3uUrl);
     const resp = await Widget.http.get(m3uUrl, { headers: { 'User-Agent': UA } });
-    console.log('[ysp-live] 响应状态:', resp?.status, '数据长度:', resp?.data?.length || 0);
     
-    if (!resp || resp.status !== 200) {
-      console.error('[ysp-live] 获取 M3U 失败:', resp?.status, resp?.data);
-      return [];
-    }
-
-    const m3uText = resp.data;
+    // 修复：Widget.http.get 可能不返回标准 status，直接判断 data 是否存在
+    const m3uText = resp?.data;
+    console.log('[ysp-live] 响应数据长度:', m3uText?.length || 0);
+    
     if (!m3uText || typeof m3uText !== 'string') {
       console.error('[ysp-live] M3U 数据为空或非字符串:', typeof m3uText);
       return [];
