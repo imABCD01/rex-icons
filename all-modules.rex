@@ -47,6 +47,42 @@
    "version": "1.2.0",
    "author": "EL",
    "url": "https://cdn.imabcd.dpdns.org/m/widgets/list/subtitle-xunlei.js"
+  },
+  {
+   "id": "discover_hub_ultimate",
+   "title": "探索发现 | 惊喜推荐",
+   "description": "聚合【今天看什么】多维度推荐",
+   "requiredVersion": "0.0.1",
+   "version": "1.0.6",
+   "author": "MakkaPakka",
+   "url": "https://cdn.imabcd.dpdns.org/m/widgets/list/makka-discover-hub.js"
+  },
+  {
+   "id": "imdb_cn_fix_",
+   "title": "IMDb 热榜",
+   "description": "IMDb 全球榜单，支持日/周维度切换",
+   "requiredVersion": "0.0.1",
+   "version": "1.0.5",
+   "author": "MakkaPakka",
+   "url": "https://cdn.imabcd.dpdns.org/m/widgets/list/makka-imdb-hot.js"
+  },
+  {
+   "id": "youku.video.pc.makka",
+   "title": "优酷片库",
+   "description": "按频道 + 地区 + 年份筛选，输出 TMDB 条目",
+   "requiredVersion": "0.0.1",
+   "version": "1.2.2",
+   "author": "MakkaPakka",
+   "url": "https://cdn.imabcd.dpdns.org/m/widgets/list/makka-youku-library.js"
+  },
+  {
+   "id": "movie_ultimate_makka_v2",
+   "title": "全能电影榜",
+   "description": "流行、高分、年度最佳、按类型探索电影",
+   "requiredVersion": "0.0.1",
+   "version": "1.4.0",
+   "author": "MakkaPakka",
+   "url": "https://cdn.imabcd.dpdns.org/m/widgets/list/makka-movie-charts.js"
   }
  ]
 }
