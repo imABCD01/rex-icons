@@ -107,6 +107,30 @@ function parseM3U(m3uText) {
   return channels;
 }
 
+// 频道缓存：用于 loadResource 通过 link 反查 videoUrl
+let channelsCache = null;
+let channelsCacheTime = 0;
+const CACHE_TTL = 300000; // 5 分钟
+
+async function fetchChannels(baseUrl) {
+  const now = Date.now();
+  if (channelsCache && (now - channelsCacheTime) < CACHE_TTL) {
+    return channelsCache;
+  }
+  try {
+    const resp = await Widget.http.get(`${baseUrl}/all.m3u`, { headers: { 'User-Agent': UA } });
+    const m3uText = resp?.data;
+    if (!m3uText || typeof m3uText !== 'string') return [];
+    const channels = parseM3U(m3uText);
+    channelsCache = channels;
+    channelsCacheTime = Date.now();
+    return channels;
+  } catch (e) {
+    console.error('[ysp-live] fetchChannels error:', e);
+    return [];
+  }
+}
+
 // ============ 核心函数 ============
 async function loadList(params) {
   const baseUrl = getBaseUrl(params);
@@ -191,14 +215,13 @@ async function loadDetail(link) {
 async function loadResource(params) {
   const p = params || {};
   // 兼容多种参数名：Rex 可能把 videoUrl 放在不同字段
-  const videoUrl = p.videoUrl || p.url || p.video_url || p.streamUrl;
-  const link = p.link || p.id || p.itemId || p.channelId;
+  const videoUrl = p.videoUrl || p.url || p.video_url || p.streamUrl || p.video_url;
+  const link = p.link || p.id || p.itemId || p.channelId || p.item_id || p.channel_id;
   const timeShift = p.timeShift || p.time_shift;
   const host = p.host || p.globalParams?.host || "127.0.0.1:8767";
   const baseUrl = `http://${host}`;
 
   console.log('[ysp-live] loadResource 收到参数:', JSON.stringify(p));
-  console.log('[ysp-live] 解析出 videoUrl:', videoUrl, 'link:', link);
 
   // 如果是时移请求（频道支持 catchup）
   if (timeShift && link) {
@@ -211,13 +234,28 @@ async function loadResource(params) {
     }];
   }
 
-  // 优先使用 loadList 传过来的 videoUrl（M3U 里直接就是完整的 m3u8 地址）
-  let streamUrl = videoUrl;
+  // 优先使用传入的 videoUrl
+  let streamUrl = p.videoUrl || p.url || p.video_url || p.streamUrl;
   
   if (!streamUrl && link) {
-    // 兜底：通过频道 ID 拼接（ysp-live 支持 /stream/频道ID.m3u8）
-    streamUrl = `${getBaseUrl({host})}/stream/${encodeURIComponent(link.replace('channel:', ''))}.m3u8`;
-  } else if (!streamUrl) {
+    // 兜底1：通过频道 ID 拼接（ysp-live 支持 /stream/频道ID.m3u8）
+    const channelId = link.replace('channel:', '');
+    streamUrl = `${getBaseUrl({host})}/stream/${encodeURIComponent(channelId)}.m3u8`;
+  }
+  
+  // 兜底2：如果有 host 参数，尝试获取频道列表反查
+  if (!streamUrl) {
+    const channels = await fetchChannels(baseUrl);
+    if (link) {
+      const channelId = link.replace('channel:', '');
+      const ch = channels.find(c => c['tvg-id'] === channelId || c.id === channelId);
+      if (ch && ch.url) {
+        streamUrl = ch.url;
+      }
+    }
+  }
+  
+  if (!streamUrl) {
     streamUrl = `${getBaseUrl({host})}/stream/`;
   }
 
