@@ -1,13 +1,13 @@
 /**
- * forward.ysp-live -- CCTV Live TV minimal test
+ * forward.ysp-live-v2 -- CCTV Live TV (fresh ID)
  */
 
 WidgetMetadata = {
-  id: "forward.ysp-live",
-  title: "央视频直播",
+  id: "forward.ysp-live-v2",
+  title: "央视频直播 v2",
   version: "1.0.0",
   requiredVersion: "0.0.1",
-  description: "Minimal test",
+  description: "Fresh module ID test",
   author: "Tea",
   modules: [
     {
