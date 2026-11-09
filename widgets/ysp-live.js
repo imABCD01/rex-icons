@@ -30,6 +30,16 @@ WidgetMetadata = {
       params: [],
     },
   ],
+  globalParams: [
+    {
+      name: "server",
+      title: "直播服务地址",
+      type: "input",
+      placeholders: [
+        { title: "Apple TV Local", value: "127.0.0.1:8767" },
+      ],
+    },
+  ],
 };
 
 const LOGO_BASE = "https://garysclub.sharewithyou.dpdns.org/logos/ysp-live-logos";
@@ -39,7 +49,7 @@ const CHANNELS = [
   { id: "bstv", name: "北京卫视", logo: "bstv.png" },
 ];
 
-function getServer() { return "127.0.0.1:8767"; }
+function getServer() { return (Widget.globalParams && Widget.globalParams.server) || "127.0.0.1:8767"; }
 function buildM3U8Url(chId) { return "http://" + getServer() + "/" + chId + ".m3u8"; }
 
 async function loadList() {
@@ -81,7 +91,6 @@ async function loadDetail(link) {
 
 async function loadResource(params) {
   params = params || {};
-  // 兼容：Rex 可能把 link 放在各种字段（params.* 或 params.item.*）
   const p = params;
   const item = p.item || {};
   const link = p.link || p.id || p.videoUrl || item.link || item.id || item.videoUrl || "";
