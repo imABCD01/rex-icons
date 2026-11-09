@@ -83,6 +83,15 @@
    "version": "1.4.0",
    "author": "MakkaPakka",
    "url": "https://cdn.imabcd.dpdns.org/m/widgets/list/makka-movie-charts.js"
+  },
+  {
+   "id": "super_ultime_media_hub_makka",
+   "title": "Makka·终极聚合",
+   "description": "动漫、影剧、综艺、流行风向与平台分流一网打尽",
+   "requiredVersion": "0.0.1",
+   "version": "1.4.0",
+   "author": "MakkaPakka",
+   "url": "https://cdn.imabcd.dpdns.org/m/widgets/list/makka-ultimate-aggregate.js"
   }
  ]
 }

@@ -1,1 +1,1335 @@
-const _0x5b2ca5=_0x4d7f;(function(_0x2639c8,_0x1b94b8){const _0x3248b9=_0x4d7f,_0x1319cd=_0x2639c8();while(!![]){try{const _0x2ec507=parseInt(_0x3248b9(0x4a8))/0x1+-parseInt(_0x3248b9(0x435))/0x2+parseInt(_0x3248b9(0x3d6))/0x3+parseInt(_0x3248b9(0x35f))/0x4+parseInt(_0x3248b9(0x459))/0x5+-parseInt(_0x3248b9(0x3c8))/0x6+-parseInt(_0x3248b9(0x1f5))/0x7*(parseInt(_0x3248b9(0x397))/0x8);if(_0x2ec507===_0x1b94b8)break;else _0x1319cd['push'](_0x1319cd['shift']());}catch(_0x12369b){_0x1319cd['push'](_0x1319cd['shift']());}}}(_0x3c6f,0xa8dcc));const currentYear=new Date()[_0x5b2ca5(0x4f9)](),startYear=Math[_0x5b2ca5(0x434)](currentYear+0x1,0x7ea),yearOptions=[];for(let year=startYear;year>=0x794;year--){yearOptions[_0x5b2ca5(0x4d0)]({'title':''+year,'value':''+year});}const ScrapingCache={'airtime':{},'daily':[]},DEFAULT_TRAKT_ID=_0x5b2ca5(0x248),GLOBAL_GENRE_MAP_ALL={0x10:'动画',0x2a07:_0x5b2ca5(0x2fa),0x23:'喜剧',0x12:'剧情',0xe:'奇幻',0x36e:'科幻',0x25b0:'悬疑',0x29fd:'爱情',0x1b:'恐怖',0x2a0d:_0x5b2ca5(0x4c5),0x50:'犯罪',0x63:_0x5b2ca5(0x47a),0x29ff:'家庭',0x24:'历史',0x28a2:'音乐',0x2a12:_0x5b2ca5(0x4d6),0x35:'惊悚',0x2a00:'战争',0x25:'西部',0x1c:'动作',0xc:'冒险',0x2a0a:'儿童',0x2a0b:'新闻',0x2a0c:_0x5b2ca5(0x346),0x2a0e:_0x5b2ca5(0x4f7),0x2a0f:_0x5b2ca5(0x468),0x2a10:'战综'};function getGlobalGenreText(_0x4f29db){const _0x39d92c=_0x5b2ca5,_0x5b39bb={'TMWyT':_0x39d92c(0x2d9)};if(!_0x4f29db||!Array[_0x39d92c(0x457)](_0x4f29db))return'影视';const _0x4da5c9=_0x4f29db[_0x39d92c(0x44d)](_0x4702b8=>GLOBAL_GENRE_MAP_ALL[_0x4702b8])[_0x39d92c(0x25d)](Boolean);return _0x4da5c9[_0x39d92c(0x3c0)]>0x0?_0x4da5c9[_0x39d92c(0x36d)](0x0,0x2)[_0x39d92c(0x3b2)](_0x5b39bb[_0x39d92c(0x49e)]):'影视';}function buildItem({id:_0xb939a0,tmdbId:_0x103a3a,type:_0x4993c8,title:_0x83c7c3,date:_0x3ab424,poster:_0x562ed4,backdrop:_0x5e6c81,rating:_0x34fcc4,genreText:_0x43d38f,subTitle:_0x57be93,desc:_0x4e435e}){const _0x7c30df=_0x5b2ca5,_0xb099c1={'qCxfL':_0x7c30df(0x325),'bSKmC':_0x7c30df(0x432),'IkiVt':function(_0x57d50f,_0x206b3c){return _0x57d50f(_0x206b3c);},'CYxXX':function(_0x405873,_0xcfb0d5){return _0x405873(_0xcfb0d5);},'QVDXt':_0x7c30df(0x3c1),'ZTDIk':function(_0x3a4384,_0x226be7){return _0x3a4384===_0x226be7;},'sLPNX':function(_0x2b91d5,_0x1b6dd9){return _0x2b91d5||_0x1b6dd9;},'wqilY':_0x7c30df(0x4c9)},_0x16fb85=[_0x3ab424,_0x57be93][_0x7c30df(0x25d)](Boolean)[_0x7c30df(0x3b2)](_0xb099c1[_0x7c30df(0x2cf)]),_0x3b85bf=_0x4e435e?'\x0a'+_0x4e435e:_0xb099c1[_0x7c30df(0x46b)];return{'id':_0xb099c1[_0x7c30df(0x2ea)](String,_0xb939a0),'tmdbId':_0xb099c1[_0x7c30df(0x208)](parseInt,_0x103a3a)||parseInt(_0xb939a0),'type':_0xb099c1[_0x7c30df(0x1d7)],'mediaType':_0x4993c8,'title':_0x83c7c3,'genreTitle':_0x43d38f||(_0xb099c1[_0x7c30df(0x37e)](_0x4993c8,'tv')?'剧集':'电影'),'description':_0x16fb85?_0x16fb85+_0x3b85bf:_0xb099c1[_0x7c30df(0x262)](_0x4e435e,_0xb099c1[_0x7c30df(0x4ec)]),'releaseDate':_0x3ab424,'posterPath':_0x562ed4?_0x7c30df(0x479)+_0x562ed4:'','backdropPath':_0x5e6c81?_0x7c30df(0x349)+_0x5e6c81:'','subTitle':_0x57be93};}var WidgetMetadata={'id':_0x5b2ca5(0x440),'title':_0x5b2ca5(0x2a8),'description':_0x5b2ca5(0x44b),'author':_0x5b2ca5(0x215),'version':_0x5b2ca5(0x374),'requiredVersion':_0x5b2ca5(0x285),'site':_0x5b2ca5(0x448),'globalParams':[{'name':_0x5b2ca5(0x26f),'title':_0x5b2ca5(0x288),'type':_0x5b2ca5(0x312),'description':_0x5b2ca5(0x466),'value':''}],'modules':[{'title':_0x5b2ca5(0x407),'functionName':_0x5b2ca5(0x32c),'type':_0x5b2ca5(0x251),'cacheDuration':0xe10,'params':[{'name':_0x5b2ca5(0x2d5),'title':_0x5b2ca5(0x277),'type':_0x5b2ca5(0x28d),'value':_0x5b2ca5(0x4a1),'enumOptions':[{'title':_0x5b2ca5(0x3e8),'value':_0x5b2ca5(0x4a1)},{'title':_0x5b2ca5(0x453),'value':_0x5b2ca5(0x28e)},{'title':_0x5b2ca5(0x485),'value':_0x5b2ca5(0x28a)},{'title':_0x5b2ca5(0x386),'value':_0x5b2ca5(0x1d0)},{'title':_0x5b2ca5(0x308),'value':_0x5b2ca5(0x42d)},{'title':_0x5b2ca5(0x3ce),'value':_0x5b2ca5(0x3c1)},{'title':_0x5b2ca5(0x230),'value':_0x5b2ca5(0x1f8)},{'title':_0x5b2ca5(0x1d5),'value':_0x5b2ca5(0x27b)}]},{'name':_0x5b2ca5(0x318),'title':_0x5b2ca5(0x476),'type':_0x5b2ca5(0x28d),'value':_0x5b2ca5(0x2a3),'belongTo':{'paramName':_0x5b2ca5(0x2d5),'value':[_0x5b2ca5(0x4a1)]},'enumOptions':[{'title':_0x5b2ca5(0x3c3),'value':_0x5b2ca5(0x2a3)},{'title':_0x5b2ca5(0x51e),'value':'1'},{'title':_0x5b2ca5(0x429),'value':'2'},{'title':_0x5b2ca5(0x3e9),'value':'3'},{'title':_0x5b2ca5(0x376),'value':'4'},{'title':_0x5b2ca5(0x42b),'value':'5'},{'title':_0x5b2ca5(0x315),'value':'6'},{'title':_0x5b2ca5(0x1c7),'value':'7'}]},{'name':_0x5b2ca5(0x523),'title':_0x5b2ca5(0x46a),'type':_0x5b2ca5(0x28d),'value':'1','belongTo':{'paramName':_0x5b2ca5(0x2d5),'value':[_0x5b2ca5(0x28e)]},'enumOptions':[{'title':_0x5b2ca5(0x298),'value':'1'},{'title':_0x5b2ca5(0x4a5),'value':'4'}]},{'name':_0x5b2ca5(0x347),'title':'分类','type':_0x5b2ca5(0x28d),'value':_0x5b2ca5(0x21d),'belongTo':{'paramName':_0x5b2ca5(0x2d5),'value':[_0x5b2ca5(0x28a)]},'enumOptions':[{'title':'动画','value':_0x5b2ca5(0x21d)}]},{'name':_0x5b2ca5(0x532),'title':'分类','type':_0x5b2ca5(0x28d),'value':_0x5b2ca5(0x21d),'belongTo':{'paramName':_0x5b2ca5(0x2d5),'value':[_0x5b2ca5(0x1d0)]},'enumOptions':[{'title':'动画','value':_0x5b2ca5(0x21d)},{'title':_0x5b2ca5(0x481),'value':_0x5b2ca5(0x4ab)}]},{'name':_0x5b2ca5(0x363),'title':'年份','type':_0x5b2ca5(0x28d),'value':''+currentYear,'belongTo':{'paramName':_0x5b2ca5(0x2d5),'value':[_0x5b2ca5(0x1d0)]},'enumOptions':yearOptions},{'name':_0x5b2ca5(0x22a),'title':_0x5b2ca5(0x210),'type':_0x5b2ca5(0x28d),'value':_0x5b2ca5(0x1d8),'belongTo':{'paramName':_0x5b2ca5(0x2d5),'value':[_0x5b2ca5(0x1d0)]},'enumOptions':[{'title':'全年','value':_0x5b2ca5(0x1d8)},{'title':_0x5b2ca5(0x414),'value':'1'},{'title':_0x5b2ca5(0x3b3),'value':'4'},{'title':_0x5b2ca5(0x3b9),'value':'7'},{'title':_0x5b2ca5(0x4db),'value':'10'}]},{'name':_0x5b2ca5(0x493),'title':_0x5b2ca5(0x515),'type':_0x5b2ca5(0x28d),'value':_0x5b2ca5(0x23f),'belongTo':{'paramName':_0x5b2ca5(0x2d5),'value':[_0x5b2ca5(0x1d0)]},'enumOptions':[{'title':'排名','value':_0x5b2ca5(0x1d0)},{'title':'热度','value':_0x5b2ca5(0x3f0)},{'title':_0x5b2ca5(0x2a9),'value':_0x5b2ca5(0x23f)},{'title':_0x5b2ca5(0x524),'value':_0x5b2ca5(0x4b2)},{'title':'名称','value':_0x5b2ca5(0x32b)}]},{'name':_0x5b2ca5(0x31d),'title':_0x5b2ca5(0x510),'type':_0x5b2ca5(0x28d),'value':_0x5b2ca5(0x2a3),'belongTo':{'paramName':_0x5b2ca5(0x2d5),'value':[_0x5b2ca5(0x42d)]},'enumOptions':[{'title':_0x5b2ca5(0x4a0),'value':_0x5b2ca5(0x2a3)},{'title':_0x5b2ca5(0x23b),'value':_0x5b2ca5(0x51d)},{'title':_0x5b2ca5(0x3bb),'value':_0x5b2ca5(0x50f)},{'title':_0x5b2ca5(0x246),'value':_0x5b2ca5(0x23a)},{'title':_0x5b2ca5(0x48a),'value':_0x5b2ca5(0x50b)}]},{'name':_0x5b2ca5(0x35d),'title':_0x5b2ca5(0x449),'type':_0x5b2ca5(0x28d),'value':'1','belongTo':{'paramName':_0x5b2ca5(0x2d5),'value':[_0x5b2ca5(0x42d)]},'enumOptions':[{'title':_0x5b2ca5(0x29c),'value':'1'},{'title':_0x5b2ca5(0x4b3),'value':'2'},{'title':_0x5b2ca5(0x21a),'value':'3'},{'title':_0x5b2ca5(0x403),'value':'4'},{'title':_0x5b2ca5(0x224),'value':'5'},{'title':_0x5b2ca5(0x2f3),'value':'6'},{'title':_0x5b2ca5(0x226),'value':'7'}]},{'name':_0x5b2ca5(0x455),'title':_0x5b2ca5(0x515),'type':_0x5b2ca5(0x28d),'value':_0x5b2ca5(0x3f7),'belongTo':{'paramName':_0x5b2ca5(0x2d5),'value':[_0x5b2ca5(0x42d)]},'enumOptions':[{'title':_0x5b2ca5(0x213),'value':_0x5b2ca5(0x3f7)},{'title':'评分','value':_0x5b2ca5(0x23d)},{'title':_0x5b2ca5(0x33c),'value':_0x5b2ca5(0x2be)},{'title':'默认','value':_0x5b2ca5(0x39f)}]},{'name':_0x5b2ca5(0x2ad),'title':_0x5b2ca5(0x36e),'type':_0x5b2ca5(0x28d),'value':_0x5b2ca5(0x379),'belongTo':{'paramName':_0x5b2ca5(0x2d5),'value':[_0x5b2ca5(0x3c1)]},'enumOptions':[{'title':_0x5b2ca5(0x419),'value':_0x5b2ca5(0x379)},{'title':_0x5b2ca5(0x2a2),'value':_0x5b2ca5(0x4e3)},{'title':_0x5b2ca5(0x46c),'value':_0x5b2ca5(0x31a)}]},{'name':_0x5b2ca5(0x27e),'title':_0x5b2ca5(0x515),'type':_0x5b2ca5(0x28d),'value':_0x5b2ca5(0x2aa),'belongTo':{'paramName':_0x5b2ca5(0x2d5),'value':[_0x5b2ca5(0x1f8)]},'enumOptions':[{'title':_0x5b2ca5(0x3f3),'value':_0x5b2ca5(0x2aa)},{'title':_0x5b2ca5(0x456),'value':_0x5b2ca5(0x3ed)},{'title':_0x5b2ca5(0x1ce),'value':_0x5b2ca5(0x2c0)}]},{'name':_0x5b2ca5(0x45c),'title':_0x5b2ca5(0x36e),'type':_0x5b2ca5(0x28d),'value':_0x5b2ca5(0x465),'belongTo':{'paramName':_0x5b2ca5(0x2d5),'value':[_0x5b2ca5(0x27b)]},'enumOptions':[{'title':_0x5b2ca5(0x1e3),'value':_0x5b2ca5(0x465)},{'title':_0x5b2ca5(0x525),'value':_0x5b2ca5(0x1d8)},{'title':_0x5b2ca5(0x319),'value':_0x5b2ca5(0x462)},{'title':_0x5b2ca5(0x24d),'value':_0x5b2ca5(0x4d1)}]},{'name':_0x5b2ca5(0x228),'title':'页码','type':_0x5b2ca5(0x228)}]},{'title':_0x5b2ca5(0x427),'functionName':_0x5b2ca5(0x2ee),'type':_0x5b2ca5(0x251),'cacheDuration':0xe10,'params':[{'name':_0x5b2ca5(0x276),'title':_0x5b2ca5(0x313),'type':_0x5b2ca5(0x28d),'value':_0x5b2ca5(0x1d8),'enumOptions':[{'title':_0x5b2ca5(0x2ca),'value':_0x5b2ca5(0x1d8)},{'title':_0x5b2ca5(0x3f1),'value':_0x5b2ca5(0x462)},{'title':_0x5b2ca5(0x2ce),'value':'tv'}]},{'name':_0x5b2ca5(0x45d),'title':_0x5b2ca5(0x1dc),'type':_0x5b2ca5(0x28d),'value':_0x5b2ca5(0x1d8),'enumOptions':[{'title':_0x5b2ca5(0x1d6),'value':_0x5b2ca5(0x1d8)},{'title':_0x5b2ca5(0x30c),'value':_0x5b2ca5(0x2c7)},{'title':_0x5b2ca5(0x286),'value':_0x5b2ca5(0x501)},{'title':_0x5b2ca5(0x398),'value':_0x5b2ca5(0x2e4)},{'title':_0x5b2ca5(0x1ef),'value':_0x5b2ca5(0x494)},{'title':_0x5b2ca5(0x40c),'value':_0x5b2ca5(0x4aa)},{'title':_0x5b2ca5(0x3ba),'value':_0x5b2ca5(0x4cd)},{'title':_0x5b2ca5(0x3e3),'value':_0x5b2ca5(0x2d8)},{'title':_0x5b2ca5(0x1d1),'value':_0x5b2ca5(0x470)},{'title':_0x5b2ca5(0x275),'value':_0x5b2ca5(0x460)},{'title':_0x5b2ca5(0x2f7),'value':_0x5b2ca5(0x41b)},{'title':_0x5b2ca5(0x26e),'value':_0x5b2ca5(0x203)}]},{'name':_0x5b2ca5(0x293),'title':_0x5b2ca5(0x436),'type':_0x5b2ca5(0x28d),'value':_0x5b2ca5(0x1d8),'enumOptions':[{'title':_0x5b2ca5(0x47f),'value':_0x5b2ca5(0x1d8)},{'title':_0x5b2ca5(0x452),'value':'cn'},{'title':_0x5b2ca5(0x4f2),'value':'hk'},{'title':_0x5b2ca5(0x431),'value':'tw'},{'title':_0x5b2ca5(0x3c2),'value':_0x5b2ca5(0x267)},{'title':_0x5b2ca5(0x234),'value':'jp'},{'title':_0x5b2ca5(0x207),'value':'kr'},{'title':_0x5b2ca5(0x52b),'value':_0x5b2ca5(0x328)},{'title':_0x5b2ca5(0x441),'value':'th'},{'title':_0x5b2ca5(0x1f0),'value':'sg'},{'title':_0x5b2ca5(0x37f),'value':'my'},{'title':_0x5b2ca5(0x4ef),'value':'in'},{'title':_0x5b2ca5(0x359),'value':_0x5b2ca5(0x3d8)},{'title':_0x5b2ca5(0x357),'value':'us'},{'title':_0x5b2ca5(0x360),'value':'gb'},{'title':_0x5b2ca5(0x3dc),'value':'de'},{'title':_0x5b2ca5(0x284),'value':'se'},{'title':_0x5b2ca5(0x488),'value':_0x5b2ca5(0x287)},{'title':_0x5b2ca5(0x322),'value':'es'},{'title':_0x5b2ca5(0x300),'value':'mx'},{'title':_0x5b2ca5(0x410),'value':_0x5b2ca5(0x489)}]},{'name':_0x5b2ca5(0x4e1),'title':_0x5b2ca5(0x41f),'type':_0x5b2ca5(0x28d),'value':_0x5b2ca5(0x261),'enumOptions':[{'title':_0x5b2ca5(0x33f),'value':_0x5b2ca5(0x261)},{'title':_0x5b2ca5(0x295),'value':_0x5b2ca5(0x44e)},{'title':_0x5b2ca5(0x4d3),'value':_0x5b2ca5(0x303)}]},{'name':_0x5b2ca5(0x228),'title':'页码','type':_0x5b2ca5(0x228),'startPage':0x1}]},{'title':_0x5b2ca5(0x29e),'functionName':_0x5b2ca5(0x320),'type':_0x5b2ca5(0x251),'cacheDuration':0xe10,'params':[{'name':_0x5b2ca5(0x329),'title':_0x5b2ca5(0x428),'type':_0x5b2ca5(0x28d),'value':_0x5b2ca5(0x2ed),'enumOptions':[{'title':_0x5b2ca5(0x268),'value':_0x5b2ca5(0x2ed)},{'title':_0x5b2ca5(0x400),'value':_0x5b2ca5(0x2e3)},{'title':_0x5b2ca5(0x2a4),'value':_0x5b2ca5(0x45d)}]},{'name':_0x5b2ca5(0x22d),'title':_0x5b2ca5(0x44a),'type':_0x5b2ca5(0x28d),'value':_0x5b2ca5(0x496),'belongTo':{'paramName':_0x5b2ca5(0x329),'value':[_0x5b2ca5(0x2ed)]},'enumOptions':[{'title':_0x5b2ca5(0x475),'value':_0x5b2ca5(0x496)},{'title':_0x5b2ca5(0x3e6),'value':_0x5b2ca5(0x34a)},{'title':_0x5b2ca5(0x507),'value':_0x5b2ca5(0x3d9)},{'title':_0x5b2ca5(0x27a),'value':_0x5b2ca5(0x32a)}]},{'name':_0x5b2ca5(0x2eb),'title':_0x5b2ca5(0x314),'type':_0x5b2ca5(0x28d),'value':_0x5b2ca5(0x497),'belongTo':{'paramName':_0x5b2ca5(0x329),'value':[_0x5b2ca5(0x2e3)]},'enumOptions':[{'title':_0x5b2ca5(0x522),'value':_0x5b2ca5(0x52c)},{'title':_0x5b2ca5(0x4bb),'value':_0x5b2ca5(0x497)},{'title':_0x5b2ca5(0x3be),'value':_0x5b2ca5(0x3b6)},{'title':_0x5b2ca5(0x21c),'value':_0x5b2ca5(0x2ae)},{'title':_0x5b2ca5(0x40a),'value':_0x5b2ca5(0x43d)},{'title':_0x5b2ca5(0x40e),'value':_0x5b2ca5(0x2bf)},{'title':_0x5b2ca5(0x201),'value':_0x5b2ca5(0x2b0)},{'title':_0x5b2ca5(0x4b7),'value':_0x5b2ca5(0x426)},{'title':_0x5b2ca5(0x404),'value':_0x5b2ca5(0x378)},{'title':_0x5b2ca5(0x36f),'value':_0x5b2ca5(0x223)},{'title':_0x5b2ca5(0x2a0),'value':_0x5b2ca5(0x4b6)}]},{'name':_0x5b2ca5(0x371),'title':_0x5b2ca5(0x26c),'type':_0x5b2ca5(0x28d),'value':_0x5b2ca5(0x4fb),'belongTo':{'paramName':_0x5b2ca5(0x329),'value':[_0x5b2ca5(0x45d)]},'enumOptions':[{'title':_0x5b2ca5(0x30c),'value':_0x5b2ca5(0x4fb)},{'title':_0x5b2ca5(0x1d1),'value':'18'},{'title':_0x5b2ca5(0x375),'value':_0x5b2ca5(0x1e9)},{'title':_0x5b2ca5(0x40c),'value':'28'},{'title':_0x5b2ca5(0x3ba),'value':'35'},{'title':_0x5b2ca5(0x3e3),'value':_0x5b2ca5(0x380)},{'title':_0x5b2ca5(0x398),'value':'27'},{'title':_0x5b2ca5(0x1ef),'value':'80'},{'title':_0x5b2ca5(0x2a7),'value':'14'},{'title':_0x5b2ca5(0x4fe),'value':'16'}]},{'name':_0x5b2ca5(0x228),'title':'页码','type':_0x5b2ca5(0x228),'startPage':0x1}]},{'title':_0x5b2ca5(0x260),'functionName':_0x5b2ca5(0x40d),'type':_0x5b2ca5(0x251),'cacheDuration':0xe10,'params':[{'name':_0x5b2ca5(0x276),'title':_0x5b2ca5(0x436),'type':_0x5b2ca5(0x28d),'value':'cn','enumOptions':[{'title':_0x5b2ca5(0x452),'value':'cn'},{'title':_0x5b2ca5(0x207),'value':'kr'},{'title':_0x5b2ca5(0x234),'value':'jp'},{'title':_0x5b2ca5(0x431),'value':'tw'},{'title':_0x5b2ca5(0x4f2),'value':'hk'},{'title':_0x5b2ca5(0x424),'value':_0x5b2ca5(0x4a6)},{'title':_0x5b2ca5(0x2d6),'value':_0x5b2ca5(0x1d8)}]},{'name':_0x5b2ca5(0x4d4),'title':_0x5b2ca5(0x35e),'type':_0x5b2ca5(0x28d),'value':_0x5b2ca5(0x28a),'enumOptions':[{'title':_0x5b2ca5(0x259),'value':_0x5b2ca5(0x28a)},{'title':_0x5b2ca5(0x3ac),'value':_0x5b2ca5(0x2a3)},{'title':_0x5b2ca5(0x38e),'value':_0x5b2ca5(0x526)},{'title':_0x5b2ca5(0x1fd),'value':_0x5b2ca5(0x254)},{'title':_0x5b2ca5(0x316),'value':_0x5b2ca5(0x31a)}]},{'name':_0x5b2ca5(0x228),'title':'页码','type':_0x5b2ca5(0x228),'startPage':0x1}]},{'title':_0x5b2ca5(0x324),'functionName':_0x5b2ca5(0x4c3),'type':_0x5b2ca5(0x251),'cacheDuration':0xe10,'params':[{'name':_0x5b2ca5(0x4e2),'title':_0x5b2ca5(0x29d),'type':_0x5b2ca5(0x28d),'value':_0x5b2ca5(0x4ca),'enumOptions':[{'title':_0x5b2ca5(0x1e4),'value':_0x5b2ca5(0x4ca)},{'title':_0x5b2ca5(0x4fc),'value':'rt'},{'title':_0x5b2ca5(0x32e),'value':_0x5b2ca5(0x492)},{'title':_0x5b2ca5(0x217),'value':_0x5b2ca5(0x3ab)}]},{'name':_0x5b2ca5(0x356),'title':_0x5b2ca5(0x350),'type':_0x5b2ca5(0x28d),'value':_0x5b2ca5(0x22f),'belongTo':{'paramName':_0x5b2ca5(0x4e2),'value':[_0x5b2ca5(0x4ca)]},'enumOptions':[{'title':_0x5b2ca5(0x3b4),'value':_0x5b2ca5(0x22f)},{'title':_0x5b2ca5(0x29f),'value':_0x5b2ca5(0x49a)},{'title':_0x5b2ca5(0x30f),'value':_0x5b2ca5(0x496)},{'title':_0x5b2ca5(0x2a5),'value':_0x5b2ca5(0x34a)},{'title':_0x5b2ca5(0x52d),'value':_0x5b2ca5(0x4da)},{'title':_0x5b2ca5(0x383),'value':_0x5b2ca5(0x395)}]},{'name':_0x5b2ca5(0x37c),'title':_0x5b2ca5(0x430),'type':_0x5b2ca5(0x28d),'value':_0x5b2ca5(0x1d8),'belongTo':{'paramName':_0x5b2ca5(0x356),'value':[_0x5b2ca5(0x22f),_0x5b2ca5(0x49a),_0x5b2ca5(0x496),_0x5b2ca5(0x34a)]},'enumOptions':[{'title':_0x5b2ca5(0x42a),'value':_0x5b2ca5(0x1d8)},{'title':'电影','value':_0x5b2ca5(0x462)},{'title':'剧集','value':'tv'}]},{'name':_0x5b2ca5(0x3d0),'title':_0x5b2ca5(0x2fb),'type':_0x5b2ca5(0x28d),'value':_0x5b2ca5(0x358),'belongTo':{'paramName':_0x5b2ca5(0x4e2),'value':['rt']},'enumOptions':[{'title':_0x5b2ca5(0x2c1),'value':_0x5b2ca5(0x358)},{'title':_0x5b2ca5(0x52a),'value':_0x5b2ca5(0x4c4)},{'title':_0x5b2ca5(0x219),'value':_0x5b2ca5(0x3b5)},{'title':_0x5b2ca5(0x343),'value':_0x5b2ca5(0x44f)},{'title':_0x5b2ca5(0x237),'value':_0x5b2ca5(0x420)}]},{'name':_0x5b2ca5(0x37b),'title':_0x5b2ca5(0x1e5),'type':_0x5b2ca5(0x28d),'value':_0x5b2ca5(0x379),'belongTo':{'paramName':_0x5b2ca5(0x4e2),'value':[_0x5b2ca5(0x492)]},'enumOptions':[{'title':_0x5b2ca5(0x31f),'value':_0x5b2ca5(0x379)},{'title':_0x5b2ca5(0x29a),'value':_0x5b2ca5(0x496)},{'title':_0x5b2ca5(0x302),'value':_0x5b2ca5(0x326)}]},{'name':_0x5b2ca5(0x46e),'title':_0x5b2ca5(0x463),'type':_0x5b2ca5(0x28d),'value':_0x5b2ca5(0x1d8),'belongTo':{'paramName':_0x5b2ca5(0x4e2),'value':[_0x5b2ca5(0x492)]},'enumOptions':[{'title':_0x5b2ca5(0x42a),'value':_0x5b2ca5(0x1d8)},{'title':'剧集','value':_0x5b2ca5(0x307)},{'title':'电影','value':_0x5b2ca5(0x4b0)}]},{'name':_0x5b2ca5(0x3ad),'title':_0x5b2ca5(0x477),'type':_0x5b2ca5(0x28d),'value':_0x5b2ca5(0x2f8),'belongTo':{'paramName':_0x5b2ca5(0x4e2),'value':[_0x5b2ca5(0x3ab)]},'enumOptions':[{'title':_0x5b2ca5(0x2f6),'value':_0x5b2ca5(0x2f8)},{'title':_0x5b2ca5(0x4e4),'value':_0x5b2ca5(0x2db)},{'title':_0x5b2ca5(0x258),'value':_0x5b2ca5(0x3a9)},{'title':_0x5b2ca5(0x4b5),'value':_0x5b2ca5(0x309)}]},{'name':_0x5b2ca5(0x228),'title':'页码','type':_0x5b2ca5(0x228),'startPage':0x1}]},{'title':_0x5b2ca5(0x37d),'functionName':_0x5b2ca5(0x2ab),'type':_0x5b2ca5(0x251),'cacheDuration':0xe10,'params':[{'name':_0x5b2ca5(0x276),'title':_0x5b2ca5(0x24a),'type':_0x5b2ca5(0x28d),'value':_0x5b2ca5(0x235),'enumOptions':[{'title':_0x5b2ca5(0x402),'value':_0x5b2ca5(0x235)},{'title':_0x5b2ca5(0x269),'value':_0x5b2ca5(0x22e)},{'title':_0x5b2ca5(0x4ea),'value':_0x5b2ca5(0x23c)},{'title':_0x5b2ca5(0x517),'value':_0x5b2ca5(0x462)}]},{'name':_0x5b2ca5(0x21e),'title':_0x5b2ca5(0x1d3),'type':_0x5b2ca5(0x28d),'value':_0x5b2ca5(0x46d),'enumOptions':[{'title':_0x5b2ca5(0x4bc),'value':_0x5b2ca5(0x46d)},{'title':_0x5b2ca5(0x2e1),'value':_0x5b2ca5(0x249)},{'title':'优酷','value':_0x5b2ca5(0x2bc)},{'title':_0x5b2ca5(0x3a8),'value':_0x5b2ca5(0x3eb)},{'title':_0x5b2ca5(0x2cc),'value':_0x5b2ca5(0x20a)},{'title':_0x5b2ca5(0x1f4),'value':_0x5b2ca5(0x255)},{'title':_0x5b2ca5(0x2c6),'value':_0x5b2ca5(0x1ec)},{'title':_0x5b2ca5(0x337),'value':'49'},{'title':_0x5b2ca5(0x491),'value':_0x5b2ca5(0x3ef)}]},{'name':_0x5b2ca5(0x34b),'title':'排序','type':_0x5b2ca5(0x28d),'value':_0x5b2ca5(0x34f),'enumOptions':[{'title':_0x5b2ca5(0x2e5),'value':_0x5b2ca5(0x34f)},{'title':_0x5b2ca5(0x4ae),'value':_0x5b2ca5(0x2d7)},{'title':_0x5b2ca5(0x295),'value':_0x5b2ca5(0x2cd)}]},{'name':_0x5b2ca5(0x228),'title':'页码','type':_0x5b2ca5(0x228),'startPage':0x1}]},{'title':_0x5b2ca5(0x4d2),'functionName':_0x5b2ca5(0x2e7),'type':_0x5b2ca5(0x251),'cacheDuration':0xe10,'params':[{'name':_0x5b2ca5(0x276),'title':_0x5b2ca5(0x3b0),'type':_0x5b2ca5(0x28d),'value':_0x5b2ca5(0x206),'enumOptions':[{'title':_0x5b2ca5(0x357),'value':_0x5b2ca5(0x206)},{'title':_0x5b2ca5(0x207),'value':_0x5b2ca5(0x1db)},{'title':_0x5b2ca5(0x341),'value':_0x5b2ca5(0x3f4)},{'title':_0x5b2ca5(0x47e),'value':_0x5b2ca5(0x471)},{'title':_0x5b2ca5(0x234),'value':_0x5b2ca5(0x50d)},{'title':_0x5b2ca5(0x360),'value':_0x5b2ca5(0x3fc)},{'title':_0x5b2ca5(0x4e0),'value':_0x5b2ca5(0x43a)}]},{'name':_0x5b2ca5(0x21e),'title':_0x5b2ca5(0x413),'type':_0x5b2ca5(0x28d),'value':_0x5b2ca5(0x49d),'enumOptions':[{'title':_0x5b2ca5(0x1f4),'value':_0x5b2ca5(0x49d)},{'title':_0x5b2ca5(0x337),'value':_0x5b2ca5(0x48d)},{'title':_0x5b2ca5(0x2c6),'value':_0x5b2ca5(0x484)},{'title':_0x5b2ca5(0x491),'value':_0x5b2ca5(0x39a)},{'title':_0x5b2ca5(0x1f9),'value':_0x5b2ca5(0x362)}]},{'name':_0x5b2ca5(0x37c),'title':_0x5b2ca5(0x36e),'type':_0x5b2ca5(0x28d),'value':'tv','enumOptions':[{'title':_0x5b2ca5(0x3c7),'value':'tv'},{'title':_0x5b2ca5(0x2fe),'value':_0x5b2ca5(0x462)}]},{'name':_0x5b2ca5(0x228),'title':'页码','type':_0x5b2ca5(0x228),'startPage':0x1}]}]};async function routeAnimeOmni(_0x291015){const _0x19e432=_0x5b2ca5,_0x2c089e={'DjIkD':function(_0x389213,_0x5b62b6){return _0x389213===_0x5b62b6;},'bknIH':_0x19e432(0x2a3),'OZRtf':function(_0x4e5344,_0x152e03){return _0x4e5344===_0x152e03;},'BKUSv':function(_0x2eb505,_0x342163){return _0x2eb505(_0x342163);},'oLCUL':function(_0x534ea1,_0x187a74){return _0x534ea1(_0x187a74);},'VhkXQ':_0x19e432(0x21d),'zDLUJ':_0x19e432(0x42d),'KxpSJ':function(_0x22ca8c,_0xc1b9f3){return _0x22ca8c(_0xc1b9f3);},'GWslN':_0x19e432(0x3c1),'GLfsv':function(_0x188edf,_0x2f1780){return _0x188edf(_0x2f1780);},'EcMTE':function(_0x886f33,_0x14ec2d){return _0x886f33===_0x14ec2d;},'ERCEC':_0x19e432(0x1f8),'reMMk':_0x19e432(0x2aa),'pdpDf':_0x19e432(0x27b),'uBBLA':function(_0x329e71,_0x4b08fa){return _0x329e71(_0x4b08fa);}},_0x534efc=_0x291015[_0x19e432(0x2d5)]||_0x19e432(0x4a1);let _0x2bf94c={'page':_0x291015[_0x19e432(0x228)]||0x1};if(_0x2c089e[_0x19e432(0x500)](_0x534efc,_0x19e432(0x4a1)))return _0x2bf94c[_0x19e432(0x276)]=_0x291015[_0x19e432(0x318)]||_0x2c089e[_0x19e432(0x4ac)],await loadBangumiCalendar(_0x2bf94c);if(_0x2c089e[_0x19e432(0x4f0)](_0x534efc,_0x19e432(0x28e)))return _0x2bf94c[_0x19e432(0x276)]=_0x291015[_0x19e432(0x523)]||'1',await _0x2c089e[_0x19e432(0x204)](loadBilibiliRank,_0x2bf94c);if(_0x2c089e[_0x19e432(0x4f0)](_0x534efc,_0x19e432(0x28a)))return _0x2bf94c[_0x19e432(0x36b)]=_0x291015[_0x19e432(0x347)]||_0x19e432(0x21d),await _0x2c089e[_0x19e432(0x4e6)](fetchRecentHot,_0x2bf94c);if(_0x534efc===_0x19e432(0x1d0))return _0x2bf94c[_0x19e432(0x36b)]=_0x291015[_0x19e432(0x532)]||_0x2c089e[_0x19e432(0x3fa)],_0x2bf94c[_0x19e432(0x342)]=_0x291015[_0x19e432(0x363)]||_0x19e432(0x2d4),_0x2bf94c[_0x19e432(0x2c9)]=_0x291015[_0x19e432(0x22a)]||_0x19e432(0x1d8),_0x2bf94c[_0x19e432(0x34b)]=_0x291015[_0x19e432(0x493)]||_0x19e432(0x23f),await fetchAirtimeRanking(_0x2bf94c);if(_0x534efc===_0x2c089e[_0x19e432(0x1cb)])return _0x2bf94c[_0x19e432(0x3a3)]=_0x291015[_0x19e432(0x31d)]||_0x19e432(0x2a3),_0x2bf94c[_0x19e432(0x412)]=_0x291015[_0x19e432(0x35d)]||'1',_0x2bf94c[_0x19e432(0x2d1)]=_0x291015[_0x19e432(0x455)]||_0x19e432(0x3f7),await _0x2c089e[_0x19e432(0x21b)](fetchDailyCalendarApi,_0x2bf94c);if(_0x534efc===_0x2c089e[_0x19e432(0x271)])return _0x2bf94c[_0x19e432(0x276)]=_0x291015[_0x19e432(0x2ad)]||_0x19e432(0x379),await _0x2c089e[_0x19e432(0x48c)](loadTmdbAnimeRanking,_0x2bf94c);if(_0x2c089e[_0x19e432(0x2b4)](_0x534efc,_0x2c089e[_0x19e432(0x3b1)]))return _0x2bf94c[_0x19e432(0x276)]=_0x291015[_0x19e432(0x27e)]||_0x2c089e[_0x19e432(0x1f7)],await loadAniListRanking(_0x2bf94c);if(_0x2c089e[_0x19e432(0x500)](_0x534efc,_0x2c089e[_0x19e432(0x1d2)]))return _0x2bf94c[_0x19e432(0x276)]=_0x291015[_0x19e432(0x45c)]||_0x19e432(0x465),await _0x2c089e[_0x19e432(0x4c6)](loadMalRanking,_0x2bf94c);return[];}async function routeMovieOmni(_0x3dc0e3){const _0x55baff=_0x5b2ca5,_0xd33a5d={'ZZgtX':function(_0x43b1e8,_0x254cbf){return _0x43b1e8===_0x254cbf;},'tjEip':_0x55baff(0x496),'evdBV':function(_0x197bc5,_0x39634f){return _0x197bc5(_0x39634f);},'PrPVA':function(_0x2f4d01,_0x942672){return _0x2f4d01===_0x942672;},'xIYET':function(_0x18df63,_0x2e98fb){return _0x18df63===_0x2e98fb;},'UbcWk':_0x55baff(0x45d),'wWnFN':function(_0xf8d2dc,_0x30690a){return _0xf8d2dc(_0x30690a);}},_0x44334a=_0x3dc0e3[_0x55baff(0x329)]||_0x55baff(0x2ed);let _0x5d80ab={'page':_0x3dc0e3[_0x55baff(0x228)]||0x1};if(_0xd33a5d[_0x55baff(0x2ac)](_0x44334a,_0x55baff(0x2ed)))return _0x5d80ab[_0x55baff(0x276)]=_0x3dc0e3[_0x55baff(0x22d)]||_0xd33a5d[_0x55baff(0x518)],await _0xd33a5d[_0x55baff(0x1da)](loadGeneralMovies,_0x5d80ab);if(_0xd33a5d[_0x55baff(0x3cc)](_0x44334a,_0x55baff(0x2e3)))return _0x5d80ab[_0x55baff(0x276)]=_0x3dc0e3[_0x55baff(0x2eb)]||_0x55baff(0x497),await _0xd33a5d[_0x55baff(0x1da)](loadYearlyBestMovies,_0x5d80ab);if(_0xd33a5d[_0x55baff(0x4e9)](_0x44334a,_0xd33a5d[_0x55baff(0x265)]))return _0x5d80ab[_0x55baff(0x276)]=_0x3dc0e3[_0x55baff(0x371)]||_0x55baff(0x4fb),await _0xd33a5d[_0x55baff(0x212)](loadGenreMovies,_0x5d80ab);return[];}async function routeTrendsHub(_0x363be6){const _0xf00dae=_0x5b2ca5,_0xf96135={'jrvOv':_0xf00dae(0x4ca),'zpXLN':function(_0x1cacb3,_0x291087,_0x208b41,_0x31cab4){return _0x1cacb3(_0x291087,_0x208b41,_0x31cab4);},'cpIoC':_0xf00dae(0x492),'oeFby':_0xf00dae(0x379),'NHuXc':function(_0x457198,_0x2df09c,_0x15b844,_0x4c0a1d,_0x38393d){return _0x457198(_0x2df09c,_0x15b844,_0x4c0a1d,_0x38393d);},'ODNyZ':function(_0x5a056f,_0x455f55){return _0x5a056f===_0x455f55;},'gjhaz':_0xf00dae(0x3ab),'gTmIp':_0xf00dae(0x2f8),'ULZgT':function(_0x2a3dff,_0x417371){return _0x2a3dff===_0x417371;},'krIxn':function(_0x2e3725,_0x372cc9){return _0x2e3725===_0x372cc9;},'Efnru':_0xf00dae(0x3a9),'wgJRr':function(_0xbe9825,_0x2cc32c){return _0xbe9825===_0x2cc32c;}},_0x511d89=_0x363be6[_0xf00dae(0x4e2)]||_0xf96135[_0xf00dae(0x2e6)],_0x4c5ac4=_0x363be6[_0xf00dae(0x228)]||0x1;if(_0x511d89==='rt'){const _0x47d394=_0x363be6[_0xf00dae(0x3d0)]||_0xf00dae(0x358);return await loadRottenTomatoesTrends(_0x47d394,_0x4c5ac4);}if(_0x511d89===_0xf00dae(0x4ca)){const _0x5cfc9d=_0x363be6[_0xf00dae(0x356)]||_0xf00dae(0x22f),_0xa589a=_0x363be6[_0xf00dae(0x37c)]||_0xf00dae(0x1d8);return await _0xf96135[_0xf00dae(0x4c7)](loadImdbList,_0x5cfc9d,_0xa589a,_0x4c5ac4);}if(_0x511d89===_0xf96135[_0xf00dae(0x264)]){const _0x2f6033=_0x363be6[_0xf00dae(0x37b)]||_0xf96135[_0xf00dae(0x38c)],_0x5a8cc6=_0x363be6[_0xf00dae(0x46e)]||_0xf00dae(0x1d8),_0x817ccf=_0x363be6[_0xf00dae(0x26f)]||DEFAULT_TRAKT_ID;return await _0xf96135[_0xf00dae(0x408)](handleTraktList,_0x2f6033,_0x5a8cc6,_0x817ccf,_0x4c5ac4);}if(_0xf96135[_0xf00dae(0x32f)](_0x511d89,_0xf96135[_0xf00dae(0x45e)])){const _0x320959=_0x363be6[_0xf00dae(0x3ad)]||_0xf96135[_0xf00dae(0x43f)];let _0x35e0c7='热门',_0x1fe7a9='tv';if(_0xf96135[_0xf00dae(0x2bb)](_0x320959,_0xf00dae(0x2f8)))_0x35e0c7=_0xf00dae(0x243),_0x1fe7a9='tv';else{if(_0xf96135[_0xf00dae(0x239)](_0x320959,_0xf00dae(0x2db)))_0x35e0c7='综艺',_0x1fe7a9='tv';else{if(_0x320959===_0xf96135[_0xf00dae(0x2b2)])_0x35e0c7='热门',_0x1fe7a9=_0xf00dae(0x462);else _0xf96135[_0xf00dae(0x401)](_0x320959,_0xf00dae(0x309))&&(_0x35e0c7='美剧',_0x1fe7a9='tv');}}return await _0xf96135[_0xf00dae(0x4c7)](fetchDoubanAndMap,_0x35e0c7,_0x1fe7a9,_0x4c5ac4);}return[];}const MOVIE_GENRE_MAP={0x10:'动画',0x2a07:_0x5b2ca5(0x2fa),0x23:'喜剧',0x12:'剧情',0xe:'奇幻',0x36e:'科幻',0x25b0:'悬疑',0x29fd:'爱情',0x1b:'恐怖',0x2a0d:_0x5b2ca5(0x4c5),0x50:'犯罪',0x63:_0x5b2ca5(0x47a),0x29ff:'家庭',0x24:'历史',0x28a2:'音乐',0x2a12:_0x5b2ca5(0x4d6),0x35:'惊悚',0x2a00:'战争',0x25:'西部',0x1c:'动作',0xc:'冒险'};function _0x4d7f(_0x2e27d0,_0x43c0e5){_0x2e27d0=_0x2e27d0-0x1c7;const _0x3c6f5d=_0x3c6f();let _0x4d7f5a=_0x3c6f5d[_0x2e27d0];if(_0x4d7f['GrNfGt']===undefined){var _0xce26f8=function(_0x583763){const _0xce58a2='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';let _0x2c31e4='',_0x461911='';for(let _0x5da86c=0x0,_0x81ac20,_0x5d1599,_0x8d0f25=0x0;_0x5d1599=_0x583763['charAt'](_0x8d0f25++);~_0x5d1599&&(_0x81ac20=_0x5da86c%0x4?_0x81ac20*0x40+_0x5d1599:_0x5d1599,_0x5da86c++%0x4)?_0x2c31e4+=String['fromCharCode'](0xff&_0x81ac20>>(-0x2*_0x5da86c&0x6)):0x0){_0x5d1599=_0xce58a2['indexOf'](_0x5d1599);}for(let _0x29f465=0x0,_0x557aca=_0x2c31e4['length'];_0x29f465<_0x557aca;_0x29f465++){_0x461911+='%'+('00'+_0x2c31e4['charCodeAt'](_0x29f465)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x461911);};_0x4d7f['whuTqr']=_0xce26f8,_0x4d7f['qMGOqG']={},_0x4d7f['GrNfGt']=!![];}const _0x2a6083=_0x3c6f5d[0x0],_0x8ac7c0=_0x2e27d0+_0x2a6083,_0x29e0b6=_0x4d7f['qMGOqG'][_0x8ac7c0];return!_0x29e0b6?(_0x4d7f5a=_0x4d7f['whuTqr'](_0x4d7f5a),_0x4d7f['qMGOqG'][_0x8ac7c0]=_0x4d7f5a):_0x4d7f5a=_0x29e0b6,_0x4d7f5a;}function _0x3c6f(){const _0x17fe4c=['qxvfu2m','yw1HEM9UlxbYAw1L','CMfUA195zwfY','whjSve0','Ahr0Chm6lY93D3CUCM90DgvUDg9TyxrVzxmUy29Tl2jYB3DZzs9TB3zPzxnFyxrFAg9Tzs9ZB3j0oMnYAxrPy19OAwDOzxn0p21PBLrVBwf0BZ05ma','ywLYx2rHDgu','DNf4u1q','uMfYuNm','ywrK','BMfTzv9JBG','y2f0zwDVCNK','54oT5PkT5lIT','C2XPy2u','5QAC5y2v57g75z6l','mJaXnUw5TcdMNidKVBm','CMf0zq','z2vUCMvFC29YDa','6k+35yIh5O2I5lI65yMN6zUg5OIw5zU95Asw5BMZ5y+W','EM5hBNu','ms4ZlJa','8j+KRYdMGQZNLPeGke15C3rLCNKP','5zgO5zUBicJMNkGP','EfHkvMC','mJaXnW','DhjLBMrPBMC','DfHRrMS','DhjHA3rFC29YDa','BwvKAwfuExbL','8j+uGcdLUBpLJ7dLIiBMTyhNIyFLUPm','wLreswS','8j+hSVcFH74G6AMS5P2L6kw/5lQA','mta3ndK','sLLtEMu','vePbA1q','8j+hQpcFH7mG5zU95lQN55s15B2X54oT5BQMkoAOOEAlNYK','yxneBhK','Dg1KyKLK','qMfUz3vTAsdLUBtLRApLUQBMPPW','zMLUza','l2rPC2nVDMvYl3r2','ywLYDgLTzs0','DeTzrNC','572r57UC5BYc5BI4','B2vgyNK','uKnbtvy','8j+uNcdMMi7ML6xPOOtLKyOGkfrVBw9YCM93kq','yMDTx3nJB3jL','vwzprMS','w2rHDgeTCwe9iMrPC2nVDMvYEs1TzwrPys1SAxn0lwL0zw0Ixq','rMn1q28','mte5','zLfSvvC','y2HPBMfFBw92Awu','zMLYC3rFywLYx2rHDguUBhrL','ohHMruXQyW','8j+rUYdMGzdMGjyGkeHVCNjVCIK','sLb8s1i','yxbWBguTDhy','z3PqvLq','v0DYrxC','Ce1mA2W','BwvXsvi','zgvMyxvSDa','u2X1Cuy','sKPzr0C','CMPoz1q','zMLSDgvYvhLWzq','wufRzMO','rvn8tvH8qvj8q098q0X8uev8vKu','vhfOsvu','zgf0yq','6iQs5P6Cvfy','zgjFBw92Awu','Dg9ju09tDhjPBMC','zg91yMfU','8j+tHsdKU4RML6xMM7tMLRaGkfrVzgf5kq','zgjFC29YDa','sw1uy1K','Ahr0Chm6lY9YyxCUz2L0AhvIDxnLCMnVBNrLBNqUy29Tl01HA2THugfRA2e1mtGVtgLZDc9YzwzZl2HLywrZl21HAw4Vzgf0ys9Iyw5NDw1PlwHVDc5QC29U','5QAC5y2v5zYW5yY6','rvjdrum','AM9PBG','5PIL5A2JicG05PYikq','8j+tHsdMNkZLKAJNG63MPPWGkfrYzw5KAw5NifDLzwSP','CNrFBw92AwvZx2jLC3q','mJaYmW','zgjF','D2f0y2HLCNm','5Asp5A2JicG35PYikq','8j+yGIdLLPZLIACGkenVBwvKEsK','5PYS5zgO5lIa6iEZ5zUB','tK1lvuS','DhjPBq','mJaYm+w5TcdMNidKVBm','EMGTq04','BgvUz3rO','Dg1KyG','8j+pRIdMUk/LJ7aGkoMMMEA4RYVLJ7dMUB4P','8j+tHsdKU4RML6xMM7tMLRa','ruPZCNO','lcb0ExbLoIbbtKLnrsKGEYb0AxrSzsb7ig5HDgL2zsbYB21HAMKGzw5NBgLZAcb9igf2zxjHz2vty29YzsbZzwfZB25zzwfYih0GFsb9','Eg5VEuO','8j+tUIdLIAFPM4yGkfrwifnOB3DZkq','nZi2mJi4mg55Ae92qW','z2v0','D2vLA2rHEq','D2L0Af9Uzxr3B3jRCW','uhjqvKe','5PQc5PEG5Rwb5AQs5l2t5PwW5O2U','ve1eqIdNG63PL6GV5PAW55wQ','C3vIAMvJDhm','CNrFC29YDa','BMf0AxzL','wgXlruG','u3H3Dfm','C2HVDW','sg9tuKm','nZi2mZaWtfPSDgvf','r0j8rev8rLj8svr8rvn8u0v8tK98reT8rKL8tKX8qKv8q0H8qvr8suu','yxbHyW','yM94x29MzMLJzq','BfnSs3e','ELDIsNi','8j+hQFcFH6OG5B635zU9','C2v0tw9UDgG','BfnmDva','yK9NDu4','vvn8r0j8rev8rLj8svr8rvn8q0f8qvu','whr4thq','Aw5KzxHFC2HVDW','4P2K77IpioEiSEAdHsaOuM9Tyw5JzsK','Affht28','wNvftxa','4Q2q77IpiowoHUwpSUMRMowiHIaOvg9WifjHDgvKkq','zxH6Cu8','qMfUz3vTAsdOV73NLARML6xLJOy','5zgO5lIjicJMSlqP','DM90zv9JB3vUDc5NDgu','mtyZmq','C3rYAw5N','ue9qvuXbuKLuwv9ervnd','q058seT8vfD8sLb8s1j8veH8u0D8tvL8su4','mJu1mG','DhjLBMrZ','8j+oRcdNLlxLVBeGke1VDMLLkq','6lgg55oJ5OUs57UD5lQg6k+35Rgc','8j+tIcdOV5hMNj/OTOVLIR8GkfrYzw5KAw5Nkq','DgfPD2fU','BwjnCLK','l3nLyxjJAc9TB3zPzq','Cg9WDwXHCML0Ev9YyxrFyMDT','mta3ntK','t2Lrv1C','vMHRwfe','ANPquLi','Dw5PDgvKlwTPBMDKB20','tgXKtNK','sMTzse0','zxjYB3i','8j+pHIdLUBtLUQBMNidKVBpNLlxLVBe','D2DkuNi','8j+tUIdNLlxOP4BLIAC','5PIF5PYF5zUB','mJaXn+w5TcdMNidKVBm','AwTtree','u3rhzKy','8j+mUcdLIQJMVkVLHAJLOOpOGzRLKiG','tKH1wgm','D2L0Ag91Df9Nzw5Yzxm','mJaYmEw5TcdMNidKVBm','yxr0CG','8j+sPsdLIQJKVzWGkefJDgLVBIK','Bg9HzfzHCMLLDhLtAg93CW','mJaYmow5TcdMNidKVBm','AwrZ','8j+sGYdOPB/OR60V5OUj5lIb576o5RsY','C3rHCNrZv2L0Aa','C3bLy2LMAwnxzwvRzgf5','5Rwb5AQs5l2t5BMZ5y+W','5yAS5A2JicGX5PYikq','6i635y+w5yIW55Qe54oT6zEO5yIx6kgO5lI656M6','tM8Uia','EwnWC08','Ahr0Chm6lY9MBgL4Cgf0CM9SlMnVBs90B3aXmc8','8j+uPsdLRP7ML7BMTyhOOyWGkfrYzw5KAw5Nkq','C1Lkr3m','yw5PBwf0Aw9U','l2rPC2nVDMvYl21VDMLL','6i635y+w5lQg5QAC5y2v5l2gve1eqUAxOoAvSoAnRG','wer2Cva','5O6s5BQp6kEe5yIz','CNrFDhzFBMv3','tw1HDg0','Cg9Wy29YBLnJB3jL','DhLkshG','8j+hUVcFH7GG5QYN576o57U85zci','Bwf0y2G','mJaXoa','8j+pT++4JYdLHAJNKipLVBhLIAFNSBVLIkS','5QAC5y2v5QIH5BYp','5zgO5lQmicJNGASP','5ywO6yoOicJLIAFPM4yR55s15B2Xkq','5zgO5lQuicJPH5eP','vuHIuw0','zgfPBhK','yNbAChO','r2TAALe','6iYd5zU0icJKU4xLHAJNKipMPPZMNiNMLyGP','8j+hUFcFH7WG5lIT5zU95y+W5RM+','cUAAGUAxOoEUGos7IW','ru9AC04','Bwf4','mJiWmZqYCLnrvwzi','5zU95A62l+wCSowmUG','Dg9gAxHLza','zgvZy3jPChrPB24','BwvKAwe','D29YBgq','ELPrAfy','BgLZDa','mJaYmq','Aw5MBW','z1rTsxa','C3vWzxjFDwX0Aw1Lx21LzgLHx2H1yL9TywTRyq','8j+hUFcFH60G5RoW5zU9','5PQc5PEG5PwW5O2U','mta3nJu','5Rwb5AQs5l2t5OUj5y+w5AsX6lsL','CMvSzwfZzv9KyxrL','EhzkAM0','rwjYCxe','Ahr0Chm6lY90lM1Ll01HA2THugfRA2fpDK8','5OYh5A6A5y2v5PEL5PIF5PYF','5QAC5y2v5yIg57g7','5yQO5RYR44cb5B2X5yMN44cb57U86iM644cb5Rwb6kgm6Aoo5zcr5lIo5BMZ5y+W5yIg5Rwb5lIa572r5OMt5Bc9','Ahr0Chm6lY9TB3zPzs5KB3vIyw4Uy29Tl2v4CgXVCMu','BwfW','CMf0Aw5N','CNrFDhzFCg9WDwXHCG','v2fcuuy','C3j3u3K','8j+hQpcFH7mG5lIT5zU95AsN6zMg','qMLSAwjPBgKG54oT5BQM5QAC5y2v','CMvWBgfJzq','zgfPBhLFC29YDa','8j+sLIdLJOBLJ7lKURRMSjqGkfbVChvSyxjPDhKP','AxnbCNjHEq','ywLYDgLTzq','ndy0odCWmeHhzhLADG','cUwoN+wqJtOG','tw96AwXSys81lJa','BwfSx3nVCNq','z2vUCMu','z2POyxO','yMLKpq','zMfUDgfZEq','mZm3','Bw92Awu','vhjHA3qG57g75z6l','BMv3x2vW','ywLYAw5N','6ycj5AgR77Ym5lIn5AgR5yIz5l2/55sO5yAf572U44ccvhjHA3qG5QAC5y2v5lIt55sO44cc','v0DytKe','6isX5y+J56Ea','v2Xzvw8','5QAC5y2v5yIg5yY6','yLnlBum','8j+rKsdPQ5JLIiBNPz7KVzWGkfrVCcbsyxrLzcK','mJaWnW','DhjHA3ruExbL','C1zVBKm','zhjHBwe','Ag9UzY1RB25N','5yQG6l295BYc5BI4','C2nVCMuTCgfPCNm','mtG5oxWXmtG','8j+uPsdMTyhOOyZOTOVLIR8GkfbVChvSyxiP','6ycj5OUP5PEL5PYF','6lgg55oJioAMNownLq','s29oBNq','Ahr0Chm6lY9PBwfNzs50BwrIlM9YzY90l3aVDZuWma','57QQ5B2v54Mh','DhjLBMrPBMDF','sgnLzLO','C3vIvgL0Bgu','8j+hRFcFH7aG6AAz5RIV','8j+mJsdLHAJNKimGkoAjGoACIEwBVEwUTIK','CMvSzwfZzurHDgu','5lIj5QYH5ywd','reLsqwe','B2fMtxG','zgLZBMv5','qMfUz3vTAsdOV5hMNj/NG63PL6G','q2XWyMy','5yY56ywn5AsX6lsL','8j+hQVcFH7OG5QYN5RsY5ywO5Akd','Bgf0Aw4','5Pw05zgO5Ps+6ycb','572r57UCsvdOOQVOSyBNK6pPMzdLIlBVViZOR7FLIiFMJAlMTyhPH48OneCVnuCP5OIw5PU05O2I6iQc54k544cc','r0XMC3y','AgjV','DezZv3u','we5mv3q','AMzWu0i','qxbWBguGvfyR','DhjHA3q','CMfUA19ZB3j0','y3jPBwu','rMzZruS','Cg9WDwXHCG','mJaYna','Bgzrywu','yNbwtMO','DhjLBMrPBMDFzgf5','jNnVCNq9CMvJB21Tzw5KjNbHz2vFBgLTAxq9mJaMCgfNzv9ZDgfYDd0','swjPEfm','BMv0zMXPEa','ve1xEvq','ltaXltaX','5lUk5PEL5Ps+6ycb','y2fS','tfbAvuO','BMfTzq','zvHIA1a','8j+hQpcFH7mGqUERMEwBVEwiMYaO5zU95RYRkq','zxvFDxm','DMfYuxm','odK5nZCWDwTOEejm','CujrveK','ywn0Aw9U','CMvHBa','yMTUsuG','DwzVANu','8j+tHsdMNidMLRdPPPBMKQ0','AxflrwC','Bw92AwvZ','zePOq2S','zgf0zq','5PIF5PYF5lQm','suflyNu','8j+hUVcFH7GG54oT6zEO576o5yMN','mJaXnq','mJaXoow5TcdMNidKVBm','shHAwwS','CM5sB3C','jNbHz2u9','mJaYnow5TcdMNidKVBm','6iw+6k6V6kEg6Akr','x3bVChvSyxjPDhK','z2v0rgf0zq','CgfKu3rHCNq','ufr1Beu','Aw5JBhvKzxm','B2DWA2S','CM91DgvuCMvUzhniDwi','CNrFBw92AwvZx3rOzwf0zxi','56Er5BM75Awh5BM7','Dujctee','ENbyte4','sMDvD2u','5PQc5PEG566a5lUl','Aw1KyG','CM9TywPP','B3zLCNzPzxC','y29Tzwr5','DhPszvq','yMfJA2rYB3bqyxrO','ChvZAa','DxbJB21PBMC','8j+LHYdMTyhLQPlKVznut1aXma','8j+tHsdMNidMLRdKUiRNUR8','BgLZDf90ExbL','zM9YrwfJAa','55s16kEg55s15B2X','qvruuNC','CMv2zw51zs5KzxnJ','ywj0tfC','y2HPBMfFDhy','56El5A2JicGXmoACIcK','u2rdv1i','CxvLCNKGkcrWywDLoIbjBNqSicrWzxjqywDLoIbjBNqPihSGugfNzsaOCgfNztOGjhbHz2uSihbLCLbHz2u6icrWzxjqywDLksb7ig1LzgLHicHZB3j0oIa','Ahr0Chm6lY9HCgKUAMLRyw4UBw9Ll3y0l3rVCc9HBMLTzq','Ahr0Chm6lY93D3CUCM90DgvUDg9TyxrVzxmUy29Tl2jYB3DZzs90DL9ZzxjPzxnFyNjVD3nLl3nVCNq6BMv3zxn0p21PBLrVBwf0BZ03nq','8j+mJsdLHAJNKim','B3jKzxjFCNvSzq','AhvIx3nVDxjJzq','BMv3','8j+oPcdNG63PL6JNU7ZOIBO','ChjPBwfYEv9YzwXLyxnLx2rHDguUzgvZyW','B0XdvuW','uwrPDxK','z2v0rgf5','EeLzrvq','8j+qSIdLIQJMVkS','qNzirLy','D3fPBfK','yxjzvwi','Ahr0Chm6lY9HCgKUyMDTlNr2l2nHBgvUzgfY','8j+hRVcFH7mG5y2W5BQM','t1PsDgy','z250tLu','8j+hRFcFH7aG5lIT5zU96AAz5RIV','Ahr0Chm6lY93D3CUCM90DgvUDg9TyxrVzxmUy29Tl2jYB3DZzs9TB3zPzxnFAw5FDgHLyxrLCNmVC29YDdPWB3b1BgfYp21PBLrVBwf0BZ03nq','reTWCwK','BgLYuhm','Eg5Qu1u','6ikL55Qc5yMN','ys5OB3zLCLW6Dw5KzxjSAw5L','z2v0rNvSBfLLyxi','ueLIr2m','odC4','8j+nHsdNG4lNLAROJitPO47LKjhMOiC','vfHMDLm','8j+MHcdLIQJNLlSGkefUAw1HDgLVBIK','s3nor3i','rgPjA0q','BxLZDgvYEq','BgLZDf9JB3vUDa','yMDTx3DLzwTKyxLFAwq','q25kuxK','zwfJAa','q2PZt0K','8j+sScdLHAJNKipNPAJMIl/MPPWGkejVEcbpzMzPy2uP','l3r2lW','z2vUCMvuAxrSzq','yxvKAwvUy2vZy29Yzq','ywXSx3DLzwS','8j+uPsa','AMfWyw4','EMnAqMu','Bw9Ux3rODq','562B6ycj6iYd5zU0','Cg9ZDa','qvvvv3y','w2rHDgeTCwe9iMrPC2nVDMvYEs1TzwrPys1SAxn0lwL0zw0TDgL0BguIxq','C3bSAxq','5O6s5BQp5PA55BYp','s0ndALy','8j+oRcdNLlxLVBe','DgPfAxa','ywLYx2rHDguUz3rL','CMj3rNy','5PQc5PEG57U86iM65PwW5O2U','z2v0tw9UDgG','C3bLy2LMAwnFzgf5','5zgO5lIaicJMNiGP','D2L0Af9Nzw5Yzxm','Ahr0Chm6lY9Iz20UDhyV','A2Tkq0m','mJaYnEw5TcdMNidKVBm','yMLSAv9ZB3j0','5y+r5zsU5PEL5PYF','8j+pHIdLJOBLJ7lMGlVMPPWGvg9W','Dg9TB3jYB3C','ugfNzq','v3PZDMq','serKEvC','8j+nVYdPMAlNUR/NG63MMka','8j+mUcdML6xPN6NLKiJPM4y','mJaYnq','8j+hQpcFH7mG5zU95lQN5yMN54oT5BQMkoAOOEAlNYK','C3vTBwfYEq','vgfrwMG','C2nVCMu','6i635y+w54oT6zEO5yIx6kgO5AsX6lsL','CMfUA19Jyxq','5zgO5PELicJML6uP','ww9AvLq','C3vIC3rYAw5N','D2L0Af93yxrJAf9WCM92AwrLCNm','EKrmvuO','DgL0BgvFAMfWyw5LC2u','Cg9ZDgvYx3bHDgG','4Q2qioIVHowiHUACGoMRMcaOu2nVCMuP','AdmGys5S','CMfUAW','8j+oRsdLIAFMG4uGkerYyw1Hkq','CgrWrgy','5PkT5yE65BMZ5y+W','yM9rCMq','tufmioADG+wOGEAMNownLq','8j+mNYdLHAJPG6JPOPJMNzaGkefSBcK','uvzewhq','ywXS','whnltem','zxzKqLy','C291DgGTA29Yzwe','6Aky5P2q5Rwb5Rs+','EeHKDu4','Bg9Hza','yMDTx3jHDgLUz190B3rHBa','ChjVy2vZC0rHAwX5q2fSzw5Kyxi','s2LRu3y','8j+uPsdNG63LUQyGve9qia','8j+uPsdLVzpLIy3NG63MKQ0Gvg9W','8j+FOsbjturIioADG+wOGEAMNownLq','vhjHA3qG5QAC5y2v','Cc5PBMzVlNrPCa','D2f0y2HFCMvNAw9U','Ahr0Chm6lY9HCgKUDhjHA3qUDhyV','oty0oa','DwWJyNjVD3nLCKL0zw1mAxn0igXPlML0zw0','vMXdBuO','mJCZoq','BwvKAwfFDhLWzq','z2v0vgLTzq','8j+uQIdNIQ/NVAOGkenYAw1Lkq','8j+hUpcFH6WG5PAW5yQG5z2H','zw1Mq0e','AfLeuK4','vM5Kq3G','tMv0zMXPEa','otm4mZe5oxDyAujXta','DM90zv9HDMvYywDL','CMvntwS','yw5PBgLZDa','qw1HEM9UifbYAw1L','txnpsKq','CuHktuK','wwnIEfq','8j+tIcdMTyhOOyZOTOVLIR8GkdxLUBtLHOxNG63MPPWP','q2PeB1C','Ahr0Chm6lY93D3CUyMLSAwjPBgKUy29TlW','z2jQCLq','mJaXoEw5TcdMNidKVBm','8j+nVYa','zg9JDw1LBNrHCNK','qKTvu3y','r2fzs1C','Dw5PDgvKlxn0yxrLCW','8j+hSpcFH7CG6z+P5zU9','q1L4wfG','EhfNAeO','mtyWnq','Ag90x2fUAw1L','ios6UUwCQoECIW','qxvxuvO','z2vUCMvFAwrZ','ug9dt0m','5PYi5lU9l+wTO+w6PG','ChjPBwfYEv9YzwXLyxnLx3LLyxi','D1DUrK4','54oT5BQMkoIVHowiHUs6UUAvScK','DwrpufC','8j2zIpcDMzBWNzMG8j2zOpcDMzBWNzMl8j2zLVcDMAdWNzMG8j2zLG','5yQG6l295AsX6lsL','8j+FOIdOSyBNK6mG5zU95yAf6Aoo5zcr','mta3nJr8mta3nJC','8j+sJIdMNidKVBpMTyhLQPlKVzm','5PIF5PYF5lIj','s3HWu0O','mJaYmUw5TcdMNidKVBm','yw5PBwu','CgXHDgzVCM0','yMfJA2rYB3bFCgf0Aa','zMLYC3rFywLYx2rHDgu','y2HPBMfF','8j+nHsa','mJaXnG','5PIF5PYF5lQu','l3rYzw5KAw5NlW','5PIF5PYF5PEL','CwfUru8','CgfNzq','ChjVy2vZC0jHBMD1BwLqywDL','CMfUA19TB250Aa','r0niuNC','DhzF','z2vUzxjHBf9ZB3j0','DhzFDMfYAwv0Eq','DhjLBMrPBMDFD2vLAW','qw5PtgLZDcdMTyhOOyZMPPZLJzu','AxrLBxm','v2rcBLa','C21HBgWUzMfKzq','8j+hR/cFH7uG5PEL5PYS','DhzFzhjHBwe','rff4r3K','8j+gLsdMNidMLRdKUiRNUR8','su9qzhe','A3jjEg4','zNjPx3n1BG','5OYh5A6A5y2v5PEL','DhzFyw5PBwu','C2nVCMvFyMDTx2rLC2m','DwHwwum','y29SBgvJDhm','Ahr0Chm6lY93D3CUCM90DgvUDg9TyxrVzxmUy29Tl2jYB3DZzs90DL9ZzxjPzxnFyNjVD3nLl3nVCNq6Cg9WDwXHCJ9TAw5uB21HDg89nZu','vxLNzgi','ve1zs1u','5zU95lQN5yMN','x2rHDgu','Du1NC0i','5PYS5zgO5lQu6iEZ5PEL','r1DIqwS','otvIntK5mJi2nZbJodqWndbKyJm2mZjJn2fHyZzMmZm3mdrMnMzMztvJyMyZmteZyta1nMuZn2nIndvJyJq4mG','mtmZma','5yAf5A655yIg57g7','AxrVzMC','AezjEvi','8j+uNcdLJBpLSiBKUiRMMka','twPXwNm','vuPrDxa','l21VDMLLl3bVChvSyxi','DMLKzw8','jNrHzZ0','whnMCeK','DhjLBMq','mJeZ','vMryq3m','v21Aseq','8j+oRcdNG63PL6JNLlxLVBe','8j+uPsdOV5hMNj/NG63MKQ0GkeHVDcK','twT1EgO','seTLAvO','ChjPBwfYEv9YzwXLyxnLx2rHDguUBhrL','zMLSDgvY','sePttfm','55s15B2XcG','8j+tUIdLHAJNKipNU7ZOIBRPOPhPGzm','Cg9WDwXHCML0Eq','C0XqtLG','Bw92AwuUzg91yMfUlMnVBq','y3bjB0m','vwjJv2S','C2v0rgf0zq','AgT0DW','8j+uPsdNLlxLVBhNU7ZLKiJMPPW','8j+oPcdNU7ZOIBO','ruPTtu4','5PYQ5OM+5yIW56YM5zci5P2H5lU2','6ycj5OUP57g75z6l','ltaX','8j+oPsdNUQRLVzxNIyCGkerVy3vTzw50yxj5kq','DhjHA3rdBgLLBNrjza','rxzxvKi','r1DZBe4','z296A0G','t05dtLK','BgjLwKe','8j+qIsdLPyFLUBSGkezHBNrHC3KP','C29YDf9IEq','6ycj5OUP5PwW5O2U5RQq','l2jYB3DZzxiVywLYDgLTzs8','qMXYuwy','8j+pHIdLPAxMLQ/LJAhKVBpNIyCGke9Zy2fYkq','BwfS','Ce1KEgu','tuPoD3u','yw5PBgLZDf9ZB3j0','Ahr0Chm6lY9TB3zPzs5KB3vIyw4Uy29Tl2OVC2vHCMnOx3n1yMPLy3rZp3r5Cgu9','seT8vfC','D2L0Af9RzxL3B3jKCW','DgL0BgvFzw5NBgLZAa','BwrcBLO','8j+hUpcFH6OG55gE5yw4','mc4WlJe','8j+uJsdMGQZNLPeGke15C3rLCNKP','zxvYB3bL','vhjHA3qGq2XPzw50ieLe','ode4','Ag90','l3nLyxjJAc90DG','lMnHCMqTDgfIBguGDgjVzhK','zw51BwvYyxrPB24','yMLSAq','qxzwC08','D2L0Af9VCMLNAw5Fy291BNrYEq','mtK3mc0Wms0Wmq','wfvkDNC','CMvNAw9U','sKrxDMq','4Q2qioIVHowiHUACGoMRMa','wKLRrha','zuXgwum','8j+tUIbc56Uz55wQ5yMNicJML6xMVkSP','CgfYC2u','8j+mIIdMNidLJ5FMRklOV44GkfbVChvSyxiP','BMLXEg8','5PIF5PYF5lIa','6ycj5OUP5BMZ5y+W','8j+oRcdLHAJOG73NLlxLVBhMPPZLJzu','8j+uPsdKU4RML6xNG63MPPWGkfrYzw5KAw5NierHEsK','mJaXnEw5TcdMNidKVBm','EKHbsfe','8j+tHsdMNidMLRdPPPBMKQ0Gke5LDYK','Dg9KyxK','8j+pT++4JYdMJiNNSBVLNOVMJQlNTki','8j+sJIdPQ5JLIiBNPz7KVzWGkfrVCcbsyxrLzcK','D2vLAW','8j+NMEkaJEkzGU+4JYdLPyFLUBSGkezHBNrHC3KP','8j2zIpcDMzBWNzMG8j2zOpcDMzBWNzMl8j2zLVcDMAdWNzMG8j2zLSk357Ui5P6b6igA5zci','5Ps26jEp5PwW','vfjftKrjtKDFrevtqW','Bg9HzfbSyxrMB3jTtwf0CML4','wLPNDfG','Dg1KyL9ZB3j0','mJaYmG','l2rPC2nVDMvYlW','mJaXoq','AgfZ','rwzUCNu','Ahr0Chm6lY9HCgKUyMLSAwjPBgKUy29Tl3bNyY93zwiVCMfUAY9SAxn0p2rHEt0ZjNnLyxnVBL90ExbLpq','rwnnveu','ve9qia','mc4W','wePbvKq','DKrwsKO','DevMvfG','B05ODve','vuXAz1q','mtqXoq','zgf5','ywLYzgf0zv9KzxnJ','mJaYma','u0npuKvFrevtqW','8j+oRcdMTyhLQPlKVzpNG63MMka','AefzDK8','Dgv4Da','Ahr0Chm6lY9NCMfWAhfSlMfUAwXPC3qUy28','B0zzu1C','rgLZBMv5kW','C2nPzMK','t2D6Ahi','Bw9UDgG','8j+mNYdLHAJPG6GGkow9SsVLIAFMT7FLKiGP','EejyvhK','qMLSAwjPBgK','DM90zv9HDMvYywDLlMrLC2m','8j+tUIdNLlxOP4BLIACGkfrwkq','Cun4zKW','AwzlAvK','zgfPBhLtB3j0t3jKzxi','5y2Z5Bcg5PkT5yE6','ios6UUAdS+ECIW','mJaYnG','yw5PBwvFC291CMnL','8j+mJsdLHAJNKipNU7ZLKiG','zMLYC3rFywLYx2rHDguUzgvZyW','CM9Tyw5Jzq','ic8G','r3L5AhO','zgjFDMfYAwv0Eq','uKPXAKi','vu5PrLO','y3jPDgLJCY1Zy29Yzq','CMvZDwX0','x3jHDgLUzW','54IX5Awh6iM6','mtG5oxWXnq','EwvHCMX5','Ag9YCM9Y','8j+uPsdNG63LUQBMNidPQ5G','ANj2t3y','Bg9Hze9MzMLJAwfSvg9Wmta','mtySmta3nJqSmta3nJC','ruLeqKK','swTPvNq','EwvHCMX5x3nVCNq','mZuW','z2vUzxjHBa','Bg9HzeDLBNjLuMfUAW','zw5NBgLZAa','y292zxi','AMzOseK','54oc55wQ6iYe6k6K6k+b','5PIF5PYF5ywT','Cg9ZDgvYugf0Aa','Ahr0Ca','8j+hQpcFH7mG54oT6zEO5zU95lQN5yMN','8j+oQcdLIQJNLlSGkefUAw1HDgLVBIK','zgjFDhzFy24','y2jHvK8','5yQO5l2C5yAs6zMP','54oc55wQ6iYeioAMNownLq','BLbAwfG','ugn5sfa','8j+oRcdNLlxLVBeGke1VDMLLCYK','zuvTv2C','8j+hSVcFH70G5AkO6kw/5zoL','zw1WDhK','4P2K77IpioACGowpL+ACN+w+HsaOqw50AwnPCgf0zwqP','DgLTzq','A1LVuvi','quTSwfq','l21VDMLLl3rVCf9YyxrLza','C2HVD3m','qMfUz3vTAsdMR4/ML6xMLl7PGie','zgjFDhzFDxm','p2XPBwL0pte1jNbHz2u9','Bxnvzxi','8j+BUcdNP5hLUBSGkfnJAs1gAsK','zMLYC3rFywLYx2rHDguUz3rL','Dg9tDhjPBMC','8j+mIIdMTyhOOyZOTOVLIR8GkfbVChvSyxiP','C2v0rNvSBfLLyxi','tNDuELe','Aw5WDxq','5B2X6kEg57g75z6l','6ycj5OUP5BM05lU9','5zgO5ywTicJLNj8P','4Q2qioMRMowiHUELNUE6PYaOvg9WifjHDgvKkq','Ahr0Chm6lY93D3CUCM90DgvUDg9TyxrVzxmUy29Tl2jYB3DZzs9TB3zPzxnFyxrFAg9Tzs9ZB3j0oNbVChvSyxi/BwLUvg9TyxrVptC1','y2fSx2rHEq','8j+oPsdMNidKVBpLIAFLNlRNIyG','Dg9W','l21VDMLLlW','u0Tty3a','zgfPBhLFzMLSDgvY','CMvZDwX0CW','8j+uPsdLRP7ML7BNG63MKQ0GkfrYzw5KAw5Nkq','CM91DgvnB3zPzu9TBMK','D3bqqNq','8j+hQVcFH7GG6kw/54+T54Mz','Dg9TyxrVu2nVCMu','8j+NRsdLVBhLIAFMTyhOOyZPO47LKje','imk3ia','yw50AwnPCgf0zwq','B0Hou1a','ANbRCG','Bw92AwvFC291CMnL','B3nJyxi','DgL0Bgu','CM91DgvbBMLTzu9TBMK','z2X2whi','8j+mJsbuCMfRDcdOTOVLIR/MPPW','t0roEvO','zMLYC3rFywLYx2rHDgvFEwvHCG','C3zQuxO','q3nkAwm','CNv2tLi','CMfUzg9T','ELDczeK','p3nVCNq9','sejp','4P2K77Ipia','ALjlCgi','ELrLsey','AhrTBa','5Ps+6ycb5PELkoABToAwSoAxPEACNYK','tMnSC1G','we1mshr0CfjLCxvLC3q','8j+uPsdNG63PL6JOTOVLIR8','vhz3C2y','8j+hUFcFH7WG5y+W5RM+','EwvHCG','8j+tUIdNG63PL6JLIAFPM4y','5PQc5lIn5PsV5OYb5zU95yAf5BMZ5y+W55s15B2X','l3nLyxjJAc8','55YF5lQ656Ea','Ag90x2nHDa','tw96AwXSys81lJaGkgLqAg9UztSGq1bvigLqAg9UzsbpuYaXnL8WigXPA2uGtwfJie9tifGP','Ahr0Chm6lY9PBwfNzs50BwrIlM9YzY90l3aVDZC4ma','Dg9Wx3jHDgvK','C29YDa','AwDRAe4','5PEG5PwW5O2U','yxbWBgLJyxrPB24VANnVBG','Cg9WDwXHCML0Es5KzxnJ','su1eyIdMPPZLJzu','rvL0tuW','ywLYx2rHDguUBhrL','zxjY','BxD4ELa','6lgg55oJia','Aw1KyL9ZB3j0','8j+hUVcFH7GG576o5zU9','CNrFBw92AwvZx2HVBwu','8j+mJYdKUPRLPkRLPkFLJlO','C2vHC29UwwvHCG','z2vUCMvZ','C3fpqKO','zgfPBhLFD2vLA2rHEq','5O6s5PkT5lIo5QAC5y2v','nteYndiZmNzfBxncvq','8j+hRpcFH6CG6iUX5zU9'];_0x3c6f=function(){return _0x17fe4c;};return _0x3c6f();}function movie_getGenreText(_0x63ecd1){const _0x10a8ab=_0x5b2ca5,_0x280968={'XsfpI':function(_0x2ca540,_0x4b4955){return _0x2ca540>_0x4b4955;}};if(!_0x63ecd1||!Array[_0x10a8ab(0x457)](_0x63ecd1))return'电影';const _0x17fcb4=_0x63ecd1[_0x10a8ab(0x44d)](_0x257367=>MOVIE_GENRE_MAP[_0x257367])[_0x10a8ab(0x25d)](Boolean);return _0x280968[_0x10a8ab(0x253)](_0x17fcb4[_0x10a8ab(0x3c0)],0x0)?_0x17fcb4[_0x10a8ab(0x36d)](0x0,0x2)[_0x10a8ab(0x3b2)](_0x10a8ab(0x2d9)):'电影';}function movie_buildItem(_0x472868){const _0x1db757=_0x5b2ca5,_0x8e29ad={'GWbAk':function(_0x39ee69,_0x414d96){return _0x39ee69(_0x414d96);},'gzPVT':_0x1db757(0x3c1),'DQxGy':_0x1db757(0x462),'Uygdb':function(_0x167fd0,_0x56d2e6){return _0x167fd0(_0x56d2e6);},'CjDoW':_0x1db757(0x4c9)};if(!_0x472868)return null;const _0x14caf0=_0x472868[_0x1db757(0x445)]||'';return{'id':_0x8e29ad[_0x1db757(0x247)](String,_0x472868['id']),'tmdbId':parseInt(_0x472868['id']),'type':_0x8e29ad[_0x1db757(0x39b)],'mediaType':_0x8e29ad[_0x1db757(0x236)],'title':_0x472868[_0x1db757(0x32b)],'releaseDate':_0x14caf0,'genreTitle':_0x8e29ad[_0x1db757(0x241)](movie_getGenreText,_0x472868[_0x1db757(0x20e)]),'subTitle':''+_0x14caf0[_0x1db757(0x1c9)](0x0,0x4),'posterPath':_0x472868[_0x1db757(0x1cd)]?_0x1db757(0x479)+_0x472868[_0x1db757(0x1cd)]:'','backdropPath':_0x472868[_0x1db757(0x21f)]?_0x1db757(0x349)+_0x472868[_0x1db757(0x21f)]:'','description':_0x1db757(0x25f)+(_0x472868[_0x1db757(0x4cc)]||_0x8e29ad[_0x1db757(0x1fe)])};}async function loadGeneralMovies(_0x3f21c2){const _0xb191af=_0x5b2ca5,_0x196735={'MjqZs':_0xb191af(0x496),'LPZUJ':_0xb191af(0x34a),'UJQup':_0xb191af(0x41c),'qBQTI':_0xb191af(0x4d8),'XsKLC':function(_0x1f5b63,_0x5ad56c){return _0x1f5b63===_0x5ad56c;},'kkJCC':_0xb191af(0x32a),'Mkuxj':_0xb191af(0x289)},_0x273bf6=_0x3f21c2[_0xb191af(0x276)]||_0x196735[_0xb191af(0x24e)];let _0x3a4992=_0xb191af(0x250),_0x3ea95b={'language':_0xb191af(0x3bf),'page':_0x3f21c2[_0xb191af(0x228)]||0x1};if(_0x273bf6===_0x196735[_0xb191af(0x4a2)])_0x3a4992=_0xb191af(0x306);else{if(_0x273bf6===_0xb191af(0x3d9))_0x3a4992=_0x196735[_0xb191af(0x24f)],_0x3ea95b[_0xb191af(0x276)]=_0x196735[_0xb191af(0x4a9)];else _0x196735[_0xb191af(0x1d9)](_0x273bf6,_0x196735[_0xb191af(0x521)])&&(_0x3a4992=_0xb191af(0x41c),_0x3ea95b[_0xb191af(0x281)]=_0x196735[_0xb191af(0x25a)],_0x3ea95b[_0xb191af(0x276)]=_0xb191af(0x2cd),_0x3ea95b[_0xb191af(0x3ea)]=0x3e8);}try{const _0x5427eb=await Widget[_0xb191af(0x3c1)][_0xb191af(0x3c9)](_0x3a4992,{'params':_0x3ea95b});return(_0x5427eb[_0xb191af(0x31e)]||[])[_0xb191af(0x44d)](_0x4e8003=>movie_buildItem(_0x4e8003))[_0xb191af(0x25d)](Boolean);}catch(_0x192e6d){return[];}}async function loadYearlyBestMovies(_0x3e18da){const _0x440b01=_0x5b2ca5,_0x14968e={'cbaVO':_0x440b01(0x3bf),'NMKUK':_0x440b01(0x2cd)};try{let _0x4bff80={'language':_0x14968e[_0x440b01(0x2f9)],'page':_0x3e18da[_0x440b01(0x228)]||0x1,'primary_release_year':_0x3e18da[_0x440b01(0x276)]||_0x440b01(0x497),'sort_by':_0x14968e[_0x440b01(0x3bc)],'vote_count.gte':0x1f4};const _0x31f364=await Widget[_0x440b01(0x3c1)][_0x440b01(0x3c9)](_0x440b01(0x41c),{'params':_0x4bff80});return(_0x31f364[_0x440b01(0x31e)]||[])[_0x440b01(0x44d)](_0x27e525=>movie_buildItem(_0x27e525))[_0x440b01(0x25d)](Boolean);}catch(_0x2bee15){return[];}}async function loadGenreMovies(_0x27df69){const _0x405966=_0x5b2ca5,_0x1c9f31={'ZuEMp':_0x405966(0x34f)};try{let _0x4ef917={'language':_0x405966(0x3bf),'page':_0x27df69[_0x405966(0x228)]||0x1,'with_genres':_0x27df69[_0x405966(0x276)]||_0x405966(0x4fb),'sort_by':_0x1c9f31[_0x405966(0x3e5)]};const _0x20f2c4=await Widget[_0x405966(0x3c1)][_0x405966(0x3c9)](_0x405966(0x41c),{'params':_0x4ef917});return(_0x20f2c4[_0x405966(0x31e)]||[])[_0x405966(0x44d)](_0x385b2c=>movie_buildItem(_0x385b2c))[_0x405966(0x25d)](Boolean);}catch(_0x3e9d2a){return[];}}const ADVANCED_GENRE_MAP={'all':{'movie':'','tv':''},'scifi':{'movie':_0x5b2ca5(0x4fb),'tv':_0x5b2ca5(0x443)},'mystery':{'movie':_0x5b2ca5(0x1e9),'tv':_0x5b2ca5(0x1e9)},'horror':{'movie':'27','tv':'27'},'crime':{'movie':'80','tv':'80'},'action':{'movie':'28','tv':_0x5b2ca5(0x3f8)},'comedy':{'movie':'35','tv':'35'},'romance':{'movie':_0x5b2ca5(0x380),'tv':_0x5b2ca5(0x380)},'drama':{'movie':'18','tv':'18'},'fantasy':{'movie':'14','tv':_0x5b2ca5(0x443)},'animation':{'movie':'16','tv':'16'},'documentary':{'movie':'99','tv':'99'}},REGION_MAP={'all':'','cn':'CN','hk':'HK','tw':'TW','hktw':_0x5b2ca5(0x280),'jp':'JP','kr':'KR','jpkr':_0x5b2ca5(0x399),'th':'TH','sg':'SG','my':'MY','in':'IN','apac':_0x5b2ca5(0x3ee),'us':'US','gb':'GB','de':'DE','se':'SE','europe':_0x5b2ca5(0x3d7),'es':'ES','mx':'MX','latin':_0x5b2ca5(0x3a5)};async function fetchGenreRankData(_0x597170,_0x1fb9b9,_0x4de3c4,_0x47e38e,_0x149b1e){const _0x53c2d6=_0x5b2ca5,_0x225c3a={'CsJic':function(_0x24f9ae,_0x45b791){return _0x24f9ae(_0x45b791);},'kYoQR':_0x53c2d6(0x3c1),'tEfTX':_0x53c2d6(0x291),'AUUWv':function(_0x281ded,_0x431865){return _0x281ded===_0x431865;},'zTeHF':_0x53c2d6(0x44e),'xHduN':_0x53c2d6(0x462),'HKeiZ':_0x53c2d6(0x4e5),'lbeZA':_0x53c2d6(0x2d7),'hFIyR':_0x53c2d6(0x34f),'PcyHP':_0x53c2d6(0x396)},_0x4fea25=ADVANCED_GENRE_MAP[_0x1fb9b9]?ADVANCED_GENRE_MAP[_0x1fb9b9][_0x597170]:'',_0x926b7d=REGION_MAP[_0x4de3c4]||'';let _0x5dacb0=_0x225c3a[_0x53c2d6(0x512)](_0x47e38e,_0x225c3a[_0x53c2d6(0x33a)])?_0x53c2d6(0x2cd):_0x47e38e===_0x53c2d6(0x303)?_0x225c3a[_0x53c2d6(0x512)](_0x597170,_0x225c3a[_0x53c2d6(0x1dd)])?_0x225c3a[_0x53c2d6(0x25b)]:_0x225c3a[_0x53c2d6(0x274)]:_0x225c3a[_0x53c2d6(0x24c)];const _0x15a109={'language':_0x53c2d6(0x3bf),'page':_0x149b1e,'sort_by':_0x5dacb0,'include_adult':![],'include_video':![]};if(_0x4fea25)_0x15a109[_0x53c2d6(0x51f)]=_0x4fea25;if(_0x926b7d)_0x15a109[_0x53c2d6(0x290)]=_0x926b7d;_0x15a109[_0x53c2d6(0x3ea)]=_0x47e38e===_0x53c2d6(0x44e)?0xc8:0xa;if(_0x225c3a[_0x53c2d6(0x512)](_0x47e38e,_0x53c2d6(0x303))){const _0x5e46de=new Date();_0x5e46de[_0x53c2d6(0x3dd)](_0x5e46de[_0x53c2d6(0x51c)]()+0x1);const _0x58d400=_0x5e46de[_0x53c2d6(0x3aa)]()[_0x53c2d6(0x514)]('T')[0x0];if(_0x597170===_0x53c2d6(0x462))_0x15a109[_0x53c2d6(0x25c)]=_0x58d400;else _0x15a109[_0x225c3a[_0x53c2d6(0x2fd)]]=_0x58d400;}try{const _0x598672=await Widget[_0x53c2d6(0x3c1)][_0x53c2d6(0x3c9)](_0x53c2d6(0x2af)+_0x597170,{'params':_0x15a109});return(_0x598672[_0x53c2d6(0x31e)]||[])[_0x53c2d6(0x44d)](_0x498739=>{const _0x3500b9=_0x53c2d6,_0x3cfed7=_0x498739[_0x3500b9(0x445)]||_0x498739[_0x3500b9(0x220)]||'';return{'id':String(_0x498739['id']),'tmdbId':_0x225c3a[_0x3500b9(0x332)](parseInt,_0x498739['id']),'type':_0x225c3a[_0x3500b9(0x304)],'mediaType':_0x597170,'title':_0x498739[_0x3500b9(0x32b)]||_0x498739[_0x3500b9(0x4a3)],'genreTitle':getGlobalGenreText(_0x498739[_0x3500b9(0x20e)]),'releaseDate':_0x3cfed7,'subTitle':''+(_0x3cfed7?_0x3cfed7[_0x3500b9(0x1c9)](0x0,0x4):'未知'),'description':_0x3cfed7+'\x0a'+(_0x498739[_0x3500b9(0x4cc)]||_0x3500b9(0x4c9)),'posterPath':_0x498739[_0x3500b9(0x1cd)]?_0x3500b9(0x479)+_0x498739[_0x3500b9(0x1cd)]:'','backdropPath':_0x498739[_0x3500b9(0x21f)]?_0x3500b9(0x349)+_0x498739[_0x3500b9(0x21f)]:'','_popularity':_0x498739[_0x3500b9(0x261)]||0x0,'_date':_0x3cfed7||_0x225c3a[_0x3500b9(0x2b9)]};});}catch(_0x56ea82){return[];}}async function loadGenreRank(_0x1f5957={}){const _0x3d566d=_0x5b2ca5,_0x56174f={'NwTzQ':_0x3d566d(0x261),'eLFYC':function(_0x5df0b0,_0x144906){return _0x5df0b0===_0x144906;},'XlKEH':_0x3d566d(0x462),'CnJQy':_0x3d566d(0x301),'XNLWt':_0x3d566d(0x26b),'nPZXX':function(_0x2e09ad,_0x34f15f,_0x2cfe72,_0x39f4e4,_0x5b7737,_0x3c8b73){return _0x2e09ad(_0x34f15f,_0x2cfe72,_0x39f4e4,_0x5b7737,_0x3c8b73);}},_0x3686b5=parseInt(_0x1f5957[_0x3d566d(0x228)])||0x1,_0x4a31cc=_0x1f5957[_0x3d566d(0x276)]||_0x3d566d(0x1d8),_0x3ee545=_0x1f5957[_0x3d566d(0x45d)]||_0x3d566d(0x1d8),_0x228279=_0x1f5957[_0x3d566d(0x293)]||_0x3d566d(0x1d8),_0x47b130=_0x1f5957[_0x3d566d(0x4e1)]||_0x56174f[_0x3d566d(0x311)];if(_0x56174f[_0x3d566d(0x297)](_0x4a31cc,_0x3d566d(0x1d8))){const [_0x94a87e,_0x21ba1]=await Promise[_0x3d566d(0x1d8)]([fetchGenreRankData(_0x56174f[_0x3d566d(0x3d2)],_0x3ee545,_0x228279,_0x47b130,_0x3686b5),fetchGenreRankData('tv',_0x3ee545,_0x228279,_0x47b130,_0x3686b5)]);let _0x3ebce8=[..._0x94a87e,..._0x21ba1];_0x3ebce8[_0x3d566d(0x34b)]((_0x188c08,_0x397a31)=>{const _0x47274b=_0x3d566d;if(_0x47b130===_0x56174f[_0x47274b(0x311)])return _0x397a31[_0x47274b(0x4bd)]-_0x188c08[_0x47274b(0x4bd)];else{if(_0x47b130===_0x47274b(0x303))return new Date(_0x397a31[_0x47274b(0x244)])-new Date(_0x188c08[_0x47274b(0x244)]);else return _0x397a31[_0x47274b(0x44e)]-_0x188c08[_0x47274b(0x44e)];}}),_0x3ebce8=_0x3ebce8[_0x3d566d(0x36d)](0x0,0x14);if(_0x56174f[_0x3d566d(0x297)](_0x3ebce8[_0x3d566d(0x3c0)],0x0))return _0x3686b5===0x1?[{'id':_0x56174f[_0x3d566d(0x504)],'type':_0x3d566d(0x2c3),'title':_0x56174f[_0x3d566d(0x48f)]}]:[];return _0x3ebce8;}else{const _0x20c88e=await _0x56174f[_0x3d566d(0x2fc)](fetchGenreRankData,_0x4a31cc,_0x3ee545,_0x228279,_0x47b130,_0x3686b5);if(_0x56174f[_0x3d566d(0x297)](_0x20c88e[_0x3d566d(0x3c0)],0x0))return _0x3686b5===0x1?[{'id':_0x3d566d(0x301),'type':_0x3d566d(0x2c3),'title':_0x56174f[_0x3d566d(0x48f)]}]:[];return _0x20c88e;}}async function loadVarietyShows(_0x44ffd9={}){const _0x3ffb9e=_0x5b2ca5,_0xb4311b={'itofg':function(_0x1ac67b,_0x29ce35){return _0x1ac67b===_0x29ce35;},'ikSDA':function(_0x2541c6,_0x3fd372){return _0x2541c6(_0x3fd372);},'MsOJD':_0x3ffb9e(0x4c9),'FfsEK':_0x3ffb9e(0x218),'oafMx':_0x3ffb9e(0x2a3),'Ogzhr':_0x3ffb9e(0x352),'XJAVD':_0x3ffb9e(0x526),'rbwFv':_0x3ffb9e(0x519),'qanEO':_0x3ffb9e(0x34f),'GCHRw':_0x3ffb9e(0x30d),'xnoyJ':function(_0x1fed96,_0x26f484){return _0x1fed96===_0x26f484;},'meqIR':_0x3ffb9e(0x301),'DIRAa':_0x3ffb9e(0x2c3)},_0xab1d2a=_0xb4311b[_0x3ffb9e(0x405)](parseInt,_0x44ffd9[_0x3ffb9e(0x228)])||0x1,_0x35a53c=_0x44ffd9[_0x3ffb9e(0x276)]||'cn',_0x50e6e5=_0x44ffd9[_0x3ffb9e(0x4d4)]||_0x3ffb9e(0x28a),_0xde4f7e=_0xb4311b[_0x3ffb9e(0x495)],_0x2bc165={'all':'','cn':'CN','kr':'KR','jp':'JP','tw':'TW','hk':'HK','eu_us':_0x3ffb9e(0x3e0)},_0xc56e08=_0x2bc165[_0x35a53c]||'';let _0x327856={'language':_0x3ffb9e(0x3bf),'page':_0xab1d2a,'with_genres':_0xde4f7e,'include_adult':![]};if(_0xc56e08)_0x327856[_0x3ffb9e(0x290)]=_0xc56e08;const _0x5b1724=new Date(),_0x41b227=_0x5b1724[_0x3ffb9e(0x3aa)]()[_0x3ffb9e(0x514)]('T')[0x0];let _0x889bec=new Date(_0x5b1724);_0x889bec[_0x3ffb9e(0x266)](_0x889bec[_0x3ffb9e(0x4be)]()+0x1);const _0x1a4922=_0x889bec[_0x3ffb9e(0x3aa)]()[_0x3ffb9e(0x514)]('T')[0x0];let _0x184c27=new Date(_0x5b1724);_0x184c27[_0x3ffb9e(0x310)](_0x184c27[_0x3ffb9e(0x4f9)]()-0x5);const _0x5e0785=_0x184c27[_0x3ffb9e(0x3aa)]()[_0x3ffb9e(0x514)]('T')[0x0];if(_0x50e6e5===_0xb4311b[_0x3ffb9e(0x483)])_0x327856[_0x3ffb9e(0x276)]=_0x3ffb9e(0x34f),_0x327856[_0x3ffb9e(0x519)]=_0x41b227,_0x327856[_0xb4311b[_0x3ffb9e(0x2c8)]]=_0x41b227;else{if(_0x50e6e5===_0xb4311b[_0x3ffb9e(0x2b7)])_0x327856[_0x3ffb9e(0x276)]=_0x3ffb9e(0x34f),_0x327856[_0xb4311b[_0x3ffb9e(0x51a)]]=_0x1a4922,_0x327856[_0xb4311b[_0x3ffb9e(0x2c8)]]=_0x1a4922;else{if(_0x50e6e5===_0x3ffb9e(0x28a))_0x327856[_0x3ffb9e(0x276)]=_0x3ffb9e(0x34f);else{if(_0x50e6e5===_0x3ffb9e(0x254))_0x327856[_0x3ffb9e(0x276)]=_0xb4311b[_0x3ffb9e(0x227)],_0x327856[_0xb4311b[_0x3ffb9e(0x22b)]]=_0x5e0785;else _0x50e6e5===_0x3ffb9e(0x31a)&&(_0x327856[_0x3ffb9e(0x276)]=_0x3ffb9e(0x2cd),_0x327856[_0x3ffb9e(0x3ea)]=0xf);}}}try{const _0x18efe0=await Widget[_0x3ffb9e(0x3c1)][_0x3ffb9e(0x3c9)](_0x3ffb9e(0x388),{'params':_0x327856}),_0x28179d=_0x18efe0[_0x3ffb9e(0x31e)]||[];if(_0x28179d[_0x3ffb9e(0x3c0)]===0x0)return _0xb4311b[_0x3ffb9e(0x3c6)](_0xab1d2a,0x1)?[{'id':_0xb4311b[_0x3ffb9e(0x39e)],'type':_0xb4311b[_0x3ffb9e(0x482)],'title':_0x3ffb9e(0x51b)}]:[];return _0x28179d[_0x3ffb9e(0x44d)](_0x1bd3e2=>{const _0x3087c8=_0x3ffb9e,_0x346bd4=_0x1bd3e2[_0x3087c8(0x445)]||_0x1bd3e2[_0x3087c8(0x220)]||'';let _0x23beeb=getGlobalGenreText(_0x1bd3e2[_0x3087c8(0x20e)]);if(_0xb4311b[_0x3087c8(0x24b)](_0x23beeb,'影视'))_0x23beeb='综艺';return{'id':_0xb4311b[_0x3087c8(0x405)](String,_0x1bd3e2['id']),'tmdbId':parseInt(_0x1bd3e2['id']),'type':_0x3087c8(0x3c1),'mediaType':'tv','title':_0x1bd3e2[_0x3087c8(0x32b)]||_0x1bd3e2[_0x3087c8(0x4a3)],'genreTitle':_0x23beeb,'releaseDate':_0x346bd4,'subTitle':''+(_0x346bd4?_0x346bd4[_0x3087c8(0x1c9)](0x0,0x4):'未知'),'description':_0x346bd4+'\x0a'+(_0x1bd3e2[_0x3087c8(0x4cc)]||_0xb4311b[_0x3087c8(0x1fa)]),'posterPath':_0x1bd3e2[_0x3087c8(0x1cd)]?_0x3087c8(0x479)+_0x1bd3e2[_0x3087c8(0x1cd)]:'','backdropPath':_0x1bd3e2[_0x3087c8(0x21f)]?_0x3087c8(0x349)+_0x1bd3e2[_0x3087c8(0x21f)]:''};});}catch(_0x3419af){return[{'id':_0x3ffb9e(0x353),'type':_0x3ffb9e(0x2c3),'title':_0x3ffb9e(0x216)}];}}const RT_URLS={'rt_movies_theater':_0x5b2ca5(0x4f3),'rt_movies_home':_0x5b2ca5(0x317),'rt_movies_best':_0x5b2ca5(0x365),'rt_tv_popular':_0x5b2ca5(0x240),'rt_tv_new':_0x5b2ca5(0x4df)};async function loadRottenTomatoesTrends(_0x1a3ce1,_0x567f1e){const _0x3da799=_0x5b2ca5,_0x45129d={'glvXr':function(_0xc6ffec,_0x2b9cba){return _0xc6ffec(_0x2b9cba);},'EYtML':function(_0x3f90db,_0x22f02e){return _0x3f90db===_0x22f02e;},'IAKbu':_0x3da799(0x301),'bpVNj':_0x3da799(0x2c3),'vqxST':function(_0x1fc784,_0x2f59e9){return _0x1fc784-_0x2f59e9;}},_0x4c8e44=0xf,_0xa7b2b6=await _0x45129d[_0x3da799(0x32d)](fetchRottenTomatoesList,_0x1a3ce1);if(_0x45129d[_0x3da799(0x351)](_0xa7b2b6[_0x3da799(0x3c0)],0x0))return _0x567f1e===0x1?[{'id':_0x45129d[_0x3da799(0x4b4)],'type':_0x45129d[_0x3da799(0x499)],'title':_0x3da799(0x34d)}]:[];const _0x361b2c=_0x45129d[_0x3da799(0x367)](_0x567f1e,0x1)*_0x4c8e44,_0x3b7760=_0xa7b2b6[_0x3da799(0x36d)](_0x361b2c,_0x361b2c+_0x4c8e44),_0x5f5870=_0x3b7760[_0x3da799(0x44d)]((_0x4d4edb,_0x1a8ee2)=>searchRtTmdb(_0x4d4edb,_0x361b2c+_0x1a8ee2+0x1));return(await Promise[_0x3da799(0x1d8)](_0x5f5870))[_0x3da799(0x25d)](Boolean);}async function fetchRottenTomatoesList(_0x127763){const _0x15eef9=_0x5b2ca5,_0xe05ee1={'exzqO':_0x15eef9(0x473),'xXJVg':_0x15eef9(0x2de),'ImTcY':_0x15eef9(0x462),'Wzsvd':_0x15eef9(0x358),'JYSze':_0x15eef9(0x45b),'EIDBI':function(_0xdc05bd,_0x442584){return _0xdc05bd(_0x442584);}},_0x59c02c=RT_URLS[_0x127763]||RT_URLS[_0xe05ee1[_0x15eef9(0x528)]];try{const _0x36f563=await Widget[_0x15eef9(0x2f5)][_0x15eef9(0x3c9)](_0x59c02c,{'headers':{'User-Agent':_0xe05ee1[_0x15eef9(0x381)]}}),_0x5228b6=Widget[_0x15eef9(0x33b)][_0x15eef9(0x1de)](_0x36f563[_0x15eef9(0x3a7)]||''),_0x3ce5cd=[];return _0xe05ee1[_0x15eef9(0x2e9)](_0x5228b6,_0x15eef9(0x391))[_0x15eef9(0x505)]((_0x2590be,_0x12cf85)=>{const _0x3f7dc8=_0x15eef9,_0x2d6c76=_0x5228b6(_0x12cf85),_0x27fe49=_0x2d6c76[_0x3f7dc8(0x387)](_0x3f7dc8(0x513))[_0x3f7dc8(0x2c3)]()[_0x3f7dc8(0x3bd)]();if(!_0x27fe49)return;const _0x141b9c=_0x2d6c76[_0x3f7dc8(0x387)](_0xe05ee1[_0x3f7dc8(0x3e7)]);_0x3ce5cd[_0x3f7dc8(0x4d0)]({'title':_0x27fe49,'tomatoScore':_0x141b9c[_0x3f7dc8(0x40b)](_0xe05ee1[_0x3f7dc8(0x377)])||'','popcornScore':_0x141b9c[_0x3f7dc8(0x40b)](_0x3f7dc8(0x50a))||'','mediaType':_0x127763[_0x3f7dc8(0x4c1)]('tv')?'tv':_0xe05ee1[_0x3f7dc8(0x3ae)]});}),_0x3ce5cd;}catch(_0x38359f){return[];}}async function searchRtTmdb(_0x5dfb93,_0x1c6b42){const _0x327094=_0x5b2ca5,_0x760040={'TMYKU':_0x327094(0x2f2),'CjsOI':function(_0x7384c0,_0x47155e){return _0x7384c0(_0x47155e);},'lirPs':function(_0x16be30,_0x48daf6){return _0x16be30===_0x48daf6;},'BvHFV':_0x327094(0x462)},_0x42439f=_0x5dfb93[_0x327094(0x32b)][_0x327094(0x454)](/\s\(\d{4}\)$/,'');try{const _0x422f5d=await Widget[_0x327094(0x3c1)][_0x327094(0x3c9)](_0x327094(0x345)+_0x5dfb93[_0x327094(0x37c)],{'params':{'query':_0x42439f,'language':_0x327094(0x3bf)}}),_0x3e8d62=(_0x422f5d[_0x327094(0x31e)]||[])[0x0];if(!_0x3e8d62)return null;let _0x5b3d0b=[];if(_0x5dfb93[_0x327094(0x323)])_0x5b3d0b[_0x327094(0x4d0)](_0x327094(0x222)+_0x5dfb93[_0x327094(0x323)]+'%');if(_0x5dfb93[_0x327094(0x422)])_0x5b3d0b[_0x327094(0x4d0)](_0x327094(0x202)+_0x5dfb93[_0x327094(0x422)]+'%');const _0x4c6daf=_0x5b3d0b[_0x327094(0x3b2)]('\x20\x20')||_0x760040[_0x327094(0x242)],_0x981ecd=_0x3e8d62[_0x327094(0x220)]||_0x3e8d62[_0x327094(0x445)]||'';return{'id':_0x760040[_0x327094(0x506)](String,_0x3e8d62['id']),'tmdbId':_0x3e8d62['id'],'type':_0x327094(0x3c1),'mediaType':_0x5dfb93[_0x327094(0x37c)],'title':_0x1c6b42+'.\x20'+(_0x3e8d62[_0x327094(0x4a3)]||_0x3e8d62[_0x327094(0x32b)]),'genreTitle':getGlobalGenreText(_0x3e8d62[_0x327094(0x20e)])||(_0x760040[_0x327094(0x4f5)](_0x5dfb93[_0x327094(0x37c)],_0x760040[_0x327094(0x4eb)])?'电影':'剧集'),'description':_0x981ecd+_0x327094(0x45a)+_0x5dfb93[_0x327094(0x32b)],'releaseDate':_0x981ecd,'subTitle':_0x4c6daf,'posterPath':_0x3e8d62[_0x327094(0x1cd)]?_0x327094(0x479)+_0x3e8d62[_0x327094(0x1cd)]:'','backdropPath':_0x3e8d62[_0x327094(0x21f)]?_0x327094(0x349)+_0x3e8d62[_0x327094(0x21f)]:''};}catch(_0x3da7d2){return null;}}function buildImdbItem(_0xad1e85,_0x29dcbc){const _0x58407d=_0x5b2ca5,_0x46b1b9={'tyJHx':_0x58407d(0x462),'tXkFk':function(_0x2c9255,_0x13c5cd){return _0x2c9255||_0x13c5cd;},'abtLW':_0x58407d(0x4c9),'HoSRC':function(_0x5ca81f,_0x9d355a){return _0x5ca81f===_0x9d355a;}};if(!_0xad1e85)return null;const _0x1c91f9=_0x29dcbc||_0xad1e85[_0x58407d(0x1ed)]||(_0xad1e85[_0x58407d(0x32b)]?_0x46b1b9[_0x58407d(0x423)]:'tv'),_0x5edf74=_0xad1e85[_0x58407d(0x445)]||_0xad1e85[_0x58407d(0x220)]||'';return{'id':String(_0xad1e85['id']),'tmdbId':parseInt(_0xad1e85['id']),'type':_0x58407d(0x3c1),'mediaType':_0x1c91f9,'title':_0xad1e85[_0x58407d(0x32b)]||_0xad1e85[_0x58407d(0x4a3)],'subTitle':_0x46b1b9[_0x58407d(0x37a)](_0x5edf74,''),'description':_0x5edf74?_0x5edf74+'\x0a'+(_0xad1e85[_0x58407d(0x4cc)]||_0x46b1b9[_0x58407d(0x4d9)]):_0xad1e85[_0x58407d(0x4cc)]||_0x46b1b9[_0x58407d(0x4d9)],'releaseDate':_0x5edf74,'posterPath':_0xad1e85[_0x58407d(0x1cd)]?_0x58407d(0x479)+_0xad1e85[_0x58407d(0x1cd)]:'','backdropPath':_0xad1e85[_0x58407d(0x21f)]?_0x58407d(0x349)+_0xad1e85[_0x58407d(0x21f)]:'','year':_0x5edf74[_0x58407d(0x1c9)](0x0,0x4),'genreTitle':getGlobalGenreText(_0xad1e85[_0x58407d(0x20e)])||(_0x46b1b9[_0x58407d(0x3d5)](_0x1c91f9,'tv')?'剧集':'电影')};}async function loadImdbList(_0x39c942,_0x53662b,_0x4ced25){const _0x46d806=_0x5b2ca5,_0x261783={'qHJMI':function(_0x51e53d,_0x3b16c0){return _0x51e53d===_0x3b16c0;},'boQrd':function(_0x357c64,_0x56991a){return _0x357c64-_0x56991a;},'AKlXT':_0x46d806(0x221),'hAYvO':_0x46d806(0x34f),'Mmatm':_0x46d806(0x47b),'JkYHM':_0x46d806(0x2bd),'DKpqi':_0x46d806(0x3bf),'gntNU':function(_0x46364d,_0x4c51d5){return _0x46364d===_0x4c51d5;},'TaQZh':_0x46d806(0x472)};try{let _0x2124b8=[];if(_0x39c942[_0x46d806(0x411)](_0x261783[_0x46d806(0x305)])){const _0x361916=_0x39c942===_0x46d806(0x4da),_0x8f0a9c=_0x361916?'tv':_0x46d806(0x462),_0x446f66=await Widget[_0x46d806(0x3c1)][_0x46d806(0x3c9)](_0x46d806(0x2af)+_0x8f0a9c,{'params':{'language':_0x46d806(0x3bf),'page':_0x4ced25,'sort_by':_0x261783[_0x46d806(0x2c2)],'with_original_language':'zh','vote_count.gte':0x2}});return _0x2124b8=(_0x446f66[_0x46d806(0x31e)]||[])[_0x46d806(0x44d)](_0x31cc43=>buildImdbItem(_0x31cc43,_0x8f0a9c)),_0x2124b8;}if(_0x39c942[_0x46d806(0x411)](_0x261783[_0x46d806(0x421)])){const _0x318e1f=_0x39c942===_0x46d806(0x49a)?_0x261783[_0x46d806(0x3fe)]:_0x46d806(0x2a6),_0xe324f1=await Widget[_0x46d806(0x3c1)][_0x46d806(0x3c9)](_0x46d806(0x225)+_0x53662b+'/'+_0x318e1f,{'params':{'language':_0x261783[_0x46d806(0x4f4)],'page':_0x4ced25}});_0x2124b8=(_0xe324f1[_0x46d806(0x31e)]||[])[_0x46d806(0x44d)](_0x57fe58=>buildImdbItem(_0x57fe58));}else{if(_0x261783[_0x46d806(0x4f1)](_0x53662b,_0x46d806(0x1d8))){const [_0xc03c9,_0x5c3383]=await Promise[_0x46d806(0x1d8)]([Widget[_0x46d806(0x3c1)][_0x46d806(0x3c9)](_0x46d806(0x31b)+_0x39c942,{'params':{'language':_0x261783[_0x46d806(0x4f4)],'page':_0x4ced25}}),Widget[_0x46d806(0x3c1)][_0x46d806(0x3c9)](_0x46d806(0x508)+_0x39c942,{'params':{'language':_0x261783[_0x46d806(0x4f4)],'page':_0x4ced25}})]),_0x38544f=(_0xc03c9[_0x46d806(0x31e)]||[])[_0x46d806(0x44d)](_0x4ae78f=>buildImdbItem(_0x4ae78f,_0x46d806(0x462))),_0x31655c=(_0x5c3383[_0x46d806(0x31e)]||[])[_0x46d806(0x44d)](_0x505b03=>buildImdbItem(_0x505b03,'tv'));_0x2124b8=[..._0x38544f,..._0x31655c][_0x46d806(0x34b)]((_0xf77957,_0x54ea33)=>{const _0x47c13f=_0x46d806;if(_0x261783[_0x47c13f(0x1fb)](_0x39c942,_0x47c13f(0x34a)))return _0x261783[_0x47c13f(0x1d4)](_0x54ea33[_0x47c13f(0x2e0)],_0xf77957[_0x47c13f(0x2e0)]);return 0x0;})[_0x46d806(0x36d)](0x0,0x14);}else{const _0x4da7bb=await Widget[_0x46d806(0x3c1)][_0x46d806(0x3c9)]('/'+_0x53662b+'/'+_0x39c942,{'params':{'language':_0x261783[_0x46d806(0x4f4)],'page':_0x4ced25}});_0x2124b8=(_0x4da7bb[_0x46d806(0x31e)]||[])[_0x46d806(0x44d)](_0x1dfcfc=>buildImdbItem(_0x1dfcfc,_0x53662b));}}return _0x2124b8;}catch(_0x3b529d){return[{'id':_0x46d806(0x353),'type':_0x46d806(0x2c3),'title':_0x261783[_0x46d806(0x52f)]}];}}async function fetchTraktData(_0x447481,_0x82e55e,_0x359bb9,_0x2aecdb){const _0x406d50=_0x5b2ca5,_0x485ace={'MJNwu':_0x406d50(0x34e)};try{const _0x13a3e9=await Widget[_0x406d50(0x2f5)][_0x406d50(0x3c9)](_0x406d50(0x1e8)+_0x447481+'/'+_0x82e55e+_0x406d50(0x30a)+_0x2aecdb,{'headers':{'Content-Type':_0x485ace[_0x406d50(0x27d)],'trakt-api-version':'2','trakt-api-key':_0x359bb9}});return _0x13a3e9[_0x406d50(0x3a7)]||[];}catch(_0x2feef8){return[];}}async function handleTraktList(_0x3fb833,_0x1b8a76,_0x7e1454,_0x394666){const _0x5cca90=_0x5b2ca5,_0x269efc={'ufoju':function(_0x33baf7,_0x284538){return _0x33baf7===_0x284538;},'rjNgT':_0x5cca90(0x379),'udOPW':_0x5cca90(0x326),'gozkH':function(_0x2e40ea,_0x3da771){return _0x2e40ea+_0x3da771;},'VlCmJ':function(_0x451c47,_0x4b8ad1){return _0x451c47-_0x4b8ad1;},'niqxo':_0x5cca90(0x1d8),'mbMrY':_0x5cca90(0x3bf),'emfCA':_0x5cca90(0x4c9),'XtxLt':function(_0x5acd92,_0x297399,_0x1c2695,_0x48509c,_0x53b674){return _0x5acd92(_0x297399,_0x1c2695,_0x48509c,_0x53b674);},'WlYUo':function(_0x28a317,_0x2116f4){return _0x28a317===_0x2116f4;},'zZQhV':function(_0x3bf18d,_0x4210d5){return _0x3bf18d===_0x4210d5;}};let _0xb9f24f=[];if(_0x269efc[_0x5cca90(0x4ad)](_0x1b8a76,_0x269efc[_0x5cca90(0x29b)])){const [_0x17caa2,_0x223741]=await Promise[_0x5cca90(0x1d8)]([_0x269efc[_0x5cca90(0x3e1)](fetchTraktData,_0x5cca90(0x4b0),_0x3fb833,_0x7e1454,_0x394666),fetchTraktData(_0x5cca90(0x307),_0x3fb833,_0x7e1454,_0x394666)]);_0xb9f24f=[..._0x17caa2,..._0x223741][_0x5cca90(0x34b)]((_0x2360eb,_0xcc0232)=>(_0xcc0232[_0x5cca90(0x3b8)]||_0xcc0232[_0x5cca90(0x502)]||0x0)-(_0x2360eb[_0x5cca90(0x3b8)]||_0x2360eb[_0x5cca90(0x502)]||0x0));}else _0xb9f24f=await _0x269efc[_0x5cca90(0x3e1)](fetchTraktData,_0x1b8a76,_0x3fb833,_0x7e1454,_0x394666);if(!_0xb9f24f||_0x269efc[_0x5cca90(0x469)](_0xb9f24f[_0x5cca90(0x3c0)],0x0))return _0x269efc[_0x5cca90(0x43b)](_0x394666,0x1)?[]:[];const _0x45af99=_0xb9f24f[_0x5cca90(0x36d)](0x0,0x14)[_0x5cca90(0x44d)](async(_0x4e52ca,_0x220c50)=>{const _0x5e7991=_0x5cca90;let _0x3b06cc=_0x4e52ca[_0x5e7991(0x3d4)]||_0x4e52ca[_0x5e7991(0x462)]||_0x4e52ca;const _0x202210=_0x4e52ca[_0x5e7991(0x3d4)]?'tv':_0x5e7991(0x462);let _0x382311=_0x269efc[_0x5e7991(0x4ad)](_0x3fb833,_0x269efc[_0x5e7991(0x3a2)])?_0x5e7991(0x50c)+(_0x4e52ca[_0x5e7991(0x3b8)]||0x0)+_0x5e7991(0x20c):_0x3fb833===_0x269efc[_0x5e7991(0x214)]?_0x5e7991(0x338)+(_0x4e52ca[_0x5e7991(0x502)]||0x0)+_0x5e7991(0x2d3):_0x5e7991(0x416)+_0x269efc[_0x5e7991(0x272)](_0x269efc[_0x5e7991(0x1eb)](_0x394666,0x1)*0xf+_0x220c50,0x1);if(_0x1b8a76===_0x269efc[_0x5e7991(0x29b)])_0x382311='['+(_0x202210==='tv'?'剧':'影')+']\x20'+_0x382311;if(!_0x3b06cc||!_0x3b06cc[_0x5e7991(0x40f)]||!_0x3b06cc[_0x5e7991(0x40f)][_0x5e7991(0x3c1)])return null;try{const _0x22a7f1=await Widget[_0x5e7991(0x3c1)][_0x5e7991(0x3c9)]('/'+_0x202210+'/'+_0x3b06cc[_0x5e7991(0x40f)][_0x5e7991(0x3c1)],{'params':{'language':_0x269efc[_0x5e7991(0x3f5)]}});return{'id':String(_0x22a7f1['id']),'tmdbId':_0x22a7f1['id'],'type':_0x5e7991(0x3c1),'mediaType':_0x202210,'title':_0x22a7f1[_0x5e7991(0x4a3)]||_0x22a7f1[_0x5e7991(0x32b)]||_0x3b06cc[_0x5e7991(0x32b)],'genreTitle':getGlobalGenreText(_0x22a7f1[_0x5e7991(0x35b)]?.[_0x5e7991(0x44d)](_0x15bcb2=>_0x15bcb2['id'])),'releaseDate':_0x22a7f1[_0x5e7991(0x220)]||_0x22a7f1[_0x5e7991(0x445)]||'','subTitle':_0x382311,'description':(_0x22a7f1[_0x5e7991(0x220)]||_0x22a7f1[_0x5e7991(0x445)]||'')+'\x0a'+(_0x22a7f1[_0x5e7991(0x4cc)]||_0x269efc[_0x5e7991(0x1f1)]),'posterPath':_0x22a7f1[_0x5e7991(0x1cd)]?_0x5e7991(0x479)+_0x22a7f1[_0x5e7991(0x1cd)]:'','backdropPath':_0x22a7f1[_0x5e7991(0x21f)]?_0x5e7991(0x349)+_0x22a7f1[_0x5e7991(0x21f)]:''};}catch(_0x310c07){return null;}});return(await Promise[_0x5cca90(0x1d8)](_0x45af99))[_0x5cca90(0x25d)](Boolean);}function mergeDoubanTmdb(_0x5d8c02,_0x49c393){const _0x128e30=_0x5b2ca5,_0x4d942c={'asDly':function(_0x318ead,_0x194c41){return _0x318ead(_0x194c41);},'wpPBt':function(_0x145b0f,_0x2aba66){return _0x145b0f===_0x2aba66;}};_0x5d8c02['id']=String(_0x49c393['id']),_0x5d8c02[_0x128e30(0x385)]=_0x49c393['id'],_0x5d8c02[_0x128e30(0x2f4)]=_0x49c393[_0x128e30(0x1cd)]?_0x128e30(0x479)+_0x49c393[_0x128e30(0x1cd)]:_0x5d8c02[_0x128e30(0x2f4)],_0x5d8c02[_0x128e30(0x4cf)]=_0x49c393[_0x128e30(0x21f)]?_0x128e30(0x349)+_0x49c393[_0x128e30(0x21f)]:'';const _0x21b8e7=_0x49c393[_0x128e30(0x220)]||_0x49c393[_0x128e30(0x445)]||'';_0x5d8c02[_0x128e30(0x509)]=_0x4d942c[_0x128e30(0x384)](getGlobalGenreText,_0x49c393[_0x128e30(0x20e)])||(_0x4d942c[_0x128e30(0x321)](_0x5d8c02[_0x128e30(0x37c)],'tv')?'剧集':'电影'),_0x5d8c02[_0x128e30(0x480)]=_0x21b8e7,_0x5d8c02[_0x128e30(0x438)]=(_0x21b8e7?_0x21b8e7+_0x128e30(0x325)+_0x5d8c02[_0x128e30(0x47d)]:_0x5d8c02[_0x128e30(0x47d)])+(_0x49c393[_0x128e30(0x4cc)]?'\x0a'+_0x49c393[_0x128e30(0x4cc)]:_0x128e30(0x432)),_0x5d8c02[_0x128e30(0x44e)]=_0x49c393[_0x128e30(0x1f6)]?parseFloat(_0x49c393[_0x128e30(0x1f6)]):0x0;}async function searchTmdbForDouban(_0xd1ae62,_0x2a0208){const _0xbef9b4=_0x5b2ca5,_0x45bae6={'sqOBJ':function(_0x47e80d,_0x547ae9){return _0x47e80d(_0x547ae9);}},_0x119046=_0xd1ae62[_0xbef9b4(0x454)](/第[一二三四五六七八九十\d]+[季章]/g,'')[_0xbef9b4(0x3bd)]();try{const _0x4655b7=await Widget[_0xbef9b4(0x3c1)][_0xbef9b4(0x3c9)](_0xbef9b4(0x345)+_0x2a0208,{'params':{'query':_0x45bae6[_0xbef9b4(0x35c)](encodeURIComponent,_0x119046),'language':_0xbef9b4(0x3bf)}});return(_0x4655b7[_0xbef9b4(0x31e)]||[])[0x0];}catch(_0x8909c3){return null;}}async function fetchDoubanAndMap(_0x1a1f1b,_0x2baaed,_0xdbc377){const _0xa204d=_0x5b2ca5,_0x3cf341={'ifKiY':function(_0x282d4b,_0x100ab4){return _0x282d4b===_0x100ab4;},'TXfvS':function(_0x31007e,_0x4029be){return _0x31007e-_0x4029be;},'XUJvw':_0xa204d(0x263),'KsNGr':_0xa204d(0x301),'varQs':_0xa204d(0x2c3),'ogpkk':_0xa204d(0x353)},_0x3a1a9f=_0x3cf341[_0xa204d(0x4fd)](_0xdbc377,0x1)*0x14;try{const _0x620b82=Math[_0xa204d(0x334)]()[_0xa204d(0x30e)](0x24)[_0xa204d(0x1c9)](0x2,0xd),_0x2ce20a=await Widget[_0xa204d(0x2f5)][_0xa204d(0x3c9)](_0xa204d(0x27f)+_0x2baaed+_0xa204d(0x252)+encodeURIComponent(_0x1a1f1b)+_0xa204d(0x49b)+_0x3a1a9f,{'headers':{'User-Agent':_0xa204d(0x348),'Referer':_0xa204d(0x44c),'Host':_0x3cf341[_0xa204d(0x292)],'X-Requested-With':_0xa204d(0x33e),'Cookie':_0xa204d(0x45f)+_0x620b82+';'}}),_0x37c89e=_0x3cf341[_0xa204d(0x2d0)](typeof _0x2ce20a[_0xa204d(0x3a7)],_0xa204d(0x3ec))?JSON[_0xa204d(0x299)](_0x2ce20a[_0xa204d(0x3a7)]):_0x2ce20a[_0xa204d(0x3a7)]||{},_0x34f728=_0x37c89e[_0xa204d(0x3cf)]||[];if(_0x34f728[_0xa204d(0x3c0)]===0x0)return _0x3cf341[_0xa204d(0x2d0)](_0xdbc377,0x1)?[{'id':_0x3cf341[_0xa204d(0x4ff)],'type':_0x3cf341[_0xa204d(0x4a7)],'title':_0xa204d(0x442)}]:[];const _0x2f1c10=_0x34f728[_0xa204d(0x44d)](async _0x2a0c64=>{const _0x521917=_0xa204d;let _0x23b592={'id':_0x521917(0x3b7)+_0x2a0c64['id'],'type':_0x521917(0x3c1),'mediaType':_0x2baaed,'title':_0x2a0c64[_0x521917(0x32b)],'subTitle':_0x521917(0x355)+_0x2a0c64[_0x521917(0x370)],'description':_0x521917(0x355)+_0x2a0c64[_0x521917(0x370)]+_0x521917(0x432),'genreTitle':_0x3cf341[_0x521917(0x2d0)](_0x2baaed,'tv')?'剧集':'电影','posterPath':_0x2a0c64[_0x521917(0x2f0)]};const _0x5e98d1=await searchTmdbForDouban(_0x2a0c64[_0x521917(0x32b)],_0x2baaed);if(_0x5e98d1)mergeDoubanTmdb(_0x23b592,_0x5e98d1);return _0x23b592;});return await Promise[_0xa204d(0x1d8)](_0x2f1c10);}catch(_0x5dee12){return[{'id':_0x3cf341[_0xa204d(0x4c2)],'type':_0x3cf341[_0xa204d(0x4a7)],'title':_0xa204d(0x3f2),'description':_0xa204d(0x48b)}];}}async function loadPlatformMatrix(_0x4add8d={}){const _0x4f1160=_0x5b2ca5,_0xa37a94={'xqghJ':_0x4f1160(0x1ec),'zWBdI':_0x4f1160(0x462),'YoZVT':_0x4f1160(0x2c3),'EvWVB':_0x4f1160(0x344),'mwxzP':_0x4f1160(0x3bf),'pMdxe':_0x4f1160(0x22c),'IOPdq':function(_0x56c427,_0x4c6587){return _0x56c427===_0x4c6587;},'VndCx':_0x4f1160(0x23c),'JJYGG':_0x4f1160(0x22e),'YcbxT':_0x4f1160(0x235),'bpZpz':_0x4f1160(0x2e8),'KCCjV':_0x4f1160(0x461),'GaYKW':_0x4f1160(0x2e2)},_0x59547a=_0x4add8d[_0x4f1160(0x276)]||_0x4f1160(0x235),_0x3cde82=_0x4add8d[_0x4f1160(0x21e)]||_0x4f1160(0x46d),_0x16449f=_0x4add8d[_0x4f1160(0x34b)]||_0x4f1160(0x34f),_0x11004d=_0x4add8d[_0x4f1160(0x228)]||0x1,_0x5045cf=[_0x4f1160(0x255),_0xa37a94[_0x4f1160(0x209)],'49',_0x4f1160(0x3ef)];if(_0x59547a===_0xa37a94[_0x4f1160(0x335)]&&!_0x5045cf[_0x4f1160(0x4c1)](_0x3cde82))return _0x11004d===0x1?[{'id':_0x4f1160(0x301),'type':_0xa37a94[_0x4f1160(0x1c8)],'title':_0xa37a94[_0x4f1160(0x270)],'description':_0x4f1160(0x372)}]:[];const _0x2373ee={'language':_0xa37a94[_0x4f1160(0x354)],'sort_by':_0x16449f,'page':_0x11004d,'include_adult':![],'include_null_first_air_dates':![]};if(_0x59547a[_0x4f1160(0x411)](_0xa37a94[_0x4f1160(0x27c)])){_0x2373ee[_0x4f1160(0x3cb)]=_0x3cde82;if(_0xa37a94[_0x4f1160(0x238)](_0x59547a,_0xa37a94[_0x4f1160(0x1f3)]))_0x2373ee[_0x4f1160(0x51f)]='16';else{if(_0xa37a94[_0x4f1160(0x238)](_0x59547a,_0xa37a94[_0x4f1160(0x3a1)]))_0x2373ee[_0x4f1160(0x51f)]=_0x4f1160(0x218);else{if(_0xa37a94[_0x4f1160(0x238)](_0x59547a,_0xa37a94[_0x4f1160(0x1fc)]))_0x2373ee[_0x4f1160(0x409)]=_0xa37a94[_0x4f1160(0x42e)];}}return await loadPlatformMatrixData('tv',_0x2373ee);}else{if(_0xa37a94[_0x4f1160(0x238)](_0x59547a,_0xa37a94[_0x4f1160(0x335)])){const _0xd67d11={'213':'8','2739':_0xa37a94[_0x4f1160(0x516)],'49':_0xa37a94[_0x4f1160(0x205)],'2552':_0x4f1160(0x2ec)};return _0x2373ee[_0x4f1160(0x1e7)]='US',_0x2373ee[_0x4f1160(0x1ca)]=_0xd67d11[_0x3cde82],await loadPlatformMatrixData(_0xa37a94[_0x4f1160(0x335)],_0x2373ee);}}}async function loadPlatformMatrixData(_0x1fdbed,_0x4a8418){const _0x56d992=_0x5b2ca5,_0x3faeb2={'lSLuP':_0x56d992(0x3c1),'KoNnt':_0x56d992(0x301),'HxZYk':_0x56d992(0x353),'zWbJr':_0x56d992(0x2c3)};try{const _0x12ab71=await Widget[_0x56d992(0x3c1)][_0x56d992(0x3c9)](_0x56d992(0x2af)+_0x1fdbed,{'params':_0x4a8418});if(!_0x12ab71[_0x56d992(0x31e)]||_0x12ab71[_0x56d992(0x31e)][_0x56d992(0x3c0)]===0x0)return _0x4a8418[_0x56d992(0x228)]===0x1?[{'id':_0x3faeb2[_0x56d992(0x478)],'type':_0x56d992(0x2c3),'title':_0x56d992(0x3cd)}]:[];return _0x12ab71[_0x56d992(0x31e)][_0x56d992(0x44d)](_0x21f52a=>{const _0x48e971=_0x56d992,_0x5d85eb=_0x21f52a[_0x48e971(0x220)]||_0x21f52a[_0x48e971(0x445)]||'';return{'id':String(_0x21f52a['id']),'tmdbId':_0x21f52a['id'],'type':_0x3faeb2[_0x48e971(0x3de)],'mediaType':_0x1fdbed,'title':_0x21f52a[_0x48e971(0x4a3)]||_0x21f52a[_0x48e971(0x32b)],'date':_0x5d85eb,'releaseDate':_0x5d85eb,'posterPath':_0x21f52a[_0x48e971(0x1cd)]?_0x48e971(0x479)+_0x21f52a[_0x48e971(0x1cd)]:'','backdropPath':_0x21f52a[_0x48e971(0x21f)]?_0x48e971(0x349)+_0x21f52a[_0x48e971(0x21f)]:'','genreTitle':getGlobalGenreText(_0x21f52a[_0x48e971(0x20e)]),'description':_0x5d85eb+'\x0a'+(_0x21f52a[_0x48e971(0x4cc)]||_0x48e971(0x4c9))};});}catch(_0x4bee8d){return[{'id':_0x3faeb2[_0x56d992(0x4b8)],'type':_0x3faeb2[_0x56d992(0x3db)],'title':_0x56d992(0x444)}];}}async function loadOfficialTop10(_0x31c7db={}){const _0x617fcb=_0x5b2ca5,_0xc7ca4f={'znGnu':_0x617fcb(0x206),'rnRow':_0x617fcb(0x49d),'AuWQZ':function(_0x1c9e49,_0x15eb89,_0x448722,_0x5160c8){return _0x1c9e49(_0x15eb89,_0x448722,_0x5160c8);},'UfOFk':_0x617fcb(0x487),'iqKEg':_0x617fcb(0x2c3)},_0x5b6780=_0x31c7db[_0x617fcb(0x276)]||_0xc7ca4f[_0x617fcb(0x373)],_0x530ec4=_0x31c7db[_0x617fcb(0x21e)]||_0xc7ca4f[_0x617fcb(0x4b9)],_0x12f3a7=_0x31c7db[_0x617fcb(0x37c)]||'tv';let _0x13eae6=await _0xc7ca4f[_0x617fcb(0x20d)](fetchFlixPatrolData,_0x530ec4,_0x5b6780,_0x12f3a7);if(_0x13eae6[_0x617fcb(0x3c0)]===0x0)return await _0xc7ca4f[_0x617fcb(0x20d)](fetchTmdbFallback_Top10,_0x530ec4,_0x5b6780,_0x12f3a7);const _0x4c4289=_0x13eae6[_0x617fcb(0x36d)](0x0,0xa)[_0x617fcb(0x44d)]((_0xb1c7e5,_0x1e2a34)=>searchTmdbForTop10(_0xb1c7e5,_0x12f3a7,_0x1e2a34+0x1)),_0x3fb7e3=await Promise[_0x617fcb(0x1d8)](_0x4c4289),_0x1d3c08=_0x3fb7e3[_0x617fcb(0x25d)](_0x42854f=>_0x42854f!==null);if(_0x1d3c08[_0x617fcb(0x3c0)]===0x0)return[{'id':_0x617fcb(0x3ff),'title':_0xc7ca4f[_0x617fcb(0x390)],'description':_0x617fcb(0x41d),'type':_0xc7ca4f[_0x617fcb(0x4af)]}];return _0x1d3c08;}async function fetchFlixPatrolData(_0x697a29,_0x969f69,_0x613377){const _0x116376=_0x5b2ca5,_0x4e3cd9={'jfpSB':function(_0x599faf,_0x69e845){return _0x599faf>=_0x69e845;},'StGfF':function(_0x52c4cc,_0x3c01d3){return _0x52c4cc(_0x3c01d3);},'VdXCs':function(_0x111d2e,_0x371503){return _0x111d2e||_0x371503;},'EJsrz':function(_0x8cad59,_0x27683f){return _0x8cad59>_0x27683f;},'Qdiuy':function(_0x28e4bd,_0x578724){return _0x28e4bd===_0x578724;},'ONCNY':_0x116376(0x45b),'EOZsN':_0x116376(0x3ec),'HDdyW':function(_0x5be71a,_0x486ee7){return _0x5be71a(_0x486ee7);},'xvJjm':_0x116376(0x28c),'BlrQf':function(_0x55ca0c,_0x1f6548){return _0x55ca0c===_0x1f6548;}},_0x35eafd=_0x4e3cd9[_0x116376(0x4e7)](_0x969f69,_0x116376(0x43a))?_0x116376(0x418)+_0x697a29+'/':_0x116376(0x418)+_0x697a29+'/'+_0x969f69+'/';try{const _0x169bef=await Widget[_0x116376(0x2f5)][_0x116376(0x3c9)](_0x35eafd,{'headers':{'User-Agent':_0x4e3cd9[_0x116376(0x273)]}}),_0x5311cf=_0x4e3cd9[_0x116376(0x4e7)](typeof _0x169bef,_0x4e3cd9[_0x116376(0x433)])?_0x169bef:_0x169bef[_0x116376(0x3a7)]||'';if(!_0x5311cf)return[];const _0x5ad95b=Widget[_0x116376(0x33b)][_0x116376(0x1de)](_0x5311cf),_0x1612e0=_0x4e3cd9[_0x116376(0x529)](_0x5ad95b,_0x4e3cd9[_0x116376(0x446)]);let _0x442ee9=null;if(_0x4e3cd9[_0x116376(0x490)](_0x1612e0[_0x116376(0x3c0)],0x2))_0x442ee9=_0x613377===_0x116376(0x462)?_0x1612e0['eq'](0x0):_0x1612e0['eq'](0x1);else{if(_0x4e3cd9[_0x116376(0x279)](_0x1612e0[_0x116376(0x3c0)],0x1))_0x442ee9=_0x1612e0['eq'](0x0);else return[];}const _0x49d125=[];return _0x442ee9[_0x116376(0x387)]('tr')[_0x116376(0x505)]((_0x1751fd,_0x1db3e1)=>{const _0x5c9d66=_0x116376;if(_0x4e3cd9[_0x5c9d66(0x490)](_0x1751fd,0xa))return;const _0x1a3e9a=_0x4e3cd9[_0x5c9d66(0x406)](_0x5ad95b,_0x1db3e1)[_0x5c9d66(0x387)](_0x5c9d66(0x4f8))[_0x5c9d66(0x2c3)]()[_0x5c9d66(0x3bd)](),_0x3ab593=_0x5ad95b(_0x1db3e1)[_0x5c9d66(0x387)]('td')['eq'](0x2)[_0x5c9d66(0x2c3)]()[_0x5c9d66(0x3bd)](),_0x8e6c02=_0x4e3cd9[_0x5c9d66(0x256)](_0x1a3e9a,_0x3ab593);if(_0x8e6c02&&_0x4e3cd9[_0x5c9d66(0x3c4)](_0x8e6c02[_0x5c9d66(0x3c0)],0x1))_0x49d125[_0x5c9d66(0x4d0)](_0x8e6c02[_0x5c9d66(0x514)]('(')[0x0][_0x5c9d66(0x3bd)]());}),_0x49d125;}catch(_0x3abc06){return[];}}async function searchTmdbForTop10(_0x1f808c,_0xad1203,_0x15d407){const _0x3e395a=_0x5b2ca5,_0x145fae={'TJAkT':_0x3e395a(0x3bf),'ZIkDp':_0x3e395a(0x3c1),'JgUwe':function(_0xd9bd72,_0x5da2c1){return _0xd9bd72(_0x5da2c1);}};try{const _0x56dad0=await Widget[_0x3e395a(0x3c1)][_0x3e395a(0x3c9)](_0x3e395a(0x345)+_0xad1203,{'params':{'query':_0x1f808c[_0x3e395a(0x3bd)](),'language':_0x145fae[_0x3e395a(0x382)],'page':0x1}});if(_0x56dad0&&_0x56dad0[_0x3e395a(0x31e)]&&_0x56dad0[_0x3e395a(0x31e)][_0x3e395a(0x3c0)]>0x0){let _0x3c057a=_0x56dad0[_0x3e395a(0x31e)][0x0];const _0x26fe87=_0x3c057a[_0x3e395a(0x220)]||_0x3c057a[_0x3e395a(0x445)]||'';return{'id':String(_0x3c057a['id']),'tmdbId':parseInt(_0x3c057a['id']),'type':_0x145fae[_0x3e395a(0x296)],'mediaType':_0xad1203,'title':_0x3c057a[_0x3e395a(0x4a3)]||_0x3c057a[_0x3e395a(0x32b)],'releaseDate':_0x26fe87,'year':_0x26fe87[_0x3e395a(0x1c9)](0x0,0x4),'genreTitle':_0x145fae[_0x3e395a(0x4c8)](getGlobalGenreText,_0x3c057a[_0x3e395a(0x20e)]),'subTitle':_0x3e395a(0x2b5)+_0x15d407,'posterPath':_0x3c057a[_0x3e395a(0x1cd)]?_0x3e395a(0x479)+_0x3c057a[_0x3e395a(0x1cd)]:'','backdropPath':_0x3c057a[_0x3e395a(0x21f)]?_0x3e395a(0x349)+_0x3c057a[_0x3e395a(0x21f)]:'','description':_0x3e395a(0x2b5)+_0x15d407+'\x0a'+(_0x3c057a[_0x3e395a(0x4cc)]||_0x3e395a(0x4c9))};}}catch(_0x2bdbd7){}return null;}async function fetchTmdbFallback_Top10(_0x3316c1,_0x4f198d,_0x180461){const _0x3d3d7e=_0x5b2ca5,_0xaa553d={'gbjrT':function(_0x3bb949,_0x4c29e1){return _0x3bb949(_0x4c29e1);},'WaBQF':_0x3d3d7e(0x3c1),'eEmWg':_0x3d3d7e(0x4c9),'vDVJJ':_0x3d3d7e(0x461),'uMgsB':_0x3d3d7e(0x2ec),'RJqjB':_0x3d3d7e(0x34f)},_0x1e07e5={'netflix':'8','disney':_0xaa553d[_0x3d3d7e(0x2b8)],'hbo':_0x3d3d7e(0x474),'apple-tv':_0xaa553d[_0x3d3d7e(0x245)],'amazon-prime':_0x3d3d7e(0x393)},_0x2ec085={'united-states':'US','south-korea':'KR','taiwan':'TW','hong-kong':'HK','japan':'JP','united-kingdom':'GB','world':'US'};try{const _0x380849=await Widget[_0x3d3d7e(0x3c1)][_0x3d3d7e(0x3c9)](_0x3d3d7e(0x2af)+_0x180461,{'params':{'watch_region':_0x2ec085[_0x4f198d]||'US','with_watch_providers':_0x1e07e5[_0x3316c1]||'8','sort_by':_0xaa553d[_0x3d3d7e(0x2dc)],'page':0x1,'language':_0x3d3d7e(0x3bf)}});return(_0x380849[_0x3d3d7e(0x31e)]||[])[_0x3d3d7e(0x36d)](0x0,0xa)[_0x3d3d7e(0x44d)]((_0x6ee27d,_0x461460)=>{const _0x209672=_0x3d3d7e,_0x107e40=_0x6ee27d[_0x209672(0x220)]||_0x6ee27d[_0x209672(0x445)]||'';return{'id':String(_0x6ee27d['id']),'tmdbId':_0xaa553d[_0x209672(0x200)](parseInt,_0x6ee27d['id']),'type':_0xaa553d[_0x209672(0x450)],'mediaType':_0x180461,'title':_0x6ee27d[_0x209672(0x4a3)]||_0x6ee27d[_0x209672(0x32b)],'releaseDate':_0x107e40,'year':_0x107e40[_0x209672(0x1c9)](0x0,0x4),'genreTitle':getGlobalGenreText(_0x6ee27d[_0x209672(0x20e)]),'subTitle':_0x209672(0x2b5)+(_0x461460+0x1),'posterPath':_0x6ee27d[_0x209672(0x1cd)]?_0x209672(0x479)+_0x6ee27d[_0x209672(0x1cd)]:'','backdropPath':_0x6ee27d[_0x209672(0x21f)]?_0x209672(0x349)+_0x6ee27d[_0x209672(0x21f)]:'','description':_0x209672(0x2b5)+(_0x461460+0x1)+'\x0a'+(_0x6ee27d[_0x209672(0x4cc)]||_0xaa553d[_0x209672(0x2ff)])};});}catch(_0x42bd70){return[];}}const GENRE_MAP={0x10:'动画',0x2a07:_0x5b2ca5(0x2fa),0x23:'喜剧',0x12:'剧情',0xe:'奇幻',0x36e:'科幻',0x25b0:'悬疑',0x29fd:'爱情',0x1b:'恐怖',0x2a0d:_0x5b2ca5(0x4c5)};function getGenreText(_0x189da1){const _0x3be6e5=_0x5b2ca5;if(!_0x189da1||!Array[_0x3be6e5(0x457)](_0x189da1))return'动画';const _0x46a750=_0x189da1[_0x3be6e5(0x25d)](_0x2d3d05=>_0x2d3d05!==0x10)[_0x3be6e5(0x44d)](_0x494933=>GENRE_MAP[_0x494933])[_0x3be6e5(0x25d)](Boolean);return _0x46a750[_0x3be6e5(0x3c0)]>0x0?_0x46a750[_0x3be6e5(0x36d)](0x0,0x2)[_0x3be6e5(0x3b2)](_0x3be6e5(0x2d9)):'动画';}function parseDate(_0x3582a3){const _0x4c2212=_0x5b2ca5,_0x35d7b4={'hQGOo':function(_0xfb585e,_0x50311a){return _0xfb585e!==_0x50311a;},'NclsX':_0x4c2212(0x3ec),'PTulE':function(_0x455acc,_0x44747a){return _0x455acc(_0x44747a);}};if(!_0x3582a3||_0x35d7b4[_0x4c2212(0x3e4)](typeof _0x3582a3,_0x35d7b4[_0x4c2212(0x33d)]))return'';let _0xef12e2=_0x3582a3[_0x4c2212(0x425)](/^(\d{4})年(\d{1,2})月(\d{1,2})日/);if(_0xef12e2)return _0xef12e2[0x1]+'-'+String(_0xef12e2[0x2])[_0x4c2212(0x4bf)](0x2,'0')+'-'+String(_0xef12e2[0x3])[_0x4c2212(0x4bf)](0x2,'0');_0xef12e2=_0x3582a3[_0x4c2212(0x425)](/^(\d{4})年(\d{1,2})月/);if(_0xef12e2)return _0xef12e2[0x1]+'-'+_0x35d7b4[_0x4c2212(0x4c0)](String,_0xef12e2[0x2])[_0x4c2212(0x4bf)](0x2,'0')+_0x4c2212(0x26d);_0xef12e2=_0x3582a3[_0x4c2212(0x425)](/^(\d{4})$/);if(_0xef12e2)return _0xef12e2[0x1]+_0x4c2212(0x49f);return _0x3582a3;}async function searchTmdbAnimeStrict(_0x2dcf36,_0x545934,_0x5dce80){const _0x346a13=_0x5b2ca5,_0x9190d3={'TqhIU':function(_0x2af683,_0x474027){return _0x2af683!==_0x474027;},'WGXNA':_0x346a13(0x3ec),'WGrEw':_0x346a13(0x3bf),'oNhuQ':_0x346a13(0x28b),'Tvwsf':function(_0x11008d,_0x4f9073){return _0x11008d===_0x4f9073;},'tFsWu':function(_0x3bf460,_0x1ec6ed){return _0x3bf460>_0x1ec6ed;},'mdBnZ':function(_0x30221f,_0x19061d){return _0x30221f&&_0x19061d;}};async function _0x5f5410(_0x3807cc){const _0x47fe2e=_0x346a13;if(!_0x3807cc||_0x9190d3[_0x47fe2e(0x3a6)](typeof _0x3807cc,_0x9190d3[_0x47fe2e(0x467)]))return null;const _0xcf25a3=_0x3807cc[_0x47fe2e(0x454)](/第[一二三四五六七八九十\d]+[季章]/g,'')[_0x47fe2e(0x454)](/Season \d+/i,'')[_0x47fe2e(0x3bd)]();try{let _0x425829={'query':_0xcf25a3,'language':_0x9190d3[_0x47fe2e(0x39c)],'include_adult':![]};if(_0x5dce80)_0x425829[_0x47fe2e(0x330)]=_0x5dce80;let _0x4407eb=await Widget[_0x47fe2e(0x3c1)][_0x47fe2e(0x3c9)](_0x9190d3[_0x47fe2e(0x2ba)],{'params':_0x425829}),_0x2ede27=_0x4407eb[_0x47fe2e(0x31e)]||[];_0x9190d3[_0x47fe2e(0x340)](_0x2ede27[_0x47fe2e(0x3c0)],0x0)&&_0x5dce80&&(delete _0x425829[_0x47fe2e(0x330)],_0x4407eb=await Widget[_0x47fe2e(0x3c1)][_0x47fe2e(0x3c9)](_0x9190d3[_0x47fe2e(0x2ba)],{'params':_0x425829}),_0x2ede27=_0x4407eb[_0x47fe2e(0x31e)]||[]);let _0x53fb66=_0x2ede27[_0x47fe2e(0x25d)](_0x522996=>_0x522996[_0x47fe2e(0x20e)]?.[_0x47fe2e(0x4c1)](0x10));if(_0x53fb66[_0x47fe2e(0x3c0)]>0x0)return _0x53fb66[_0x47fe2e(0x387)](_0x7666c7=>_0x7666c7[_0x47fe2e(0x1cd)])||_0x53fb66[0x0];let _0x275d2b={'query':_0xcf25a3,'language':_0x9190d3[_0x47fe2e(0x39c)],'include_adult':![]};if(_0x5dce80)_0x275d2b[_0x47fe2e(0x211)]=_0x5dce80;_0x4407eb=await Widget[_0x47fe2e(0x3c1)][_0x47fe2e(0x3c9)](_0x47fe2e(0x3f6),{'params':_0x275d2b}),_0x2ede27=_0x4407eb[_0x47fe2e(0x31e)]||[];_0x9190d3[_0x47fe2e(0x340)](_0x2ede27[_0x47fe2e(0x3c0)],0x0)&&_0x5dce80&&(delete _0x275d2b[_0x47fe2e(0x211)],_0x4407eb=await Widget[_0x47fe2e(0x3c1)][_0x47fe2e(0x3c9)](_0x47fe2e(0x3f6),{'params':_0x275d2b}),_0x2ede27=_0x4407eb[_0x47fe2e(0x31e)]||[]);let _0x115eae=_0x2ede27[_0x47fe2e(0x25d)](_0x2187a5=>_0x2187a5[_0x47fe2e(0x20e)]?.[_0x47fe2e(0x4c1)](0x10));if(_0x9190d3[_0x47fe2e(0x48e)](_0x115eae[_0x47fe2e(0x3c0)],0x0))return _0x115eae[_0x47fe2e(0x387)](_0x4f3d45=>_0x4f3d45[_0x47fe2e(0x1cd)])||_0x115eae[0x0];}catch(_0x10f410){}return null;}let _0x42c656=await _0x5f5410(_0x2dcf36);return _0x9190d3[_0x346a13(0x283)](!_0x42c656,_0x545934)&&_0x2dcf36!==_0x545934&&(_0x42c656=await _0x5f5410(_0x545934)),_0x42c656;}async function sanitizeAndEnsureTmdb(_0x2d7b49){const _0xffad10=_0x5b2ca5,_0x34852d={'jfhHI':function(_0x364f52,_0x4f2a7a){return _0x364f52!==_0x4f2a7a;},'sVonC':function(_0x362ab8,_0xf4b26c,_0x3e8b97,_0x489027){return _0x362ab8(_0xf4b26c,_0x3e8b97,_0x489027);},'ruvNR':function(_0x4896d9,_0x47b90f){return _0x4896d9(_0x47b90f);},'UNiFZ':_0xffad10(0x2d2),'AvVsO':function(_0x307d40,_0x3bfaa1){return _0x307d40(_0x3bfaa1);},'LldNy':_0xffad10(0x2b6)};if(!_0x2d7b49||!Array[_0xffad10(0x457)](_0x2d7b49))return[];const _0x96a87=_0x2d7b49[_0xffad10(0x44d)](async _0x269fcf=>{const _0x4f115d=_0xffad10,_0x5e9995=_0x269fcf[_0x4f115d(0x36a)]||_0x269fcf[_0x4f115d(0x32b)]||_0x269fcf[_0x4f115d(0x4a3)],_0x2df85e=_0x34852d[_0x4f115d(0x2f1)](_0x269fcf[_0x4f115d(0x32b)],_0x5e9995)?_0x269fcf[_0x4f115d(0x32b)]:null,_0x38aeb8=_0x269fcf[_0x4f115d(0x480)]||_0x269fcf[_0x4f115d(0x438)]||_0x269fcf[_0x4f115d(0x366)]||_0x269fcf[_0x4f115d(0x43e)]||'',_0x1e0f3b=_0x38aeb8[_0x4f115d(0x425)](/(\d{4})/),_0x264d61=_0x1e0f3b?_0x1e0f3b[0x1]:null,_0x475d0a=await _0x34852d[_0x4f115d(0x46f)](searchTmdbAnimeStrict,_0x5e9995,_0x2df85e,_0x264d61);if(_0x475d0a)return{'id':String(_0x475d0a['id']),'tmdbId':parseInt(_0x475d0a['id']),'type':_0x4f115d(0x3c1),'mediaType':_0x475d0a[_0x4f115d(0x32b)]?_0x4f115d(0x462):'tv','title':_0x475d0a[_0x4f115d(0x4a3)]||_0x475d0a[_0x4f115d(0x32b)]||_0x5e9995,'genreTitle':_0x34852d[_0x4f115d(0x333)](getGenreText,_0x475d0a[_0x4f115d(0x20e)]),'description':_0x475d0a[_0x4f115d(0x220)]||_0x475d0a[_0x4f115d(0x445)]||_0x34852d[_0x4f115d(0x333)](parseDate,_0x38aeb8)||_0x34852d[_0x4f115d(0x2dd)],'releaseDate':_0x475d0a[_0x4f115d(0x220)]||_0x475d0a[_0x4f115d(0x445)]||_0x34852d[_0x4f115d(0x28f)](parseDate,_0x38aeb8),'posterPath':_0x475d0a[_0x4f115d(0x1cd)]?_0x4f115d(0x479)+_0x475d0a[_0x4f115d(0x1cd)]:'','backdropPath':_0x475d0a[_0x4f115d(0x21f)]?_0x4f115d(0x349)+_0x475d0a[_0x4f115d(0x21f)]:'','rating':_0x475d0a[_0x4f115d(0x1f6)]?_0x475d0a[_0x4f115d(0x1f6)][_0x4f115d(0x437)](0x1):_0x269fcf[_0x4f115d(0x44e)]||_0x34852d[_0x4f115d(0x3fd)]};return null;}),_0x35e850=await Promise[_0xffad10(0x1d8)](_0x96a87);return _0x35e850[_0xffad10(0x25d)](Boolean);}async function loadBangumiCalendar(_0x44e523={}){const _0x1709e4=_0x5b2ca5,_0x2a3c30={'SKScp':function(_0x4631e2,_0x3eeb08){return _0x4631e2(_0x3eeb08);},'xBXTy':function(_0x5498bb,_0x2206f0){return _0x5498bb(_0x2206f0);},'jzPRR':_0x1709e4(0x4ee),'jRKpb':function(_0x1a2829,_0x146cdf){return _0x1a2829*_0x146cdf;},'dJhCk':function(_0xdccc06,_0x46fd1a){return _0xdccc06-_0x46fd1a;}},{sort_by:sort_by=_0x1709e4(0x2a3),page:page=0x1}=_0x44e523;let _0x239ba2=_0x2a3c30[_0x1709e4(0x2cb)](parseInt,sort_by);if(sort_by===_0x1709e4(0x2a3)){const _0x10031a=new Date()[_0x1709e4(0x4e8)]();_0x239ba2=_0x10031a===0x0?0x7:_0x10031a;}try{const _0x382617=await Widget[_0x1709e4(0x2f5)][_0x1709e4(0x3c9)](_0x2a3c30[_0x1709e4(0x3fb)]),_0x5665ab=(_0x382617[_0x1709e4(0x3a7)]||[])[_0x1709e4(0x387)](_0x5760aa=>_0x5760aa[_0x1709e4(0x3ca)]&&_0x5760aa[_0x1709e4(0x3ca)]['id']===_0x239ba2);if(!_0x5665ab)return[];const _0x3d2672=0x14,_0x3745db=_0x5665ab[_0x1709e4(0x231)][_0x1709e4(0x36d)](_0x2a3c30[_0x1709e4(0x339)](_0x2a3c30[_0x1709e4(0x4b1)](page,0x1),_0x3d2672),page*_0x3d2672),_0x35320c=_0x3745db[_0x1709e4(0x44d)](async _0x535c24=>{const _0x8e8b4c=_0x1709e4,_0x991bd4=(_0x535c24[_0x8e8b4c(0x36a)]||_0x535c24[_0x8e8b4c(0x4a3)])[_0x8e8b4c(0x454)](/第[一二三四五六七八九十\d]+[季章]/g,'')[_0x8e8b4c(0x3bd)](),_0x4fd50e=_0x535c24[_0x8e8b4c(0x366)]?_0x535c24[_0x8e8b4c(0x366)][_0x8e8b4c(0x1c9)](0x0,0x4):null,_0x3f19ed=await searchTmdbAnimeStrict(_0x991bd4,_0x535c24[_0x8e8b4c(0x4a3)],_0x4fd50e);if(!_0x3f19ed)return null;return _0x2a3c30[_0x8e8b4c(0x31c)](buildItem,{'id':_0x3f19ed['id'],'tmdbId':_0x3f19ed['id'],'type':'tv','title':_0x3f19ed[_0x8e8b4c(0x4a3)]||_0x3f19ed[_0x8e8b4c(0x32b)]||_0x535c24[_0x8e8b4c(0x36a)]||_0x535c24[_0x8e8b4c(0x4a3)],'date':_0x3f19ed[_0x8e8b4c(0x220)]||_0x535c24[_0x8e8b4c(0x366)],'poster':_0x3f19ed[_0x8e8b4c(0x1cd)],'backdrop':_0x3f19ed[_0x8e8b4c(0x21f)],'rating':_0x3f19ed[_0x8e8b4c(0x1f6)]||_0x535c24[_0x8e8b4c(0x44e)]?.[_0x8e8b4c(0x530)],'genreText':getGenreText(_0x3f19ed[_0x8e8b4c(0x20e)]),'desc':_0x3f19ed[_0x8e8b4c(0x4cc)]||_0x535c24[_0x8e8b4c(0x52e)]||_0x8e8b4c(0x4c9)});}),_0x10212e=await Promise[_0x1709e4(0x1d8)](_0x35320c);return _0x10212e[_0x1709e4(0x25d)](Boolean);}catch(_0xb5ce79){return[];}}async function fetchRecentHot(_0x503924={}){const _0x298910=_0x5b2ca5,_0x49baf1={'HcefZ':function(_0x17220c,_0xf19937){return _0x17220c>_0xf19937;},'pMLkl':function(_0x584a4e,_0x5d8748){return _0x584a4e(_0x5d8748);},'SdCWR':function(_0x1fe5e8,_0x39d03a){return _0x1fe5e8+_0x39d03a;},'FcuCo':function(_0x218485,_0x1f6e3c){return _0x218485+_0x1f6e3c;},'EJmMN':_0x298910(0x3af),'eXbkP':function(_0x27c849,_0x5b1e85){return _0x27c849===_0x5b1e85;},'YAkfj':_0x298910(0x301),'PoCOC':_0x298910(0x442),'svjQz':_0x298910(0x415),'SluqF':function(_0x59b63b,_0xcde55e){return _0x59b63b*_0xcde55e;},'OiQWW':_0x298910(0x38b)},_0xb85128=_0x49baf1[_0x298910(0x26a)];try{const _0x328a9d=await Widget[_0x298910(0x2f5)][_0x298910(0x3c9)](_0xb85128),_0x5d88de=_0x328a9d[_0x298910(0x3a7)]||{},_0x3d027c=_0x5d88de[_0x298910(0x20b)]||[];if(_0x49baf1[_0x298910(0x4a4)](_0x3d027c[_0x298910(0x3c0)],0x0))return[{'id':_0x49baf1[_0x298910(0x3a4)],'type':_0x298910(0x2c3),'title':_0x49baf1[_0x298910(0x20f)],'description':_0x49baf1[_0x298910(0x331)]}];const _0x4e25b8=parseInt(_0x503924[_0x298910(0x228)]||'1',0xa),_0x542b12=0x14,_0x10c94c=_0x49baf1[_0x298910(0x3a0)](_0x4e25b8-0x1,_0x542b12),_0x107718=_0x3d027c[_0x298910(0x36d)](_0x10c94c,_0x49baf1[_0x298910(0x4dc)](_0x10c94c,_0x542b12));return _0x107718[_0x298910(0x44d)]((_0x1c106d,_0x36fdd7)=>{const _0x1210b1=_0x298910,_0x3b06d9=(_0x1c106d[_0x1210b1(0x438)]||'')[_0x1210b1(0x514)]('\x0a'),_0x4b2abf=_0x49baf1[_0x1210b1(0x47c)](_0x3b06d9[_0x1210b1(0x3c0)],0x1)?_0x3b06d9[_0x1210b1(0x36d)](0x1)[_0x1210b1(0x3b2)]('\x0a'):_0x1c106d[_0x1210b1(0x438)];return _0x49baf1[_0x1210b1(0x39d)](buildItem,{'id':_0x1c106d['id'],'tmdbId':_0x1c106d[_0x1210b1(0x385)],'type':_0x1c106d[_0x1210b1(0x37c)]||'tv','title':_0x1c106d[_0x1210b1(0x32b)],'date':_0x1c106d[_0x1210b1(0x480)]||'','poster':_0x1c106d[_0x1210b1(0x2f4)],'backdrop':_0x1c106d[_0x1210b1(0x4cf)],'genreText':_0x1c106d[_0x1210b1(0x509)],'subTitle':_0x1210b1(0x1e2)+_0x49baf1[_0x1210b1(0x4dc)](_0x49baf1[_0x1210b1(0x392)](_0x10c94c,_0x36fdd7),0x1),'desc':_0x4b2abf||_0x1210b1(0x4c9)});});}catch(_0x55ded4){return[{'id':_0x298910(0x3ff),'type':_0x298910(0x2c3),'title':_0x49baf1[_0x298910(0x3f9)],'description':_0x298910(0x531)}];}}async function fetchAirtimeRanking(_0x558d08={}){const _0x3fc6d1=_0x5b2ca5,_0x549217={'hYDRN':_0x3fc6d1(0x21d),'bOguN':_0x3fc6d1(0x23f),'xnjSU':function(_0x42695b,_0x2c062f,_0x314fb9){return _0x42695b(_0x2c062f,_0x314fb9);},'igkhN':function(_0x459a3d,_0x51d2ea){return _0x459a3d(_0x51d2ea);}},_0x5b2d28=_0x558d08[_0x3fc6d1(0x36b)]||_0x549217[_0x3fc6d1(0x1f2)],_0x37cb7f=_0x558d08[_0x3fc6d1(0x342)]||''+new Date()[_0x3fc6d1(0x4f9)](),_0x14c7b8=_0x558d08[_0x3fc6d1(0x2c9)]||_0x3fc6d1(0x1d8),_0x144ba7=_0x558d08[_0x3fc6d1(0x34b)]||_0x549217[_0x3fc6d1(0x3df)],_0x502dbe=_0x549217[_0x3fc6d1(0x4f6)](parseInt,_0x558d08[_0x3fc6d1(0x228)]||'1',0xa),_0x523307=_0x3fc6d1(0x389)+_0x5b2d28+'-'+_0x37cb7f+'-'+_0x14c7b8+'-'+_0x144ba7+'-'+_0x502dbe;if(ScrapingCache[_0x3fc6d1(0x458)][_0x523307])return await _0x549217[_0x3fc6d1(0x34c)](sanitizeAndEnsureTmdb,ScrapingCache[_0x3fc6d1(0x458)][_0x523307]);let _0x2be1b8=_0x3fc6d1(0x520)+_0x5b2d28+_0x3fc6d1(0x278)+_0x37cb7f+'/'+_0x14c7b8+_0x3fc6d1(0x336)+_0x144ba7+_0x3fc6d1(0x4ba)+_0x502dbe;const _0x3ac1a8=await DynamicDataProcessor[_0x3fc6d1(0x229)](_0x2be1b8,_0x5b2d28);return ScrapingCache[_0x3fc6d1(0x458)][_0x523307]=_0x3ac1a8,await sanitizeAndEnsureTmdb(_0x3ac1a8);}async function fetchDailyCalendarApi(_0x558800={}){const _0x489cbc=_0x5b2ca5,_0x2de53b={'fQlUW':_0x489cbc(0x3f7),'AuESc':function(_0x538512,_0x2d319b){return _0x538512===_0x2d319b;},'tzReT':_0x489cbc(0x23d),'uhVYC':function(_0x58e8c4,_0x7e921d){return _0x58e8c4-_0x7e921d;},'GkZjQ':_0x489cbc(0x2a3),'oFYSW':_0x489cbc(0x51d),'srwSy':function(_0x58615c,_0x3084ed,_0x2d3e66){return _0x58615c(_0x3084ed,_0x2d3e66);},'WdBnP':_0x489cbc(0x50f),'RCAMV':function(_0x419b4a,_0x48fb07){return _0x419b4a!==_0x48fb07;},'ATTRw':function(_0x508c96,_0x99ffcc){return _0x508c96(_0x99ffcc);}};(!ScrapingCache[_0x489cbc(0x42d)]||ScrapingCache[_0x489cbc(0x42d)][_0x489cbc(0x3c0)]===0x0)&&(ScrapingCache[_0x489cbc(0x42d)]=await DynamicDataProcessor[_0x489cbc(0x1e0)]());let _0x547461=ScrapingCache[_0x489cbc(0x42d)]||[];const {filterType:filterType=_0x2de53b[_0x489cbc(0x42f)],specificWeekday:specificWeekday='1',dailySortOrder:dailySortOrder=_0x489cbc(0x3f7)}=_0x558800,_0x1dd3ce={0x0:0x7,0x1:0x1,0x2:0x2,0x3:0x3,0x4:0x4,0x5:0x5,0x6:0x6};let _0xcc5df8=[];if(_0x2de53b[_0x489cbc(0x361)](filterType,_0x489cbc(0x50b)))_0xcc5df8=_0x547461;else{const _0xf5e896=new Date(),_0x12c0c7=_0xf5e896[_0x489cbc(0x4e8)](),_0x5d4646=new Set();switch(filterType){case _0x489cbc(0x2a3):_0x5d4646[_0x489cbc(0x369)](_0x1dd3ce[_0x12c0c7]);break;case _0x2de53b[_0x489cbc(0x2c5)]:_0x5d4646[_0x489cbc(0x369)](_0x2de53b[_0x489cbc(0x451)](parseInt,specificWeekday,0xa));break;case _0x2de53b[_0x489cbc(0x232)]:[0x1,0x2,0x3,0x4][_0x489cbc(0x4d5)](_0x318c01=>_0x5d4646[_0x489cbc(0x369)](_0x318c01));break;case _0x489cbc(0x23a):[0x5,0x6,0x7][_0x489cbc(0x4d5)](_0x305090=>_0x5d4646[_0x489cbc(0x369)](_0x305090));break;}_0xcc5df8=_0x547461[_0x489cbc(0x25d)](_0x12531f=>_0x12531f[_0x489cbc(0x503)]&&_0x5d4646[_0x489cbc(0x2b1)](_0x12531f[_0x489cbc(0x503)]));}let _0x1b46d9=[..._0xcc5df8];return _0x2de53b[_0x489cbc(0x38d)](dailySortOrder,_0x489cbc(0x39f))&&_0x1b46d9[_0x489cbc(0x34b)]((_0x4708ad,_0x57d862)=>{const _0x302550=_0x489cbc;if(dailySortOrder===_0x2de53b[_0x302550(0x394)])return(_0x57d862[_0x302550(0x1df)]||0x0)-(_0x4708ad[_0x302550(0x1df)]||0x0);if(_0x2de53b[_0x302550(0x361)](dailySortOrder,_0x2de53b[_0x302550(0x4ce)]))return _0x2de53b[_0x302550(0x23e)](_0x57d862[_0x302550(0x38f)]||0x0,_0x4708ad[_0x302550(0x38f)]||0x0);if(_0x2de53b[_0x302550(0x361)](dailySortOrder,_0x302550(0x2be))){const _0x276707=_0x4708ad[_0x302550(0x366)]||0x0,_0x19a9e7=_0x57d862[_0x302550(0x366)]||0x0;return new Date(_0x19a9e7)[_0x302550(0x1ee)]()-new Date(_0x276707)[_0x302550(0x1ee)]();}return 0x0;}),await _0x2de53b[_0x489cbc(0x4d7)](sanitizeAndEnsureTmdb,_0x1b46d9);}async function loadBilibiliRank(_0x38d3e8={}){const _0x2b41a6=_0x5b2ca5,_0x41d2e6={'zcZBe':function(_0x5272bb,_0x3158ca,_0x3e4972,_0x12d3ed){return _0x5272bb(_0x3158ca,_0x3e4972,_0x12d3ed);},'msUer':function(_0x5b541e,_0x30742a){return _0x5b541e(_0x30742a);},'arYUb':function(_0x51eb53,_0x51387f){return _0x51eb53(_0x51387f);},'HJSLS':_0x2b41a6(0x1ff),'oHNSP':function(_0x1bd9c9,_0x36c5fe){return _0x1bd9c9*_0x36c5fe;},'tKYFw':function(_0x463093,_0x4d38e2){return _0x463093*_0x4d38e2;}},{sort_by:sort_by='1',page:page=0x1}=_0x38d3e8,_0x30f565=_0x2b41a6(0x2b3)+sort_by;try{const _0x5265d9=await Widget[_0x2b41a6(0x2f5)][_0x2b41a6(0x3c9)](_0x30f565,{'headers':{'User-Agent':_0x2b41a6(0x45b),'Referer':_0x41d2e6[_0x2b41a6(0x25e)]}}),_0x33c1dc=_0x5265d9[_0x2b41a6(0x3a7)]||{},_0x506021=_0x33c1dc[_0x2b41a6(0x2df)]?.[_0x2b41a6(0x43c)]||_0x33c1dc[_0x2b41a6(0x3a7)]?.[_0x2b41a6(0x43c)]||[],_0x2483da=0x14,_0x1f47e0=_0x506021[_0x2b41a6(0x36d)](_0x41d2e6[_0x2b41a6(0x327)](page-0x1,_0x2483da),_0x41d2e6[_0x2b41a6(0x38a)](page,_0x2483da)),_0x2e4070=_0x1f47e0[_0x2b41a6(0x44d)](async _0x526c33=>{const _0x223ed2=_0x2b41a6,_0x33a461=_0x526c33[_0x223ed2(0x32b)][_0x223ed2(0x454)](/第[一二三四五六七八九十\d]+[季章]/g,'')[_0x223ed2(0x3bd)](),_0x5cbb2b=await _0x41d2e6[_0x223ed2(0x50e)](searchTmdbAnimeStrict,_0x33a461,_0x526c33[_0x223ed2(0x32b)],null);if(!_0x5cbb2b)return null;return _0x41d2e6[_0x223ed2(0x30b)](buildItem,{'id':_0x5cbb2b['id'],'tmdbId':_0x5cbb2b['id'],'type':'tv','title':_0x5cbb2b[_0x223ed2(0x4a3)]||_0x5cbb2b[_0x223ed2(0x32b)],'date':_0x5cbb2b[_0x223ed2(0x220)],'poster':_0x5cbb2b[_0x223ed2(0x1cd)],'backdrop':_0x5cbb2b[_0x223ed2(0x21f)],'rating':_0x5cbb2b[_0x223ed2(0x1f6)]?.[_0x223ed2(0x437)](0x1),'genreText':_0x41d2e6[_0x223ed2(0x4ed)](getGlobalGenreText,_0x5cbb2b[_0x223ed2(0x20e)]),'desc':_0x5cbb2b[_0x223ed2(0x4cc)],'subTitle':_0x526c33[_0x223ed2(0x464)]?.[_0x223ed2(0x3e2)]||_0x223ed2(0x36c)});}),_0x134801=await Promise[_0x2b41a6(0x1d8)](_0x2e4070);return _0x134801[_0x2b41a6(0x25d)](Boolean);}catch(_0x1fdfd8){return[];}}async function loadTmdbAnimeRanking(_0x2d7942={}){const _0x4e9c6c=_0x5b2ca5,_0x58d0aa={'Gyyhz':_0x4e9c6c(0x379),'IbixS':_0x4e9c6c(0x3bf),'SxwtS':function(_0x33a332,_0x528861){return _0x33a332===_0x528861;},'RarRs':_0x4e9c6c(0x34f),'lfQae':_0x4e9c6c(0x4e3),'ycpsO':_0x4e9c6c(0x2d7),'PIbGc':_0x4e9c6c(0x388)},{sort_by:sort_by=_0x58d0aa[_0x4e9c6c(0x2da)],page:page=0x1}=_0x2d7942;let _0x50bcdb={'language':_0x58d0aa[_0x4e9c6c(0x49c)],'page':page,'with_genres':'16','with_original_language':'ja'};if(_0x58d0aa[_0x4e9c6c(0x3d3)](sort_by,_0x4e9c6c(0x379)))_0x50bcdb[_0x4e9c6c(0x276)]=_0x58d0aa[_0x4e9c6c(0x368)];else{if(sort_by===_0x58d0aa[_0x4e9c6c(0x498)])_0x50bcdb[_0x4e9c6c(0x276)]=_0x58d0aa[_0x4e9c6c(0x417)];else{if(_0x58d0aa[_0x4e9c6c(0x3d3)](sort_by,_0x4e9c6c(0x31a)))_0x50bcdb[_0x4e9c6c(0x276)]=_0x4e9c6c(0x2cd);}}try{const _0xea3ed0=await Widget[_0x4e9c6c(0x3c1)][_0x4e9c6c(0x3c9)](_0x58d0aa[_0x4e9c6c(0x4fa)],{'params':_0x50bcdb});return(_0xea3ed0[_0x4e9c6c(0x31e)]||[])[_0x4e9c6c(0x44d)](_0x2cd68e=>buildItem({'id':_0x2cd68e['id'],'tmdbId':_0x2cd68e['id'],'type':'tv','title':_0x2cd68e[_0x4e9c6c(0x4a3)]||_0x2cd68e[_0x4e9c6c(0x32b)],'date':_0x2cd68e[_0x4e9c6c(0x220)],'poster':_0x2cd68e[_0x4e9c6c(0x1cd)],'backdrop':_0x2cd68e[_0x4e9c6c(0x21f)],'rating':_0x2cd68e[_0x4e9c6c(0x1f6)]?.[_0x4e9c6c(0x437)](0x1),'genreText':getGlobalGenreText(_0x2cd68e[_0x4e9c6c(0x20e)]),'desc':_0x2cd68e[_0x4e9c6c(0x4cc)]}));}catch(_0x29f9b0){return[];}}async function loadAniListRanking(_0x75d9e6={}){const _0x119674=_0x5b2ca5,_0x27d9e9={'KikSv':function(_0x22445b,_0x26e1a5,_0x3ad5df,_0x454ef4){return _0x22445b(_0x26e1a5,_0x3ad5df,_0x454ef4);},'JDWvd':function(_0x4056d3,_0xcf7f05){return _0x4056d3(_0xcf7f05);}},{sort_by:sort_by=_0x119674(0x2aa),page:page=0x1}=_0x75d9e6,_0x5b29d9=_0x119674(0x4dd)+sort_by+_0x119674(0x3c5);try{const _0x15724b=await Widget[_0x119674(0x2f5)][_0x119674(0x511)](_0x119674(0x2c4),{'query':_0x5b29d9,'variables':{'page':page,'perPage':0x14}}),_0x562873=_0x15724b[_0x119674(0x3a7)]?.[_0x119674(0x3a7)]?.[_0x119674(0x527)]?.[_0x119674(0x439)]||[],_0x4db080=_0x562873[_0x119674(0x44d)](async _0x391241=>{const _0x289d9c=_0x119674,_0x188358=await _0x27d9e9[_0x289d9c(0x1e1)](searchTmdbAnimeStrict,_0x391241[_0x289d9c(0x32b)][_0x289d9c(0x3d1)]||_0x391241[_0x289d9c(0x32b)][_0x289d9c(0x4cb)],_0x391241[_0x289d9c(0x32b)][_0x289d9c(0x2ef)],_0x391241[_0x289d9c(0x35a)]);if(!_0x188358)return null;return _0x27d9e9[_0x289d9c(0x294)](buildItem,{'id':_0x188358['id'],'tmdbId':_0x188358['id'],'type':'tv','title':_0x188358[_0x289d9c(0x4a3)]||_0x188358[_0x289d9c(0x32b)],'date':_0x188358[_0x289d9c(0x220)],'poster':_0x188358[_0x289d9c(0x1cd)],'backdrop':_0x188358[_0x289d9c(0x21f)],'rating':_0x188358[_0x289d9c(0x1f6)]?.[_0x289d9c(0x437)](0x1),'genreText':_0x27d9e9[_0x289d9c(0x294)](getGlobalGenreText,_0x188358[_0x289d9c(0x20e)]),'desc':_0x188358[_0x289d9c(0x4cc)]});}),_0x173ea7=await Promise[_0x119674(0x1d8)](_0x4db080);return _0x173ea7[_0x119674(0x25d)](Boolean);}catch(_0x3f6a3e){return[];}}async function loadMalRanking(_0x475b61={}){const _0x565e14=_0x5b2ca5,_0x1fd19f={'XDvqP':function(_0x24d1c0,_0x49b3f0,_0x33c11b,_0x4c0516){return _0x24d1c0(_0x49b3f0,_0x33c11b,_0x4c0516);},'lSlKq':function(_0x241db9,_0x3e85c6){return _0x241db9===_0x3e85c6;},'Clpbf':_0x565e14(0x465),'UHbQm':function(_0x24d437,_0x5331ed){return _0x24d437===_0x5331ed;},'Ebrqq':_0x565e14(0x4d1),'XrlTM':_0x565e14(0x4de)},{sort_by:sort_by=_0x565e14(0x465),page:page=0x1}=_0x475b61;let _0x9ade6f={'page':page};if(_0x1fd19f[_0x565e14(0x3da)](sort_by,_0x1fd19f[_0x565e14(0x486)]))_0x9ade6f[_0x565e14(0x25d)]=_0x565e14(0x465);else{if(_0x1fd19f[_0x565e14(0x42c)](sort_by,_0x565e14(0x4d1)))_0x9ade6f[_0x565e14(0x25d)]=_0x1fd19f[_0x565e14(0x447)];}try{const _0x25ca12=await Widget[_0x565e14(0x2f5)][_0x565e14(0x3c9)](_0x1fd19f[_0x565e14(0x364)],{'params':_0x9ade6f}),_0x114a80=_0x25ca12[_0x565e14(0x3a7)]?.[_0x565e14(0x3a7)]||[],_0x4950ea=_0x114a80[_0x565e14(0x44d)](async _0x20dad0=>{const _0x324072=_0x565e14,_0x5eb22b=await _0x1fd19f[_0x324072(0x41e)](searchTmdbAnimeStrict,_0x20dad0[_0x324072(0x1cc)]||_0x20dad0[_0x324072(0x32b)],_0x20dad0[_0x324072(0x282)],null);if(!_0x5eb22b)return null;return buildItem({'id':_0x5eb22b['id'],'tmdbId':_0x5eb22b['id'],'type':'tv','title':_0x5eb22b[_0x324072(0x4a3)]||_0x5eb22b[_0x324072(0x32b)],'date':_0x5eb22b[_0x324072(0x220)],'poster':_0x5eb22b[_0x324072(0x1cd)],'backdrop':_0x5eb22b[_0x324072(0x21f)],'rating':_0x5eb22b[_0x324072(0x1f6)]?.[_0x324072(0x437)](0x1),'genreText':getGlobalGenreText(_0x5eb22b[_0x324072(0x20e)]),'desc':_0x5eb22b[_0x324072(0x4cc)]});}),_0x1c1f73=await Promise[_0x565e14(0x1d8)](_0x4950ea);return _0x1c1f73[_0x565e14(0x25d)](Boolean);}catch(_0x256980){return[];}}const DynamicDataProcessor=((()=>{const _0x36fc86=_0x5b2ca5,_0x288748={'zHAHQ':function(_0x334597,_0x43d769){return _0x334597(_0x43d769);},'WmZHD':_0x36fc86(0x4ee)};function _0x39997b(_0x328467){const _0x5ef3fd=_0x36fc86,_0x467dbb={'sYJGs':function(_0x147cf1,_0x36b120){const _0x5bd98e=_0x4d7f;return _0x288748[_0x5bd98e(0x2a1)](_0x147cf1,_0x36b120);}},_0x59f1c0=Widget[_0x5ef3fd(0x33b)][_0x5ef3fd(0x1de)](_0x328467),_0x4e4558=[];return _0x288748[_0x5ef3fd(0x2a1)](_0x59f1c0,_0x5ef3fd(0x1ea))[_0x5ef3fd(0x505)]((_0xa64291,_0x447fb6)=>{const _0x7ba3a2=_0x5ef3fd,_0x23c613=_0x467dbb[_0x7ba3a2(0x41a)](_0x59f1c0,_0x447fb6),_0x30141b=_0x23c613[_0x7ba3a2(0x40b)]('id')?.[_0x7ba3a2(0x1c9)](0x5);if(!_0x30141b)return;const _0x364423=_0x23c613[_0x7ba3a2(0x387)](_0x7ba3a2(0x1cf))[_0x7ba3a2(0x2c3)]()[_0x7ba3a2(0x3bd)](),_0x5308df=_0x23c613[_0x7ba3a2(0x387)](_0x7ba3a2(0x1e6))[_0x7ba3a2(0x2c3)]()[_0x7ba3a2(0x3bd)](),_0x49e4cf=_0x23c613[_0x7ba3a2(0x387)](_0x7ba3a2(0x233))[_0x7ba3a2(0x2c3)]()[_0x7ba3a2(0x3bd)]();_0x4e4558[_0x7ba3a2(0x4d0)]({'id':_0x30141b,'title':_0x364423,'info':_0x5308df,'rating':_0x49e4cf});}),_0x4e4558;}async function _0x85ec6e(_0x1eed1c,_0x40330a){const _0x23c395=_0x36fc86;try{const _0x215800=await Widget[_0x23c395(0x2f5)][_0x23c395(0x3c9)](_0x1eed1c);return _0x39997b(_0x215800[_0x23c395(0x3a7)]);}catch(_0x58841c){return[];}}async function _0x565955(){const _0x3ff0e6=_0x36fc86;try{const _0x571b06=await Widget[_0x3ff0e6(0x2f5)][_0x3ff0e6(0x3c9)](_0x288748[_0x3ff0e6(0x257)]),_0x48b0a8=[];return _0x571b06&&Array[_0x3ff0e6(0x457)](_0x571b06[_0x3ff0e6(0x3a7)])&&_0x571b06[_0x3ff0e6(0x3a7)][_0x3ff0e6(0x4d5)](_0x2a05c3=>{const _0x51c53f=_0x3ff0e6;_0x2a05c3&&Array[_0x51c53f(0x457)](_0x2a05c3[_0x51c53f(0x231)])&&_0x2a05c3[_0x51c53f(0x231)][_0x51c53f(0x4d5)](_0xdc7d5a=>{const _0x1a75c9=_0x51c53f;_0xdc7d5a[_0x1a75c9(0x503)]=_0x2a05c3[_0x1a75c9(0x3ca)]?.['id'],_0x48b0a8[_0x1a75c9(0x4d0)](_0xdc7d5a);});}),_0x48b0a8;}catch(_0x4bafa7){return[];}}return{'processBangumiPage':_0x85ec6e,'processDailyCalendar':_0x565955};})());
+// =========================================================================
+// 1. 全局配置与纯净内存缓存 (必须置于顶部)
+// =========================================================================
+
+const currentYear = new Date().getFullYear();
+const startYear = Math.max(currentYear + 1, 2026);
+const yearOptions = [];
+for (let year = startYear; year >= 1940; year--) {
+    yearOptions.push({ title: `${year}`, value: `${year}` });
+}
+
+// 🚀 全新的纯净内存缓存（仅用于动态网页刮削，彻底废弃旧版 JSON 请求）
+const ScrapingCache = {
+    airtime: {},
+    daily: [],
+    hot: null            // v1.4 优化：bangumi-hot.json 内存缓存，翻页不再重复下载
+};
+
+// v1.4 优化：raw.githubusercontent 在部分网络环境（代理/移动网络）极不稳定，
+// 优先走 jsdelivr CDN（边缘缓存+快），失败再回落 raw，双保险。
+const BANGUMI_HOT_URLS = [
+    "https://cdn.jsdelivr.net/gh/MakkaPakka518/List@main/data/bangumi-hot.json",
+    "https://raw.githubusercontent.com/MakkaPakka518/List/refs/heads/main/data/bangumi-hot.json",
+];
+
+const DEFAULT_TRAKT_ID = "95b59922670c84040db3632c7aac6f33704f6ffe5cbf3113a056e37cb45cb482";
+
+const GLOBAL_GENRE_MAP_ALL = {
+    16: "动画", 10759: "动作冒险", 35: "喜剧", 18: "剧情", 14: "奇幻", 878: "科幻", 9648: "悬疑",
+    10749: "爱情", 27: "恐怖", 10765: "科幻奇幻", 80: "犯罪", 99: "纪录片", 10751: "家庭",
+    36: "历史", 10402: "音乐", 10770: "电视电影", 53: "惊悚", 10752: "战争", 37: "西部", 28: "动作", 12: "冒险",
+    10762: "儿童", 10763: "新闻", 10764: "真人秀", 10766: "肥皂剧", 10767: "脱口秀", 10768: "战综"
+};
+
+function getGlobalGenreText(ids) {
+    if (!ids || !Array.isArray(ids)) return "影视";
+    const genres = ids.map(id => GLOBAL_GENRE_MAP_ALL[id]).filter(Boolean);
+    return genres.length > 0 ? genres.slice(0, 2).join(" / ") : "影视";
+}
+
+// 统一 UI 卡片构建工厂
+function buildItem({ id, tmdbId, type, title, date, poster, backdrop, rating, genreText, subTitle, desc }) {
+    return {
+        id: String(id),
+        tmdbId: parseInt(tmdbId) || parseInt(id),
+        type: "tmdb",
+        mediaType: type,
+        title: title,
+        genreTitle: genreText || (type === "tv" ? "剧集" : "电影"),
+        description: desc || "",
+        releaseDate: date,
+        posterPath: poster ? `https://image.tmdb.org/t/p/w500${poster}` : "",
+        backdropPath: backdrop ? `https://image.tmdb.org/t/p/w780${backdrop}` : "",
+        subTitle: subTitle
+    };
+}
+
+// =========================================================================
+// 2. 终极聚合版 Widget Metadata (史诗七大阵营)
+// =========================================================================
+var WidgetMetadata = {
+    id: "super_ultime_media_hub_makka",
+    title: "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖·终极聚合",
+    description: "动漫、影剧、综艺、流行风向与平台分流一网打尽",
+    author: "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
+    version: "1.4.0",
+    requiredVersion: "0.0.1",
+    site: "https://t.me/MakkaPakkaOvO",
+
+    globalParams: [
+        {
+            name: "traktClientId",
+            title: "Trakt Client ID",
+            type: "input",
+            description: "选填，不填则使用内置。Trakt 榜单专用。",
+            value: ""
+        },
+        {
+            name: "language",
+            title: "语言",
+            type: "language",
+            value: "zh-CN"
+        }
+    ],
+
+    modules: [
+        // ---------------- 大栏目 1：二次元全境聚合 ----------------
+        {
+            title: "🌸 动漫全境聚合",
+            functionName: "routeAnimeOmni",
+            type: "video",
+            cacheDuration: 3600,
+            params: [
+                {
+                    name: "anime_source", title: "选择数据源", type: "enumeration", value: "cal",
+                    enumOptions: [
+                        { title: "Bangumi 追番日历", value: "cal" },
+                        { title: "Bilibili 热度榜单", value: "bili" },
+                        { title: "Bangumi 近期热门", value: "hot" },
+                        { title: "Bangumi 年季度榜", value: "rank" },
+                        { title: "Bangumi 每日放送", value: "daily" },
+                        { title: "TMDB 热门/新番", value: "tmdb" },
+                        { title: "AniList 流行榜单", value: "anilist" },
+                        { title: "MAL 权威榜单", value: "mal" }
+                    ]
+                },
+                { name: "cal_day", title: "选择日期", type: "enumeration", value: "today", belongTo: { paramName: "anime_source", value: ["cal"] }, enumOptions: [ { title: "📅 今日更新", value: "today" }, { title: "周一 (月)", value: "1" }, { title: "周二 (火)", value: "2" }, { title: "周三 (水)", value: "3" }, { title: "周四 (木)", value: "4" }, { title: "周五 (金)", value: "5" }, { title: "周六 (土)", value: "6" }, { title: "周日 (日)", value: "7" } ] },
+                { name: "bili_sort", title: "榜单分区", type: "enumeration", value: "1", belongTo: { paramName: "anime_source", value: ["bili"] }, enumOptions: [ { title: "📺 B站番剧 (日漫)", value: "1" }, { title: "🇨🇳 B站国创 (国漫)", value: "4" } ] },
+                { name: "hot_cat", title: "分类", type: "enumeration", value: "anime", belongTo: { paramName: "anime_source", value: ["hot"] }, enumOptions: [ { title: "动画", value: "anime" } ] },
+                { name: "rank_cat", title: "分类", type: "enumeration", value: "anime", belongTo: { paramName: "anime_source", value: ["rank"] }, enumOptions: [ { title: "动画", value: "anime" }, { title: "三次元", value: "real" } ] },
+                { name: "rank_year", title: "年份", type: "enumeration", value: `${currentYear}`, belongTo: { paramName: "anime_source", value: ["rank"] }, enumOptions: yearOptions },
+                { name: "rank_month", title: "月份/季度", type: "enumeration", value: "all", belongTo: { paramName: "anime_source", value: ["rank"] }, enumOptions: [ { title: "全年", value: "all" }, { title: "冬季 (1月)", value: "1" }, { title: "春季 (4月)", value: "4" }, { title: "夏季 (7月)", value: "7" }, { title: "秋季 (10月)", value: "10" } ] },
+                { name: "rank_sort", title: "排序方式", type: "enumeration", value: "collects", belongTo: { paramName: "anime_source", value: ["rank"] }, enumOptions: [ { title: "排名", value: "rank" }, { title: "热度", value: "trends" }, { title: "收藏数", value: "collects" }, { title: "发售日期", value: "date" }, { title: "名称", value: "title" } ] },
+                { name: "daily_filter", title: "筛选范围", type: "enumeration", value: "today", belongTo: { paramName: "anime_source", value: ["daily"] }, enumOptions: [ { title: "今日放送", value: "today" }, { title: "指定单日", value: "specific_day" }, { title: "本周一至四", value: "mon_thu" }, { title: "本周五至日", value: "fri_sun" }, { title: "整周放送", value: "all_week" } ] },
+                { name: "daily_weekday", title: "指定单日星期", type: "enumeration", value: "1", belongTo: { paramName: "anime_source", value: ["daily"] }, enumOptions: [ { title: "星期一", value: "1" }, { title: "星期二", value: "2" }, { title: "星期三", value: "3" }, { title: "星期四", value: "4" }, { title: "星期五", value: "5" }, { title: "星期六", value: "6" }, { title: "星期日", value: "7" } ] },
+                { name: "daily_sort", title: "排序方式", type: "enumeration", value: "popularity_rat_bgm", belongTo: { paramName: "anime_source", value: ["daily"] }, enumOptions: [ { title: "热度(评分人数)", value: "popularity_rat_bgm" }, { title: "评分", value: "score_bgm_desc" }, { title: "放送日(更新日期)", value: "airdate_desc" }, { title: "默认", value: "default" } ] },
+                { name: "tmdb_sort", title: "榜单类型", type: "enumeration", value: "trending", belongTo: { paramName: "anime_source", value: ["tmdb"] }, enumOptions: [ { title: "🔥 实时流行 (Trending)", value: "trending" }, { title: "📅 最新首播 (New)", value: "new" }, { title: "👑 高分神作 (Top Rated)", value: "top" } ] },
+                { name: "anilist_sort", title: "排序方式", type: "enumeration", value: "TRENDING_DESC", belongTo: { paramName: "anime_source", value: ["anilist"] }, enumOptions: [ { title: "📈 近期趋势 (Trending)", value: "TRENDING_DESC" }, { title: "💖 历史人气 (Popularity)", value: "POPULARITY_DESC" }, { title: "⭐ 评分最高 (Score)", value: "SCORE_DESC" } ] },
+                { name: "mal_sort", title: "榜单类型", type: "enumeration", value: "airing", belongTo: { paramName: "anime_source", value: ["mal"] }, enumOptions: [ { title: "🔥 当前热播 Top", value: "airing" }, { title: "🏆 历史总榜 Top", value: "all" }, { title: "🎥 最佳剧场版", value: "movie" }, { title: "🔜 即将上映", value: "upcoming" } ] },
+                { name: "page", title: "页码", type: "page" }
+            ]
+        },
+
+        // ---------------- 大栏目 2：全球影剧类别 ----------------
+        {
+            title: "🏷️ 全球影剧类别",
+            functionName: "loadGenreRank",
+            type: "video",
+            cacheDuration: 3600,
+            params: [
+                { name: "sort_by", title: "影视类型", type: "enumeration", value: "all", enumOptions: [ { title: "🌟 全部 (影+剧混合)", value: "all" }, { title: "🎬 电影 (Movie)", value: "movie" }, { title: "📺 电视剧 (TV)", value: "tv" } ] },
+                { name: "genre", title: "题材流派", type: "enumeration", value: "all", enumOptions: [ { title: "🌟 全部题材 (All)", value: "all" }, { title: "🛸 科幻 (Sci-Fi)", value: "scifi" }, { title: "🔍 悬疑 (Mystery)", value: "mystery" }, { title: "👻 恐怖 (Horror)", value: "horror" }, { title: "🔪 犯罪 (Crime)", value: "crime" }, { title: "💥 动作 (Action)", value: "action" }, { title: "😂 喜剧 (Comedy)", value: "comedy" }, { title: "❤️ 爱情 (Romance)", value: "romance" }, { title: "🎭 剧情 (Drama)", value: "drama" }, { title: "🐉 奇幻 (Fantasy)", value: "fantasy" }, { title: "🎨 动画 (Animation)", value: "animation" }, { title: "🎥 纪录片 (Documentary)", value: "documentary" } ] },
+                { name: "region", title: "国家/地区", type: "enumeration", value: "all", enumOptions: [ { title: "🌍 全球 (所有国家)", value: "all" }, { title: "🇨🇳 中国大陆", value: "cn" }, { title: "🇭🇰 中国香港", value: "hk" }, { title: "🇹🇼 中国台湾", value: "tw" }, { title: "🏮 港台 (香港+台湾)", value: "hktw" }, { title: "🇯🇵 日本", value: "jp" }, { title: "🇰🇷 韩国", value: "kr" }, { title: "🌸 日韩合集", value: "jpkr" }, { title: "🇹🇭 泰国", value: "th" }, { title: "🇸🇬 新加坡", value: "sg" }, { title: "🇲🇾 马来西亚", value: "my" }, { title: "🇮🇳 印度", value: "in" }, { title: "🌏 亚太大区", value: "apac" }, { title: "🇺🇸 美国", value: "us" }, { title: "🇬🇧 英国", value: "gb" }, { title: "🇩🇪 德国", value: "de" }, { title: "🇸🇪 瑞典", value: "se" }, { title: "🇪🇺 欧洲全境", value: "europe" }, { title: "🇪🇸 西班牙", value: "es" }, { title: "🇲🇽 墨西哥", value: "mx" }, { title: "💃 西语/拉丁美洲", value: "latin" } ] },
+                { name: "order_rule", title: "排序规则", type: "enumeration", value: "popularity", enumOptions: [ { title: "🔥 热门趋势", value: "popularity" }, { title: "⭐ 评分最高", value: "rating" }, { title: "📅 最新上线", value: "time" } ] },
+                { name: "page", title: "页码", type: "page", startPage: 1 }
+            ]
+        },
+
+        // ---------------- 大栏目 3：全能电影榜 ----------------
+        {
+            title: "🎬 全能电影榜单",
+            functionName: "routeMovieOmni",
+            type: "video",
+            cacheDuration: 3600,
+            params: [
+                {
+                    name: "movie_source", title: "榜单模式", type: "enumeration", value: "general",
+                    enumOptions: [
+                        { title: "🔥 电影综合榜", value: "general" },
+                        { title: "🏆 年度最佳电影", value: "yearly" },
+                        { title: "🏷️ 按类型探索", value: "genre" }
+                    ]
+                },
+                { name: "general_sort", title: "榜单分类", type: "enumeration", value: "popular", belongTo: { paramName: "movie_source", value: ["general"] }, enumOptions: [ { title: "🔥 流行趋势 (Popular)", value: "popular" }, { title: "⭐️ 历史高分 (Top Rated)", value: "top_rated" }, { title: "💰 全球票房榜 (Box Office)", value: "box_office" }, { title: "🏆 奥斯卡佳片 (Oscar)", value: "oscar" } ] },
+                { name: "yearly_sort", title: "选择年份", type: "enumeration", value: "2024", belongTo: { paramName: "movie_source", value: ["yearly"] }, enumOptions: [ { title: "2025年 最佳", value: "2025" }, { title: "2024年 最佳", value: "2024" }, { title: "2023年 最佳", value: "2023" }, { title: "2022年 最佳", value: "2022" }, { title: "2021年 最佳", value: "2021" }, { title: "2020年 最佳", value: "2020" }, { title: "2019年 最佳", value: "2019" }, { title: "2018年 最佳", value: "2018" }, { title: "2017年 最佳", value: "2017" }, { title: "2016年 最佳", value: "2016" }, { title: "2015年 最佳", value: "2015" } ] },
+                { name: "genre_sort", title: "选择类型", type: "enumeration", value: "878", belongTo: { paramName: "movie_source", value: ["genre"] }, enumOptions: [ { title: "🛸 科幻 (Sci-Fi)", value: "878" }, { title: "🎭 剧情 (Drama)", value: "18" }, { title: "🤯 悬疑 (Mystery)", value: "9648" }, { title: "💥 动作 (Action)", value: "28" }, { title: "😂 喜剧 (Comedy)", value: "35" }, { title: "❤️ 爱情 (Romance)", value: "10749" }, { title: "👻 恐怖 (Horror)", value: "27" }, { title: "🔪 犯罪 (Crime)", value: "80" }, { title: "🧙‍♂️ 奇幻 (Fantasy)", value: "14" }, { title: "🦄 动画 (Animation)", value: "16" } ] },
+                { name: "page", title: "页码", type: "page", startPage: 1 }
+            ]
+        },
+
+        // ---------------- 大栏目 4：全球综艺频道 ----------------
+        {
+            title: "📺 全球综艺频道",
+            functionName: "loadVarietyShows",
+            type: "video",
+            cacheDuration: 3600,
+            params: [
+                {
+                    name: "sort_by", title: "国家/地区", type: "enumeration", value: "cn",
+                    enumOptions: [
+                        { title: "🇨🇳 中国大陆", value: "cn" },
+                        { title: "🇰🇷 韩国", value: "kr" },
+                        { title: "🇯🇵 日本", value: "jp" },
+                        { title: "🇹🇼 中国台湾", value: "tw" },
+                        { title: "🇭🇰 中国香港", value: "hk" },
+                        { title: "🇺🇸 欧美综合", value: "eu_us" },
+                        { title: "🌍 全球综合", value: "all" }
+                    ]
+                },
+                {
+                    name: "list_type", title: "排播与榜单", type: "enumeration", value: "hot",
+                    enumOptions: [
+                        { title: "🔥 近期热播 (Hot)", value: "hot" },
+                        { title: "📅 今日更新 (Today)", value: "today" },
+                        { title: "🔜 明日预告 (Tomorrow)", value: "tomorrow" },
+                        { title: "📈 流行趋势 (5年内热榜)", value: "trend" },
+                        { title: "⭐ 高分神级 (Top Rated)", value: "top" }
+                    ]
+                },
+                { name: "page", title: "页码", type: "page", startPage: 1 }
+            ]
+        },
+
+        // ---------------- 大栏目 5：影剧风向标 (IMDb + 烂番茄 + Trakt + 豆瓣) ----------------
+        {
+            title: "🧭 影剧流行风向",
+            functionName: "routeTrendsHub",
+            type: "video",
+            cacheDuration: 3600,
+            params: [
+                {
+                    name: "hub_source",
+                    title: "选择平台",
+                    type: "enumeration",
+                    value: "imdb",
+                    enumOptions: [
+                        { title: "🟡 IMDb 权威榜单", value: "imdb" },
+                        { title: "🍅 烂番茄风向标", value: "rt" },
+                        { title: "🌍 Trakt 趋势榜", value: "trakt" },
+                        { title: "🟢 豆瓣 国内风向", value: "douban" }
+                    ]
+                },
+                {
+                    name: "imdb_sort", title: "IMDb 榜单", type: "enumeration", value: "trending_week",
+                    belongTo: { paramName: "hub_source", value: ["imdb"] },
+                    enumOptions: [
+                        { title: "📅 本周热榜 (Trending Week)", value: "trending_week" }, { title: "🔥 今日热榜 (Trending Day)", value: "trending_day" }, { title: "🌊 流行趋势 (Popular)", value: "popular" }, { title: "💎 高分神作 (Top Rated)", value: "top_rated" }, { title: "🇨🇳 国产剧热度(模拟)", value: "china_tv" }, { title: "🇨🇳 国产电影热度(模拟)", value: "china_movie" }
+                    ]
+                },
+                {
+                    name: "mediaType", title: "范围 (仅全球榜有效)", type: "enumeration", value: "all",
+                    belongTo: { paramName: "imdb_sort", value: ["trending_week", "trending_day", "popular", "top_rated"] },
+                    enumOptions: [ { title: "全部 (剧集+电影)", value: "all" }, { title: "电影", value: "movie" }, { title: "剧集", value: "tv" } ]
+                },
+                {
+                    name: "rt_sort", title: "烂番茄 榜单", type: "enumeration", value: "rt_movies_home",
+                    belongTo: { paramName: "hub_source", value: ["rt"] },
+                    enumOptions: [
+                        { title: "🎬 流媒体热映", value: "rt_movies_home" }, { title: "🍿 院线热映", value: "rt_movies_theater" }, { title: "💎 最佳流媒体", value: "rt_movies_best" }, { title: "📺 热门剧集", value: "rt_tv_popular" }, { title: "🆕 最新上线", value: "rt_tv_new" }
+                    ]
+                },
+                {
+                    name: "trakt_sort", title: "Trakt 榜单", type: "enumeration", value: "trending",
+                    belongTo: { paramName: "hub_source", value: ["trakt"] },
+                    enumOptions: [
+                        { title: "🔥 实时热播 (Trending)", value: "trending" }, { title: "🌊 最受欢迎 (Popular)", value: "popular" }, { title: "❤️ 最受期待 (Anticipated)", value: "anticipated" }
+                    ]
+                },
+                {
+                    name: "traktType", title: "Trakt 类型", type: "enumeration", value: "all",
+                    belongTo: { paramName: "hub_source", value: ["trakt"] },
+                    enumOptions: [ { title: "全部 (剧集+电影)", value: "all" }, { title: "剧集", value: "shows" }, { title: "电影", value: "movies" } ]
+                },
+                {
+                    name: "db_sort", title: "豆瓣 榜单", type: "enumeration", value: "db_tv_cn",
+                    belongTo: { paramName: "hub_source", value: ["douban"] },
+                    enumOptions: [
+                        { title: "🇨🇳 热门国产剧", value: "db_tv_cn" }, { title: "🎤 热门综艺", value: "db_variety" }, { title: "🎬 热门电影", value: "db_movie" }, { title: "🇺🇸 热门美剧", value: "db_tv_us" }
+                    ]
+                },
+                { name: "page", title: "页码", type: "page", startPage: 1 }
+            ]
+        },
+
+        // ---------------- 大栏目 6：平台分流片库 ----------------
+        {
+            title: "🔀 平台分流片库",
+            functionName: "loadPlatformMatrix",
+            type: "video",
+            cacheDuration: 3600,
+            params: [
+                {
+                    name: "sort_by", title: "内容分类", type: "enumeration", value: "tv_drama",
+                    enumOptions: [
+                        { title: "📺 电视剧", value: "tv_drama" },
+                        { title: "🎤 综艺", value: "tv_variety" },
+                        { title: "🐲 动漫", value: "tv_anime" },
+                        { title: "🎬 电影", value: "movie" }
+                    ]
+                },
+                {
+                    name: "platform", title: "播出平台", type: "enumeration", value: "2007",
+                    enumOptions: [
+                        { title: "腾讯视频", value: "2007" }, { title: "爱奇艺", value: "1330" }, { title: "优酷", value: "1419" }, { title: "芒果TV", value: "1631" }, { title: "Bilibili", value: "1605" }, { title: "Netflix", value: "213" }, { title: "Disney+", value: "2739" }, { title: "HBO", value: "49" }, { title: "Apple TV+", value: "2552" }
+                    ]
+                },
+                {
+                    name: "sort", title: "排序", type: "enumeration", value: "popularity.desc",
+                    enumOptions: [ { title: "🔥 热度最高", value: "popularity.desc" }, { title: "📅 最新首播", value: "first_air_date.desc" }, { title: "⭐ 评分最高", value: "vote_average.desc" } ]
+                },
+                { name: "page", title: "页码", type: "page", startPage: 1 }
+            ]
+        },
+
+        // ---------------- 大栏目 7：串流平台TOP10 (FlixPatrol) ----------------
+        {
+            title: "🥇 流媒体TOP10",
+            functionName: "loadOfficialTop10",
+            type: "video",
+            cacheDuration: 3600,
+            params: [
+                {
+                    name: "sort_by", title: "榜单地区", type: "enumeration", value: "united-states",
+                    enumOptions: [
+                        { title: "🇺🇸 美国", value: "united-states" }, { title: "🇰🇷 韩国", value: "south-korea" }, { title: "🇹🇼 台湾", value: "taiwan" }, { title: "🇭🇰 香港", value: "hong-kong" }, { title: "🇯🇵 日本", value: "japan" }, { title: "🇬🇧 英国", value: "united-kingdom" }, { title: "🌍 全球", value: "world" }
+                    ]
+                },
+                {
+                    name: "platform", title: "流媒体平台", type: "enumeration", value: "netflix",
+                    enumOptions: [
+                        { title: "Netflix", value: "netflix" }, { title: "HBO", value: "hbo" }, { title: "Disney+", value: "disney" }, { title: "Apple TV+", value: "apple-tv" }, { title: "Amazon Prime", value: "amazon-prime" }
+                    ]
+                },
+                {
+                    name: "mediaType", title: "榜单类型", type: "enumeration", value: "tv",
+                    enumOptions: [ { title: "📺 剧集 (TV Shows)", value: "tv" }, { title: "🎬 电影 (Movies)", value: "movie" } ]
+                },
+                { name: "page", title: "页码", type: "page", startPage: 1 }
+            ]
+        }
+    ]
+};
+
+// =========================================================================
+// 3. 路由与各分类底层
+// =========================================================================
+
+async function routeAnimeOmni(params) {
+    const source = params.anime_source || "cal";
+    let subParams = { page: params.page || 1 };
+
+    if (source === "cal") { subParams.sort_by = params.cal_day || "today"; return await loadBangumiCalendar(subParams); }
+    if (source === "bili") { subParams.sort_by = params.bili_sort || "1"; return await loadBilibiliRank(subParams); }
+    if (source === "hot") { subParams.category = params.hot_cat || "anime"; return await fetchRecentHot(subParams); }
+    if (source === "rank") {
+        subParams.category = params.rank_cat || "anime"; subParams.year = params.rank_year || "2026";
+        subParams.month = params.rank_month || "all"; subParams.sort = params.rank_sort || "collects";
+        return await fetchAirtimeRanking(subParams);
+    }
+    if (source === "daily") {
+        subParams.filterType = params.daily_filter || "today"; subParams.specificWeekday = params.daily_weekday || "1";
+        subParams.dailySortOrder = params.daily_sort || "popularity_rat_bgm"; return await fetchDailyCalendarApi(subParams);
+    }
+    if (source === "tmdb") { subParams.sort_by = params.tmdb_sort || "trending"; return await loadTmdbAnimeRanking(subParams); }
+    if (source === "anilist") { subParams.sort_by = params.anilist_sort || "TRENDING_DESC"; return await loadAniListRanking(subParams); }
+    if (source === "mal") { subParams.sort_by = params.mal_sort || "airing"; return await loadMalRanking(subParams); }
+    return [];
+}
+
+async function routeMovieOmni(params) {
+    const source = params.movie_source || "general";
+    let subParams = { page: params.page || 1 };
+
+    if (source === "general") { subParams.sort_by = params.general_sort || "popular"; return await loadGeneralMovies(subParams); }
+    if (source === "yearly") { subParams.sort_by = params.yearly_sort || "2024"; return await loadYearlyBestMovies(subParams); }
+    if (source === "genre") { subParams.sort_by = params.genre_sort || "878"; return await loadGenreMovies(subParams); }
+    return [];
+}
+
+async function routeTrendsHub(params) {
+    const hubSource = params.hub_source || "imdb";
+    const page = params.page || 1;
+
+    if (hubSource === "rt") {
+        const rtSort = params.rt_sort || "rt_movies_home";
+        return await loadRottenTomatoesTrends(rtSort, page);
+    }
+    if (hubSource === "imdb") {
+        const imdbSort = params.imdb_sort || "trending_week";
+        const mediaType = params.mediaType || "all";
+        return await loadImdbList(imdbSort, mediaType, page);
+    }
+    if (hubSource === "trakt") {
+        const traktSort = params.trakt_sort || "trending";
+        const traktType = params.traktType || "all";
+        const traktClientId = params.traktClientId || DEFAULT_TRAKT_ID;
+        return await handleTraktList(traktSort, traktType, traktClientId, page);
+    }
+    if (hubSource === "douban") {
+        const dbSort = params.db_sort || "db_tv_cn";
+        let tag = "热门", type = "tv";
+        if (dbSort === "db_tv_cn") { tag = "国产剧"; type = "tv"; }
+        else if (dbSort === "db_variety") { tag = "综艺"; type = "tv"; }
+        else if (dbSort === "db_movie") { tag = "热门"; type = "movie"; }
+        else if (dbSort === "db_tv_us") { tag = "美剧"; type = "tv"; }
+        return await fetchDoubanAndMap(tag, type, page);
+    }
+    return [];
+}
+
+const MOVIE_GENRE_MAP = {
+    16: "动画", 10759: "动作冒险", 35: "喜剧", 18: "剧情", 14: "奇幻", 878: "科幻", 9648: "悬疑",
+    10749: "爱情", 27: "恐怖", 10765: "科幻奇幻", 80: "犯罪", 99: "纪录片", 10751: "家庭",
+    36: "历史", 10402: "音乐", 10770: "电视电影", 53: "惊悚", 10752: "战争", 37: "西部", 28: "动作", 12: "冒险"
+};
+function movie_getGenreText(ids) {
+    if (!ids || !Array.isArray(ids)) return "电影";
+    const genres = ids.map(id => MOVIE_GENRE_MAP[id]).filter(Boolean);
+    return genres.length > 0 ? genres.slice(0, 2).join(" / ") : "电影";
+}
+function movie_buildItem(item) {
+    if (!item) return null;
+    const releaseDate = item.release_date || "";
+    return {
+        id: String(item.id), tmdbId: parseInt(item.id), type: "tmdb", mediaType: "movie",
+        title: item.title, releaseDate: releaseDate, genreTitle: movie_getGenreText(item.genre_ids),
+        subTitle: `${releaseDate.substring(0,4)}`,
+        posterPath: item.poster_path ? `https://image.tmdb.org/t/p/w500${item.poster_path}` : "",
+        backdropPath: item.backdrop_path ? `https://image.tmdb.org/t/p/w780${item.backdrop_path}` : "",
+        description: item.overview || ""
+    };
+}
+
+async function loadGeneralMovies(params) {
+    const sortBy = params.sort_by || "popular";
+    let endpoint = "/movie/popular";
+    let queryParams = { language: "zh-CN", page: params.page || 1 };
+
+    if (sortBy === "top_rated") endpoint = "/movie/top_rated";
+    else if (sortBy === "box_office") { endpoint = "/discover/movie"; queryParams.sort_by = "revenue.desc"; }
+    else if (sortBy === "oscar") {
+        endpoint = "/discover/movie";
+        queryParams.with_keywords = "818";
+        queryParams.sort_by = "vote_average.desc";
+        queryParams["vote_count.gte"] = 1000;
+    }
+    try { const res = await Widget.tmdb.get(endpoint, { params: queryParams }); return (res.results || []).map(i => movie_buildItem(i)).filter(Boolean); } catch (e) { return []; }
+}
+async function loadYearlyBestMovies(params) {
+    try {
+        let queryParams = { language: "zh-CN", page: params.page || 1, primary_release_year: params.sort_by || "2024", sort_by: "vote_average.desc", "vote_count.gte": 500 };
+        const res = await Widget.tmdb.get("/discover/movie", { params: queryParams }); return (res.results || []).map(i => movie_buildItem(i)).filter(Boolean);
+    } catch (e) { return []; }
+}
+async function loadGenreMovies(params) {
+    try {
+        let queryParams = { language: "zh-CN", page: params.page || 1, with_genres: params.sort_by || "878", sort_by: "popularity.desc" };
+        const res = await Widget.tmdb.get("/discover/movie", { params: queryParams }); return (res.results || []).map(i => movie_buildItem(i)).filter(Boolean);
+    } catch (e) { return []; }
+}
+
+const ADVANCED_GENRE_MAP = {
+    "all": { movie: "", tv: "" }, "scifi": { movie: "878", tv: "10765" }, "mystery": { movie: "9648", tv: "9648" }, "horror": { movie: "27", tv: "27" }, "crime": { movie: "80", tv: "80" },
+    "action": { movie: "28", tv: "10759" }, "comedy": { movie: "35", tv: "35" }, "romance": { movie: "10749", tv: "10749" }, "drama": { movie: "18", tv: "18" }, "fantasy": { movie: "14", tv: "10765" }, "animation": { movie: "16", tv: "16" }, "documentary": { movie: "99", tv: "99" }
+};
+const REGION_MAP = { "all": "", "cn": "CN", "hk": "HK", "tw": "TW", "hktw": "HK|TW", "jp": "JP", "kr": "KR", "jpkr": "JP|KR", "th": "TH", "sg": "SG", "my": "MY", "in": "IN", "apac": "CN|HK|TW|JP|KR|TH|SG|MY|IN", "us": "US", "gb": "GB", "de": "DE", "se": "SE", "europe": "GB|DE|FR|IT|ES|SE|NO|DK|FI|NL|BE|CH|AT|IE", "es": "ES", "mx": "MX", "latin": "ES|MX|AR|CO|CL|PE|VE" };
+
+async function fetchGenreRankData(mediaType, genre, region, sort_rule, page) {
+    const genreId = ADVANCED_GENRE_MAP[genre] ? ADVANCED_GENRE_MAP[genre][mediaType] : "";
+    const originCountry = REGION_MAP[region] || "";
+    let tmdbSortBy = sort_rule === "rating" ? "vote_average.desc" : (sort_rule === "time" ? (mediaType === "movie" ? "primary_release_date.desc" : "first_air_date.desc") : "popularity.desc");
+    const queryParams = { language: "zh-CN", page: page, sort_by: tmdbSortBy, include_adult: false, include_video: false };
+    if (genreId) queryParams.with_genres = genreId;
+    if (originCountry) queryParams.with_origin_country = originCountry;
+    queryParams["vote_count.gte"] = sort_rule === "rating" ? 200 : 10;
+    if (sort_rule === "time") {
+        const today = new Date(); today.setMonth(today.getMonth() + 1); const maxDate = today.toISOString().split('T')[0];
+        if (mediaType === "movie") queryParams["primary_release_date.lte"] = maxDate; else queryParams["first_air_date.lte"] = maxDate;
+    }
+    try {
+        const res = await Widget.tmdb.get(`/discover/${mediaType}`, { params: queryParams });
+        return (res.results || []).map(item => {
+            const date = item.release_date || item.first_air_date || "";
+            return {
+                id: String(item.id), tmdbId: parseInt(item.id), type: "tmdb", mediaType: mediaType, title: item.title || item.name,
+                genreTitle: getGlobalGenreText(item.genre_ids),
+                releaseDate: date,
+                subTitle: `${date ? date.substring(0, 4) : "未知"}`,
+                description: item.overview || "",
+                posterPath: item.poster_path ? `https://image.tmdb.org/t/p/w500${item.poster_path}` : "",
+                backdropPath: item.backdrop_path ? `https://image.tmdb.org/t/p/w780${item.backdrop_path}` : "",
+                _popularity: item.popularity || 0,
+                _date: date || "1970-01-01"
+            };
+        });
+    } catch (e) { return []; }
+}
+
+async function loadGenreRank(params = {}) {
+    const page = parseInt(params.page) || 1;
+    const mediaType = params.sort_by || "all";
+    const genre = params.genre || "all";
+    const region = params.region || "all";
+    const sort_rule = params.order_rule || "popularity";
+
+    if (mediaType === "all") {
+        const [movies, tvs] = await Promise.all([
+            fetchGenreRankData("movie", genre, region, sort_rule, page),
+            fetchGenreRankData("tv", genre, region, sort_rule, page)
+        ]);
+        let items = [...movies, ...tvs];
+        items.sort((a, b) => {
+            if (sort_rule === "popularity") return b._popularity - a._popularity;
+            else if (sort_rule === "time") return new Date(b._date) - new Date(a._date);
+            else return b.rating - a.rating;
+        });
+        items = items.slice(0, 20);
+        if (items.length === 0) return page === 1 ? [{ id: "empty", type: "text", title: "未找到符合条件" }] : [];
+        return items;
+    } else {
+        const items = await fetchGenreRankData(mediaType, genre, region, sort_rule, page);
+        if (items.length === 0) return page === 1 ? [{ id: "empty", type: "text", title: "未找到符合条件" }] : [];
+        return items;
+    }
+}
+
+async function loadVarietyShows(params = {}) {
+    const page = parseInt(params.page) || 1;
+    const region = params.sort_by || "cn";
+    const list_type = params.list_type || "hot";
+
+    const varietyGenres = "10764|10767";
+
+    const varietyRegionMap = {
+        "all": "", "cn": "CN", "kr": "KR", "jp": "JP",
+        "tw": "TW", "hk": "HK", "eu_us": "US|GB|DE|FR|IT|ES|CA|AU"
+    };
+    const originCountry = varietyRegionMap[region] || "";
+
+    let queryParams = { language: "zh-CN", page: page, with_genres: varietyGenres, include_adult: false };
+    if (originCountry) queryParams.with_origin_country = originCountry;
+
+    const now = new Date();
+    const todayStr = now.toISOString().split('T')[0];
+    let tmrw = new Date(now); tmrw.setDate(tmrw.getDate() + 1);
+    const tomorrowStr = tmrw.toISOString().split('T')[0];
+    let fiveYearsAgo = new Date(now); fiveYearsAgo.setFullYear(fiveYearsAgo.getFullYear() - 5);
+    const fiveYearsAgoStr = fiveYearsAgo.toISOString().split('T')[0];
+
+    if (list_type === "today") {
+        queryParams.sort_by = "popularity.desc"; queryParams["air_date.gte"] = todayStr; queryParams["air_date.lte"] = todayStr;
+    } else if (list_type === "tomorrow") {
+        queryParams.sort_by = "popularity.desc"; queryParams["air_date.gte"] = tomorrowStr; queryParams["air_date.lte"] = tomorrowStr;
+    } else if (list_type === "hot") {
+        queryParams.sort_by = "popularity.desc";
+    } else if (list_type === "trend") {
+        queryParams.sort_by = "popularity.desc"; queryParams["first_air_date.gte"] = fiveYearsAgoStr;
+    } else if (list_type === "top") {
+        queryParams.sort_by = "vote_average.desc"; queryParams["vote_count.gte"] = 15;
+    }
+
+    try {
+        const res = await Widget.tmdb.get("/discover/tv", { params: queryParams });
+        const items = res.results || [];
+        if (items.length === 0) return page === 1 ? [{ id: "empty", type: "text", title: "暂无综艺数据" }] : [];
+        return items.map(item => {
+            const date = item.release_date || item.first_air_date || "";
+            let genreLabel = getGlobalGenreText(item.genre_ids);
+            if (genreLabel === "影视") genreLabel = "综艺";
+            return {
+                id: String(item.id), tmdbId: parseInt(item.id), type: "tmdb", mediaType: "tv", title: item.title || item.name,
+                genreTitle: genreLabel, releaseDate: date,
+                subTitle: `${date ? date.substring(0, 4) : "未知"}`,
+                description: item.overview || "",
+                posterPath: item.poster_path ? `https://image.tmdb.org/t/p/w500${item.poster_path}` : "",
+                backdropPath: item.backdrop_path ? `https://image.tmdb.org/t/p/w780${item.backdrop_path}` : ""
+            };
+        });
+    } catch (e) { return [{ id: "err", type: "text", title: "加载失败" }]; }
+}
+
+const RT_URLS = {
+    "rt_movies_theater": "https://www.rottentomatoes.com/browse/movies_in_theaters/sort:popular?minTomato=75",
+    "rt_movies_home": "https://www.rottentomatoes.com/browse/movies_at_home/sort:popular?minTomato=75",
+    "rt_movies_best": "https://www.rottentomatoes.com/browse/movies_at_home/sort:critic_highest?minTomato=90",
+    "rt_tv_popular": "https://www.rottentomatoes.com/browse/tv_series_browse/sort:popular?minTomato=75",
+    "rt_tv_new": "https://www.rottentomatoes.com/browse/tv_series_browse/sort:newest?minTomato=75"
+};
+
+async function loadRottenTomatoesTrends(listType, page) {
+    const pageSize = 15;
+    const allItems = await fetchRottenTomatoesList(listType);
+    if (allItems.length === 0) return page === 1 ? [{ id: "empty", type: "text", title: "无数据" }] : [];
+    const start = (page - 1) * pageSize;
+    const pageItems = allItems.slice(start, start + pageSize);
+    const promises = pageItems.map((item, i) => searchRtTmdb(item, start + i + 1));
+    return (await Promise.all(promises)).filter(Boolean);
+}
+
+async function fetchRottenTomatoesList(type) {
+    const RT_URLS = {
+        "rt_movies_theater": "https://www.rottentomatoes.com/browse/movies_in_theaters/sort:popular?minTomato=75",
+        "rt_movies_home": "https://www.rottentomatoes.com/browse/movies_at_home/sort:popular?minTomato=75",
+        "rt_movies_best": "https://www.rottentomatoes.com/browse/movies_at_home/sort:critic_highest?minTomato=90",
+        "rt_tv_popular": "https://www.rottentomatoes.com/browse/tv_series_browse/sort:popular?minTomato=75",
+        "rt_tv_new": "https://www.rottentomatoes.com/browse/tv_series_browse/sort:newest?minTomato=75"
+    };
+    const url = RT_URLS[type] || RT_URLS["rt_movies_home"];
+
+    try {
+        const res = await Widget.http.get(url, {
+            headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" }
+        });
+        const html = typeof res === 'string' ? res : (res.data || "");
+        const $ = Widget.html.load(html);
+        const items = [];
+
+        // 🚀 同步：逆向DOM树遍历解析
+        const titleNodes = $('[data-qa="discovery-media-list-item-title"], [data-qa="list-item-title"], .js-tile-link .p--small');
+
+        if (titleNodes.length > 0) {
+            titleNodes.each((i, el) => {
+                const title = $(el).text().trim();
+                if (!title) return;
+
+                // 像爬树一样往上找：匹配最稳定的卡片容器
+                let container = $(el).parent();
+                for (let level = 0; level < 5; level++) {
+                    if (container.find('score-board, score-pairs, score-pairs-deprecated').length > 0) break;
+                    if (container.length === 0) break;
+                    container = container.parent();
+                }
+
+                let tomatoScore = "";
+                let popcornScore = "";
+
+                // 兼容最新版 <score-board> 和老版标签
+                const scoreTags = ['score-board', 'score-pairs', 'score-pairs-deprecated'];
+                for (const tag of scoreTags) {
+                    const scoreEl = container.find(tag);
+                    if (scoreEl.length > 0) {
+                        tomatoScore = scoreEl.attr('tomatometerscore') || scoreEl.attr('critics-score') || scoreEl.attr('criticsscore') || "";
+                        popcornScore = scoreEl.attr('audiencescore') || scoreEl.attr('audience-score') || "";
+                        break;
+                    }
+                }
+
+                items.push({
+                    title: title,
+                    tomatoScore: tomatoScore,
+                    popcornScore: popcornScore,
+                    mediaType: type.includes("tv") ? "tv" : "movie"
+                });
+            });
+        }
+
+        // 去重防御
+        const uniqueItems = [];
+        const seen = new Set();
+        for (const item of items) {
+            const cleanTitle = item.title.replace(/\s+/g, ' ').trim();
+            if (cleanTitle && !seen.has(cleanTitle)) {
+                seen.add(cleanTitle);
+                item.title = cleanTitle;
+                uniqueItems.push(item);
+            }
+        }
+        return uniqueItems;
+    } catch (e) { return []; }
+}
+
+async function searchRtTmdb(rtItem, rank) {
+    const cleanTitle = rtItem.title.replace(/\s\(\d{4}\)$/, "");
+    try {
+        const res = await Widget.tmdb.get(`/search/${rtItem.mediaType}`, { params: { query: cleanTitle, language: "zh-CN" } });
+        const match = (res.results || [])[0];
+        if (!match) return null;
+        let scores = [];
+        if (rtItem.tomatoScore) scores.push(`🍅 ${rtItem.tomatoScore}%`);
+        if (rtItem.popcornScore) scores.push(`🍿 ${rtItem.popcornScore}%`);
+        const customSub = scores.join("  ") || "烂番茄认证";
+        const dateStr = match.first_air_date || match.release_date || "";
+
+        return {
+            id: String(match.id), tmdbId: match.id, type: "tmdb", mediaType: rtItem.mediaType, title: `${rank}. ${match.name || match.title}`,
+            genreTitle: getGlobalGenreText(match.genre_ids) || (rtItem.mediaType === "movie" ? "电影" : "剧集"),
+            description: match.overview || "", releaseDate: dateStr, subTitle: customSub,
+            posterPath: match.poster_path ? `https://image.tmdb.org/t/p/w500${match.poster_path}` : "",
+            backdropPath: match.backdrop_path ? `https://image.tmdb.org/t/p/w780${match.backdrop_path}` : ""
+        };
+    } catch (e) { return null; }
+}
+
+function buildImdbItem(item, forceType) {
+    if (!item) return null;
+    const type = forceType || item.media_type || (item.title ? "movie" : "tv");
+    const fullDate = item.release_date || item.first_air_date || "";
+    return {
+        id: String(item.id), tmdbId: parseInt(item.id), type: "tmdb", mediaType: type, title: item.title || item.name,
+        subTitle: fullDate || "",
+        description: item.overview || "",
+        releaseDate: fullDate,
+        posterPath: item.poster_path ? `https://image.tmdb.org/t/p/w500${item.poster_path}` : "",
+        backdropPath: item.backdrop_path ? `https://image.tmdb.org/t/p/w780${item.backdrop_path}` : "",
+        year: fullDate.substring(0, 4),
+        genreTitle: getGlobalGenreText(item.genre_ids) || (type === "tv" ? "剧集" : "电影")
+    };
+}
+
+async function loadImdbList(category, mediaType, page) {
+    try {
+        let items = [];
+        if (category.startsWith("china_")) {
+            const isTv = category === "china_tv";
+            const endpoint = isTv ? "tv" : "movie";
+            const res = await Widget.tmdb.get(`/discover/${endpoint}`, { params: { language: "zh-CN", page: page, sort_by: "popularity.desc", with_original_language: "zh", "vote_count.gte": 2 } });
+            items = (res.results || []).map(i => buildImdbItem(i, endpoint));
+            return items;
+        }
+        if (category.startsWith("trending_")) {
+            const timeWindow = category === "trending_day" ? "day" : "week";
+            const res = await Widget.tmdb.get(`/trending/${mediaType}/${timeWindow}`, { params: { language: "zh-CN", page: page } });
+            items = (res.results || []).map(i => buildImdbItem(i));
+        } else {
+            if (mediaType === "all") {
+                const [resM, resT] = await Promise.all([ Widget.tmdb.get(`/movie/${category}`, { params: { language: "zh-CN", page: page } }), Widget.tmdb.get(`/tv/${category}`, { params: { language: "zh-CN", page: page } }) ]);
+                const movies = (resM.results || []).map(i => buildImdbItem(i, "movie"));
+                const tvs = (resT.results || []).map(i => buildImdbItem(i, "tv"));
+                items = [...movies, ...tvs].sort((a, b) => { if (category === "top_rated") return b._rating - a._rating; return 0; }).slice(0, 20);
+            } else {
+                const res = await Widget.tmdb.get(`/${mediaType}/${category}`, { params: { language: "zh-CN", page: page } });
+                items = (res.results || []).map(i => buildImdbItem(i, mediaType));
+            }
+        }
+        return items;
+    } catch (e) { return [{ id: "err", type: "text", title: "加载异常" }]; }
+}
+
+async function fetchTraktData(type, list, id, page) {
+    try {
+        const res = await Widget.http.get(`https://api.trakt.tv/${type}/${list}?limit=15&page=${page}`, { headers: { "Content-Type": "application/json", "trakt-api-version": "2", "trakt-api-key": id } });
+        return res.data || [];
+    } catch (e) { return []; }
+}
+
+async function handleTraktList(listType, traktType, traktClientId, page) {
+    let rawData = [];
+    if (traktType === "all") {
+        const [movies, shows] = await Promise.all([ fetchTraktData("movies", listType, traktClientId, page), fetchTraktData("shows", listType, traktClientId, page) ]);
+        rawData = [...movies, ...shows].sort((a, b) => (b.watchers || b.list_count || 0) - (a.watchers || a.list_count || 0));
+    } else {
+        rawData = await fetchTraktData(traktType, listType, traktClientId, page);
+    }
+    if (!rawData || rawData.length === 0) return page === 1 ? [] : [];
+    const promises = rawData.slice(0, 20).map(async (item, index) => {
+        let subject = item.show || item.movie || item;
+        const mediaType = item.show ? "tv" : "movie";
+        let stats = listType === "trending" ? `🔥 ${item.watchers || 0} 人在看` : (listType === "anticipated" ? `❤️ ${item.list_count || 0} 人想看` : `No. ${(page - 1) * 15 + index + 1}`);
+        if (traktType === "all") stats = `[${mediaType === "tv" ? "剧" : "影"}] ${stats}`;
+        if (!subject || !subject.ids || !subject.ids.tmdb) return null;
+        try {
+            const d = await Widget.tmdb.get(`/${mediaType}/${subject.ids.tmdb}`, { params: { language: "zh-CN" } });
+            return {
+                id: String(d.id), tmdbId: d.id, type: "tmdb", mediaType: mediaType, title: d.name || d.title || subject.title,
+                genreTitle: getGlobalGenreText(d.genres?.map(g => g.id)), releaseDate: d.first_air_date || d.release_date || "",
+                subTitle: stats,
+                description: d.overview || "",
+                posterPath: d.poster_path ? `https://image.tmdb.org/t/p/w500${d.poster_path}` : "",
+                backdropPath: d.backdrop_path ? `https://image.tmdb.org/t/p/w780${d.backdrop_path}` : ""
+            };
+        } catch (e) { return null; }
+    });
+    return (await Promise.all(promises)).filter(Boolean);
+}
+
+function mergeDoubanTmdb(target, source) {
+    target.id = String(source.id); target.tmdbId = source.id;
+    target.posterPath = source.poster_path ? `https://image.tmdb.org/t/p/w500${source.poster_path}` : target.posterPath;
+    target.backdropPath = source.backdrop_path ? `https://image.tmdb.org/t/p/w780${source.backdrop_path}` : "";
+    const date = source.first_air_date || source.release_date || ""; target.genreTitle = getGlobalGenreText(source.genre_ids) || (target.mediaType === "tv" ? "剧集" : "电影"); target.releaseDate = date;
+    target.description = source.overview || ""; target.rating = source.vote_average ? parseFloat(source.vote_average) : 0;
+}
+
+async function searchTmdbForDouban(query, type) {
+    const q = query.replace(/第[一二三四五六七八九十\d]+[季章]/g, "").trim();
+    try {
+        const res = await Widget.tmdb.get(`/search/${type}`, { params: { query: encodeURIComponent(q), language: "zh-CN" } });
+        return (res.results || [])[0];
+    } catch (e) { return null; }
+}
+
+async function fetchDoubanAndMap(tag, type, page) {
+    const start = (page - 1) * 20;
+    try {
+        const randomBid = Math.random().toString(36).substring(2, 13);
+        const res = await Widget.http.get(`https://movie.douban.com/j/search_subjects?type=${type}&tag=${encodeURIComponent(tag)}&sort=recommend&page_limit=20&page_start=${start}`, {
+            headers: {
+                "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X)",
+                "Referer": "https://movie.douban.com/explore",
+                "Host": "movie.douban.com",
+                "X-Requested-With": "XMLHttpRequest",
+                "Cookie": `bid=${randomBid};`
+            }
+        });
+
+        const data = (typeof res.data === 'string') ? JSON.parse(res.data) : (res.data || {});
+        const list = data.subjects || [];
+        if (list.length === 0) return page === 1 ? [{ id: "empty", type: "text", title: "暂无数据" }] : [];
+
+        const promises = list.map(async item => {
+            let finalItem = {
+                id: `db_${item.id}`, type: "tmdb", mediaType: type,
+                title: item.title, subTitle: `豆瓣 ${item.rate}`,
+                description: "",
+                genreTitle: type === "tv" ? "剧集" : "电影",
+                posterPath: item.cover
+            };
+            const tmdb = await searchTmdbForDouban(item.title, type);
+            if (!tmdb) return null;
+            mergeDoubanTmdb(finalItem, tmdb);
+            return finalItem;
+        });
+        return (await Promise.all(promises)).filter(Boolean);
+    } catch (e) {
+        return [{ id: "err", type: "text", title: "豆瓣拒绝了请求", description: "网络IP被豆瓣限制，请切换流量(4G/5G)或更换节点。" }];
+    }
+}
+
+async function loadPlatformMatrix(params = {}) {
+    const category = params.sort_by || "tv_drama";
+    const platformId = params.platform || "2007";
+    const sort = params.sort || "popularity.desc";
+    const page = params.page || 1;
+
+    const foreignPlatforms = ["213", "2739", "49", "2552"];
+    if (category === "movie" && !foreignPlatforms.includes(platformId)) return page === 1 ? [{ id: "empty", type: "text", title: "暂不支持国内平台电影", description: "请切换为剧集或国外平台" }] : [];
+
+    const queryParams = { language: "zh-CN", sort_by: sort, page: page, include_adult: false, include_null_first_air_dates: false };
+    if (category.startsWith("tv_")) {
+        queryParams.with_networks = platformId;
+        if (category === "tv_anime") queryParams.with_genres = "16";
+        else if (category === "tv_variety") queryParams.with_genres = "10764|10767";
+        else if (category === "tv_drama") queryParams.without_genres = "16,10764,10767";
+        return await loadPlatformMatrixData("tv", queryParams);
+    } else if (category === "movie") {
+        const usMap = { "213":"8", "2739":"337", "49":"1899|15", "2552":"350" };
+        queryParams.watch_region = "US"; queryParams.with_watch_providers = usMap[platformId];
+        return await loadPlatformMatrixData("movie", queryParams);
+    }
+}
+
+async function loadPlatformMatrixData(mediaType, params) {
+    try {
+        const res = await Widget.tmdb.get(`/discover/${mediaType}`, { params });
+        if (!res.results || res.results.length === 0) return params.page === 1 ? [{ id: "empty", type: "text", title: "暂无流媒体数据" }] : [];
+        return res.results.map(item => {
+            const date = item.first_air_date || item.release_date || "";
+            return {
+                id: String(item.id), tmdbId: item.id, type: "tmdb", mediaType: mediaType, title: item.name || item.title, date: date, releaseDate: date,
+                posterPath: item.poster_path ? `https://image.tmdb.org/t/p/w500${item.poster_path}` : "",
+                backdropPath: item.backdrop_path ? `https://image.tmdb.org/t/p/w780${item.backdrop_path}` : "",
+                genreTitle: getGlobalGenreText(item.genre_ids),
+                description: item.overview || ""
+            };
+        });
+    } catch (e) { return [{ id: "err", type: "text", title: "流媒体拉取失败" }]; }
+}
+
+async function loadOfficialTop10(params = {}) {
+    const region = params.sort_by || "united-states";
+    const platform = params.platform || "netflix";
+    const mediaType = params.mediaType || "tv";
+
+    let titles = await fetchFlixPatrolData(platform, region, mediaType);
+
+    if (titles.length === 0) {
+        return await fetchTmdbFallback_Top10(platform, region, mediaType);
+    }
+
+    const searchPromises = titles.slice(0, 10).map((title, index) =>
+        searchTmdbForTop10(title, mediaType, index + 1)
+    );
+
+    const results = await Promise.all(searchPromises);
+    const finalItems = results.filter(r => r !== null);
+
+    if (finalItems.length === 0) {
+        return [{ id: "error", title: "匹配失败", description: "获取了榜单但TMDB无数据", type: "text" }];
+    }
+    return finalItems;
+}
+
+async function fetchFlixPatrolData(platform, region, mediaType) {
+    const url = `https://flixpatrol.com/top10/${platform}/${region}/`;
+    try {
+        const res = await Widget.http.get(url, {
+            headers: { "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/604.1" }
+        });
+        const html = typeof res === 'string' ? res : (res.data || "");
+        const $ = Widget.html.load(html);
+        const tables = $('.card-table tbody');
+        if (tables.length === 0) return [];
+
+        // 🚀 同步：修正后的平台表格索引逻辑
+        let tableIndex = 0;
+        if (platform === "disney") {
+            tableIndex = mediaType === "all" ? 0 : (mediaType === "movie" ? 1 : 2);
+        } else if (platform === "hbo") {
+            tableIndex = mediaType === "movie" ? 0 : 1;
+        } else {
+            tableIndex = mediaType === "movie" ? 0 : (mediaType === "tv" ? 1 : 2);
+        }
+
+        if (tableIndex >= tables.length) tableIndex = tables.length - 1;
+
+        const targetTable = tables.eq(tableIndex);
+        const titles = [];
+        targetTable.find('tr').each((i, el) => {
+            if (i >= 10) return;
+            const textLink = $(el).find('a.hover\\:underline').text().trim();
+            const textTd = $(el).find('td').eq(2).text().trim();
+            const finalTitle = textLink || textTd;
+            if (finalTitle && finalTitle.length > 1) {
+                titles.push(finalTitle.split('(')[0].trim());
+            }
+        });
+        return titles;
+    } catch (e) { return []; }
+}
+
+async function searchTmdbForTop10(queryTitle, mediaType, rank) {
+    try {
+        const data = await Widget.tmdb.get(`/search/${mediaType}`, { params: { query: queryTitle.trim(), language: "zh-CN", page: 1 } });
+        if (data && data.results && data.results.length > 0) {
+            let item = data.results[0];
+            const date = item.first_air_date || item.release_date || "";
+
+            return {
+                id: String(item.id), tmdbId: parseInt(item.id), type: "tmdb", mediaType: mediaType, title: item.name || item.title,
+                releaseDate: date, year: date.substring(0, 4), genreTitle: getGlobalGenreText(item.genre_ids),
+                subTitle: `TOP ${rank}`, posterPath: item.poster_path ? `https://image.tmdb.org/t/p/w500${item.poster_path}` : "",
+                backdropPath: item.backdrop_path ? `https://image.tmdb.org/t/p/w780${item.backdrop_path}` : "",
+                description: item.overview || ""
+            };
+        }
+    } catch (e) {} return null;
+}
+
+async function fetchTmdbFallback_Top10(platform, region, mediaType) {
+    const providerMap = { "netflix": "8", "disney": "337", "hbo": "1899|118", "apple-tv": "350", "amazon-prime": "119" };
+    const regionMap = { "united-states": "US", "south-korea": "KR", "taiwan": "TW", "hong-kong": "HK", "japan": "JP", "united-kingdom": "GB", "world": "US" };
+    try {
+        const data = await Widget.tmdb.get(`/discover/${mediaType}`, { params: { watch_region: regionMap[region] || "US", with_watch_providers: providerMap[platform] || "8", sort_by: "popularity.desc", page: 1, language: "zh-CN" } });
+        return (data.results || []).slice(0, 10).map((item, index) => {
+            const date = item.first_air_date || item.release_date || "";
+            return {
+                id: String(item.id), tmdbId: parseInt(item.id), type: "tmdb", mediaType: mediaType, title: item.name || item.title,
+                releaseDate: date, year: date.substring(0, 4), genreTitle: getGlobalGenreText(item.genre_ids), subTitle: `TOP ${index + 1}`,
+                posterPath: item.poster_path ? `https://image.tmdb.org/t/p/w500${item.poster_path}` : "", backdropPath: item.backdrop_path ? `https://image.tmdb.org/t/p/w780${item.backdrop_path}` : "",
+                description: item.overview || ""
+            };
+        });
+    } catch (e) { return []; }
+}
+
+const GENRE_MAP = {
+    16: "动画", 10759: "动作冒险", 35: "喜剧", 18: "剧情", 14: "奇幻",
+    878: "科幻", 9648: "悬疑", 10749: "爱情", 27: "恐怖", 10765: "科幻奇幻"
+};
+
+function getGenreText(ids) {
+    if (!ids || !Array.isArray(ids)) return "动画";
+    const genres = ids.filter(id => id !== 16).map(id => GENRE_MAP[id]).filter(Boolean);
+    return genres.length > 0 ? genres.slice(0, 2).join(" / ") : "动画";
+}
+
+function parseDate(dateStr) {
+    if (!dateStr || typeof dateStr !== 'string') return '';
+    let match = dateStr.match(/^(\d{4})年(\d{1,2})月(\d{1,2})日/);
+    if (match) return `${match[1]}-${String(match[2]).padStart(2, '0')}-${String(match[3]).padStart(2, '0')}`;
+    match = dateStr.match(/^(\d{4})年(\d{1,2})月/);
+    if (match) return `${match[1]}-${String(match[2]).padStart(2, '0')}-01`;
+    match = dateStr.match(/^(\d{4})$/);
+    if (match) return `${match[1]}-01-01`;
+    return dateStr;
+}
+
+async function searchTmdbAnimeStrict(title1, title2, year) {
+    async function doSearch(query) {
+        if (!query || typeof query !== 'string') return null;
+        const cleanQuery = query.replace(/第[一二三四五六七八九十\d]+[季章]/g, "").replace(/Season \d+/i, "").trim();
+
+        try {
+            let params = { query: cleanQuery, language: "zh-CN", include_adult: false };
+            if (year) params.first_air_date_year = year;
+
+            let res = await Widget.tmdb.get("/search/tv", { params });
+            let candidates = res.results || [];
+
+            if (candidates.length === 0 && year) {
+                delete params.first_air_date_year;
+                res = await Widget.tmdb.get("/search/tv", { params });
+                candidates = res.results || [];
+            }
+
+            let animeTvs = candidates.filter(r => r.genre_ids?.includes(16));
+            if (animeTvs.length > 0) return animeTvs.find(r => r.poster_path) || animeTvs[0];
+
+            let mParams = { query: cleanQuery, language: "zh-CN", include_adult: false };
+            if (year) mParams.primary_release_year = year;
+            res = await Widget.tmdb.get("/search/movie", { params: mParams });
+            candidates = res.results || [];
+
+            if (candidates.length === 0 && year) {
+                delete mParams.primary_release_year;
+                res = await Widget.tmdb.get("/search/movie", { params: mParams });
+                candidates = res.results || [];
+            }
+
+            let animeMovies = candidates.filter(r => r.genre_ids?.includes(16));
+            if (animeMovies.length > 0) return animeMovies.find(r => r.poster_path) || animeMovies[0];
+
+        } catch (e) {}
+        return null;
+    }
+
+    let match = await doSearch(title1);
+    if (!match && title2 && title1 !== title2) {
+        match = await doSearch(title2);
+    }
+    return match;
+}
+
+async function sanitizeAndEnsureTmdb(items) {
+    if (!items || !Array.isArray(items)) return [];
+    const promises = items.map(async (item) => {
+        const title = item.name_cn || item.title || item.name;
+        const subTitle = item.title !== title ? item.title : null;
+        const rawDate = item.releaseDate || item.description || item.air_date || item.info || "";
+        const yearMatch = rawDate.match(/(\d{4})/);
+        const year = yearMatch ? yearMatch[1] : null;
+
+        const tmdbMatch = await searchTmdbAnimeStrict(title, subTitle, year);
+
+        if (tmdbMatch) {
+            return {
+                id: String(tmdbMatch.id),
+                tmdbId: parseInt(tmdbMatch.id),
+                type: "tmdb",
+                mediaType: tmdbMatch.title ? "movie" : "tv",
+                title: tmdbMatch.name || tmdbMatch.title || title,
+                genreTitle: getGenreText(tmdbMatch.genre_ids),
+                description: tmdbMatch.overview || "",
+                releaseDate: tmdbMatch.first_air_date || tmdbMatch.release_date || parseDate(rawDate),
+                posterPath: tmdbMatch.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbMatch.poster_path}` : "",
+                backdropPath: tmdbMatch.backdrop_path ? `https://image.tmdb.org/t/p/w780${tmdbMatch.backdrop_path}` : "",
+                rating: tmdbMatch.vote_average ? tmdbMatch.vote_average.toFixed(1) : (item.rating || "0.0")
+            };
+        }
+        return null;
+    });
+
+    const results = await Promise.all(promises);
+    return results.filter(Boolean);
+}
+
+async function loadBangumiCalendar(params = {}) {
+    const { sort_by = "today", page = 1 } = params;
+    let targetDayId = parseInt(sort_by);
+    if (sort_by === "today") {
+        const jsDay = new Date().getDay();
+        targetDayId = jsDay === 0 ? 7 : jsDay;
+    }
+
+    try {
+        const res = await Widget.http.get("https://api.bgm.tv/calendar");
+        const dayData = (res.data || []).find(d => d.weekday && d.weekday.id === targetDayId);
+        if (!dayData) return [];
+
+        const pageSize = 20;
+        const pageItems = dayData.items.slice((page - 1) * pageSize, page * pageSize);
+
+        const promises = pageItems.map(async (item) => {
+            const cleanTitle = (item.name_cn || item.name).replace(/第[一二三四五六七八九十\d]+[季章]/g, "").trim();
+            const year = item.air_date ? item.air_date.substring(0, 4) : null;
+            const tmdbItem = await searchTmdbAnimeStrict(cleanTitle, item.name, year);
+            if (!tmdbItem) return null;
+
+            return buildItem({
+                id: tmdbItem.id,
+                tmdbId: tmdbItem.id,
+                type: "tv",
+                title: tmdbItem.name || tmdbItem.title || item.name_cn || item.name,
+                date: tmdbItem.first_air_date || item.air_date,
+                poster: tmdbItem.poster_path,
+                backdrop: tmdbItem.backdrop_path,
+                rating: tmdbItem.vote_average || item.rating?.score,
+                genreText: getGenreText(tmdbItem.genre_ids),
+                desc: tmdbItem.overview || item.summary || "暂无简介"
+            });
+        });
+
+        const results = await Promise.all(promises);
+        return results.filter(Boolean);
+    } catch (e) { return []; }
+}
+
+// =========================================================================
+// 🚀🚀🚀 全新：接入专属 JSON 抓取源 (Bangumi 近期热门)
+// =========================================================================
+async function fetchRecentHot(params = {}) {
+    // v1.4 优化：镜像降级链 + 内存缓存（首次下载后翻页零请求）
+    let data = ScrapingCache.hot;
+    if (!data) {
+        for (const url of BANGUMI_HOT_URLS) {
+            try {
+                const res = await Widget.http.get(url);
+                if (res && res.data && Array.isArray(res.data.hot_anime)) {
+                    data = res.data;
+                    ScrapingCache.hot = data;
+                    break;
+                }
+            } catch (e) { /* 当前镜像失败，尝试下一个 */ }
+        }
+    }
+
+    try {
+        const hotList = (data && data.hot_anime) || [];
+
+        if (hotList.length === 0) {
+            return [{ id: "empty", type: "text", title: "暂无数据", description: "获取到的热门列表为空" }];
+        }
+
+        // 分页支持
+        const page = parseInt(params.page || "1", 10);
+        const pageSize = 20;
+        const start = (page - 1) * pageSize;
+        const pageItems = hotList.slice(start, start + pageSize);
+
+        return pageItems.map((item, index) => {
+            return buildItem({
+                id: item.id,
+                tmdbId: item.tmdbId,
+                type: item.mediaType || "tv",
+                title: item.title,
+                date: item.releaseDate || "",
+                poster: item.posterPath,
+                backdrop: item.backdropPath,
+                genreText: item.genreTitle,
+                subTitle: `🔥 热度 TOP ${start + index + 1}`,
+                desc: item.description || item.overview || ""
+            });
+        });
+
+    } catch (error) {
+        return [{ id: "error", type: "text", title: "网络异常", description: "获取热门列表失败" }];
+    }
+}
+
+// =========================================================================
+// 🌐 纯净刮削引擎 (彻底抛弃老旧 GitHub 数据请求)
+// =========================================================================
+async function fetchAirtimeRanking(params = {}) {
+    const category = params.category || "anime";
+    const year = params.year || `${new Date().getFullYear()}`;
+    const month = params.month || "all";
+    const sort = params.sort || "collects";
+    const page = parseInt(params.page || "1", 10);
+
+    const cacheKey = `airtime-${category}-${year}-${month}-${sort}-${page}`;
+    if (ScrapingCache.airtime[cacheKey]) {
+        return await sanitizeAndEnsureTmdb(ScrapingCache.airtime[cacheKey]);
+    }
+
+    let url = `https://bgm.tv/${category}/browser/airtime/${year}/${month}?sort=${sort}&page=${page}`;
+    const results = await DynamicDataProcessor.processBangumiPage(url, category);
+    ScrapingCache.airtime[cacheKey] = results;
+    return await sanitizeAndEnsureTmdb(results);
+}
+
+async function fetchDailyCalendarApi(params = {}) {
+    if (!ScrapingCache.daily || ScrapingCache.daily.length === 0) {
+        ScrapingCache.daily = await DynamicDataProcessor.processDailyCalendar();
+    }
+    let items = ScrapingCache.daily || [];
+
+    const { filterType = "today", specificWeekday = "1", dailySortOrder = "popularity_rat_bgm" } = params;
+    const JS_DAY_TO_BGM_API_ID = { 0: 7, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6 };
+
+    let filteredByDay = [];
+    if (filterType === "all_week") {
+        filteredByDay = items;
+    } else {
+        const today = new Date();
+        const currentJsDay = today.getDay();
+        const targetBgmIds = new Set();
+        switch (filterType) {
+            case "today": targetBgmIds.add(JS_DAY_TO_BGM_API_ID[currentJsDay]); break;
+            case "specific_day": targetBgmIds.add(parseInt(specificWeekday, 10)); break;
+            case "mon_thu": [1, 2, 3, 4].forEach(id => targetBgmIds.add(id)); break;
+            case "fri_sun": [5, 6, 7].forEach(id => targetBgmIds.add(id)); break;
+        }
+        filteredByDay = items.filter(item => item.bgm_weekday_id && targetBgmIds.has(item.bgm_weekday_id));
+    }
+
+    let sortedResults = [...filteredByDay];
+    if (dailySortOrder !== "default") {
+        sortedResults.sort((a, b) => {
+            if (dailySortOrder === "popularity_rat_bgm") return (b.bgm_rating_total || 0) - (a.bgm_rating_total || 0);
+            if (dailySortOrder === "score_bgm_desc") return (b.bgm_score || 0) - (a.bgm_score || 0);
+            if (dailySortOrder === "airdate_desc") {
+                const dateA = a.air_date || 0;
+                const dateB = b.air_date || 0;
+                return new Date(dateB).getTime() - new Date(dateA).getTime();
+            }
+            return 0;
+        });
+    }
+    return await sanitizeAndEnsureTmdb(sortedResults);
+}
+
+async function loadBilibiliRank(params = {}) {
+    const { sort_by = "1", page = 1 } = params;
+    const url = `https://api.bilibili.com/pgc/web/rank/list?day=3&season_type=${sort_by}`;
+    try {
+        const res = await Widget.http.get(url, { headers: { "User-Agent": "Mozilla/5.0", "Referer": "https://www.bilibili.com/" } });
+        const data = res.data || {};
+        const fullList = data.result?.list || data.data?.list || [];
+        const pageSize = 20;
+        const slicedList = fullList.slice((page - 1) * pageSize, page * pageSize);
+
+        const promises = slicedList.map(async (item) => {
+            const cleanTitle = item.title.replace(/第[一二三四五六七八九十\d]+[季章]/g, "").trim();
+            const tmdbItem = await searchTmdbAnimeStrict(cleanTitle, item.title, null);
+            if (!tmdbItem) return null;
+            return buildItem({
+                id: tmdbItem.id, tmdbId: tmdbItem.id, type: "tv", title: tmdbItem.name || tmdbItem.title,
+                date: tmdbItem.first_air_date, poster: tmdbItem.poster_path, backdrop: tmdbItem.backdrop_path, rating: tmdbItem.vote_average?.toFixed(1),
+                genreText: getGlobalGenreText(tmdbItem.genre_ids), desc: tmdbItem.overview, subTitle: item.new_ep?.index_show || "热播中"
+            });
+        });
+        const results = await Promise.all(promises);
+        return results.filter(Boolean);
+    } catch (e) { return []; }
+}
+
+async function loadTmdbAnimeRanking(params = {}) {
+    const { sort_by = "trending", page = 1 } = params;
+    let queryParams = { language: "zh-CN", page: page, with_genres: "16", with_original_language: "ja" };
+
+    if (sort_by === "trending") queryParams.sort_by = "popularity.desc";
+    else if (sort_by === "new") queryParams.sort_by = "first_air_date.desc";
+    else if (sort_by === "top") queryParams.sort_by = "vote_average.desc";
+
+    try {
+        const res = await Widget.tmdb.get("/discover/tv", { params: queryParams });
+        return (res.results || []).map(item => buildItem({
+            id: item.id, tmdbId: item.id, type: "tv", title: item.name || item.title, date: item.first_air_date, poster: item.poster_path, backdrop: item.backdrop_path, rating: item.vote_average?.toFixed(1), genreText: getGlobalGenreText(item.genre_ids), desc: item.overview
+        }));
+    } catch (e) { return []; }
+}
+
+async function loadAniListRanking(params = {}) {
+    const { sort_by = "TRENDING_DESC", page = 1 } = params;
+    const query = `query ($page: Int, $perPage: Int) { Page (page: $page, perPage: $perPage) { media (sort: ${sort_by}, type: ANIME) { title { native romaji english } averageScore seasonYear } } }`;
+    try {
+        const res = await Widget.http.post("https://graphql.anilist.co", { query, variables: { page, perPage: 20 } });
+        const data = res.data?.data?.Page?.media || [];
+        const promises = data.map(async (media) => {
+            const tmdbItem = await searchTmdbAnimeStrict(media.title.native || media.title.romaji, media.title.english, media.seasonYear);
+            if (!tmdbItem) return null;
+            return buildItem({ id: tmdbItem.id, tmdbId: tmdbItem.id, type: "tv", title: tmdbItem.name || tmdbItem.title, date: tmdbItem.first_air_date, poster: tmdbItem.poster_path, backdrop: tmdbItem.backdrop_path, rating: tmdbItem.vote_average?.toFixed(1), genreText: getGlobalGenreText(tmdbItem.genre_ids), desc: tmdbItem.overview });
+        });
+        const results = await Promise.all(promises);
+        return results.filter(Boolean);
+    } catch (e) { return []; }
+}
+
+async function loadMalRanking(params = {}) {
+    const { sort_by = "airing", page = 1 } = params;
+    let apiParams = { page: page };
+    if (sort_by === "airing") apiParams.filter = "airing";
+    else if (sort_by === "upcoming") apiParams.filter = "upcoming";
+
+    try {
+        const res = await Widget.http.get("https://api.jikan.moe/v4/top/anime", { params: apiParams });
+        const data = res.data?.data || [];
+        const promises = data.map(async (item) => {
+            const tmdbItem = await searchTmdbAnimeStrict(item.title_japanese || item.title, item.title_english, null);
+            if (!tmdbItem) return null;
+            return buildItem({ id: tmdbItem.id, tmdbId: tmdbItem.id, type: "tv", title: tmdbItem.name || tmdbItem.title, date: tmdbItem.first_air_date, poster: tmdbItem.poster_path, backdrop: tmdbItem.backdrop_path, rating: tmdbItem.vote_average?.toFixed(1), genreText: getGlobalGenreText(tmdbItem.genre_ids), desc: tmdbItem.overview });
+        });
+        const results = await Promise.all(promises);
+        return results.filter(Boolean);
+    } catch (e) { return []; }
+}
+
+const DynamicDataProcessor = (() => {
+    function parseBangumiListItems(htmlContent) {
+        const $ = Widget.html.load(htmlContent);
+        const items = [];
+        $('ul#browserItemList li.item').each((_, element) => {
+            const $item = $(element);
+            const id = $item.attr('id')?.substring(5);
+            if (!id) return;
+            const title = $item.find('h3 a.l').text().trim();
+            const info = $item.find('p.info.tip').text().trim();
+            const rating = $item.find('small.fade').text().trim();
+            items.push({ id, title, info, rating });
+        });
+        return items;
+    }
+
+    async function processBangumiPage(url, category) {
+        try {
+            const listHtmlResp = await Widget.http.get(url);
+            return parseBangumiListItems(listHtmlResp.data);
+        } catch (error) { return []; }
+    }
+
+    async function processDailyCalendar() {
+        try {
+            const apiResponse = await Widget.http.get("https://api.bgm.tv/calendar");
+            const allItems = [];
+            if (apiResponse && Array.isArray(apiResponse.data)) {
+                apiResponse.data.forEach(dayData => {
+                    if (dayData && Array.isArray(dayData.items)) {
+                        dayData.items.forEach(item => {
+                            item.bgm_weekday_id = dayData.weekday?.id;
+                            allItems.push(item);
+                        });
+                    }
+                });
+            }
+            return allItems;
+        } catch (error) { return []; }
+    }
+    return { processBangumiPage, processDailyCalendar };
+})();
+
+// Rex 根据 TMDB 身份和客户端语言/海报偏好完成首次元数据渲染。
+function toRexTmdbIdentities(items) {
+    return (Array.isArray(items) ? items : []).map(item => {
+        if (!item) return null;
+        if (item.type === "text") return item;
+        const mediaType = item.mediaType;
+        const tmdbId = Number(item.tmdbId || item.id);
+        if (!tmdbId || !["movie", "tv"].includes(mediaType)) return null;
+        return { id: `${mediaType}.${tmdbId}`, type: "tmdb" };
+    }).filter(Boolean);
+}
+
+function identityRoute(handler) {
+    return async function(params = {}) {
+        return toRexTmdbIdentities(await handler(params));
+    };
+}
+
+routeAnimeOmni = identityRoute(routeAnimeOmni);
+loadGenreRank = identityRoute(loadGenreRank);
+routeMovieOmni = identityRoute(routeMovieOmni);
+loadVarietyShows = identityRoute(loadVarietyShows);
+routeTrendsHub = identityRoute(routeTrendsHub);
+loadPlatformMatrix = identityRoute(loadPlatformMatrix);
+loadOfficialTop10 = identityRoute(loadOfficialTop10);
