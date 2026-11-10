@@ -1,0 +1,24 @@
+name: Preheat Cron for shrill-poetry-07fc
+# 每 10 分钟触发 Rex 预热 Worker 的 /cron 端点
+# 背景：CF 原生 cron trigger 无法通过 API 注册（PUT metadata.triggers 无效），
+#       且 Minis 本地定时任务依赖 App 存活。放公开仓库 rex-icons 获得无限免费 Actions 分钟。
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Trigger worker /cron (retry x3)
+        run: |
+          for i in 1 2 3; do
+            out=$(curl -s --max-time 90 https://shrill-poetry-07fc.2407813427.workers.dev/cron)
+            echo "attempt $i: $out"
+            echo "$out" | grep -q '"ok":true' && exit 0
+            sleep 5
+          done
+          echo "cron trigger failed after 3 attempts"
+          exit 1
