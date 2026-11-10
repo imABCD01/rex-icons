@@ -253,8 +253,12 @@ async function loadResource(params) {
       name: "直播源",
       url: videoUrl,
       description: "央视频直播流",
-      playerType: "system",           // ✅ 修正：system 而非 native
-      customHeaders: {                // ✅ 修正：播放分片时的请求头放这里
+      playerType: "system",
+      headers: {                    // m3u8 请求头
+        "User-Agent": UA,
+        "Referer": `http://${host}/`
+      },
+      customHeaders: {              // 分片(TS)请求头
         "User-Agent": UA,
         "Referer": `http://${host}/`
       }
@@ -297,8 +301,12 @@ async function loadResource(params) {
         name: "直播源",
         url: ch.url,
         description: "央视频直播流",
-        playerType: "system",           // ✅ 修正
-        customHeaders: {                // ✅ 修正
+        playerType: "system",
+        headers: {
+          "User-Agent": UA,
+          "Referer": `http://${host}/`
+        },
+        customHeaders: {
           "User-Agent": UA,
           "Referer": `http://${host}/`
         }
@@ -315,8 +323,12 @@ async function loadResource(params) {
     name: "直播源",
     url: fallbackUrl,
     description: "央视频直播流（默认频道）",
-    playerType: "system",               // ✅ 修正
-    customHeaders: {                    // ✅ 修正
+    playerType: "system",
+    headers: {
+      "User-Agent": UA,
+      "Referer": `http://${host}/`
+    },
+    customHeaders: {
       "User-Agent": UA,
       "Referer": `http://${host}/`
     }
