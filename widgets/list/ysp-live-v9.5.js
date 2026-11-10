@@ -281,19 +281,35 @@ async function loadResource(params) {
 
   // 如果没有 videoUrl，从 link/id/title 反查频道
   const linkId = (p.link || p.id || p.itemId || p.channelId || p.item_id || p.channel_id || '').replace('channel:', '');
-  const title = p.title || p.name || '';
+  const title = (p.title || p.name || '').toLowerCase();
   
   if (linkId || title) {
     // 重新拉取 M3U 反查
     const channels = await fetchChannels(baseUrl);
     let ch = null;
     
+    // 1. 先尝试 linkId 精确匹配（排除测试 ID）
     if (linkId && linkId !== 'rex-test-media') {
       ch = channels.find(c => c['tvg-id'] === linkId || c.id === linkId);
     }
+    
+    // 2. 标题智能匹配
     if (!ch && title) {
-      // 标题模糊匹配
-      ch = channels.find(c => c.name && c.name.includes(title));
+      if (title === 'cctv' || title.startsWith('cctv')) {
+        // "CCTV" 或 "CCTV-1" 等 → 匹配所有 CCTV 开头的频道，优先 CCTV-1
+        ch = channels.find(c => c.name && c.name.toLowerCase().startsWith('cctv-1')) ||
+             channels.find(c => c.name && c.name.toLowerCase().startsWith('cctv'));
+      } else if (title.includes('卫视')) {
+        ch = channels.find(c => c.name && c.name.toLowerCase().includes(title));
+      } else {
+        // 通用模糊匹配
+        ch = channels.find(c => c.name && c.name.toLowerCase().includes(title));
+      }
+    }
+    
+    // 3. 兜底：第一个频道（通常是 CCTV-1）
+    if (!ch && channels.length > 0) {
+      ch = channels[0];
     }
     
     if (ch && ch.url) {
