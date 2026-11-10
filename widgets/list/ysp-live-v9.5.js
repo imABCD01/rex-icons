@@ -178,20 +178,29 @@ async function loadList(params) {
     const start = (page - 1) * count;
     channels = channels.slice(start, start + count);
 
+    // 提取简短频道名（如 "CCTV-1 综合" → "CCTV-1"）
+    function getShortName(fullName) {
+      if (!fullName) return '';
+      // 匹配 "CCTV-1 综合"、"CCTV-5+ 体育赛事" 等，取第一个空格前的部分
+      const match = fullName.match(/^([^\s]+)/);
+      return match ? match[1] : fullName;
+    }
+
     const items = channels.map((ch, idx) => {
       const channelId = ch['tvg-id'] || `channel_${idx}`;
       const logo = ch['tvg-logo'] || '';
       const group = ch['group-title'] || '其他';
+      const shortName = getShortName(ch.name);
 
       return {
         id: channelId,
         type: "url",
-        title: ch.name,
-        description: `${group} | ${ch['tvg-id'] || ''}`,
+        title: shortName,  // 显示简短名如 "CCTV-1"
+        description: group,
         posterPath: logo,
         coverUrl: logo,
         mediaType: "tv",
-        videoUrl: ch.url,  // M3U 里直接就是可播放的 m3u8 地址
+        videoUrl: ch.url,
         link: channelId,
         genreItems: group ? [{ id: group, title: group }] : []
       };
@@ -210,13 +219,18 @@ async function search(params) {
 }
 
 async function loadDetail(link) {
-  if (!link || !link.startsWith('channel:')) return null;
+  if (!link) return null;
   const channelId = link.replace('channel:', '');
+  // 从缓存获取完整频道信息用于显示简短名
+  const baseUrl = getBaseUrl({});
+  const channels = await fetchChannels(baseUrl);
+  const ch = channels.find(c => c['tvg-id'] === channelId);
+  const shortName = ch ? getShortName(ch.name) : channelId;
+  
   return {
     id: link,
     type: "url",
-    title: `频道: ${link}`,
-    mediaType: "tv",
+    title: shortName,  // 显示简短名如 "CCTV-1"
     description: "直播频道，点击播放",
     genreItems: [{ id: "live", title: "直播" }],
     link: link
