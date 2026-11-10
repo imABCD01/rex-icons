@@ -191,8 +191,8 @@ async function loadList(params) {
         coverUrl: logo,
         mediaType: "tv",
         videoUrl: ch.url,  // M3U 里直接就是可播放的 m3u8 地址
-        genreItems: group ? [{ id: group, title: group }] : [],
-        link: `channel:${channelId}`
+        link: channelId,
+        genreItems: group ? [{ id: group, title: group }] : []
       };
     });
     
@@ -224,18 +224,16 @@ async function loadDetail(link) {
 
 async function loadResource(params) {
   const p = params || {};
-  const disableCatchup = p.disableCatchup !== "false"; // 默认禁用回看
   const host = p.host || p.globalParams?.host || "127.0.0.1:8767";
   const baseUrl = `http://${host}`;
 
-  // 兼容所有可能的参数名（Rex 可能把属性放在不同字段）
+  // 兼容所有可能的参数名
   const videoUrl = p.videoUrl || p.url || p.video_url || p.streamUrl;
   const link = p.link || p.id || p.itemId || p.channelId || p.item_id || p.channel_id;
 
   console.log('[ysp-live] loadResource 收到参数:', JSON.stringify({
     videoUrl: !!videoUrl,
     link,
-    disableCatchup,
     host,
     allKeys: Object.keys(p)
   }));
@@ -255,38 +253,33 @@ async function loadResource(params) {
     }];
   }
 
-  // 如果没有 videoUrl，尝试从 link 反查
-  const linkId = (params?.link || params?.id || params?.itemId || params?.channelId || '').replace('channel:', '');
+  // 如果没有 videoUrl，从 link/id/title 反查频道
+  const linkId = (p.link || p.id || p.itemId || p.channelId || p.item_id || p.channel_id || '').replace('channel:', '');
+  const title = p.title || p.name || '';
   
-  if (linkId) {
-    // 优先尝试拼接标准路径（ysp-live 标准格式）
-    const directUrl = `http://${host}/stream/${encodeURIComponent(linkId)}.m3u8`;
-    console.log('[ysp-live] 尝试拼接 URL:', directUrl);
-    return [{
-      name: "直播源",
-      url: directUrl,
-      description: "央视频直播流",
-      playerType: "app",
-      headers: {
-        "User-Agent": UA,
-        "Referer": `http://${host}/`
-      }
-    }];
-  }
-
-  // 兜底：重新拉取 M3U 反查
-  const channels = await fetchChannels(`http://${host}`);
-  const channelId = (params?.link || params?.id || params?.itemId || params?.channelId || '').replace('channel:', '');
-  const ch = channels.find(c => c['tvg-id'] === linkId || c.id === linkId);
-  if (ch && ch.url) {
-    console.log('[ysp-live] 反查成功:', ch.url);
-    return [{
-      name: "直播源",
-      url: ch.url,
-      description: "央视频直播流",
-      playerType: "app",
-      headers: { "User-Agent": UA, "Referer": `http://${host}/` }
-    }];
+  if (linkId || title) {
+    // 重新拉取 M3U 反查
+    const channels = await fetchChannels(baseUrl);
+    let ch = null;
+    
+    if (linkId) {
+      ch = channels.find(c => c['tvg-id'] === linkId || c.id === linkId);
+    }
+    if (!ch && title) {
+      // 标题模糊匹配
+      ch = channels.find(c => c.name && c.name.includes(title));
+    }
+    
+    if (ch && ch.url) {
+      console.log('[ysp-live] 反查成功:', ch.url, '来源:', linkId || title);
+      return [{
+        name: "直播源",
+        url: ch.url,
+        description: "央视频直播流",
+        playerType: "app",
+        headers: { "User-Agent": UA, "Referer": `http://${host}/` }
+      }];
+    }
   }
 
   // 最终兜底
