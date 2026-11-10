@@ -102,7 +102,6 @@ function parseM3U(m3uText) {
       const name = extinf.substring(commaIdx + 1);
 
       current = { name };
-      // 支持带连字符的属性名 (tvg-id, tvg-name, group-title, catchup-days, catchup-source 等)
       const attrRegex = /([\w-]+)="([^"]*)"/g;
       let match;
       while ((match = attrRegex.exec(attrs)) !== null) {
@@ -136,10 +135,15 @@ async function fetchChannels(baseUrl) {
     channelsCacheTime = Date.now();
     return channels;
   } catch (e) {
-    // 静默失败，返回缓存或空数组，不中断加载
     console.log('[ysp-live] fetchChannels 暂时失败，使用缓存');
     return channelsCache || [];
   }
+}
+
+function getShortName(fullName) {
+  if (!fullName) return '';
+  const match = fullName.match(/^([^\s]+)/);
+  return match ? match[1] : fullName;
 }
 
 // ============ 核心函数 ============
@@ -162,7 +166,6 @@ async function loadList(params) {
     let channels = parseM3U(m3uText);
     console.log('[ysp-live] 解析频道数:', channels.length);
 
-    // 搜索过滤
     const keyword = (params?.keyword || '').toLowerCase();
     if (keyword) {
       channels = channels.filter(c =>
@@ -172,19 +175,10 @@ async function loadList(params) {
       );
     }
 
-    // 分页
     const page = Number(params?.page || 1);
     const count = Number(params?.count || 64);
     const start = (page - 1) * count;
     channels = channels.slice(start, start + count);
-
-    // 提取简短频道名（如 "CCTV-1 综合" → "CCTV-1"）
-    function getShortName(fullName) {
-      if (!fullName) return '';
-      // 匹配 "CCTV-1 综合"、"CCTV-5+ 体育赛事" 等，取第一个空格前的部分
-      const match = fullName.match(/^([^\s]+)/);
-      return match ? match[1] : fullName;
-    }
 
     const items = channels.map((ch, idx) => {
       const channelId = ch['tvg-id'] || `channel_${idx}`;
@@ -195,7 +189,7 @@ async function loadList(params) {
       return {
         id: channelId,
         type: "url",
-        title: shortName,  // 显示简短名如 "CCTV-1"
+        title: shortName,
         description: group,
         posterPath: logo,
         coverUrl: logo,
@@ -221,7 +215,6 @@ async function search(params) {
 async function loadDetail(link) {
   if (!link) return null;
   const channelId = link.replace('channel:', '');
-  // 从缓存获取完整频道信息用于显示简短名
   const baseUrl = getBaseUrl({});
   const channels = await fetchChannels(baseUrl);
   const ch = channels.find(c => c['tvg-id'] === channelId);
@@ -230,7 +223,7 @@ async function loadDetail(link) {
   return {
     id: link,
     type: "url",
-    title: shortName,  // 显示简短名如 "CCTV-1"
+    title: shortName,
     description: "直播频道，点击播放",
     genreItems: [{ id: "live", title: "直播" }],
     link: link
@@ -260,21 +253,10 @@ async function loadResource(params) {
       name: "直播源",
       url: videoUrl,
       description: "央视频直播流",
-      playerType: "native",
-      headers: {
+      playerType: "system",           // ✅ 修正：system 而非 native
+      customHeaders: {                // ✅ 修正：播放分片时的请求头放这里
         "User-Agent": UA,
-        "Referer": `http://${host}/`,
-        "Origin": `http://${host}`,
-        "Accept": "*/*",
-        "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
-        "Accept-Encoding": "gzip, deflate, br",
-        "Connection": "keep-alive",
-        "Cache-Control": "no-cache",
-        "X-Requested-With": "XMLHttpRequest",
-        "X-Forwarded-For": "127.0.0.1",
-        "Sec-Fetch-Dest": "empty",
-        "Sec-Fetch-Mode": "cors",
-        "Sec-Fetch-Site": "same-origin"
+        "Referer": `http://${host}/`
       }
     }];
   }
@@ -284,7 +266,6 @@ async function loadResource(params) {
   const title = (p.title || p.name || '').toLowerCase();
   
   if (linkId || title) {
-    // 重新拉取 M3U 反查
     const channels = await fetchChannels(baseUrl);
     let ch = null;
     
@@ -296,18 +277,16 @@ async function loadResource(params) {
     // 2. 标题智能匹配
     if (!ch && title) {
       if (title === 'cctv' || title.startsWith('cctv')) {
-        // "CCTV" 或 "CCTV-1" 等 → 匹配所有 CCTV 开头的频道，优先 CCTV-1
         ch = channels.find(c => c.name && c.name.toLowerCase().startsWith('cctv-1')) ||
              channels.find(c => c.name && c.name.toLowerCase().startsWith('cctv'));
       } else if (title.includes('卫视')) {
         ch = channels.find(c => c.name && c.name.toLowerCase().includes(title));
       } else {
-        // 通用模糊匹配
         ch = channels.find(c => c.name && c.name.toLowerCase().includes(title));
       }
     }
     
-    // 3. 兜底：第一个频道（通常是 CCTV-1）
+    // 3. 兜底：第一个频道
     if (!ch && channels.length > 0) {
       ch = channels[0];
     }
@@ -318,21 +297,10 @@ async function loadResource(params) {
         name: "直播源",
         url: ch.url,
         description: "央视频直播流",
-        playerType: "native",
-        headers: {
+        playerType: "system",           // ✅ 修正
+        customHeaders: {                // ✅ 修正
           "User-Agent": UA,
-          "Referer": `http://${host}/`,
-          "Origin": `http://${host}`,
-          "Accept": "*/*",
-          "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
-          "Accept-Encoding": "gzip, deflate, br",
-          "Connection": "keep-alive",
-          "Cache-Control": "no-cache",
-          "X-Requested-With": "XMLHttpRequest",
-          "X-Forwarded-For": "127.0.0.1",
-          "Sec-Fetch-Dest": "empty",
-          "Sec-Fetch-Mode": "cors",
-          "Sec-Fetch-Site": "same-origin"
+          "Referer": `http://${host}/`
         }
       }];
     }
@@ -347,21 +315,10 @@ async function loadResource(params) {
     name: "直播源",
     url: fallbackUrl,
     description: "央视频直播流（默认频道）",
-    playerType: "native",
-    headers: {
+    playerType: "system",               // ✅ 修正
+    customHeaders: {                    // ✅ 修正
       "User-Agent": UA,
-      "Referer": `http://${host}/`,
-      "Origin": `http://${host}`,
-      "Accept": "*/*",
-      "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
-      "Accept-Encoding": "gzip, deflate, br",
-      "Connection": "keep-alive",
-      "Cache-Control": "no-cache",
-      "X-Requested-With": "XMLHttpRequest",
-      "X-Forwarded-For": "127.0.0.1",
-      "Sec-Fetch-Dest": "empty",
-      "Sec-Fetch-Mode": "cors",
-      "Sec-Fetch-Site": "same-origin"
+      "Referer": `http://${host}/`
     }
   }];
 }
