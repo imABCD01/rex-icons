@@ -1,6 +1,6 @@
 /**
  * ysp-live v9.5 央视频全频道直播模块 (ForwardWidget)
- * 64 路频道（央视30+卫视34），真4K，7天时移回看
+ * 64 路频道（央视30+卫视34），真4K，纯直播
  * 服务端口：8767，M3U：/all.m3u，健康检查：/health
  * 作者：garysclub / 加里俱乐部
  */
@@ -11,7 +11,7 @@ WidgetMetadata = {
   title: "央视频全频道直播 v9.5",
   version: "9.5.0",
   requiredVersion: "0.0.1",
-  description: "央视频全频道直播：64路频道（央视30+卫视34），真4K超高清，7天时移回看，SWR毫秒秒开",
+  description: "央视频全频道直播：64路频道（央视30+卫视34），真4K超高清，纯直播模式",
   author: "GarysClub",
   site: "https://garysclub.sharewithyou.dpdns.org",
   detailCacheDuration: 120,
@@ -32,6 +32,16 @@ WidgetMetadata = {
         { title: "4K 超高清", value: "4k" },
         { title: "1080P 高清", value: "1080p" },
         { title: "720P 标清", value: "720p" }
+      ]
+    },
+    {
+      name: "disableCatchup",
+      title: "禁用回看/时移（仅直播）",
+      type: "enumeration",
+      value: "true",
+      enumOptions: [
+        { title: "开启（仅直播）", value: "true" },
+        { title: "关闭（启用7天回看）", value: "false" }
       ]
     }
   ],
@@ -204,77 +214,90 @@ async function loadDetail(link) {
   return {
     id: link,
     type: "url",
-    title: `频道回看: ${link}`,
+    title: `频道: ${link}`,
     mediaType: "tv",
-    description: "支持 7 天时移回看，选择日期和时间观看",
-    genreItems: [{ id: "timeshift", title: "7天时移回看" }],
+    description: "直播频道，点击播放",
+    genreItems: [{ id: "live", title: "直播" }],
     link: link
   };
 }
 
 async function loadResource(params) {
   const p = params || {};
-  // 兼容多种参数名：Rex 可能把 videoUrl 放在不同字段
-  const videoUrl = p.videoUrl || p.url || p.video_url || p.streamUrl || p.video_url;
-  const link = p.link || p.id || p.itemId || p.channelId || p.item_id || p.channel_id;
-  const timeShift = p.timeShift || p.time_shift;
+  const disableCatchup = p.disableCatchup !== "false"; // 默认禁用回看
   const host = p.host || p.globalParams?.host || "127.0.0.1:8767";
   const baseUrl = `http://${host}`;
 
-  console.log('[ysp-live] loadResource 收到参数:', JSON.stringify(p));
+  // 兼容所有可能的参数名（Rex 可能把属性放在不同字段）
+  const videoUrl = p.videoUrl || p.url || p.video_url || p.streamUrl;
+  const link = p.link || p.id || p.itemId || p.channelId || p.item_id || p.channel_id;
 
-  // 如果是时移请求（频道支持 catchup）
-  if (timeShift && link) {
-    const tsUrl = `${getBaseUrl({host})}/timeshift/${encodeURIComponent(link.replace('channel:', ''))}/${timeShift}.m3u8`;
+  console.log('[ysp-live] loadResource 收到参数:', JSON.stringify({
+    videoUrl: !!videoUrl,
+    link,
+    disableCatchup,
+    host,
+    allKeys: Object.keys(p)
+  }));
+
+  // 优先使用传入的 videoUrl（这是 M3U 解析出的直接 m3u8 地址）
+  if (videoUrl) {
+    console.log('[ysp-live] 直接使用 videoUrl:', videoUrl);
     return [{
-      name: "时移流",
-      url: tsUrl,
-      description: `时移: ${new Date(timeShift * 1000).toLocaleString()}`,
-      playerType: "app"
+      name: "直播源",
+      url: videoUrl,
+      description: "央视频直播流",
+      playerType: "app",
+      headers: {
+        "User-Agent": UA,
+        "Referer": `http://${host}/`
+      }
     }];
   }
 
-  // 优先使用传入的 videoUrl
-  let streamUrl = p.videoUrl || p.url || p.video_url || p.streamUrl;
+  // 如果没有 videoUrl，尝试从 link 反查
+  const linkId = (params?.link || params?.id || params?.itemId || params?.channelId || '').replace('channel:', '');
   
-  if (!streamUrl && link) {
-    // 兜底1：通过频道 ID 拼接（ysp-live 支持 /stream/频道ID.m3u8）
-    const channelId = link.replace('channel:', '');
-    streamUrl = `${getBaseUrl({host})}/stream/${encodeURIComponent(channelId)}.m3u8`;
-  }
-  
-  // 兜底2：如果有 host 参数，尝试获取频道列表反查
-  if (!streamUrl) {
-    const channels = await fetchChannels(baseUrl);
-    if (link) {
-      const channelId = link.replace('channel:', '');
-      const ch = channels.find(c => c['tvg-id'] === channelId || c.id === channelId);
-      if (ch && ch.url) {
-        streamUrl = ch.url;
+  if (linkId) {
+    // 优先尝试拼接标准路径（ysp-live 标准格式）
+    const directUrl = `http://${host}/stream/${encodeURIComponent(linkId)}.m3u8`;
+    console.log('[ysp-live] 尝试拼接 URL:', directUrl);
+    return [{
+      name: "直播源",
+      url: directUrl,
+      description: "央视频直播流",
+      playerType: "app",
+      headers: {
+        "User-Agent": UA,
+        "Referer": `http://${host}/`
       }
-    }
-  }
-  
-  if (!streamUrl) {
-    streamUrl = `${getBaseUrl({host})}/stream/`;
+    }];
   }
 
-  console.log('[ysp-live] 最终播放地址:', streamUrl);
-
-  if (!streamUrl) {
-    console.error('[ysp-live] 无法获取播放地址');
-    return [];
+  // 兜底：重新拉取 M3U 反查
+  const channels = await fetchChannels(`http://${host}`);
+  const channelId = (params?.link || params?.id || params?.itemId || params?.channelId || '').replace('channel:', '');
+  const ch = channels.find(c => c['tvg-id'] === linkId || c.id === linkId);
+  if (ch && ch.url) {
+    console.log('[ysp-live] 反查成功:', ch.url);
+    return [{
+      name: "直播源",
+      url: ch.url,
+      description: "央视频直播流",
+      playerType: "app",
+      headers: { "User-Agent": UA, "Referer": `http://${host}/` }
+    }];
   }
 
+  // 最终兜底
+  const fallbackUrl = `http://${host}/stream/`;
+  console.log('[ysp-live] 使用最终兜底:', fallbackUrl);
   return [{
     name: "直播源",
-    url: streamUrl,
-    description: "央视频直播流",
+    url: fallbackUrl,
+    description: "央视频直播流（兜底）",
     playerType: "app",
-    headers: {
-      "User-Agent": UA,
-      "Referer": getBaseUrl({host})
-    }
+    headers: { "User-Agent": UA, "Referer": `http://${host}/` }
   }];
 }
 
