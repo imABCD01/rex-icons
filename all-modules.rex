@@ -1,5 +1,5 @@
 {
- "title": "Tea's ForwardWidget Modules",
+ "title": "Tea's RexWidget Modules",
  "description": "ForwardWidget modules: Makka, Letterboxd, Subtitles, Short-drama, yingqiao",
  "icon": "https://cdn.jsdelivr.net/gh/imABCD01/rex-icons@7ac93f0/tea-rex-icon.svg",
  "widgets": [
