@@ -264,8 +264,17 @@ async function loadResource(params) {
       headers: {
         "User-Agent": UA,
         "Referer": `http://${host}/`,
+        "Origin": `http://${host}`,
         "Accept": "*/*",
-        "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8"
+        "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Connection": "keep-alive",
+        "Cache-Control": "no-cache",
+        "X-Requested-With": "XMLHttpRequest",
+        "X-Forwarded-For": "127.0.0.1",
+        "Sec-Fetch-Dest": "empty",
+        "Sec-Fetch-Mode": "cors",
+        "Sec-Fetch-Site": "same-origin"
       }
     }];
   }
@@ -297,8 +306,17 @@ async function loadResource(params) {
         headers: {
           "User-Agent": UA,
           "Referer": `http://${host}/`,
+          "Origin": `http://${host}`,
           "Accept": "*/*",
-          "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8"
+          "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
+          "Accept-Encoding": "gzip, deflate, br",
+          "Connection": "keep-alive",
+          "Cache-Control": "no-cache",
+          "X-Requested-With": "XMLHttpRequest",
+          "X-Forwarded-For": "127.0.0.1",
+          "Sec-Fetch-Dest": "empty",
+          "Sec-Fetch-Mode": "cors",
+          "Sec-Fetch-Site": "same-origin"
         }
       }];
     }
@@ -317,8 +335,17 @@ async function loadResource(params) {
     headers: {
       "User-Agent": UA,
       "Referer": `http://${host}/`,
+      "Origin": `http://${host}`,
       "Accept": "*/*",
-      "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8"
+      "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
+      "Accept-Encoding": "gzip, deflate, br",
+      "Connection": "keep-alive",
+      "Cache-Control": "no-cache",
+      "X-Requested-With": "XMLHttpRequest",
+      "X-Forwarded-For": "127.0.0.1",
+      "Sec-Fetch-Dest": "empty",
+      "Sec-Fetch-Mode": "cors",
+      "Sec-Fetch-Site": "same-origin"
     }
   }];
 }
