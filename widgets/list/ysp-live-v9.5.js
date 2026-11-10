@@ -136,8 +136,9 @@ async function fetchChannels(baseUrl) {
     channelsCacheTime = Date.now();
     return channels;
   } catch (e) {
-    console.error('[ysp-live] fetchChannels error:', e);
-    return [];
+    // 静默失败，返回缓存或空数组，不中断加载
+    console.log('[ysp-live] fetchChannels 暂时失败，使用缓存');
+    return channelsCache || [];
   }
 }
 
@@ -262,7 +263,7 @@ async function loadResource(params) {
     const channels = await fetchChannels(baseUrl);
     let ch = null;
     
-    if (linkId) {
+    if (linkId && linkId !== 'rex-test-media') {
       ch = channels.find(c => c['tvg-id'] === linkId || c.id === linkId);
     }
     if (!ch && title) {
@@ -282,13 +283,15 @@ async function loadResource(params) {
     }
   }
 
-  // 最终兜底
-  const fallbackUrl = `http://${host}/stream/`;
+  // 最终兜底：返回默认频道（CCTV1 或第一个频道）
+  const channels = await fetchChannels(baseUrl);
+  const firstCh = channels[0] || { 'tvg-id': 'CCTV1', name: 'CCTV-1 综合', url: `http://${host}/cctv1.m3u8` };
+  const fallbackUrl = firstCh.url || `http://${host}/cctv1.m3u8`;
   console.log('[ysp-live] 使用最终兜底:', fallbackUrl);
   return [{
     name: "直播源",
     url: fallbackUrl,
-    description: "央视频直播流（兜底）",
+    description: "央视频直播流（默认频道）",
     playerType: "app",
     headers: { "User-Agent": UA, "Referer": `http://${host}/` }
   }];
