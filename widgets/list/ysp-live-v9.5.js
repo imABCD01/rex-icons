@@ -260,10 +260,12 @@ async function loadResource(params) {
       name: "直播源",
       url: videoUrl,
       description: "央视频直播流",
-      playerType: "app",
+      playerType: "native",
       headers: {
         "User-Agent": UA,
-        "Referer": `http://${host}/`
+        "Referer": `http://${host}/`,
+        "Accept": "*/*",
+        "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8"
       }
     }];
   }
@@ -291,8 +293,13 @@ async function loadResource(params) {
         name: "直播源",
         url: ch.url,
         description: "央视频直播流",
-        playerType: "app",
-        headers: { "User-Agent": UA, "Referer": `http://${host}/` }
+        playerType: "native",
+        headers: {
+          "User-Agent": UA,
+          "Referer": `http://${host}/`,
+          "Accept": "*/*",
+          "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8"
+        }
       }];
     }
   }
@@ -306,8 +313,13 @@ async function loadResource(params) {
     name: "直播源",
     url: fallbackUrl,
     description: "央视频直播流（默认频道）",
-    playerType: "app",
-    headers: { "User-Agent": UA, "Referer": `http://${host}/` }
+    playerType: "native",
+    headers: {
+      "User-Agent": UA,
+      "Referer": `http://${host}/`,
+      "Accept": "*/*",
+      "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8"
+    }
   }];
 }
 
