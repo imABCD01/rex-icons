@@ -1,6 +1,6 @@
 {
  "title": "Tea's RexWidget Modules",
- "description": "ForwardWidget modules: Makka, Letterboxd, Subtitles, Short-drama, yingqiao, 经典影视字幕",
+ "description": "ForwardWidget modules: Makka, Letterboxd, Subtitles, Short-drama, yingqiao",
  "icon": "https://cdn.jsdelivr.net/gh/imABCD01/rex-icons@7ac93f0/tea-rex-icon.svg",
  "widgets": [
   {
@@ -155,15 +155,6 @@
    "version": "1.0.0",
    "author": "MakkaPakka",
    "url": "https://cdn.imabcd.dpdns.org/m/widgets/list/forward_combined_makkapakka.js"
-  },
-  {
-   "id": "subtitle.classic",
-   "title": "经典影视 字幕",
-   "description": "经典影视字幕库（FWENC2 加密模块）",
-   "requiredVersion": "0.0.1",
-   "version": "1.0.0",
-   "author": "Tea",
-   "url": "https://cdn.imabcd.dpdns.org/m/widgets/list/subtitle-classic.js"
   }
  ]
 }
