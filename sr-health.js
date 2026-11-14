@@ -14,12 +14,17 @@
  *   3) 同一签名 2 小时内不重复通知；每日最多 4 条；
  *   4) 恢复后补报一条「已恢复」。
  */
+/* v2.2（2026-11-14）：全部检测端点改走 workers.dev 生产域名（2407813427 账号），
+   避开 dpdns 边缘缓存和旧账号 svipqq888 域名的不稳定：
+   - TMDB图片代理 svipqq888→2407813427（旧域名已废弃，偶发超时导致假警）
+   - Rex模块源 / TMDB数据中继 cdn.imabcd.dpdns.org → rex-mod-cdn.2407813427.workers.dev
+   workers.dev 被 IMG/MOD 组 fallback,DIRECT,PROXY 覆盖，直连优先、代理兜底。 */
 const TESTS = [
   { name: '代理链路', url: 'https://www.gstatic.com/generate_204' },
-  { name: 'Rex模块源', url: 'https://cdn.imabcd.dpdns.org/m/all-modules.rex' },
+  { name: 'Rex模块源', url: 'https://rex-mod-cdn.2407813427.workers.dev/m/all-modules.rex' },
   { name: '官方模块源', url: 'https://assets.rexnow.tv/scripts/rex-tmdb.js' },
-  { name: 'TMDB图片代理', url: 'https://shrill-poetry-07fc.svipqq888.workers.dev/health' },
-  { name: 'TMDB数据中继', url: 'https://cdn.imabcd.dpdns.org/relay/tmdb/3/configuration' },
+  { name: 'TMDB图片代理', url: 'https://shrill-poetry-07fc.2407813427.workers.dev/health' },
+  { name: 'TMDB数据中继', url: 'https://rex-mod-cdn.2407813427.workers.dev/relay/tmdb/3/configuration' },
   { name: 'PikPak WebDAV', url: 'https://dav.pikpak.ai/' },
   { name: 'TestFlight', url: 'https://testflight.apple.com' },
   { name: 'PikPak API', url: 'https://www.mypikpak.com/' }
