@@ -1,6 +1,6 @@
 /* 基于 yingqiao 出口模块（server/modules/fwrex）生成的 Rex 合集维护版。
- * 面板版本 1.1.0；合集模块版本 1.2.0；首页行 0 条 */
-var WidgetMetadata = {"id":"yingqiao.fw","title":"影桥","version":"1.2.0","requiredVersion":"0.0.1","description":"影桥。全局参数只需填面板生成的完整模块地址（URL 中需带 token）。","author":"yingqiao","site":"","detailCacheDuration":300,"globalParams":[{"name":"panel","title":"完整模块地址（带令牌）","type":"input","value":"","placeholders":[{"title":"示例格式","value":"https://qiaoying.riroro.com/api/fwrex/widget.js?token=你的模块令牌"}]}],"search":{"id":"search","title":"搜索影桥","functionName":"mbSearch","params":[{"name":"keyword","title":"关键词","type":"input","value":""},{"name":"page","title":"页码","type":"page","value":"1"}]},"modules":[{"id":"loadResource","title":"加载播放资源","functionName":"loadResource","type":"stream","params":[],"cacheDuration":0}]};
+ * 面板版本 1.1.0；合集模块版本 1.2.1；首页行 0 条 */
+var WidgetMetadata = {"id":"yingqiao.fw","title":"影桥","version":"1.2.1","requiredVersion":"0.0.1","description":"影桥。全局参数只需填面板生成的完整模块地址（URL 中需带 token）。","author":"yingqiao","site":"","detailCacheDuration":300,"globalParams":[{"name":"panel","title":"完整模块地址（带令牌）","type":"input","value":"","placeholders":[{"title":"示例格式","value":"https://qiaoying.riroro.com/api/fwrex/widget.js?token=你的模块令牌"}]}],"search":{"id":"search","title":"搜索影桥","functionName":"mbSearch","params":[{"name":"keyword","title":"关键词","type":"input","value":""},{"name":"page","title":"页码","type":"page","value":"1"}]},"modules":[{"id":"loadResource","title":"加载播放资源","functionName":"loadResource","type":"stream","params":[],"cacheDuration":0}]};
 var MB_META = WidgetMetadata;
 var MB_HOME_ROWS = 0;
 /* 旧版生成快照仅作兼容兜底；新版从完整模块地址解析 panel 与 token。 */
@@ -126,11 +126,23 @@ function mbError(data) {
   return e;
 }
 
-async function mbPost(c, route, payload) {
+async function mbPost(c, route, payload, timeout) {
   mbNeedConfig(c);
-  var resp = await Widget.http.post(mbApiUrl(c, route), payload || {}, {
-    headers: { 'Content-Type': 'application/json' },
-  });
+  var resp;
+  if (timeout) {
+    /* post 快捷方法不能设置 timeout；慢速库内搜索用 request 显式放宽到 40 秒。 */
+    resp = await Widget.http.request({
+      url: mbApiUrl(c, route),
+      method: 'POST',
+      data: payload || {},
+      headers: { 'Content-Type': 'application/json' },
+      timeout: timeout,
+    });
+  } else {
+    resp = await Widget.http.post(mbApiUrl(c, route), payload || {}, {
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
   var data = resp && resp.data;
   if (data && data.error) throw mbError(data);
   return data;
@@ -149,7 +161,7 @@ function mbDecodeLink(link) {
 /**
  * FW「正在播放的条目」→ link 形状（没有 link 时的翻译层）。
  *
- * 面板按 `itemId` 或 `name` + `year`（剧集另带 season/episode）在**库里**定位条目，
+ * 面板 `/item` 强制按 `itemId` 定位；缺坐标时先经库内搜索按片名/年份/类型精确找回，
  * 所以这里能翻译出来的只有 name —— 影和剧都用 seriesName（影的 seriesName 就是片名）。
  * `year` 取 FW 平铺的 `airDate` 前四位 —— 实测它是**作品级**首播/上映日
  * （剧集给的是整剧首播日，形如 `YYYY-MM-DD`，不是这一集当天），与面板 emby 侧取的
@@ -242,16 +254,29 @@ var MB_ITEM_BY_ENTRY = {};
 function mbItemIdsFromParams(params, d, isTv, season, episode) {
   params = params || {};
   var out = [];
+  var kind = isTv ? 'tv' : 'movie';
   var push = function (base) {
     var b = String(base || '').trim();
     if (!b) return;
     var one = isTv ? mbEpisodeItemId(b, season, episode) : b;
     if (one && out.indexOf(one) < 0) out.push(one);
   };
-  /* ① 宿主直接给的条目坐标；② 列表项 link 里编的坐标（从本组件榜单进来的那条） */
-  push(params.itemId);
-  push(d && d.i);
-  /* ③ 宿主平铺的域编号 → **现拼**（tmdbId 先试，其余 `…Id` 按参数顺序） */
+  /* 通用 id 也要利用：Rex 模拟资源加载时可能只给 id，不回带 link/tmdbId。 */
+  var pushGeneric = function (value) {
+    var b = String(value || '').trim().replace(/^mbh_/, '');
+    if (!b) return;
+    if (/^\d+$/.test(b)) {
+      var domain = d && d.m && d.m.d ? String(d.m.d).toLowerCase() : 'tmdb';
+      push(domain + '_' + b + '_' + kind);
+    } else if (/^[a-z][a-z0-9]*_\d+_(?:movie|tv)(?:_s\d+(?:_e\d+)?)?$/i.test(b)) {
+      push(b);
+    }
+  };
+  /* ① 宿主坐标；② 列表 link 坐标；③ Rex 通用原始 id。 */
+  pushGeneric(params.itemId);
+  pushGeneric(d && d.i);
+  pushGeneric(params.id);
+  /* ④ 宿主平铺的域编号 → 现拼（tmdbId 先试，其余 …Id 按参数顺序）。 */
   var keys = [];
   for (var k in params) if (/Id$/.test(k)) keys.push(k);
   keys.sort(function (a, b) {
@@ -259,16 +284,14 @@ function mbItemIdsFromParams(params, d, isTv, season, episode) {
     if (b === 'tmdbId') return 1;
     return 0;
   });
-  var kind = isTv ? 'tv' : 'movie';
   for (var i = 0; i < keys.length; i++) {
     var v = String(params[keys[i]] === undefined || params[keys[i]] === null ? '' : params[keys[i]]).trim();
     if (!v) continue;
-    /* 域 = 键名去掉结尾的 `Id`；`id` 这种没有域前缀的键剥出来是空串，形状校验会挡掉 */
     var dom = keys[i].slice(0, -2).toLowerCase();
     if (!/^[a-z][a-z0-9]*$/.test(dom)) continue;
     push(dom + '_' + v + '_' + kind);
   }
-  /* ④ 本会话记过的（按编号反查）—— 域名对不上时的兜底 */
+  /* ⑤ 本会话记过的（按编号反查）—— 域名对不上时的兜底。 */
   for (var j = 0; j < keys.length; j++) {
     var vv = String(params[keys[j]] === undefined || params[keys[j]] === null ? '' : params[keys[j]]).trim();
     if (vv && MB_ITEM_BY_ENTRY[vv]) push(MB_ITEM_BY_ENTRY[vv]);
@@ -392,13 +415,50 @@ async function mbLoadRow(row, params) {
  * 没有可播坐标，拿回来也点不动（见 ADR-0118）。搜不到的含义是"这台面板还没收下这条内容" ——
  * 要它进库，仍走 Emby 那条路浏览一次或「手动入库」。搜索本身不需要聚合模板。
  */
+var MB_SEARCH_CACHE_KEY = 'fwrex.lastSearch.v1';
+var MB_SEARCH_CACHE_TTL = 300000;
+
+/* 缓存按面板和令牌隔离，但不把明文 token 写进存储。 */
+function mbSearchScope(c) {
+  var s = String(c.panel || '') + '|' + String(c.token || '');
+  var h = 5381;
+  for (var i = 0; i < s.length; i++) h = ((h << 5) + h) ^ s.charCodeAt(i);
+  return (h >>> 0).toString(36);
+}
+
+function mbReadSearchCache(c, wd) {
+  try {
+    var x = Widget.storage.get(MB_SEARCH_CACHE_KEY);
+    if (x && x.wd === wd && x.scope === mbSearchScope(c)
+      && Date.now() - Number(x.t || 0) < MB_SEARCH_CACHE_TTL && Array.isArray(x.items)) return x.items;
+  } catch (e) {}
+  return null;
+}
+
+function mbWriteSearchCache(c, wd, items) {
+  try {
+    Widget.storage.set(MB_SEARCH_CACHE_KEY, {
+      wd: wd, scope: mbSearchScope(c), t: Date.now(), items: items,
+    });
+  } catch (e) {}
+}
+
+async function mbLibrarySearch(c, wd) {
+  var cached = mbReadSearchCache(c, wd);
+  if (cached) return cached;
+  /* 实测面板搜索可达 23 秒以上，默认 20 秒会把有效慢响应误判为失败。 */
+  var out = await mbPost(c, '/search', { wd: wd, limit: 40 }, 40);
+  var items = Array.isArray(out.items) ? out.items : [];
+  mbWriteSearchCache(c, wd, items);
+  return items;
+}
+
 async function mbSearch(params) {
   params = params || {};
   var wd = String(params.keyword || params.query || params.wd || '').trim();
   if (!wd) return [];
   var c = mbConfig(params);
-  var out = await mbPost(c, '/search', { wd: wd, limit: 40 });
-  var items = Array.isArray(out.items) ? out.items : [];
+  var items = await mbLibrarySearch(c, wd);
   return items.map(mbFromLibItem);
 }
 
@@ -537,6 +597,29 @@ function mbStreamOf(v, url, index, wantEpisode, got) {
   return s;
 }
 
+/* 最后的坐标兜底：只接受同标题、同类型，并优先同年，避免同名误配。 */
+async function mbItemIdFromSearch(c, d, isTv, season, episode) {
+  var items = await mbLibrarySearch(c, d.n);
+  var norm = function (v) { return String(v || '').trim().replace(/\s+/g, ' ').toLowerCase(); };
+  var same = items.filter(function (it) {
+    var tv = String(it.type || '').toLowerCase() === 'tv';
+    return norm(it.title) === norm(d.n) && tv === isTv && String(it.itemId || '').trim();
+  });
+  if (!same.length) return '';
+  var year = String(d.y || '');
+  var chosen = null;
+  if (year) {
+    var exactYear = same.filter(function (it) { return String(it.year || '') === year; });
+    if (exactYear.length) chosen = exactYear[0];
+    else if (same.length === 1) chosen = same[0];
+  } else if (same.length === 1) {
+    chosen = same[0];
+  }
+  if (!chosen) return '';
+  var id = String(chosen.itemId || '').trim();
+  return isTv ? mbEpisodeItemId(id, season, episode) : id;
+}
+
 /**
  * stream 模块（id 固定 loadResource）。params 由 FW/Rex 注入：
  *   link（列表项的自描述 JSON）、type、season、episode、seriesName、airDate…
@@ -544,7 +627,7 @@ function mbStreamOf(v, url, index, wantEpisode, got) {
  *
  * 取址两步（**都只读库、不回源**，见 ADR-0118）：
  *   ① `POST /item` 拿这个条目的版本清单（每条带 `ref` 与面板拼好的 `label`）；
- *   ② 逐个 `POST /play` 取地址与请求头，交给原生播放器。
+ *   ② 用版本 `ref` 生成面板 `/stream` 一跳，连同请求头交给原生播放器。
  *
  * link 缺席不报错：FW/Rex 从「正在播放的条目」起播时（典型是内置详情页）只给一套条目坐标，
  * 这里把它翻译成 name + 年份 + 季集（见 mbLinkFromParams），与列表项等价地交给面板定位。
@@ -560,8 +643,12 @@ async function loadResource(params) {
   var season = String(params.season || (d && d.se) || '');
   var episode = String(params.episode || (d && d.ep) || '');
   var wantEpisode = season && episode ? 'S' + season + 'E' + episode : '';
-  /* 剧 / 影以宿主起播时给的 params.type 为准（搜索条目自身可能没带对类型），link 兜底 */
-  var isTv = String(params.type || d.t || '').toLowerCase() === 'tv';
+  /* 兼容 Rex 的 movie/tv、TMDB 详情返回的 type=tmdb + mediaType，以及 link 兜底。 */
+  var hostType = String(params.type || '').toLowerCase();
+  var mediaHint = String(params.mediaType || params.media_type || '').toLowerCase();
+  var isTv = hostType === 'tv' || mediaHint === 'tv' || String(d.t || '').toLowerCase() === 'tv'
+    || (hostType === 'other' && !!(season && episode));
+  if (hostType === 'movie' || mediaHint === 'movie') isTv = false;
 
   /* ① 版本清单。面板按**条目坐标**从库里取（剧取到**集**坐标上）。
    *    坐标优先由宿主给的那套（`itemId` / `tmdbId` 这类 + type）**现拼**，逐个试到有版本为止 ——
@@ -569,8 +656,12 @@ async function loadResource(params) {
    *    全都取不到，才说明这条确实没进库（典型是搜出来的站点候选），如实说明怎么补。 */
   var candidates = mbItemIdsFromParams(params, d, isTv, season, episode);
   if (!candidates.length) {
-    throw new Error('面板库里没有这条的坐标，取不到版本：出口组件只读库，'
-      + '搜索出来的站点候选要先在面板入库，或者从本组件的榜单里起播');
+    var foundId = await mbItemIdFromSearch(c, d, isTv, season, episode);
+    if (foundId) candidates.push(foundId);
+  }
+  if (!candidates.length) {
+    throw new Error('仍定位不到面板 itemId：请从影桥搜索结果进入，或先在面板确认该片已入库；'
+      + '单独调试资源时可填写 id / tmdbId，或准确的 seriesName + airDate');
   }
   var itemBody = {
     name: d.n,
