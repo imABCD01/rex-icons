@@ -13,9 +13,11 @@ jobs:
     timeout-minutes: 3
     steps:
       - name: Trigger worker /cron (retry x3)
+        env:
+          PREHEAT_ADMIN_TOKEN: ${{ secrets.PREHEAT_ADMIN_TOKEN }}
         run: |
           for i in 1 2 3; do
-            out=$(curl -s --max-time 90 https://shrill-poetry-07fc.2407813427.workers.dev/cron)
+            out=$(curl -s --max-time 90 -H "Authorization: Bearer $PREHEAT_ADMIN_TOKEN" https://shrill-poetry-07fc.2407813427.workers.dev/cron)
             echo "attempt $i: $out"
             echo "$out" | grep -q '"ok":true' && exit 0
             sleep 5
