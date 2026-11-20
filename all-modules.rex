@@ -87,9 +87,9 @@
   {
    "id": "yingqiao.fw",
    "title": "影桥",
-   "description": "影桥模块，需在全局参数填面板地址与访问令牌",
+   "description": "影桥模块，只需填带 token 的完整模块地址；修复 Rex 播放资源加载",
    "requiredVersion": "0.0.1",
-   "version": "1.1.0",
+   "version": "1.2.0",
    "author": "yingqiao",
    "url": "https://cdn.imabcd.dpdns.org/m/widgets/list/yingqiao-fw.js"
   },

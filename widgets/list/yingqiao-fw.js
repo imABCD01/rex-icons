@@ -1,10 +1,10 @@
-/* 本文件由 yingqiao 出口模块（server/modules/fwrex）自动生成，请勿手改。
- * 面板版本 1.1.0；生成时间 2026-11-08T02:35:57.351Z；首页行 0 条 */
-var MB_META = {"id":"yingqiao.fw","title":"影桥","version":"1.1.0","requiredVersion":"0.0.1","icon":"","description":"影桥。需在全局参数填面板地址与访问令牌（模块地址里已带令牌时不用再填）。","author":"yingqiao","site":"","detailCacheDuration":300,"globalParams":[{"name":"panel","title":"面板地址","type":"input","value":"https://qiaoying.riroro.com"},{"name":"token","title":"模块令牌","type":"input","value":""}],"search":{"title":"搜索影桥","functionName":"mbSearch","params":[{"name":"keyword","title":"关键词","type":"input","value":""},{"name":"page","title":"页码","type":"page","value":"1"}]},"modules":[{"id":"loadResource","title":"加载播放资源","description":"按条目定位已入库的版本并取地址（需鉴权的版本连请求头一起交给播放器）","functionName":"mbLoadResource","type":"stream","params":[],"cacheDuration":0}]};
-var WidgetMetadata = MB_META;
+/* 基于 yingqiao 出口模块（server/modules/fwrex）生成的 Rex 合集维护版。
+ * 面板版本 1.1.0；合集模块版本 1.2.0；首页行 0 条 */
+var WidgetMetadata = {"id":"yingqiao.fw","title":"影桥","version":"1.2.0","requiredVersion":"0.0.1","description":"影桥。全局参数只需填面板生成的完整模块地址（URL 中需带 token）。","author":"yingqiao","site":"","detailCacheDuration":300,"globalParams":[{"name":"panel","title":"完整模块地址（带令牌）","type":"input","value":"","placeholders":[{"title":"示例格式","value":"https://qiaoying.riroro.com/api/fwrex/widget.js?token=你的模块令牌"}]}],"search":{"id":"search","title":"搜索影桥","functionName":"mbSearch","params":[{"name":"keyword","title":"关键词","type":"input","value":""},{"name":"page","title":"页码","type":"page","value":"1"}]},"modules":[{"id":"loadResource","title":"加载播放资源","functionName":"loadResource","type":"stream","params":[],"cacheDuration":0}]};
+var MB_META = WidgetMetadata;
 var MB_HOME_ROWS = 0;
-/* 面板地址 / 令牌的**生成时快照**：宿主若没把 globalParams 并进模块参数，运行时拿这份兜底 */
-var MB_PANEL_DEFAULT = "https://qiaoying.riroro.com";
+/* 旧版生成快照仅作兼容兜底；新版从完整模块地址解析 panel 与 token。 */
+var MB_PANEL_DEFAULT = "";
 var MB_TOKEN_DEFAULT = "";
 
 /* ============================================================================
@@ -47,6 +47,45 @@ var MB_API_PREFIX = '/api/fwrex';
 
 /* --------------------------------------------------------------- 小工具 */
 
+function mbDecodeQueryPart(s) {
+  try { return decodeURIComponent(String(s || '').replace(/\+/g, ' ')); }
+  catch (e) { return String(s || ''); }
+}
+
+/* 从面板生成的 widget.js 地址取 token；兼容 token 不在第一个查询参数的情况。 */
+function mbTokenFromUrl(url) {
+  var s = String(url || '');
+  var q = s.indexOf('?');
+  if (q < 0) return '';
+  var hash = s.indexOf('#', q + 1);
+  var query = s.slice(q + 1, hash < 0 ? s.length : hash);
+  var parts = query.split('&');
+  for (var i = 0; i < parts.length; i++) {
+    var eq = parts[i].indexOf('=');
+    var key = mbDecodeQueryPart(eq < 0 ? parts[i] : parts[i].slice(0, eq));
+    if (key === 'token') return mbDecodeQueryPart(eq < 0 ? '' : parts[i].slice(eq + 1));
+  }
+  return '';
+}
+
+/* 完整模块地址 → API 根地址。不依赖浏览器 URL / URLSearchParams。 */
+function mbPanelRoot(url) {
+  var s = String(url || '').trim();
+  var marker = MB_API_PREFIX + '/widget.js';
+  var at = s.indexOf(marker);
+  if (at >= 0) {
+    s = s.slice(0, at);
+  } else {
+    var hash = s.indexOf('#');
+    if (hash >= 0) s = s.slice(0, hash);
+    var query = s.indexOf('?');
+    if (query >= 0) s = s.slice(0, query);
+    var api = s.indexOf(MB_API_PREFIX + '/');
+    if (api >= 0) s = s.slice(0, api);
+  }
+  return s.replace(/\/+$/, '');
+}
+
 function mbConfig(params) {
   params = params || {};
   var metaDefaults = {};
@@ -55,19 +94,24 @@ function mbConfig(params) {
       metaDefaults[p.name] = p.value || '';
     });
   } catch (e) {}
-  /* 取值顺序：宿主并进来的参数 → globalParams 的默认值 → **生成时烘死的快照**。
-     最后一层是给「宿主根本不把 globalParams 并进模块参数」的客户端兜底 ——
-     否则 panel 为空会在 mbNeedConfig 里抛，而抛出点在 mbPost（async）里，
-     表现为「点击毫无反应、面板侧一条请求都没有」，很难查。 */
-  var panel = String(params.panel || metaDefaults.panel
-    || (typeof MB_PANEL_DEFAULT !== 'undefined' ? MB_PANEL_DEFAULT : '') || '').replace(/\/+$/, '');
-  var token = String(params.token || metaDefaults.token
+  var rawPanel = String(params.panel || metaDefaults.panel
+    || (typeof MB_PANEL_DEFAULT !== 'undefined' ? MB_PANEL_DEFAULT : '') || '');
+  /* 旧版已保存的独立 token 仍可读；新地址里带 token 时，以地址中的值为准。 */
+  var legacyToken = String(params.token || metaDefaults.token
     || (typeof MB_TOKEN_DEFAULT !== 'undefined' ? MB_TOKEN_DEFAULT : '') || '');
-  return { panel: panel, token: token };
+  return {
+    panel: mbPanelRoot(rawPanel),
+    token: mbTokenFromUrl(rawPanel) || legacyToken,
+  };
 }
 
 function mbNeedConfig(c) {
-  if (!c.panel) throw new Error('还没填「面板地址」：在模块全局参数里填，如 http://192.168.1.10:8899');
+  if (!c.panel) {
+    throw new Error('还没填「完整模块地址」：请填面板生成的 widget.js 地址，地址中需带 token 参数');
+  }
+  if (!c.token) {
+    throw new Error('「完整模块地址」缺少 token：请填面板生成的完整 widget.js 地址，不要只填面板首页地址');
+  }
 }
 
 function mbApiUrl(c, route) {
@@ -238,7 +282,7 @@ function mbItemIdsFromParams(params, d, isTv, season, episode) {
  * 首页条目的域坐标：id 形状 `{domain}_{entryId}_{movie|tv}`（如 `tmdb_969681_movie`），
  * 拆不出就用 providerIds 兜底（`{Tmdb:"969681"}` → domain 'tmdb'）。
  * 有它 `loadDetail` 就返回 `type:domain` 让 FW/Rex 走**内置详情页**（自带分集与未播出标注），
- * 起播时宿主把 tmdbId/season/episode/seriesName/airDate 平铺给 stream 模块（mbLoadResource）。
+ * 起播时宿主把 tmdbId/season/episode/seriesName/airDate 平铺给 stream 模块（loadResource）。
  * 这个 id 同时就是**面板库里的条目 id**（`core/providers.js` 规定的同一形状），
  * 所以它还会原样进 link 的 `i`，起播时当 `itemId` 交给面板定位（省一次按名字找条目）。
  */
@@ -371,7 +415,7 @@ async function mbSearch(params) {
  */
 async function loadDetail(link, params) {
   var d = mbDecodeLink(link);
-  if (!d || !d.n) return null;
+  if (!d || !d.n) throw new Error('无法识别影桥条目链接');
   var genreItems = Array.isArray(d.g) && d.g.length
     ? d.g.slice(0, 10).map(function (g, i) {
         return { id: 'g' + i + '_' + String(g).slice(0, 12), title: String(g) };
@@ -477,14 +521,10 @@ function mbStreamOf(v, url, index, wantEpisode, got) {
   var name = mbStreamName(v, index, wantEpisode);
   var s = {
     name: name,
-    title: name,
     url: u,
-    link: u,
-    videoUrl: u,
-    type: 'url',
     playerType: 'app',
   };
-  /* `headers` / `customHeaders` 两个字段名都带上（不同版本认的不一样）：
+  /* customHeaders 是 Rex 官方字段；headers 作为别名保留给旧版 FW。
    * playerType:'app' = 由 FW/Rex 原生播放器带着这些头直连，不经过任何面板中转。 */
   var h = got.header;
   if (h && Object.keys(h).length) {
@@ -509,7 +549,7 @@ function mbStreamOf(v, url, index, wantEpisode, got) {
  * link 缺席不报错：FW/Rex 从「正在播放的条目」起播时（典型是内置详情页）只给一套条目坐标，
  * 这里把它翻译成 name + 年份 + 季集（见 mbLinkFromParams），与列表项等价地交给面板定位。
  */
-async function mbLoadResource(params) {
+async function loadResource(params) {
   params = params || {};
   /* 现拉设置：预解析上限取面板当前值（不用重装模块） */
   var c = mbConfig(params);
