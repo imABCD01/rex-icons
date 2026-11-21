@@ -1,1 +1,225 @@
-V2lkZ2V0TWV0YWRhdGEgPSB7CiAgICBpZDogInZhcmlldHlfaHViX3VsdGltYXRlX3Y0X2ZpeCIsCiAgICB0aXRsZTogIuWFqOeQg+e7vOiJuui/veabtOeDreW6puamnCIsCiAgICBhdXRob3I6ICLwnZmI8J2ZlvCdmaDwnZmg8J2ZlvCdmYvwnZmW8J2ZoPCdmaDwnZmWIiwKICAgIGRlc2NyaXB0aW9uOiAi57u86Im65pu05paw5pe26Ze06KGo77yM54Ot5bqm5qacIiwKICAgIHZlcnNpb246ICIyLjAuNSIsIC8vIOeDreamnOWFjeivpuaDhSBOKzHvvJvml6XljobmnInnlYzlubblj5HkuI7ln7rnoYDpobnpmY3nuqcKICAgIHJlcXVpcmVkVmVyc2lvbjogIjAuMC4xIiwKICAgIHNpdGU6ICJodHRwczovL3QubWUvTWFra2FQYWtrYU92TyIsCgogICAgbW9kdWxlczogWwogICAgICAgIHsKICAgICAgICAgICAgdGl0bGU6ICLnu7zoibrogZrlkIgiLAogICAgICAgICAgICBmdW5jdGlvbk5hbWU6ICJsb2FkVmFyaWV0eVVsdGltYXRlIiwKICAgICAgICAgICAgdHlwZTogImxpc3QiLCAvLyDmraTlpITmqKrnq5bniYjliIfmjaLmtYvor5XlnYflj6/lhbzlrrkKICAgICAgICAgICAgY2FjaGVEdXJhdGlvbjogMTgwMCwgLy8g54Ot5qac5LiO5pel5Y6G5oqY5LitIDMwIOWIhumSn++8jOmBv+WFjSA1IOWIhumSn+mikee5geWbnua6kAogICAgICAgICAgICBwYXJhbXM6IFsKICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICBuYW1lOiAibGlzdFR5cGUiLAogICAgICAgICAgICAgICAgICAgIHRpdGxlOiAi5qac5Y2V57G75Z6LIiwKICAgICAgICAgICAgICAgICAgICB0eXBlOiAiZW51bWVyYXRpb24iLAogICAgICAgICAgICAgICAgICAgIHZhbHVlOiAiY2FsZW5kYXIiLAogICAgICAgICAgICAgICAgICAgIGVudW1PcHRpb25zOiBbCiAgICAgICAgICAgICAgICAgICAgICAgIHsgdGl0bGU6ICLwn5OFIOi/veaWsOamnCAo5pyq5p2l5o6S5pyfKSIsIHZhbHVlOiAiY2FsZW5kYXIiIH0sCiAgICAgICAgICAgICAgICAgICAgICAgIHsgdGl0bGU6ICLwn5SlIOeDreW6puamnCAo5oyJ5rWB6KGM5bqmKSIsIHZhbHVlOiAiaG90IiB9CiAgICAgICAgICAgICAgICAgICAgXQogICAgICAgICAgICAgICAgfSwKICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICBuYW1lOiAiZGF5cyIsCiAgICAgICAgICAgICAgICAgICAgdGl0bGU6ICLpooTlkYrojIPlm7QiLAogICAgICAgICAgICAgICAgICAgIHR5cGU6ICJlbnVtZXJhdGlvbiIsCiAgICAgICAgICAgICAgICAgICAgdmFsdWU6ICIxNCIsCiAgICAgICAgICAgICAgICAgICAgYmVsb25nVG86IHsgcGFyYW1OYW1lOiAibGlzdFR5cGUiLCB2YWx1ZTogWyJjYWxlbmRhciJdIH0sCiAgICAgICAgICAgICAgICAgICAgZW51bU9wdGlvbnM6IFsKICAgICAgICAgICAgICAgICAgICAgICAgeyB0aXRsZTogIuacquadpSA3IOWkqSIsIHZhbHVlOiAiNyIgfSwKICAgICAgICAgICAgICAgICAgICAgICAgeyB0aXRsZTogIuacquadpSAxNCDlpKkiLCB2YWx1ZTogIjE0IiB9LAogICAgICAgICAgICAgICAgICAgICAgICB7IHRpdGxlOiAi5pyq5p2lIDMwIOWkqSIsIHZhbHVlOiAiMzAiIH0KICAgICAgICAgICAgICAgICAgICBdCiAgICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgIG5hbWU6ICJyZWdpb24iLAogICAgICAgICAgICAgICAgICAgIHRpdGxlOiAi5Zyw5Yy6562b6YCJIiwKICAgICAgICAgICAgICAgICAgICB0eXBlOiAiZW51bWVyYXRpb24iLAogICAgICAgICAgICAgICAgICAgIHZhbHVlOiAiYWxsIiwKICAgICAgICAgICAgICAgICAgICBlbnVtT3B0aW9uczogWwogICAgICAgICAgICAgICAgICAgICAgICB7IHRpdGxlOiAi8J+MjyDlhajpg6jlnLDljLoiLCB2YWx1ZTogImFsbCIgfSwKICAgICAgICAgICAgICAgICAgICAgICAgeyB0aXRsZTogIvCfh6jwn4ezIOWbveWGhee7vOiJuiIsIHZhbHVlOiAiY24iIH0sCiAgICAgICAgICAgICAgICAgICAgICAgIHsgdGl0bGU6ICLinIjvuI8g5Zu95aSW57u86Im6IiwgdmFsdWU6ICJnbG9iYWwiIH0KICAgICAgICAgICAgICAgICAgICBdCiAgICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICAgeyBuYW1lOiAicGFnZSIsIHRpdGxlOiAi6aG156CBIiwgdHlwZTogInBhZ2UiIH0KICAgICAgICAgICAgXQogICAgICAgIH0KICAgIF0KfTsKCi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KLy8gMC4g5bel5YW35Ye95pWwCi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KCi8vIOi+heWKqeWHveaVsO+8muWwhuS4quS9jeaVsOihpembtu+8jOS+i+WmgiAxIC0+IDAxCi8vIOacieeVjOW5tuWPke+8mumBv+WFjeS4gOmhtSAyMCDkuKror6bmg4Xor7fmsYLlkIzml7bmiZPmu6HkuIrmuLjjgIIKYXN5bmMgZnVuY3Rpb24gbWFwTGltaXQoaXRlbXMsIGxpbWl0LCBmbikgewogICAgY29uc3QgcmV0ID0gbmV3IEFycmF5KGl0ZW1zLmxlbmd0aCk7CiAgICBsZXQgaW5kZXggPSAwOwogICAgYXN5bmMgZnVuY3Rpb24gd29ya2VyKCkgewogICAgICAgIHdoaWxlIChpbmRleCA8IGl0ZW1zLmxlbmd0aCkgewogICAgICAgICAgICBjb25zdCBjdXJyZW50ID0gaW5kZXgrKzsKICAgICAgICAgICAgcmV0W2N1cnJlbnRdID0gYXdhaXQgZm4oaXRlbXNbY3VycmVudF0sIGN1cnJlbnQpOwogICAgICAgIH0KICAgIH0KICAgIGF3YWl0IFByb21pc2UuYWxsKEFycmF5LmZyb20oeyBsZW5ndGg6IE1hdGgubWluKGxpbWl0LCBpdGVtcy5sZW5ndGgpIH0sIHdvcmtlcikpOwogICAgcmV0dXJuIHJldDsKfQoKZnVuY3Rpb24gcGFkWmVybyhudW0pIHsKICAgIHJldHVybiBTdHJpbmcobnVtKS5wYWRTdGFydCgyLCAnMCcpOwp9CgovLyDojrflj5bku4rlpKkgKFlZWVktTU0tREQpIC0g55So5LqO5q+U6L6DCmZ1bmN0aW9uIGdldFRvZGF5U3RyKCkgewogICAgY29uc3QgZCA9IG5ldyBEYXRlKCk7CiAgICBjb25zdCBvZmZzZXQgPSBkLmdldFRpbWV6b25lT2Zmc2V0KCkgKiA2MDAwMDsKICAgIGNvbnN0IGxvY2FsID0gbmV3IERhdGUoZC5nZXRUaW1lKCkgLSBvZmZzZXQpOwogICAgcmV0dXJuIGxvY2FsLnRvSVNPU3RyaW5nKCkuc3BsaXQoJ1QnKVswXTsKfQoKLy8g6I635Y+WIE4g5aSp5ZCO55qE5pel5pyfCmZ1bmN0aW9uIGdldEZ1dHVyZURhdGVTdHIoZGF5cykgewogICAgY29uc3QgZCA9IG5ldyBEYXRlKCk7CiAgICBkLnNldERhdGUoZC5nZXREYXRlKCkgKyBwYXJzZUludChkYXlzKSk7CiAgICBjb25zdCBvZmZzZXQgPSBkLmdldFRpbWV6b25lT2Zmc2V0KCkgKiA2MDAwMDsKICAgIGNvbnN0IGxvY2FsID0gbmV3IERhdGUoZC5nZXRUaW1lKCkgLSBvZmZzZXQpOwogICAgcmV0dXJuIGxvY2FsLnRvSVNPU3RyaW5nKCkuc3BsaXQoJ1QnKVswXTsKfQoKLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQovLyAxLiDmoLjlv4PpgLvovpEKLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQoKYXN5bmMgZnVuY3Rpb24gbG9hZFZhcmlldHlVbHRpbWF0ZShwYXJhbXMgPSB7fSkgewogICAgY29uc3QgeyBsaXN0VHlwZSA9ICJjYWxlbmRhciIsIHJlZ2lvbiA9ICJhbGwiLCBkYXlzID0gIjE0IiwgcGFnZSA9IDEgfSA9IHBhcmFtczsKCiAgICBjb25zdCB0b2RheVN0ciA9IGdldFRvZGF5U3RyKCk7IC8vIOiOt+WPluS7iuWkqeeahOaXpeacn+Wtl+espuS4siAoMjAyNi0wMi0yMykKCiAgICBsZXQgZGlzY292ZXJVcmwgPSBgL2Rpc2NvdmVyL3R2YDsKICAgIGxldCBxdWVyeVBhcmFtcyA9IHsKICAgICAgICBsYW5ndWFnZTogInpoLUNOIiwKICAgICAgICBwYWdlOiBwYWdlLAogICAgICAgIHdpdGhfZ2VucmVzOiAiMTA3NjR8MTA3NjciLCAKICAgICAgICBzb3J0X2J5OiAicG9wdWxhcml0eS5kZXNjIiwKICAgICAgICAidm90ZV9jb3VudC5ndGUiOiAwLAogICAgICAgIGluY2x1ZGVfbnVsbF9maXJzdF9haXJfZGF0ZXM6IGZhbHNlCiAgICB9OwoKICAgIGlmIChyZWdpb24gPT09ICJjbiIpIHsKICAgICAgICBxdWVyeVBhcmFtcy53aXRoX29yaWdpbl9jb3VudHJ5ID0gIkNOIjsKICAgIH0gZWxzZSBpZiAocmVnaW9uID09PSAiZ2xvYmFsIikgewogICAgICAgIHF1ZXJ5UGFyYW1zLndpdGhfb3JpZ2luX2NvdW50cnkgPSAiVVN8S1J8SlB8R0J8VFd8SEt8VEgiOwogICAgfQoKICAgIC8vID09PSDwn5OFIOatpemqpDHvvJrliJ3mraXnrZvpgIkgPT09CiAgICBpZiAobGlzdFR5cGUgPT09ICJjYWxlbmRhciIpIHsKICAgICAgICBjb25zdCBlbmREYXRlID0gZ2V0RnV0dXJlRGF0ZVN0cihkYXlzKTsKICAgICAgICAvLyBBUEkg5p+l6K+i5pe277yMZ3RlIOiuvuS4uuS7iuWkqQogICAgICAgIHF1ZXJ5UGFyYW1zWyJhaXJfZGF0ZS5ndGUiXSA9IHRvZGF5U3RyOwogICAgICAgIHF1ZXJ5UGFyYW1zWyJhaXJfZGF0ZS5sdGUiXSA9IGVuZERhdGU7CiAgICB9CgogICAgdHJ5IHsKICAgICAgICBjb25zdCByZXMgPSBhd2FpdCBXaWRnZXQudG1kYi5nZXQoZGlzY292ZXJVcmwsIHsgcGFyYW1zOiBxdWVyeVBhcmFtcyB9KTsKICAgICAgICBjb25zdCByYXdSZXN1bHRzID0gcmVzLnJlc3VsdHMgfHwgW107CgogICAgICAgIGlmIChyYXdSZXN1bHRzLmxlbmd0aCA9PT0gMCkgcmV0dXJuIFtdOwoKICAgICAgICBjb25zdCBkZXRhaWxlZEl0ZW1zID0gKGF3YWl0IG1hcExpbWl0KHJhd1Jlc3VsdHMsIDQsIGFzeW5jIChpdGVtKSA9PiB7CiAgICAgICAgICAgIGlmICghaXRlbS5wb3N0ZXJfcGF0aCkgcmV0dXJuIG51bGw7CgogICAgICAgICAgICAvLyDmma7pgJrng63mppzmiYDpnIDlrZfmrrUgZGlzY292ZXIg5bey5a6M5pW05o+Q5L6b77yM5LiN5YaN6aKd5aSW6K+35rGCIDIwIOasoeivpuaDheOAggogICAgICAgICAgICBpZiAobGlzdFR5cGUgPT09ICJob3QiKSB7CiAgICAgICAgICAgICAgICByZXR1cm4geyBkZXRhaWw6IGl0ZW0sIHNvcnREYXRlOiBpdGVtLmZpcnN0X2Fpcl9kYXRlIHx8ICIiLCBlcFN0cmluZzogIiIgfTsKICAgICAgICAgICAgfQoKICAgICAgICAgICAgdHJ5IHsKICAgICAgICAgICAgICAgIGNvbnN0IGRldGFpbCA9IGF3YWl0IFdpZGdldC50bWRiLmdldChgL3R2LyR7aXRlbS5pZH1gLCB7CiAgICAgICAgICAgICAgICAgICAgcGFyYW1zOiB7IGxhbmd1YWdlOiAiemgtQ04iIH0KICAgICAgICAgICAgICAgIH0pOwogICAgICAgICAgICAgICAgY29uc3QgbmV4dEVwID0gZGV0YWlsLm5leHRfZXBpc29kZV90b19haXI7CiAgICAgICAgICAgICAgICBjb25zdCBsYXN0RXAgPSBkZXRhaWwubGFzdF9lcGlzb2RlX3RvX2FpcjsKICAgICAgICAgICAgICAgIGxldCBzb3J0RGF0ZSA9ICIxOTAwLTAxLTAxIjsKICAgICAgICAgICAgICAgIGxldCBlcFN0cmluZyA9ICIiOwoKICAgICAgICAgICAgICAgIGlmIChuZXh0RXApIHsKICAgICAgICAgICAgICAgICAgICBzb3J0RGF0ZSA9IG5leHRFcC5haXJfZGF0ZTsKICAgICAgICAgICAgICAgICAgICBlcFN0cmluZyA9IGBTJHtwYWRaZXJvKG5leHRFcC5zZWFzb25fbnVtYmVyKX0tRSR7cGFkWmVybyhuZXh0RXAuZXBpc29kZV9udW1iZXIpfWA7CiAgICAgICAgICAgICAgICB9IGVsc2UgaWYgKGxhc3RFcCkgewogICAgICAgICAgICAgICAgICAgIHNvcnREYXRlID0gbGFzdEVwLmFpcl9kYXRlOwogICAgICAgICAgICAgICAgICAgIGVwU3RyaW5nID0gYFMke3BhZFplcm8obGFzdEVwLnNlYXNvbl9udW1iZXIpfS1FJHtwYWRaZXJvKGxhc3RFcC5lcGlzb2RlX251bWJlcil9YDsKICAgICAgICAgICAgICAgIH0gZWxzZSB7CiAgICAgICAgICAgICAgICAgICAgc29ydERhdGUgPSBpdGVtLmZpcnN0X2Fpcl9kYXRlOwogICAgICAgICAgICAgICAgICAgIGVwU3RyaW5nID0gIummluaSrSI7CiAgICAgICAgICAgICAgICB9CgogICAgICAgICAgICAgICAgaWYgKGxpc3RUeXBlID09PSAiY2FsZW5kYXIiICYmICghc29ydERhdGUgfHwgc29ydERhdGUgPCB0b2RheVN0cikpIHJldHVybiBudWxsOwogICAgICAgICAgICAgICAgcmV0dXJuIHsgZGV0YWlsLCBzb3J0RGF0ZSwgZXBTdHJpbmcgfTsKICAgICAgICAgICAgfSBjYXRjaCAoZSkgewogICAgICAgICAgICAgICAgLy8g5Y2V6YOo6K+m5oOF5aSx6LSl5pe25L2/55SoIGRpc2NvdmVyIOWfuuehgOS/oeaBr++8jOS4jeWGjeaXoOWjsOS4ouaOieaVtOmhueOAggogICAgICAgICAgICAgICAgY29uc3QgZmFsbGJhY2tEYXRlID0gaXRlbS5maXJzdF9haXJfZGF0ZSB8fCAiIjsKICAgICAgICAgICAgICAgIGlmIChsaXN0VHlwZSA9PT0gImNhbGVuZGFyIiAmJiAoIWZhbGxiYWNrRGF0ZSB8fCBmYWxsYmFja0RhdGUgPCB0b2RheVN0cikpIHJldHVybiBudWxsOwogICAgICAgICAgICAgICAgcmV0dXJuIHsgZGV0YWlsOiBpdGVtLCBzb3J0RGF0ZTogZmFsbGJhY2tEYXRlLCBlcFN0cmluZzogIiIgfTsKICAgICAgICAgICAgfQogICAgICAgIH0pKS5maWx0ZXIoQm9vbGVhbik7CgogICAgICAgIC8vID09PSDwn5OFIOatpemqpDPvvJrmjpLluo8gKOS7iuWkqSAtPiDmnKrmnaUpID09PQogICAgICAgIGlmIChsaXN0VHlwZSA9PT0gImNhbGVuZGFyIikgewogICAgICAgICAgICBkZXRhaWxlZEl0ZW1zLnNvcnQoKGEsIGIpID0+IHsKICAgICAgICAgICAgICAgIGlmIChhLnNvcnREYXRlID09PSBiLnNvcnREYXRlKSByZXR1cm4gMDsKICAgICAgICAgICAgICAgIHJldHVybiBhLnNvcnREYXRlID4gYi5zb3J0RGF0ZSA/IDEgOiAtMTsgCiAgICAgICAgICAgIH0pOwogICAgICAgIH0KCiAgICAgICAgcmV0dXJuIGRldGFpbGVkSXRlbXMubWFwKGRhdGEgPT4gewogICAgICAgICAgICBjb25zdCB7IGRldGFpbCwgZXBTdHJpbmcsIHNvcnREYXRlIH0gPSBkYXRhOwogICAgICAgICAgICAKICAgICAgICAgICAgY29uc3QgcmF0aW5nTnVtID0gZGV0YWlsLnZvdGVfYXZlcmFnZSA/IGRldGFpbC52b3RlX2F2ZXJhZ2UudG9GaXhlZCgxKSA6ICIwLjAiOwogICAgICAgICAgICBjb25zdCByYXRpbmdUZXh0ID0gcmF0aW5nTnVtID4gMCA/IGAke3JhdGluZ051bX3liIZgIDogIuaaguaXoOivhOWIhiI7CiAgICAgICAgICAgIAogICAgICAgICAgICBsZXQgZmluYWxTdWJUaXRsZSA9ICIiOwoKICAgICAgICAgICAgaWYgKGxpc3RUeXBlID09PSAiY2FsZW5kYXIiKSB7CiAgICAgICAgICAgICAgICAvLyDnlJ/miJDlia/moIfpopjvvJo4LjXliIYg4oCiIFMwMS1FMDMKICAgICAgICAgICAgICAgIGZpbmFsU3ViVGl0bGUgPSBgJHtyYXRpbmdUZXh0fSDigKIgJHtlcFN0cmluZ31gOyAgCiAgICAgICAgICAgIH0gZWxzZSB7CiAgICAgICAgICAgICAgICAvLyDng63luqbmppzlia/moIfpopgKICAgICAgICAgICAgICAgIGZpbmFsU3ViVGl0bGUgPSBgJHtyYXRpbmdUZXh0fSDigKIg54Ot5bqmICR7TWF0aC5yb3VuZChkZXRhaWwucG9wdWxhcml0eSl9YDsKICAgICAgICAgICAgfQoKICAgICAgICAgICAgLy8g5o+Q5Y+W5bm05Lu977yM55So5b2T5YmN5pKt5Ye655qE6L+Z6ZuG55qE5bm05Lu9CiAgICAgICAgICAgIGNvbnN0IHllYXJTdHIgPSBzb3J0RGF0ZSA/IHNvcnREYXRlLnN1YnN0cmluZygwLCA0KSA6IChkZXRhaWwuZmlyc3RfYWlyX2RhdGUgfHwgIiIpLnN1YnN0cmluZygwLCA0KTsKCiAgICAgICAgICAgIHJldHVybiB7CiAgICAgICAgICAgICAgICBpZDogU3RyaW5nKGRldGFpbC5pZCksCiAgICAgICAgICAgICAgICB0bWRiSWQ6IGRldGFpbC5pZCwKICAgICAgICAgICAgICAgIHR5cGU6ICJ0bWRiIiwKICAgICAgICAgICAgICAgIG1lZGlhVHlwZTogInR2IiwKICAgICAgICAgICAgICAgIHRpdGxlOiBkZXRhaWwubmFtZSB8fCBkZXRhaWwub3JpZ2luYWxfbmFtZSwKICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgLy8g57uZ5qiq54mI55qE5Ymv5qCH6aKYCiAgICAgICAgICAgICAgICBnZW5yZVRpdGxlOiBmaW5hbFN1YlRpdGxlLCAKICAgICAgICAgICAgICAgIHN1YlRpdGxlOiBmaW5hbFN1YlRpdGxlLAogICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICBwb3N0ZXJQYXRoOiBkZXRhaWwucG9zdGVyX3BhdGggPyBgaHR0cHM6Ly9pbWFnZS50bWRiLm9yZy90L3AvdzUwMCR7ZGV0YWlsLnBvc3Rlcl9wYXRofWAgOiAiIiwKICAgICAgICAgICAgICAgIGJhY2tkcm9wUGF0aDogZGV0YWlsLmJhY2tkcm9wX3BhdGggPyBgaHR0cHM6Ly9pbWFnZS50bWRiLm9yZy90L3Avdzc4MCR7ZGV0YWlsLmJhY2tkcm9wX3BhdGh9YCA6ICIiLAogICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IGDwn5OFIOaSreWHuuaXtumXtDogJHtzb3J0RGF0ZX1cbiR7ZGV0YWlsLm92ZXJ2aWV3IHx8ICLmmoLml6DnroDku4sifWAsCiAgICAgICAgICAgICAgICByYXRpbmc6IHBhcnNlRmxvYXQocmF0aW5nTnVtKSwKICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgLy8g5qC45b+D5a2X5q615Zue5b2SCiAgICAgICAgICAgICAgICB5ZWFyOiB5ZWFyU3RyLCAgICAgICAgICAgLy8g6LSf6LSj5qiq54mI5qac5Y2V5YmN6Z2i5ou85o6l55qE5bm05Lu977yaIjIwMjYiCiAgICAgICAgICAgICAgICByZWxlYXNlRGF0ZTogc29ydERhdGUgICAgLy8g6LSf6LSj56uW54mI5rW35oql5LiL5pa55pi+56S655qE5a6M5pW05pel5pyf77yaIjIwMjYtMDItMjMiCiAgICAgICAgICAgIH07CiAgICAgICAgfSk7CgogICAgfSBjYXRjaCAoZSkgewogICAgICAgIHJldHVybiBbeyBpZDogImVyciIsIHR5cGU6ICJ0ZXh0IiwgdGl0bGU6ICLliqDovb3lpLHotKUiLCBzdWJUaXRsZTogZS5tZXNzYWdlIH1dOwogICAgfQp9Cg==
+WidgetMetadata = {
+    id: "variety_hub_ultimate_v4_fix",
+    title: "全球综艺追更热度榜",
+    author: "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
+    description: "综艺更新时间表，热度榜",
+    version: "2.0.5", // 热榜免详情 N+1；日历有界并发与基础项降级
+    requiredVersion: "0.0.1",
+    site: "https://t.me/MakkaPakkaOvO",
+
+    modules: [
+        {
+            title: "综艺聚合",
+            functionName: "loadVarietyUltimate",
+            type: "list", // 此处横竖版切换测试均可兼容
+            cacheDuration: 1800, // 热榜与日历折中 30 分钟，避免 5 分钟频繁回源
+            params: [
+                {
+                    name: "listType",
+                    title: "榜单类型",
+                    type: "enumeration",
+                    value: "calendar",
+                    enumOptions: [
+                        { title: "📅 追新榜 (未来排期)", value: "calendar" },
+                        { title: "🔥 热度榜 (按流行度)", value: "hot" }
+                    ]
+                },
+                {
+                    name: "days",
+                    title: "预告范围",
+                    type: "enumeration",
+                    value: "14",
+                    belongTo: { paramName: "listType", value: ["calendar"] },
+                    enumOptions: [
+                        { title: "未来 7 天", value: "7" },
+                        { title: "未来 14 天", value: "14" },
+                        { title: "未来 30 天", value: "30" }
+                    ]
+                },
+                {
+                    name: "region",
+                    title: "地区筛选",
+                    type: "enumeration",
+                    value: "all",
+                    enumOptions: [
+                        { title: "🌏 全部地区", value: "all" },
+                        { title: "🇨🇳 国内综艺", value: "cn" },
+                        { title: "✈️ 国外综艺", value: "global" }
+                    ]
+                },
+                { name: "page", title: "页码", type: "page" }
+            ]
+        }
+    ]
+};
+
+// =========================================================================
+// 0. 工具函数
+// =========================================================================
+
+// 辅助函数：将个位数补零，例如 1 -> 01
+// 有界并发：避免一页 20 个详情请求同时打满上游。
+async function mapLimit(items, limit, fn) {
+    const ret = new Array(items.length);
+    let index = 0;
+    async function worker() {
+        while (index < items.length) {
+            const current = index++;
+            ret[current] = await fn(items[current], current);
+        }
+    }
+    await Promise.all(Array.from({ length: Math.min(limit, items.length) }, worker));
+    return ret;
+}
+
+function padZero(num) {
+    return String(num).padStart(2, '0');
+}
+
+// 获取今天 (YYYY-MM-DD) - 用于比较
+function getTodayStr() {
+    const d = new Date();
+    const offset = d.getTimezoneOffset() * 60000;
+    const local = new Date(d.getTime() - offset);
+    return local.toISOString().split('T')[0];
+}
+
+// 获取 N 天后的日期
+function getFutureDateStr(days) {
+    const d = new Date();
+    d.setDate(d.getDate() + parseInt(days));
+    const offset = d.getTimezoneOffset() * 60000;
+    const local = new Date(d.getTime() - offset);
+    return local.toISOString().split('T')[0];
+}
+
+// =========================================================================
+// 1. 核心逻辑
+// =========================================================================
+
+async function loadVarietyUltimate(params = {}) {
+    const { listType = "calendar", region = "all", days = "14", page = 1 } = params;
+
+    const todayStr = getTodayStr(); // 获取今天的日期字符串 (2026-02-23)
+
+    let discoverUrl = `/discover/tv`;
+    let queryParams = {
+        language: "zh-CN",
+        page: page,
+        with_genres: "10764|10767", 
+        sort_by: "popularity.desc",
+        "vote_count.gte": 0,
+        include_null_first_air_dates: false
+    };
+
+    if (region === "cn") {
+        queryParams.with_origin_country = "CN";
+    } else if (region === "global") {
+        queryParams.with_origin_country = "US|KR|JP|GB|TW|HK|TH";
+    }
+
+    // === 📅 步骤1：初步筛选 ===
+    if (listType === "calendar") {
+        const endDate = getFutureDateStr(days);
+        // API 查询时，gte 设为今天
+        queryParams["air_date.gte"] = todayStr;
+        queryParams["air_date.lte"] = endDate;
+    }
+
+    try {
+        const res = await Widget.tmdb.get(discoverUrl, { params: queryParams });
+        const rawResults = res.results || [];
+
+        if (rawResults.length === 0) return [];
+
+        const detailedItems = (await mapLimit(rawResults, 4, async (item) => {
+            if (!item.poster_path) return null;
+
+            // 普通热榜所需字段 discover 已完整提供，不再额外请求 20 次详情。
+            if (listType === "hot") {
+                return { detail: item, sortDate: item.first_air_date || "", epString: "" };
+            }
+
+            try {
+                const detail = await Widget.tmdb.get(`/tv/${item.id}`, {
+                    params: { language: "zh-CN" }
+                });
+                const nextEp = detail.next_episode_to_air;
+                const lastEp = detail.last_episode_to_air;
+                let sortDate = "1900-01-01";
+                let epString = "";
+
+                if (nextEp) {
+                    sortDate = nextEp.air_date;
+                    epString = `S${padZero(nextEp.season_number)}-E${padZero(nextEp.episode_number)}`;
+                } else if (lastEp) {
+                    sortDate = lastEp.air_date;
+                    epString = `S${padZero(lastEp.season_number)}-E${padZero(lastEp.episode_number)}`;
+                } else {
+                    sortDate = item.first_air_date;
+                    epString = "首播";
+                }
+
+                if (listType === "calendar" && (!sortDate || sortDate < todayStr)) return null;
+                return { detail, sortDate, epString };
+            } catch (e) {
+                // 单部详情失败时使用 discover 基础信息，不再无声丢掉整项。
+                const fallbackDate = item.first_air_date || "";
+                if (listType === "calendar" && (!fallbackDate || fallbackDate < todayStr)) return null;
+                return { detail: item, sortDate: fallbackDate, epString: "" };
+            }
+        })).filter(Boolean);
+
+        // === 📅 步骤3：排序 (今天 -> 未来) ===
+        if (listType === "calendar") {
+            detailedItems.sort((a, b) => {
+                if (a.sortDate === b.sortDate) return 0;
+                return a.sortDate > b.sortDate ? 1 : -1; 
+            });
+        }
+
+        return detailedItems.map(data => {
+            const { detail, epString, sortDate } = data;
+            
+            const ratingNum = detail.vote_average ? detail.vote_average.toFixed(1) : "0.0";
+            const ratingText = ratingNum > 0 ? `${ratingNum}分` : "暂无评分";
+            
+            let finalSubTitle = "";
+
+            if (listType === "calendar") {
+                // 生成副标题：8.5分 • S01-E03
+                finalSubTitle = `${ratingText} • ${epString}`;  
+            } else {
+                // 热度榜副标题
+                finalSubTitle = `${ratingText} • 热度 ${Math.round(detail.popularity)}`;
+            }
+
+            // 提取年份，用当前播出的这集的年份
+            const yearStr = sortDate ? sortDate.substring(0, 4) : (detail.first_air_date || "").substring(0, 4);
+
+            return {
+                id: String(detail.id),
+                tmdbId: detail.id,
+                type: "tmdb",
+                mediaType: "tv",
+                title: detail.name || detail.original_name,
+                
+                // 给横版的副标题
+                genreTitle: finalSubTitle, 
+                subTitle: finalSubTitle,
+                
+                posterPath: detail.poster_path ? `https://image.tmdb.org/t/p/w500${detail.poster_path}` : "",
+                backdropPath: detail.backdrop_path ? `https://image.tmdb.org/t/p/w780${detail.backdrop_path}` : "",
+                description: `📅 播出时间: ${sortDate}\n${detail.overview || "暂无简介"}`,
+                rating: parseFloat(ratingNum),
+                
+                // 核心字段回归
+                year: yearStr,           // 负责横版榜单前面拼接的年份："2026"
+                releaseDate: sortDate    // 负责竖版海报下方显示的完整日期："2026-02-23"
+            };
+        });
+
+    } catch (e) {
+        return [{ id: "err", type: "text", title: "加载失败", subTitle: e.message }];
+    }
+}

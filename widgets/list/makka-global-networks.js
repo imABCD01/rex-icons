@@ -1,1 +1,234 @@
-LyoqCiAqIOWFqOeQg+eUteinhuWPsOS4jua1geWqkuS9k+Wuh+WumSAo57uI5p6B54mIKQogKiDmoLjlv4PpgLvovpE6IOWKqOaAgeino+mZpOWbveWutumUgeWumu+8jOeyvuWHhuWMuemFjeWFqOeQg+S4ieWNgeWkmuS4qua1geWqkuS9k+S4jueUteinhue9kSBJRAogKiDmtrXnm5Y6IOWbveWGheeIseS8mOiFvuiKkuOAgeWbm+Wkp+WNq+inhuOAgea4r+WPsOacrOWcn+W5s+WPsOOAgemfqeWbveS4ieWkp+WPsOOAgeS7peWPiue9kemjni9IQk/nrYnlm73pmYXlt6jlpLQKICovCgp2YXIgV2lkZ2V0TWV0YWRhdGEgPSB7CiAgICBpZDogIm1ha2thX2dsb2JhbF9uZXR3b3JrcyIsCiAgICB0aXRsZTogIuWFqOeQg+W9seinhuW5s+WPsEFMTCBJTiBPTkUiLAogICAgZGVzY3JpcHRpb246ICLlhajnvZHmnIDlhajnmoTpopHpgZPogZrlkIjvvJropobnm5bniLHkvJjohb7jgIHnvZHpo57jgIFIQk/jgIHpn6nlm710dk7lj4rlkITlpKfljavop4YiLAogICAgYXV0aG9yOiAi8J2ZiPCdmZbwnZmg8J2ZoPCdmZbwnZmL8J2ZlvCdmaDwnZmg8J2ZliIsCiAgICB2ZXJzaW9uOiAiMS4yLjYiLCAvLyDmm7TmlrDlm77niYfln5/lkI3lubblop7liqDpnZ7ms5XlubPlj7Dlj4LmlbDlhZzlupUKICAgIHJlcXVpcmVkVmVyc2lvbjogIjAuMC4xIiwKICAgIHNpdGU6ICJodHRwczovL3QubWUvTWFra2FQYWtrYU92TyIsCiAgICBtb2R1bGVzOiBbCiAgICAgICAgewogICAgICAgICAgICB0aXRsZTogIuWFqOe9keeDreaSreWPkeeOsCIsCiAgICAgICAgICAgIGZ1bmN0aW9uTmFtZTogImxvYWRQbGF0Zm9ybUxpc3QiLAogICAgICAgICAgICB0eXBlOiAidmlkZW8iLCAvLyDwn5SRIOmtlOazlSAx77ya5aSW5bGC5qih5Z2X5Li6IHZpZGVvCiAgICAgICAgICAgIGNhY2hlRHVyYXRpb246IDM2MDAsCiAgICAgICAgICAgIHBhcmFtczogWwogICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgIG5hbWU6ICJzb3J0X2J5IiwgLy8g8J+RiCDprZTms5XlrZfmrrXvvJrmiorov5k3MOWkmuS4quW5s+WPsOeahOmAieaLqeaPkOWIsOWPs+S4iuinku+8gQogICAgICAgICAgICAgICAgICAgIHRpdGxlOiAi6YCJ5oup6aKR6YGTL+W5s+WPsCIsCiAgICAgICAgICAgICAgICAgICAgdHlwZTogImVudW1lcmF0aW9uIiwKICAgICAgICAgICAgICAgICAgICB2YWx1ZTogIm5ldGZsaXgiLAogICAgICAgICAgICAgICAgICAgIGVudW1PcHRpb25zOiBbCiAgICAgICAgICAgICAgICAgICAgICAgIHsgdGl0bGU6ICLwn4yfIOWFqOeQg+e7vOWQiOeDreaSrSIsIHZhbHVlOiAiYWxsIiB9LAogICAgICAgICAgICAgICAgICAgICAgICB7IHRpdGxlOiAi8J+UtCBOZXRmbGl4ICjnvZHpo54pIiwgdmFsdWU6ICJuZXRmbGl4IiB9LAogICAgICAgICAgICAgICAgICAgICAgICB7IHRpdGxlOiAi8J+foyBIQk8iLCB2YWx1ZTogImhibyIgfSwKICAgICAgICAgICAgICAgICAgICAgICAgeyB0aXRsZTogIvCflLUgRGlzbmV5KyAo6L+q5aOr5bC8KSIsIHZhbHVlOiAiZGlzbmV5IiB9LAogICAgICAgICAgICAgICAgICAgICAgICB7IHRpdGxlOiAi8J+NjyBBcHBsZSBUVisiLCB2YWx1ZTogImFwcGxlIiB9LAogICAgICAgICAgICAgICAgICAgICAgICB7IHRpdGxlOiAi8J+TpiBBbWF6b24gUHJpbWUiLCB2YWx1ZTogImFtYXpvbiIgfSwKICAgICAgICAgICAgICAgICAgICAgICAgeyB0aXRsZTogIvCfkKcg6IW+6K6v6KeG6aKRIiwgdmFsdWU6ICJ0ZW5jZW50IiB9LAogICAgICAgICAgICAgICAgICAgICAgICB7IHRpdGxlOiAi8J+lnSDniLHlpYfoiboiLCB2YWx1ZTogImlxaXlpIiB9LAogICAgICAgICAgICAgICAgICAgICAgICB7IHRpdGxlOiAi8J+RliDkvJjphbciLCB2YWx1ZTogInlvdWt1IiB9LAogICAgICAgICAgICAgICAgICAgICAgICB7IHRpdGxlOiAi8J+lrSDoipLmnpxUViIsIHZhbHVlOiAibWFuZ28iIH0sCiAgICAgICAgICAgICAgICAgICAgICAgIHsgdGl0bGU6ICLwn5O6IEJpbGlCaWxpIiwgdmFsdWU6ICJiaWxpYmlsaSIgfSwKICAgICAgICAgICAgICAgICAgICAgICAgeyB0aXRsZTogIvCfk6Eg5rmW5Y2X5Y2r6KeGIiwgdmFsdWU6ICJodW5hbiIgfSwKICAgICAgICAgICAgICAgICAgICAgICAgeyB0aXRsZTogIvCfk6Eg5rWZ5rGf5Y2r6KeGIiwgdmFsdWU6ICJ6aGVqaWFuZyIgfSwKICAgICAgICAgICAgICAgICAgICAgICAgeyB0aXRsZTogIvCfk6Eg5Lic5pa55Y2r6KeGIiwgdmFsdWU6ICJkcmFnb24iIH0sCiAgICAgICAgICAgICAgICAgICAgICAgIHsgdGl0bGU6ICLwn5OhIENDVFYtOCIsIHZhbHVlOiAiY2N0djgiIH0sCiAgICAgICAgICAgICAgICAgICAgICAgIHsgdGl0bGU6ICLwn4et8J+HsCBWaXVUViIsIHZhbHVlOiAidml1dHYiIH0sCiAgICAgICAgICAgICAgICAgICAgICAgIHsgdGl0bGU6ICLwn4e58J+HvCBMSU5FIFRWIiwgdmFsdWU6ICJsaW5ldHYiIH0sCiAgICAgICAgICAgICAgICAgICAgICAgIHsgdGl0bGU6ICLwn4e58J+HvCBIYW1pIFZpZGVvIiwgdmFsdWU6ICJoYW1pIiB9LAogICAgICAgICAgICAgICAgICAgICAgICB7IHRpdGxlOiAi8J+HufCfh7wgQ0FUQ0hQTEFZIiwgdmFsdWU6ICJjYXRjaHBsYXkiIH0sCiAgICAgICAgICAgICAgICAgICAgICAgIHsgdGl0bGU6ICLwn4ew8J+HtyB0dk4iLCB2YWx1ZTogInR2biIgfSwKICAgICAgICAgICAgICAgICAgICAgICAgeyB0aXRsZTogIvCfh7Dwn4e3IFNCUyIsIHZhbHVlOiAic2JzIiB9LAogICAgICAgICAgICAgICAgICAgICAgICB7IHRpdGxlOiAi8J+HsPCfh7cgS0JTMiIsIHZhbHVlOiAia2JzMiIgfSwKICAgICAgICAgICAgICAgICAgICAgICAgeyB0aXRsZTogIvCfh7rwn4e4IEFCQyIsIHZhbHVlOiAiYWJjIiB9LAogICAgICAgICAgICAgICAgICAgICAgICB7IHRpdGxlOiAi8J+MjSDlm73lrrblnLDnkIbpopHpgZMiLCB2YWx1ZTogIm5hdGdlbyIgfQogICAgICAgICAgICAgICAgICAgIF0KICAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgbmFtZTogIm1lZGlhVHlwZSIsCiAgICAgICAgICAgICAgICAgICAgdGl0bGU6ICLlvbHop4bliIbnsbsiLAogICAgICAgICAgICAgICAgICAgIHR5cGU6ICJlbnVtZXJhdGlvbiIsCiAgICAgICAgICAgICAgICAgICAgdmFsdWU6ICJ0diIsCiAgICAgICAgICAgICAgICAgICAgZW51bU9wdGlvbnM6IFsKICAgICAgICAgICAgICAgICAgICAgICAgeyB0aXRsZTogIvCfk7og57qv5YeA5Ymn6ZuGIChEcmFtYSkiLCB2YWx1ZTogInR2IiB9LAogICAgICAgICAgICAgICAgICAgICAgICB7IHRpdGxlOiAi8J+OrCDnlLXlvbEgKE1vdmllKSIsIHZhbHVlOiAibW92aWUiIH0sCiAgICAgICAgICAgICAgICAgICAgICAgIHsgdGl0bGU6ICLwn5CwIOWKqOa8qyAoQW5pbWUpIiwgdmFsdWU6ICJhbmltZSIgfSwKICAgICAgICAgICAgICAgICAgICAgICAgeyB0aXRsZTogIvCfjqQg57u86Im6L+ecn+S6uuengCIsIHZhbHVlOiAidmFyaWV0eSIgfQogICAgICAgICAgICAgICAgICAgIF0KICAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgbmFtZTogInNvcnRCeSIsCiAgICAgICAgICAgICAgICAgICAgdGl0bGU6ICLmjpLluo/mlrnlvI8iLAogICAgICAgICAgICAgICAgICAgIHR5cGU6ICJlbnVtZXJhdGlvbiIsCiAgICAgICAgICAgICAgICAgICAgdmFsdWU6ICJob3QiLAogICAgICAgICAgICAgICAgICAgIGVudW1PcHRpb25zOiBbCiAgICAgICAgICAgICAgICAgICAgICAgIHsgdGl0bGU6ICLwn5SlIOW5s+WPsOeDreW6puamnCIsIHZhbHVlOiAiaG90IiB9LAogICAgICAgICAgICAgICAgICAgICAgICB7IHRpdGxlOiAi8J+GlSDmnIDmlrDkuIrnur/mppwiLCB2YWx1ZTogIm5ldyIgfSwKICAgICAgICAgICAgICAgICAgICAgICAgeyB0aXRsZTogIvCfj4YgVE1EQiDpq5jliIbmppwiLCB2YWx1ZTogInRvcCIgfQogICAgICAgICAgICAgICAgICAgIF0KICAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgICB7IG5hbWU6ICJwYWdlIiwgdGl0bGU6ICLpobXnoIEiLCB0eXBlOiAicGFnZSIsIHN0YXJ0UGFnZTogMSB9CiAgICAgICAgICAgIF0KICAgICAgICB9CiAgICBdCn07CgovLyA9PT09PT09PT09PT09PT09PSAxLiDmoLjlv4PmmKDlsITphY3nva4gKOWFqOeQg0lE5bqTKSA9PT09PT09PT09PT09PT09PQoKY29uc3QgUExBVEZPUk1fTUFQID0gewogICAgbmV0ZmxpeDogeyBuZXR3b3JrOiAiMjEzIiwgcHJvdmlkZXI6ICI4IiwgcmVnaW9uOiAiVVMiLCBuYW1lOiAiTmV0ZmxpeCIgfSwKICAgIGhibzogICAgIHsgbmV0d29yazogIjQ5fDMxODYiLCBwcm92aWRlcjogIjExOCIsIHJlZ2lvbjogIlVTIiwgbmFtZTogIkhCTyIgfSwKICAgIGRpc25leTogIHsgbmV0d29yazogIjI3MzkiLCBwcm92aWRlcjogIjMzNyIsIHJlZ2lvbjogIlVTIiwgbmFtZTogIkRpc25leSsiIH0sCiAgICBhcHBsZTogICB7IG5ldHdvcms6ICIyNTUyIiwgcHJvdmlkZXI6ICIzNTAiLCByZWdpb246ICJVUyIsIG5hbWU6ICJBcHBsZSBUVisiIH0sCiAgICBhbWF6b246ICB7IG5ldHdvcms6ICIxMDI0IiwgcHJvdmlkZXI6ICIxMTkiLCByZWdpb246ICJVUyIsIG5hbWU6ICJBbWF6b24iIH0sCiAgICB0ZW5jZW50OiB7IG5ldHdvcms6ICIyMDA3fDMzNTMiLCBwcm92aWRlcjogIjEzOCIsIHJlZ2lvbjogIkNOIiwgbmFtZTogIuiFvuiuryIgfSwKICAgIGlxaXlpOiAgIHsgbmV0d29yazogIjEzMzAiLCBwcm92aWRlcjogIjIzOCIsIHJlZ2lvbjogIkNOIiwgbmFtZTogIueIseWlh+iJuiIgfSwKICAgIHlvdWt1OiAgIHsgbmV0d29yazogIjE0MTkiLCBwcm92aWRlcjogIjMzMSIsIHJlZ2lvbjogIkNOIiwgbmFtZTogIuS8mOmFtyIgfSwKICAgIG1hbmdvOiAgIHsgbmV0d29yazogIjE2MzEiLCBwcm92aWRlcjogIjE5NDQiLCByZWdpb246ICJDTiIsIG5hbWU6ICLoipLmnpwiIH0sCiAgICBiaWxpYmlsaTp7IG5ldHdvcms6ICIxNjA1IiwgcHJvdmlkZXI6ICIyMjgwIiwgcmVnaW9uOiAiQ04iLCBuYW1lOiAiQuermSIgfSwKICAgIGh1bmFuOiAgIHsgbmV0d29yazogIjk1MiIsIHByb3ZpZGVyOiBudWxsLCByZWdpb246ICJDTiIsIG5hbWU6ICLmuZbljZfljavop4YiIH0sCiAgICB6aGVqaWFuZzp7IG5ldHdvcms6ICI5ODkiLCBwcm92aWRlcjogbnVsbCwgcmVnaW9uOiAiQ04iLCBuYW1lOiAi5rWZ5rGf5Y2r6KeGIiB9LAogICAgZHJhZ29uOiAgeyBuZXR3b3JrOiAiMTA1NiIsIHByb3ZpZGVyOiBudWxsLCByZWdpb246ICJDTiIsIG5hbWU6ICLkuJzmlrnljavop4YiIH0sCiAgICBjY3R2ODogICB7IG5ldHdvcms6ICI1MjEiLCBwcm92aWRlcjogbnVsbCwgcmVnaW9uOiAiQ04iLCBuYW1lOiAiQ0NUVi04IiB9LAogICAgdml1dHY6ICAgeyBuZXR3b3JrOiAiMjE0NiIsIHByb3ZpZGVyOiBudWxsLCByZWdpb246ICJISyIsIG5hbWU6ICJWaXVUViIgfSwKICAgIGxpbmV0djogIHsgbmV0d29yazogIjE2NzEiLCBwcm92aWRlcjogbnVsbCwgcmVnaW9uOiAiVFciLCBuYW1lOiAiTElORSBUViIgfSwKICAgIGhhbWk6ICAgIHsgbmV0d29yazogIjQ1NzEiLCBwcm92aWRlcjogbnVsbCwgcmVnaW9uOiAiVFciLCBuYW1lOiAiSGFtaSIgfSwKICAgIGNhdGNocGxheTp7IG5ldHdvcms6ICI1MDAyIiwgcHJvdmlkZXI6IG51bGwsIHJlZ2lvbjogIlRXIiwgbmFtZTogIkNBVENIUExBWSIgfSwKICAgIHR2bjogICAgIHsgbmV0d29yazogIjg2NiIsIHByb3ZpZGVyOiBudWxsLCByZWdpb246ICJLUiIsIG5hbWU6ICJ0dk4iIH0sCiAgICBzYnM6ICAgICB7IG5ldHdvcms6ICIxNTYiLCBwcm92aWRlcjogbnVsbCwgcmVnaW9uOiAiS1IiLCBuYW1lOiAiU0JTIiB9LAogICAga2JzMjogICAgeyBuZXR3b3JrOiAiMzQyIiwgcHJvdmlkZXI6IG51bGwsIHJlZ2lvbjogIktSIiwgbmFtZTogIktCUzIiIH0sCiAgICBhYmM6ICAgICB7IG5ldHdvcms6ICIyIiwgcHJvdmlkZXI6IG51bGwsIHJlZ2lvbjogIlVTIiwgbmFtZTogIkFCQyIgfSwKICAgIG5hdGdlbzogIHsgbmV0d29yazogIjQzIiwgcHJvdmlkZXI6IG51bGwsIHJlZ2lvbjogIlVTIiwgbmFtZTogIuWbveWutuWcsOeQhiIgfSwKICAgIGFsbDogICAgIHsgbmV0d29yazogbnVsbCwgcHJvdmlkZXI6IG51bGwsIHJlZ2lvbjogbnVsbCwgbmFtZTogIue7vOWQiCIgfQp9OwoKY29uc3QgR0VOUkVfTUFQID0gewogICAgMjg6ICLliqjkvZwiLCAxMjogIuWGkumZqSIsIDE2OiAi5Yqo55S7IiwgMzU6ICLllpzliaciLCA4MDogIueKr+e9qiIsIDk5OiAi57qq5b2V54mHIiwKICAgIDE4OiAi5Ymn5oOFIiwgMTA3NTE6ICLlrrbluq0iLCAxNDogIuWlh+W5uyIsIDM2OiAi5Y6G5Y+yIiwgMjc6ICLmgZDmgJYiLCAxMDQwMjogIumfs+S5kCIsCiAgICA5NjQ4OiAi5oKs55aRIiwgMTA3NDk6ICLniLHmg4UiLCA4Nzg6ICLnp5HlubsiLCAxMDc3MDogIueUteinhueUteW9sSIsIDUzOiAi5oOK5oKaIiwKICAgIDEwNzUyOiAi5oiY5LqJIiwgMzc6ICLopb/pg6giLCAxMDc1OTogIuWKqOS9nOWGkumZqSIsIDEwNzY0OiAi55yf5Lq656eAIiwgMTA3Njc6ICLohLHlj6Pnp4AiCn07CgpmdW5jdGlvbiBnZXRHZW5yZVRleHQoaWRzKSB7CiAgICBpZiAoIWlkcyB8fCAhQXJyYXkuaXNBcnJheShpZHMpKSByZXR1cm4gIuW9seinhiI7CiAgICBjb25zdCBnZW5yZXMgPSBpZHMubWFwKGlkID0+IEdFTlJFX01BUFtpZF0pLmZpbHRlcihCb29sZWFuKTsKICAgIHJldHVybiBnZW5yZXMubGVuZ3RoID4gMCA/IGdlbnJlcy5zbGljZSgwLCAyKS5qb2luKCIgLyAiKSA6ICLlvbHop4YiOwp9CgovLyDwn46vIOaguOW/g+S/ruato++8muWujOWFqOWQkeS9oOeahOS6jOasoeWFg+S7o+eggeWvuem9kApmdW5jdGlvbiBidWlsZEl0ZW0oaXRlbSwgaXNNb3ZpZSwgcGxhdGZvcm1OYW1lKSB7CiAgICBpZiAoIWl0ZW0pIHJldHVybiBudWxsOwogICAgCiAgICBjb25zdCBtZWRpYVR5cGUgPSBpc01vdmllID8gIm1vdmllIiA6ICJ0diI7CiAgICBjb25zdCB0aXRsZSA9IGl0ZW0udGl0bGUgfHwgaXRlbS5uYW1lOwogICAgY29uc3QgcmVsZWFzZURhdGUgPSBpdGVtLnJlbGVhc2VfZGF0ZSB8fCBpdGVtLmZpcnN0X2Fpcl9kYXRlIHx8ICIiOwogICAgY29uc3Qgc2NvcmUgPSBpdGVtLnZvdGVfYXZlcmFnZSA/IGl0ZW0udm90ZV9hdmVyYWdlLnRvRml4ZWQoMSkgOiAiMC4wIjsKICAgIGNvbnN0IGdlbnJlVGV4dCA9IGdldEdlbnJlVGV4dChpdGVtLmdlbnJlX2lkcyk7CiAgICAKICAgIGxldCB0eXBlVGFnID0gaXNNb3ZpZSA/ICLwn46sIiA6ICLwn5O6IjsKICAgIGlmIChpdGVtLmdlbnJlX2lkcz8uaW5jbHVkZXMoMTYpKSB0eXBlVGFnID0gIvCfkLAiOwogICAgaWYgKGl0ZW0uZ2VucmVfaWRzPy5pbmNsdWRlcygxMDc2NCkgfHwgaXRlbS5nZW5yZV9pZHM/LmluY2x1ZGVzKDEwNzY3KSkgdHlwZVRhZyA9ICLwn46kIjsKCiAgICByZXR1cm4gewogICAgICAgIGlkOiBTdHJpbmcoaXRlbS5pZCksCiAgICAgICAgdG1kYklkOiBwYXJzZUludChpdGVtLmlkKSwKICAgICAgICB0eXBlOiAidG1kYiIsIC8vIPCflJEg6a2U5rOVIDLvvJrlhoXlsYLpobnnm67kuLogdG1kYiDnsbvlnovvvIzlrozlhajpgILphY3moYbmnrbpgLvovpEKICAgICAgICBtZWRpYVR5cGU6IG1lZGlhVHlwZSwKICAgICAgICB0aXRsZTogdGl0bGUsCiAgICAgICAgCiAgICAgICAgZ2VucmVUaXRsZTogZ2VucmVUZXh0LCAKICAgICAgICAKICAgICAgICAvLyDwn5SRIOmtlOazlSAz77ya56uW54mI5LiL6L+Z6KGM5pi+56S65Zyo5Ymv5qCH6aKY5L2N572uCiAgICAgICAgZGVzY3JpcHRpb246IGAke3R5cGVUYWd9ICR7cGxhdGZvcm1OYW1lfSB8IOKtkCAke3Njb3JlfWAsIAogICAgICAgIAogICAgICAgIC8vIOS8oOe7meWGheaguOeahOaXpeacn++8jOaoqueJiOaOkueJiOS8muiHquWKqOaPkOW5tOS7vQogICAgICAgIHJlbGVhc2VEYXRlOiByZWxlYXNlRGF0ZSwgCiAgICAgICAgCiAgICAgICAgLy8g8J+UkSDprZTms5UgNO+8muW9u+W6leaKm+W8gyBjb3ZlclVybO+8jOS4peagvOS9v+eUqCBwb3N0ZXJQYXRoIOWSjCBiYWNrZHJvcFBhdGgKICAgICAgICBwb3N0ZXJQYXRoOiBpdGVtLnBvc3Rlcl9wYXRoID8gYGh0dHBzOi8vc2hyaWxsLXBvZXRyeS0wN2ZjLjI0MDc4MTM0Mjcud29ya2Vycy5kZXYvdC9wL3c1MDAke2l0ZW0ucG9zdGVyX3BhdGh9YCA6ICIiLAogICAgICAgIGJhY2tkcm9wUGF0aDogaXRlbS5iYWNrZHJvcF9wYXRoID8gYGh0dHBzOi8vc2hyaWxsLXBvZXRyeS0wN2ZjLjI0MDc4MTM0Mjcud29ya2Vycy5kZXYvdC9wL3c3ODAke2l0ZW0uYmFja2Ryb3BfcGF0aH1gIDogIiIsCiAgICAgICAgCiAgICAgICAgcmF0aW5nOiBzY29yZQogICAgfTsKfQoKLy8gPT09PT09PT09PT09PT09PT0gMi4g5qC45b+D6K+35rGC6YC76L6RID09PT09PT09PT09PT09PT09Cgphc3luYyBmdW5jdGlvbiBsb2FkUGxhdGZvcm1MaXN0KHBhcmFtcykgewogICAgLy8g8J+RiCDpgLvovpHmjqXnrqHvvJrku44gc29ydF9ieSDojrflj5YgcGxhdGZvcm0g6YCJ5oupCiAgICBjb25zdCBwbGF0Zm9ybSA9IHBhcmFtcy5zb3J0X2J5IHx8ICJuZXRmbGl4IjsKICAgIGNvbnN0IG1lZGlhVHlwZSA9IHBhcmFtcy5tZWRpYVR5cGUgfHwgInR2IjsKICAgIGNvbnN0IGNhdGVnb3J5ID0gcGFyYW1zLnNvcnRCeSB8fCAiaG90IjsKICAgIGNvbnN0IHBhZ2UgPSBwYXJhbXMucGFnZSB8fCAxOwoKICAgIGNvbnN0IHRvZGF5ID0gbmV3IERhdGUoKS50b0lTT1N0cmluZygpLnNwbGl0KCdUJylbMF07CiAgICBjb25zdCBpc01vdmllID0gKG1lZGlhVHlwZSA9PT0gIm1vdmllIik7CiAgICBjb25zdCBlbmRwb2ludCA9IGlzTW92aWUgPyAiL2Rpc2NvdmVyL21vdmllIiA6ICIvZGlzY292ZXIvdHYiOwogICAgY29uc3QgcGxhdGZvcm1Db25maWcgPSBQTEFURk9STV9NQVBbcGxhdGZvcm1dOwogICAgaWYgKCFwbGF0Zm9ybUNvbmZpZykgewogICAgICAgIHJldHVybiBbeyBpZDogImVycm9yIiwgdHlwZTogInRleHQiLCB0aXRsZTogIuW5s+WPsOWPguaVsOaXoOaViCIsIGRlc2NyaXB0aW9uOiAi6K+36YeN5paw6YCJ5oup6aKR6YGT5oiW5bmz5Y+wIiB9XTsKICAgIH0KCiAgICBsZXQgcXVlcnlQYXJhbXMgPSB7CiAgICAgICAgbGFuZ3VhZ2U6ICJ6aC1DTiIsCiAgICAgICAgcGFnZTogcGFnZQogICAgfTsKCiAgICBpZiAocGxhdGZvcm0gIT09ICJhbGwiKSB7CiAgICAgICAgaWYgKGlzTW92aWUpIHsKICAgICAgICAgICAgaWYgKCFwbGF0Zm9ybUNvbmZpZy5wcm92aWRlcikgewogICAgICAgICAgICAgICAgcmV0dXJuIFt7IGlkOiAiZW1wdHkiLCB0eXBlOiAidGV4dCIsIHRpdGxlOiAi5peg55S15b2x5YiG57G7IiwgZGVzY3JpcHRpb246IGBbJHtwbGF0Zm9ybUNvbmZpZy5uYW1lfV0g5pqC5LiN5pSv5oyB6K+l5YiG57G744CCYCB9XTsKICAgICAgICAgICAgfQogICAgICAgICAgICBxdWVyeVBhcmFtcy53aXRoX3dhdGNoX3Byb3ZpZGVycyA9IHBsYXRmb3JtQ29uZmlnLnByb3ZpZGVyOwogICAgICAgICAgICBxdWVyeVBhcmFtcy53YXRjaF9yZWdpb24gPSBwbGF0Zm9ybUNvbmZpZy5yZWdpb24gfHwgIlVTIjsKICAgICAgICB9IGVsc2UgewogICAgICAgICAgICBxdWVyeVBhcmFtcy53aXRoX25ldHdvcmtzID0gcGxhdGZvcm1Db25maWcubmV0d29yazsKICAgICAgICB9CiAgICB9CgogICAgaWYgKG1lZGlhVHlwZSA9PT0gImFuaW1lIikgewogICAgICAgIHF1ZXJ5UGFyYW1zLndpdGhfZ2VucmVzID0gIjE2IjsKICAgIH0gZWxzZSBpZiAobWVkaWFUeXBlID09PSAidmFyaWV0eSIpIHsKICAgICAgICBxdWVyeVBhcmFtcy53aXRoX2dlbnJlcyA9ICIxMDc2NHwxMDc2NyI7CiAgICB9IGVsc2UgaWYgKG1lZGlhVHlwZSA9PT0gInR2IikgewogICAgICAgIHF1ZXJ5UGFyYW1zLndpdGhvdXRfZ2VucmVzID0gIjE2LDEwNzY0LDEwNzY3IjsKICAgIH0KCiAgICBpZiAoY2F0ZWdvcnkgPT09ICJob3QiKSB7CiAgICAgICAgcXVlcnlQYXJhbXMuc29ydF9ieSA9ICJwb3B1bGFyaXR5LmRlc2MiOwogICAgICAgIHF1ZXJ5UGFyYW1zWyJ2b3RlX2NvdW50Lmd0ZSJdID0gMjsKICAgIH0gCiAgICBlbHNlIGlmIChjYXRlZ29yeSA9PT0gIm5ldyIpIHsKICAgICAgICBxdWVyeVBhcmFtcy5zb3J0X2J5ID0gaXNNb3ZpZSA/ICJwcmltYXJ5X3JlbGVhc2VfZGF0ZS5kZXNjIiA6ICJmaXJzdF9haXJfZGF0ZS5kZXNjIjsKICAgICAgICBpZiAoaXNNb3ZpZSkgewogICAgICAgICAgICBxdWVyeVBhcmFtc1sicHJpbWFyeV9yZWxlYXNlX2RhdGUubHRlIl0gPSB0b2RheTsKICAgICAgICB9IGVsc2UgewogICAgICAgICAgICBxdWVyeVBhcmFtc1siZmlyc3RfYWlyX2RhdGUubHRlIl0gPSB0b2RheTsKICAgICAgICB9CiAgICB9IAogICAgZWxzZSBpZiAoY2F0ZWdvcnkgPT09ICJ0b3AiKSB7CiAgICAgICAgcXVlcnlQYXJhbXMuc29ydF9ieSA9ICJ2b3RlX2F2ZXJhZ2UuZGVzYyI7CiAgICAgICAgcXVlcnlQYXJhbXNbInZvdGVfY291bnQuZ3RlIl0gPSAzMDsgCiAgICB9CgogICAgdHJ5IHsKICAgICAgICBjb25zdCByZXMgPSBhd2FpdCBXaWRnZXQudG1kYi5nZXQoZW5kcG9pbnQsIHsgcGFyYW1zOiBxdWVyeVBhcmFtcyB9KTsKICAgICAgICBjb25zdCBpdGVtcyA9IChyZXMucmVzdWx0cyB8fCBbXSkubWFwKGkgPT4gYnVpbGRJdGVtKGksIGlzTW92aWUsIHBsYXRmb3JtQ29uZmlnLm5hbWUpKS5maWx0ZXIoQm9vbGVhbik7CgogICAgICAgIGlmIChpdGVtcy5sZW5ndGggPT09IDApIHsKICAgICAgICAgICAgIHJldHVybiBbeyBpZDogImVtcHR5IiwgdHlwZTogInRleHQiLCB0aXRsZTogIuaXoOaVsOaNriIsIGRlc2NyaXB0aW9uOiBg5ZyoIFske3BsYXRmb3JtQ29uZmlnLm5hbWV9XSDmmoLmnKrmib7liLDnrKblkIjor6XmnaHku7bnmoTlvbHop4borrDlvZVgIH1dOwogICAgICAgIH0KCiAgICAgICAgcmV0dXJuIGl0ZW1zOwoKICAgIH0gY2F0Y2ggKGVycm9yKSB7CiAgICAgICAgcmV0dXJuIFt7IGlkOiAiZXJyb3IiLCB0eXBlOiAidGV4dCIsIHRpdGxlOiAi572R57uc5byC5bi4IiwgZGVzY3JpcHRpb246ICLor7fmsYLlpLHotKXvvIzor7fph43or5UiIH1dOwogICAgfQp9Cg==
+/**
+ * 全球电视台与流媒体宇宙 (终极版)
+ * 核心逻辑: 动态解除国家锁定，精准匹配全球三十多个流媒体与电视网 ID
+ * 涵盖: 国内爱优腾芒、四大卫视、港台本土平台、韩国三大台、以及网飞/HBO等国际巨头
+ */
+
+var WidgetMetadata = {
+    id: "makka_global_networks",
+    title: "全球影视平台ALL IN ONE",
+    description: "全网最全的频道聚合：覆盖爱优腾、网飞、HBO、韩国tvN及各大卫视",
+    author: "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
+    version: "1.2.6", // 更新图片域名并增加非法平台参数兜底
+    requiredVersion: "0.0.1",
+    site: "https://t.me/MakkaPakkaOvO",
+    modules: [
+        {
+            title: "全网热播发现",
+            functionName: "loadPlatformList",
+            type: "video", // 🔑 魔法 1：外层模块为 video
+            cacheDuration: 3600,
+            params: [
+                {
+                    name: "sort_by", // 👈 魔法字段：把这70多个平台的选择提到右上角！
+                    title: "选择频道/平台",
+                    type: "enumeration",
+                    value: "netflix",
+                    enumOptions: [
+                        { title: "🌟 全球综合热播", value: "all" },
+                        { title: "🔴 Netflix (网飞)", value: "netflix" },
+                        { title: "🟣 HBO", value: "hbo" },
+                        { title: "🔵 Disney+ (迪士尼)", value: "disney" },
+                        { title: "🍏 Apple TV+", value: "apple" },
+                        { title: "📦 Amazon Prime", value: "amazon" },
+                        { title: "🐧 腾讯视频", value: "tencent" },
+                        { title: "🥝 爱奇艺", value: "iqiyi" },
+                        { title: "👖 优酷", value: "youku" },
+                        { title: "🥭 芒果TV", value: "mango" },
+                        { title: "📺 BiliBili", value: "bilibili" },
+                        { title: "📡 湖南卫视", value: "hunan" },
+                        { title: "📡 浙江卫视", value: "zhejiang" },
+                        { title: "📡 东方卫视", value: "dragon" },
+                        { title: "📡 CCTV-8", value: "cctv8" },
+                        { title: "🇭🇰 ViuTV", value: "viutv" },
+                        { title: "🇹🇼 LINE TV", value: "linetv" },
+                        { title: "🇹🇼 Hami Video", value: "hami" },
+                        { title: "🇹🇼 CATCHPLAY", value: "catchplay" },
+                        { title: "🇰🇷 tvN", value: "tvn" },
+                        { title: "🇰🇷 SBS", value: "sbs" },
+                        { title: "🇰🇷 KBS2", value: "kbs2" },
+                        { title: "🇺🇸 ABC", value: "abc" },
+                        { title: "🌍 国家地理频道", value: "natgeo" }
+                    ]
+                },
+                {
+                    name: "mediaType",
+                    title: "影视分类",
+                    type: "enumeration",
+                    value: "tv",
+                    enumOptions: [
+                        { title: "📺 纯净剧集 (Drama)", value: "tv" },
+                        { title: "🎬 电影 (Movie)", value: "movie" },
+                        { title: "🐰 动漫 (Anime)", value: "anime" },
+                        { title: "🎤 综艺/真人秀", value: "variety" }
+                    ]
+                },
+                {
+                    name: "sortBy",
+                    title: "排序方式",
+                    type: "enumeration",
+                    value: "hot",
+                    enumOptions: [
+                        { title: "🔥 平台热度榜", value: "hot" },
+                        { title: "🆕 最新上线榜", value: "new" },
+                        { title: "🏆 TMDB 高分榜", value: "top" }
+                    ]
+                },
+                { name: "page", title: "页码", type: "page", startPage: 1 }
+            ]
+        }
+    ]
+};
+
+// ================= 1. 核心映射配置 (全球ID库) =================
+
+const PLATFORM_MAP = {
+    netflix: { network: "213", provider: "8", region: "US", name: "Netflix" },
+    hbo:     { network: "49|3186", provider: "118", region: "US", name: "HBO" },
+    disney:  { network: "2739", provider: "337", region: "US", name: "Disney+" },
+    apple:   { network: "2552", provider: "350", region: "US", name: "Apple TV+" },
+    amazon:  { network: "1024", provider: "119", region: "US", name: "Amazon" },
+    tencent: { network: "2007|3353", provider: "138", region: "CN", name: "腾讯" },
+    iqiyi:   { network: "1330", provider: "238", region: "CN", name: "爱奇艺" },
+    youku:   { network: "1419", provider: "331", region: "CN", name: "优酷" },
+    mango:   { network: "1631", provider: "1944", region: "CN", name: "芒果" },
+    bilibili:{ network: "1605", provider: "2280", region: "CN", name: "B站" },
+    hunan:   { network: "952", provider: null, region: "CN", name: "湖南卫视" },
+    zhejiang:{ network: "989", provider: null, region: "CN", name: "浙江卫视" },
+    dragon:  { network: "1056", provider: null, region: "CN", name: "东方卫视" },
+    cctv8:   { network: "521", provider: null, region: "CN", name: "CCTV-8" },
+    viutv:   { network: "2146", provider: null, region: "HK", name: "ViuTV" },
+    linetv:  { network: "1671", provider: null, region: "TW", name: "LINE TV" },
+    hami:    { network: "4571", provider: null, region: "TW", name: "Hami" },
+    catchplay:{ network: "5002", provider: null, region: "TW", name: "CATCHPLAY" },
+    tvn:     { network: "866", provider: null, region: "KR", name: "tvN" },
+    sbs:     { network: "156", provider: null, region: "KR", name: "SBS" },
+    kbs2:    { network: "342", provider: null, region: "KR", name: "KBS2" },
+    abc:     { network: "2", provider: null, region: "US", name: "ABC" },
+    natgeo:  { network: "43", provider: null, region: "US", name: "国家地理" },
+    all:     { network: null, provider: null, region: null, name: "综合" }
+};
+
+const GENRE_MAP = {
+    28: "动作", 12: "冒险", 16: "动画", 35: "喜剧", 80: "犯罪", 99: "纪录片",
+    18: "剧情", 10751: "家庭", 14: "奇幻", 36: "历史", 27: "恐怖", 10402: "音乐",
+    9648: "悬疑", 10749: "爱情", 878: "科幻", 10770: "电视电影", 53: "惊悚",
+    10752: "战争", 37: "西部", 10759: "动作冒险", 10764: "真人秀", 10767: "脱口秀"
+};
+
+function getGenreText(ids) {
+    if (!ids || !Array.isArray(ids)) return "影视";
+    const genres = ids.map(id => GENRE_MAP[id]).filter(Boolean);
+    return genres.length > 0 ? genres.slice(0, 2).join(" / ") : "影视";
+}
+
+// 🎯 核心修正：完全向你的二次元代码对齐
+function buildItem(item, isMovie, platformName) {
+    if (!item) return null;
+    
+    const mediaType = isMovie ? "movie" : "tv";
+    const title = item.title || item.name;
+    const releaseDate = item.release_date || item.first_air_date || "";
+    const score = item.vote_average ? item.vote_average.toFixed(1) : "0.0";
+    const genreText = getGenreText(item.genre_ids);
+    
+    let typeTag = isMovie ? "🎬" : "📺";
+    if (item.genre_ids?.includes(16)) typeTag = "🐰";
+    if (item.genre_ids?.includes(10764) || item.genre_ids?.includes(10767)) typeTag = "🎤";
+
+    return {
+        id: String(item.id),
+        tmdbId: parseInt(item.id),
+        type: "tmdb", // 🔑 魔法 2：内层项目为 tmdb 类型，完全适配框架逻辑
+        mediaType: mediaType,
+        title: title,
+        
+        genreTitle: genreText, 
+        
+        // 🔑 魔法 3：竖版下这行显示在副标题位置
+        description: `${typeTag} ${platformName} | ⭐ ${score}`, 
+        
+        // 传给内核的日期，横版排版会自动提年份
+        releaseDate: releaseDate, 
+        
+        // 🔑 魔法 4：彻底抛弃 coverUrl，严格使用 posterPath 和 backdropPath
+        posterPath: item.poster_path ? `https://shrill-poetry-07fc.2407813427.workers.dev/t/p/w500${item.poster_path}` : "",
+        backdropPath: item.backdrop_path ? `https://shrill-poetry-07fc.2407813427.workers.dev/t/p/w780${item.backdrop_path}` : "",
+        
+        rating: score
+    };
+}
+
+// ================= 2. 核心请求逻辑 =================
+
+async function loadPlatformList(params) {
+    // 👈 逻辑接管：从 sort_by 获取 platform 选择
+    const platform = params.sort_by || "netflix";
+    const mediaType = params.mediaType || "tv";
+    const category = params.sortBy || "hot";
+    const page = params.page || 1;
+
+    const today = new Date().toISOString().split('T')[0];
+    const isMovie = (mediaType === "movie");
+    const endpoint = isMovie ? "/discover/movie" : "/discover/tv";
+    const platformConfig = PLATFORM_MAP[platform];
+    if (!platformConfig) {
+        return [{ id: "error", type: "text", title: "平台参数无效", description: "请重新选择频道或平台" }];
+    }
+
+    let queryParams = {
+        language: "zh-CN",
+        page: page
+    };
+
+    if (platform !== "all") {
+        if (isMovie) {
+            if (!platformConfig.provider) {
+                return [{ id: "empty", type: "text", title: "无电影分类", description: `[${platformConfig.name}] 暂不支持该分类。` }];
+            }
+            queryParams.with_watch_providers = platformConfig.provider;
+            queryParams.watch_region = platformConfig.region || "US";
+        } else {
+            queryParams.with_networks = platformConfig.network;
+        }
+    }
+
+    if (mediaType === "anime") {
+        queryParams.with_genres = "16";
+    } else if (mediaType === "variety") {
+        queryParams.with_genres = "10764|10767";
+    } else if (mediaType === "tv") {
+        queryParams.without_genres = "16,10764,10767";
+    }
+
+    if (category === "hot") {
+        queryParams.sort_by = "popularity.desc";
+        queryParams["vote_count.gte"] = 2;
+    } 
+    else if (category === "new") {
+        queryParams.sort_by = isMovie ? "primary_release_date.desc" : "first_air_date.desc";
+        if (isMovie) {
+            queryParams["primary_release_date.lte"] = today;
+        } else {
+            queryParams["first_air_date.lte"] = today;
+        }
+    } 
+    else if (category === "top") {
+        queryParams.sort_by = "vote_average.desc";
+        queryParams["vote_count.gte"] = 30; 
+    }
+
+    try {
+        const res = await Widget.tmdb.get(endpoint, { params: queryParams });
+        const items = (res.results || []).map(i => buildItem(i, isMovie, platformConfig.name)).filter(Boolean);
+
+        if (items.length === 0) {
+             return [{ id: "empty", type: "text", title: "无数据", description: `在 [${platformConfig.name}] 暂未找到符合该条件的影视记录` }];
+        }
+
+        return items;
+
+    } catch (error) {
+        return [{ id: "error", type: "text", title: "网络异常", description: "请求失败，请重试" }];
+    }
+}
