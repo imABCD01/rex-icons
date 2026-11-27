@@ -64,7 +64,7 @@ var WidgetMetadata = {
     title: "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖·终极聚合",
     description: "动漫、影剧、综艺、流行风向与平台分流一网打尽",
     author: "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
-    version: "1.4.1",
+    version: "1.4.2", // Tea TV badges
     requiredVersion: "0.0.1",
     site: "https://t.me/MakkaPakkaOvO",
 
@@ -316,7 +316,7 @@ var WidgetMetadata = {
 // 3. 路由与各分类底层
 // =========================================================================
 
-async function routeAnimeOmni(params) {
+async function routeAnimeOmniTeaBase(params) {
     const source = params.anime_source || "cal";
     let subParams = { page: params.page || 1 };
 
@@ -338,7 +338,7 @@ async function routeAnimeOmni(params) {
     return [];
 }
 
-async function routeMovieOmni(params) {
+async function routeMovieOmniTeaBase(params) {
     const source = params.movie_source || "general";
     let subParams = { page: params.page || 1 };
 
@@ -348,7 +348,7 @@ async function routeMovieOmni(params) {
     return [];
 }
 
-async function routeTrendsHub(params) {
+async function routeTrendsHubTeaBase(params) {
     const hubSource = params.hub_source || "imdb";
     const page = params.page || 1;
 
@@ -467,7 +467,7 @@ async function fetchGenreRankData(mediaType, genre, region, sort_rule, page) {
     } catch (e) { return []; }
 }
 
-async function loadGenreRank(params = {}) {
+async function loadGenreRankTeaBase(params = {}) {
     const page = parseInt(params.page) || 1;
     const mediaType = params.sort_by || "all";
     const genre = params.genre || "all";
@@ -495,7 +495,7 @@ async function loadGenreRank(params = {}) {
     }
 }
 
-async function loadVarietyShows(params = {}) {
+async function loadVarietyShowsTeaBase(params = {}) {
     const page = parseInt(params.page) || 1;
     const region = params.sort_by || "cn";
     const list_type = params.list_type || "hot";
@@ -664,7 +664,7 @@ async function searchRtTmdb(rtItem, rank) {
 
 function buildImdbItem(item, forceType) {
     if (!item) return null;
-    const type = forceType || item.media_type || (item.title ? "movie" : "tv");
+    const type = (!forceType || forceType === "all") ? (item.media_type || (item.title ? "movie" : "tv")) : forceType;
     const fullDate = item.release_date || item.first_air_date || "";
     return {
         id: String(item.id), tmdbId: parseInt(item.id), type: "tmdb", mediaType: type, title: item.title || item.name,
@@ -798,7 +798,7 @@ async function fetchDoubanAndMap(tag, type, page) {
     }
 }
 
-async function loadPlatformMatrix(params = {}) {
+async function loadPlatformMatrixTeaBase(params = {}) {
     const category = params.sort_by || "tv_drama";
     const platformId = params.platform || "2007";
     const sort = params.sort || "popularity.desc";
@@ -879,7 +879,7 @@ function superTextHash(text) {
     return h.toString(36);
 }
 
-async function loadOfficialTop10(params = {}) {
+async function loadOfficialTop10TeaBase(params = {}) {
     const region = params.sort_by || "united-states";
     const platform = params.platform || "netflix";
     const mediaType = params.mediaType || "tv";
@@ -1384,7 +1384,10 @@ function toRexTmdbIdentities(items) {
         const mediaType = item.mediaType;
         const tmdbId = Number(item.tmdbId || item.id);
         if (!tmdbId || !["movie", "tv"].includes(mediaType)) return null;
-        return { id: `${mediaType}.${tmdbId}`, type: "tmdb" };
+        const identity = { id: `${mediaType}.${tmdbId}`, type: "tmdb" };
+        // 原生身份跳转保持不变，仅把电视剧角标字段带过压缩层。
+        if (typeof item.durationText === "string" && item.durationText) identity.durationText = item.durationText;
+        return identity;
     }).filter(Boolean);
 }
 
@@ -1401,3 +1404,163 @@ loadVarietyShows = identityRoute(loadVarietyShows);
 routeTrendsHub = identityRoute(routeTrendsHub);
 loadPlatformMatrix = identityRoute(loadPlatformMatrix);
 loadOfficialTop10 = identityRoute(loadOfficialTop10);
+
+// ================= Tea TV episode badge v1 =================
+// durationText 是 Rex 图片右下角原生角标。只增强 TMDB 电视剧；电影/文本/非 TMDB 项不请求。
+var TV_BADGE_MEMORY = {};
+var TV_BADGE_PREFIX = "tea_tv_episode_badge_v1:";
+var TV_BADGE_MAX_ITEMS = 24;
+var TV_BADGE_RELAY = "https://rex-mod-cdn.2407813427.workers.dev/relay/tmdb/3/tv/";
+
+function tvBadgeToday() {
+    var d = new Date();
+    return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+}
+function tvBadgeStorageGet(key) {
+    try { return Widget.storage && Widget.storage.get ? Widget.storage.get(key) : null; } catch (_) { return null; }
+}
+function tvBadgeStorageSet(key, value) {
+    try { if (Widget.storage && Widget.storage.set) Widget.storage.set(key, value); } catch (_) {}
+}
+function tvBadgeCacheGet(id) {
+    var key = TV_BADGE_PREFIX + id;
+    var now = Date.now();
+    var mem = TV_BADGE_MEMORY[key];
+    if (mem && mem.expires > now) return { hit: true, label: mem.label };
+    var saved = tvBadgeStorageGet(key);
+    if (saved && saved.expires > now && typeof saved.label === "string") {
+        TV_BADGE_MEMORY[key] = saved;
+        return { hit: true, label: saved.label };
+    }
+    return { hit: false };
+}
+function tvBadgeCacheSet(id, label, ttl) {
+    var value = { label: label || "", expires: Date.now() + ttl };
+    TV_BADGE_MEMORY[TV_BADGE_PREFIX + id] = value;
+    tvBadgeStorageSet(TV_BADGE_PREFIX + id, value);
+}
+function tvBadgeParseResponse(resp) {
+    var data = resp && Object.prototype.hasOwnProperty.call(resp, "data") ? resp.data : resp;
+    if (typeof data === "string") { try { data = JSON.parse(data); } catch (_) { return null; } }
+    return data && typeof data === "object" && data.id ? data : null;
+}
+async function tvBadgeFetchDetail(id) {
+    // 公共中继对电视剧详情做 6 小时边缘缓存，降低首页多行重复补查的上游压力。
+    if (Widget.http && Widget.http.request) {
+        try {
+            var resp = await Widget.http.request({ url: TV_BADGE_RELAY + id + "?language=zh-CN", method: "GET", timeout: 8000 });
+            var cached = tvBadgeParseResponse(resp);
+            if (cached) return cached;
+        } catch (_) { /* 继续走 Rex 内置 TMDB 通道 */ }
+    }
+    var fresh = await Widget.tmdb.get("/tv/" + id, { params: { language: "zh-CN" } });
+    var parsed = tvBadgeParseResponse(fresh);
+    if (!parsed) throw new Error("TV detail unavailable");
+    return parsed;
+}
+function tvBadgeLabel(d) {
+    if (!d) return { label: "", ended: false };
+    var status = String(d.status || "");
+    var ended = status === "Ended" || status === "Canceled";
+    var seasons = Array.isArray(d.seasons) ? d.seasons.filter(function (s) { return s && Number(s.season_number) > 0; }) : [];
+    var seasonCount = Math.max(Number(d.number_of_seasons) || 0, seasons.length);
+    var totalEpisodes = Number(d.number_of_episodes) || 0;
+    var today = tvBadgeToday();
+    var active = d.last_episode_to_air || null;
+    var next = d.next_episode_to_air || null;
+    // TMDB 的 next_episode_to_air 可能已经是今天：到播出日即按已更新展示。
+    if (next && next.air_date && next.air_date <= today && (!active || !active.air_date || next.air_date >= active.air_date)) active = next;
+    var season = active && Number(active.season_number) > 0 ? Number(active.season_number) : 0;
+    var episode = active && Number(active.episode_number) > 0 ? Number(active.episode_number) : 0;
+    var genres = Array.isArray(d.genres) ? d.genres : [];
+    var variety = genres.some(function (g) { return g && (Number(g.id) === 10764 || Number(g.id) === 10767); });
+    var unit = variety ? "期" : "集";
+    var label = "";
+    if (ended) {
+        if (seasonCount > 1) label = "全" + seasonCount + "季";
+        else if (totalEpisodes > 0) label = "全" + totalEpisodes + unit;
+        else if (episode > 0) label = "全" + episode + unit;
+    } else {
+        if (episode > 0) {
+            label = season > 1 ? "S" + season + "·更新至" + episode + unit : "更新至" + episode + unit;
+        } else if (seasonCount > 1) label = "共" + seasonCount + "季";
+        else if (totalEpisodes > 0) label = "共" + totalEpisodes + unit;
+    }
+    return { label: label, ended: ended };
+}
+async function tvBadgeGetLabel(id) {
+    var cached = tvBadgeCacheGet(id);
+    if (cached.hit) return cached.label;
+    try {
+        var detail = await tvBadgeFetchDetail(id);
+        var result = tvBadgeLabel(detail);
+        tvBadgeCacheSet(id, result.label, result.ended ? 7 * 86400000 : 21600000);
+        return result.label;
+    } catch (_) {
+        tvBadgeCacheSet(id, "", 1800000);
+        return "";
+    }
+}
+function tvBadgeId(item) {
+    var raw = item && (item.tmdbId || item.id);
+    var id = String(raw == null ? "" : raw).replace(/^tv\./, "");
+    return /^\d+$/.test(id) && Number(id) > 0 ? id : "";
+}
+async function enrichTvEpisodeBadges(items) {
+    if (!Array.isArray(items) || items.length === 0) return items;
+    var targets = [];
+    for (var i = 0; i < items.length && targets.length < TV_BADGE_MAX_ITEMS; i++) {
+        var item = items[i];
+        if (!item || item.type !== "tmdb") continue;
+        var mediaType = item.mediaType || item.media_type;
+        // 兼容旧版聚合缓存：{ id: "tv.12345", type: "tmdb" } 没有 mediaType。
+        if (!mediaType && /^tv\./.test(String(item.id || ""))) mediaType = "tv";
+        if (mediaType !== "tv") continue;
+        // 已由数据源提供角标时不覆盖，也不产生详情请求。
+        if (typeof item.durationText === "string" && /(?:集|期|季)/.test(item.durationText)) continue;
+        var id = tvBadgeId(item);
+        if (id) targets.push({ index: i, id: id });
+    }
+    if (!targets.length) return items;
+    var output = items.slice();
+    var cursor = 0;
+    async function worker() {
+        while (cursor < targets.length) {
+            var current = targets[cursor++];
+            var label = await tvBadgeGetLabel(current.id);
+            if (label) {
+                var copy = Object.assign({}, output[current.index]);
+                copy.durationText = label;
+                output[current.index] = copy;
+            }
+        }
+    }
+    var workers = [];
+    for (var w = 0; w < Math.min(4, targets.length); w++) workers.push(worker());
+    await Promise.all(workers);
+    return output;
+}
+
+
+// ---- Tea TV badge wrappers：保留原处理器，统一在出口补充 durationText ----
+async function routeAnimeOmni(params) {
+    return enrichTvEpisodeBadges(await routeAnimeOmniTeaBase(params || {}));
+}
+async function loadGenreRank(params) {
+    return enrichTvEpisodeBadges(await loadGenreRankTeaBase(params || {}));
+}
+async function routeMovieOmni(params) {
+    return enrichTvEpisodeBadges(await routeMovieOmniTeaBase(params || {}));
+}
+async function loadVarietyShows(params) {
+    return enrichTvEpisodeBadges(await loadVarietyShowsTeaBase(params || {}));
+}
+async function routeTrendsHub(params) {
+    return enrichTvEpisodeBadges(await routeTrendsHubTeaBase(params || {}));
+}
+async function loadPlatformMatrix(params) {
+    return enrichTvEpisodeBadges(await loadPlatformMatrixTeaBase(params || {}));
+}
+async function loadOfficialTop10(params) {
+    return enrichTvEpisodeBadges(await loadOfficialTop10TeaBase(params || {}));
+}
