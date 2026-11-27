@@ -9,7 +9,7 @@ var WidgetMetadata = {
     title: "影视榜单Lite",
     description: "豆瓣全能推荐 | TMDB探索 | 猜你想看",
     author: "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
-    version: "1.3.3", // 统一 Widget.tmdb、移除内置 key、豆瓣有界并发、日历并行
+    version: "1.3.4", // backdropFeature 首行显示剧情简介，保留日期/评分为次行；兼容 Worker 快照
     requiredVersion: "0.0.1",
     site: "https://t.me/MakkaPakkaOvO",
 
@@ -250,6 +250,24 @@ async function mapLimit(items, limit, fn) {
     return ret;
 }
 
+// backdropFeature 读取 description 首行；简介置首行，原日期/评分保留在次行。
+function overviewFirstDescription(overview, dateStr, rate) {
+    var meta = dateStr ? `${dateStr} · ⭐ ${rate}` : `⭐ ${rate}`;
+    return `${overview || "暂无简介"}\n${meta}`;
+}
+
+// Worker 快照直接返回成品 VideoItem，需在快速通道同样交换首行与简介。
+function normalizeOverviewFirstItem(item) {
+    if (!item || typeof item.description !== "string") return item;
+    var lines = item.description.split(/\r?\n/);
+    if (lines.length < 2) return item;
+    var first = lines[0].trim();
+    if (!/^(?:\d{4}(?:-\d{2}-\d{2})?\s+·\s+)?⭐\s*\d/.test(first)) return item;
+    var normalized = Object.assign({}, item);
+    normalized.description = lines.slice(1).join("\n") + "\n" + lines[0];
+    return normalized;
+}
+
 async function loadDoubanModule(params) {
     var categoryKey = params.sort_by || "tv_american";
     if (categoryKey === "tv_domestic" && Number(params.page || 1) === 1) {
@@ -259,7 +277,7 @@ async function loadDoubanModule(params) {
             var age = feed && Date.now() - feed.generatedAt;
             if (feed && feed.schema === 1 && age >= -300000 && age < 36 * 3600000 &&
                 Array.isArray(feed.items) && feed.items.length > 0 && feed.items.length <= 20 &&
-                feed.items.every(function (item) { return item && item.type === "tmdb" && item.tmdbId && item.title; })) return feed.items;
+                feed.items.every(function (item) { return item && item.type === "tmdb" && item.tmdbId && item.title; })) return feed.items.map(normalizeOverviewFirstItem);
         } catch (_) { /* Continue with the original live lookup. */ }
     }
     var url = DOUBAN_URLS[categoryKey];
@@ -308,7 +326,7 @@ async function loadDoubanModule(params) {
                     
                     genreTitle: finalGenreTitle, 
                     subTitle: dateStr ? `⭐ ${rate} | ${dateStr}` : `⭐ ${rate}`,
-                    description: dateStr ? `${dateStr} · ⭐ ${rate}\n${item.info || tmdbItem.overview || "暂无简介"}` : (item.info || tmdbItem.overview),
+                    description: overviewFirstDescription(item.info || tmdbItem.overview, dateStr, rate),
                     
                     posterPath: getTmdbImage(tmdbItem.poster_path),
                     backdropPath: getTmdbImage(tmdbItem.backdrop_path),
@@ -353,7 +371,7 @@ function buildTmdbItem(item, mediaType) {
         
         genreTitle: genreNames || (mediaType === "tv" ? "剧集" : "电影"),
         subTitle: dateStr ? `⭐ ${vote} | ${dateStr}` : `⭐ ${vote}`,
-        description: dateStr ? `${dateStr} · ⭐ ${vote}\n${item.overview || "暂无简介"}` : (item.overview || ""),
+        description: overviewFirstDescription(item.overview, dateStr, vote),
         
         posterPath: getTmdbImage(item.poster_path),
         backdropPath: getTmdbImage(item.backdrop_path),

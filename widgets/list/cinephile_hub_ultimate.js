@@ -3,7 +3,7 @@ WidgetMetadata = {
     title: "影迷宝藏 | 系列与流派",
     author: "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
     description: "聚合【系列电影大满贯】与【趣味流派探索】，一键补番，探索未知。",
-    version: "1.0.6",
+    version: "1.0.7", // backdropFeature 首行显示剧情简介，保留日期/评分为次行
     requiredVersion: "0.0.1",
     site: "https://t.me/MakkaPakkaOvO",
 
@@ -140,7 +140,8 @@ function getGenreText(ids) {
     return ids.map(id => GENRE_MAP[id]).filter(Boolean).slice(0, 3).join(" / ");
 }
 
-function buildItem({ id, tmdbId, type, title, date, poster, backdrop, rating, genreText, backdropBase = "https://image.tmdb.org" }) {
+function buildItem({ id, tmdbId, type, title, date, poster, backdrop, rating, genreText, desc, backdropBase = "https://image.tmdb.org" }) {
+    var metaDescription = date ? `${date} · ⭐ ${rating}` : `⭐ ${rating}`;
     return {
         id: String(id),
         tmdbId: parseInt(tmdbId),
@@ -149,7 +150,7 @@ function buildItem({ id, tmdbId, type, title, date, poster, backdrop, rating, ge
         title: title,
         
         genreTitle: genreText || (type === "tv" ? "剧集" : "电影"), 
-        description: date ? `${date} · ⭐ ${rating}` : `⭐ ${rating}`, 
+        description: `${desc || "暂无简介"}\n${metaDescription}`,
         releaseDate: date,
         
         posterPath: poster ? `https://image.tmdb.org/t/p/w500${poster}` : "",
@@ -209,7 +210,8 @@ async function loadFranchise(params = {}) {
                 poster: item.poster_path,
                 backdrop: item.backdrop_path,
                 rating: item.vote_average?.toFixed(1) || "0.0",
-                genreText: genreText
+                genreText: genreText,
+                desc: item.overview || "暂无简介"
             });
         });
 
@@ -259,7 +261,8 @@ async function loadNicheGenre(params = {}) {
                 poster: item.poster_path,
                 backdrop: item.backdrop_path,
                 rating: item.vote_average?.toFixed(1) || "0.0",
-                genreText: genreText
+                genreText: genreText,
+                desc: item.overview || "暂无简介"
             });
         });
 

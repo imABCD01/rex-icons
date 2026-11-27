@@ -3,7 +3,7 @@ WidgetMetadata = {
     title: "探索发现 | 惊喜推荐",
     author: "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
     description: "聚合【今天看什么】、【Trakt惊喜推荐】与【那年今日】、一站式发现好片。",
-    version: "1.0.8",
+    version: "1.0.9", // backdropFeature 首行显示剧情简介，保留日期/推荐理由为次行
     requiredVersion: "0.0.1",
     site: "https://t.me/MakkaPakkaOvO",
 
@@ -120,6 +120,7 @@ function getGenreText(ids) {
 
 // --- 适配 Video 横竖版的 buildItem 函数 ---
 function buildItem({ id, tmdbId, type, title, date, poster, backdrop, rating, genreText, subTitle, desc }) {
+    var metaDescription = date ? `${date} · ${subTitle || '⭐ ' + rating}` : (subTitle || `⭐ ${rating}`);
     return {
         id: String(id),
         tmdbId: parseInt(tmdbId),
@@ -131,7 +132,7 @@ function buildItem({ id, tmdbId, type, title, date, poster, backdrop, rating, ge
         genreTitle: genreText || (type === "tv" ? "剧集" : "电影"), 
         
         // 竖版：将完整日期和特殊原因(如推荐理由)拼接展示
-        description: date ? `${date} · ${subTitle || '⭐ ' + rating}` : (subTitle || `⭐ ${rating}`),
+        description: `${desc || "暂无简介"}\n${metaDescription}`,
         
         // 传递给内核提取横版年份
         releaseDate: date,
