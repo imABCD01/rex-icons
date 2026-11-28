@@ -3,7 +3,7 @@ WidgetMetadata = {
     title: "探索发现 | 惊喜推荐",
     author: "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
     description: "聚合【今天看什么】、【Trakt惊喜推荐】与【那年今日】、一站式发现好片。",
-    version: "1.1.1", // Tea: 那年今日年份行显示“N周年🏆”，保留完整日期与剧情简介
+    version: "1.1.2", // Tea: 年份 分类 / 分类 • N周年🏆，使用原生普通字体
     requiredVersion: "0.0.1",
     site: "https://t.me/MakkaPakkaOvO",
 
@@ -290,7 +290,7 @@ async function loadHistoryTodayTeaBase(params = {}) {
             backdrop: item.backdrop_path,
             rating: item.rating,
             genreText: genreText,
-            anniversaryTitle: `${item.yearStr}年 · ${item.diff}周年🏆 ${genreText || "电影"}`,
+            anniversaryTitle: `${item.yearStr}年 ${genreText || "电影"} • ${item.diff}周年🏆`,
             subTitle: `🏆 ${item.diff}周年纪念`,
             desc: item.overview || "暂无简介"
         });

@@ -44,7 +44,7 @@
    "title": "探索发现 | 惊喜推荐",
    "description": "聚合【今天看什么】多维度推荐",
    "requiredVersion": "0.0.1",
-   "version": "1.1.1",
+   "version": "1.1.2",
    "author": "MakkaPakka",
    "url": "https://rex-mod-cdn.2407813427.workers.dev/m/widgets/list/makka-discover-hub.js"
   },
