@@ -1,6 +1,6 @@
 /* 基于 yingqiao 出口模块（server/modules/fwrex）生成的 Rex 合集维护版。
- * 面板版本 1.1.0；合集模块版本 1.2.1；首页行 0 条 */
-var WidgetMetadata = {"id":"yingqiao.fw","title":"影桥","version":"1.2.1","requiredVersion":"0.0.1","description":"影桥。全局参数只需填面板生成的完整模块地址（URL 中需带 token）。","author":"yingqiao","site":"","detailCacheDuration":300,"globalParams":[{"name":"panel","title":"完整模块地址（带令牌）","type":"input","value":"","placeholders":[{"title":"示例格式","value":"https://qiaoying.riroro.com/api/fwrex/widget.js?token=你的模块令牌"}]}],"search":{"id":"search","title":"搜索影桥","functionName":"mbSearch","params":[{"name":"keyword","title":"关键词","type":"input","value":""},{"name":"page","title":"页码","type":"page","value":"1"}]},"modules":[{"id":"loadResource","title":"加载播放资源","functionName":"loadResource","type":"stream","params":[],"cacheDuration":0}]};
+ * 面板版本 1.1.0；合集模块版本 1.2.3；首页行 0 条 */
+var WidgetMetadata = {"id":"yingqiao.fw","title":"影桥","version":"1.2.3","requiredVersion":"0.0.1","description":"影桥。全局参数只需填面板生成的完整模块地址（URL 中需带 token）。","author":"yingqiao","site":"","detailCacheDuration":300,"globalParams":[{"name":"panel","title":"完整模块地址（带令牌）","type":"input","value":"","placeholders":[{"title":"示例格式","value":"https://qiaoying.riroro.com/api/fwrex/widget.js?token=你的模块令牌"}]}],"search":{"id":"search","title":"搜索影桥","functionName":"mbSearch","params":[{"name":"keyword","title":"关键词","type":"input","value":""},{"name":"page","title":"页码","type":"page","value":"1"}]},"modules":[{"id":"loadResource","title":"加载播放资源","functionName":"loadResource","type":"stream","params":[],"cacheDuration":0}]};
 var MB_META = WidgetMetadata;
 var MB_HOME_ROWS = 0;
 /* 旧版生成快照仅作兼容兜底；新版从完整模块地址解析 panel 与 token。 */
@@ -516,9 +516,68 @@ async function loadDetail(link, params) {
 
 /* ------------------------------------------------------------- 播放 */
 
-/** 版本条目的显示名：面板拼好的 `versionLabel` 优先，退回站点名 + 序号，再补集号 */
-function mbStreamName(v, i, wantEpisode) {
-  var base = String(v.label || v.site || '').trim() || '车道';
+/** 有精确字节数就按面板同一十进制口径换算，去掉标签中的 ~；缺精确值才沿用原标签。 */
+function mbStreamSize(v, label) {
+  var bytes = Number(v.size || v.fileSize || v.filesize || v.bytes || 0);
+  if (!Number.isFinite(bytes) || bytes <= 0) {
+    var marked = String(label || '').match(/\[\s*~?\s*\d+(?:\.\d+)?\s*[A-Za-z]+\s*\]/);
+    return marked ? marked[0].replace(/\s+/g, '').toUpperCase() : '';
+  }
+  var value;
+  var unit;
+  if (bytes >= 1000000000) { value = bytes / 1000000000; unit = 'G'; }
+  else if (bytes >= 1000000) { value = bytes / 1000000; unit = 'M'; }
+  else if (bytes >= 1000) { value = bytes / 1000; unit = 'K'; }
+  else { value = bytes; unit = 'B'; }
+  var text = value >= 100 ? String(Math.round(value)) : value.toFixed(1).replace(/\.0$/, '');
+  return '[' + text + unit + ']';
+}
+
+/** 只展示版本数据里真实存在的清晰度；没有时不凭体积猜测 4K。 */
+function mbStreamQuality(v, label) {
+  var candidates = [v.quality, v.resolution, v.definition, v.videoQuality, v.qualityName,
+    v.name, v.title, v.fileName, v.filename, label];
+  for (var i = 0; i < candidates.length; i++) {
+    var s = String(candidates[i] || '');
+    var m = s.match(/(?:^|[^a-z0-9])(8k|4k|2k|2160p|1440p|1080p|720p|576p|480p)(?=$|[^a-z0-9])/i);
+    if (m) return m[1].toUpperCase();
+  }
+  return '';
+}
+
+/** 来源只保留网盘品牌：百度原画/百度无限 → 百度，UC原画/UC无限 → UC。 */
+function mbCleanSiteName(site) {
+  var s = String(site || '').trim();
+  var known = s.match(/百度|夸克|阿里|迅雷|天翼|移动|光鸭|115|123|UC/i);
+  if (known) return known[0].toUpperCase() === 'UC' ? 'UC' : known[0];
+  var cleaned = s.replace(/原画|无限/g, '')
+    .replace(/(?:极速|高清|超清|蓝光|专线|直连|网盘|云盘)+$/g, '')
+    .replace(/[\s·•|｜:：_-]+$/g, '').trim();
+  return cleaned || s || '车道';
+}
+
+/** 站点名优先取结构化字段；旧面板只有 label 时，去掉大小与片名后兜底。 */
+function mbStreamSite(v, label, title) {
+  var site = String(v.site || v.siteName || '').trim();
+  if (!site) {
+    site = String(label || '').replace(/\[\s*~?\s*\d+(?:\.\d+)?\s*[A-Za-z]+\s*\]/g, '').trim();
+    var at = title ? site.lastIndexOf(title) : -1;
+    if (at >= 0) site = site.slice(0, at);
+    site = site.replace(/[\s·•|｜:：_-]+$/g, '').trim();
+  }
+  return mbCleanSiteName(site);
+}
+
+/** 资源显示名：百度·影视名（年份）4K·[5.6G]；缺少年份/画质/体积时省略对应段。 */
+function mbStreamName(v, i, wantEpisode, d) {
+  d = d || {};
+  var label = String(v.label || '').trim();
+  var title = String(d.n || '').trim() || '未命名';
+  var ym = String(d.y || '').match(/(?:19|20)\d{2}/);
+  var quality = mbStreamQuality(v, label);
+  var size = mbStreamSize(v, label);
+  var base = mbStreamSite(v, label, title) + '·' + title + (ym ? '（' + ym[0] + '）' : '') + quality;
+  if (size) base += '·' + size;
   return base + (i ? ' · ' + (i + 1) : '') + (wantEpisode ? ' ' + wantEpisode : '');
 }
 
@@ -576,9 +635,9 @@ async function mbResolveVersion(c, v) {
 }
 
 /** 一条地址 → FW/Rex 流条目（**原生播放器直连**，请求头一并交给它） */
-function mbStreamOf(v, url, index, wantEpisode, got) {
+function mbStreamOf(v, url, index, wantEpisode, got, d) {
   var u = mbHlsUrl(url, got.container);
-  var name = mbStreamName(v, index, wantEpisode);
+  var name = mbStreamName(v, index, wantEpisode, d);
   var s = {
     name: name,
     url: u,
@@ -699,14 +758,14 @@ async function loadResource(params) {
        * 让这一发把 403 带回客户端 —— 不静默少几条车道。 */
       if (e && e.code === 'SITE_FORBIDDEN') throw e;
       lastErr = e;
-      console.error('[yingqiao] 版本取址失败：' + mbStreamName(v, 0, wantEpisode) + ' — ' + (e && e.message));
+      console.error('[yingqiao] 版本取址失败：' + mbStreamName(v, 0, wantEpisode, d) + ' — ' + (e && e.message));
       continue;
     }
     var urls = got.urls.filter(function (u) {
       /* 只留 http/https：`push://` 之类播放器播不了 */
       return /^https?:\/\//i.test(String(u || ''));
     });
-    for (var j = 0; j < urls.length; j++) streams.push(mbStreamOf(v, urls[j], j, wantEpisode, got));
+    for (var j = 0; j < urls.length; j++) streams.push(mbStreamOf(v, urls[j], j, wantEpisode, got, d));
   }
 
   if (!streams.length) {
