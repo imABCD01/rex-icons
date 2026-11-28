@@ -9,7 +9,7 @@ var WidgetMetadata = {
     title: "全球影视平台ALL IN ONE",
     description: "全网最全的频道聚合：覆盖爱优腾、网飞、HBO、韩国tvN及各大卫视",
     author: "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
-    version: "1.2.7", // Tea TV badges; // 更新图片域名并增加非法平台参数兜底
+    version: "1.2.8", // Tea cover fallback: 首条无横图时启用最近的有效封面
     requiredVersion: "0.0.1",
     site: "https://t.me/MakkaPakkaOvO",
     modules: [
@@ -159,6 +159,19 @@ function buildItem(item, isMovie, platformName) {
     };
 }
 
+// cover 样式使用首条 backdropPath 作为卡片背景。
+// TMDB 最新榜的首条可能只有竖海报；仅交换首条与最近一条有横图的条目，
+// 让封面有图可显示，同时保留无横图条目及其余榜单顺序，不用竖图强行裁剪。
+function prioritizeCoverBackdrop(items) {
+    if (!Array.isArray(items) || items.length < 2 || (items[0] && items[0].backdropPath)) return items;
+    const coverIndex = items.findIndex(item => item && item.backdropPath);
+    if (coverIndex <= 0) return items;
+    const output = items.slice();
+    output[0] = items[coverIndex];
+    output[coverIndex] = items[0];
+    return output;
+}
+
 // ================= 2. 核心请求逻辑 =================
 
 async function loadPlatformListTeaBase(params) {
@@ -220,7 +233,7 @@ async function loadPlatformListTeaBase(params) {
 
     try {
         const res = await Widget.tmdb.get(endpoint, { params: queryParams });
-        const items = (res.results || []).map(i => buildItem(i, isMovie, platformConfig.name)).filter(Boolean);
+        const items = prioritizeCoverBackdrop((res.results || []).map(i => buildItem(i, isMovie, platformConfig.name)).filter(Boolean));
 
         if (items.length === 0) {
              return [{ id: "empty", type: "text", title: "无数据", description: `在 [${platformConfig.name}] 暂未找到符合该条件的影视记录` }];
