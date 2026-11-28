@@ -17,7 +17,7 @@
    "title": "全球影视平台 ALL IN ONE",
    "description": "动态解除国家锁定，精准匹配全球流媒体与电视网 ID",
    "requiredVersion": "0.0.1",
-   "version": "1.2.6",
+   "version": "1.2.8",
    "author": "MakkaPakka",
    "url": "https://cdn.imabcd.dpdns.org/m/widgets/list/makka-global-networks.js"
   },
