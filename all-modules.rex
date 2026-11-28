@@ -44,9 +44,9 @@
    "title": "探索发现 | 惊喜推荐",
    "description": "聚合【今天看什么】多维度推荐",
    "requiredVersion": "0.0.1",
-   "version": "1.0.8",
+   "version": "1.1.1",
    "author": "MakkaPakka",
-   "url": "https://cdn.imabcd.dpdns.org/m/widgets/list/makka-discover-hub.js"
+   "url": "https://rex-mod-cdn.2407813427.workers.dev/m/widgets/list/makka-discover-hub.js"
   },
   {
    "id": "imdb_cn_fix_",

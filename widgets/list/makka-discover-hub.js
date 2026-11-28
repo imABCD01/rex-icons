@@ -3,7 +3,7 @@ WidgetMetadata = {
     title: "探索发现 | 惊喜推荐",
     author: "𝙈𝙖𝙠𝙠𝙖𝙋𝙖𝙠𝙠𝙖",
     description: "聚合【今天看什么】、【Trakt惊喜推荐】与【那年今日】、一站式发现好片。",
-    version: "1.1.0", // Tea TV badges; // backdropFeature 首行显示剧情简介，保留日期/推荐理由为次行
+    version: "1.1.1", // Tea: 那年今日年份行显示“N周年🏆”，保留完整日期与剧情简介
     requiredVersion: "0.0.1",
     site: "https://t.me/MakkaPakkaOvO",
 
@@ -119,7 +119,7 @@ function getGenreText(ids) {
 }
 
 // --- 适配 Video 横竖版的 buildItem 函数 ---
-function buildItem({ id, tmdbId, type, title, date, poster, backdrop, rating, genreText, subTitle, desc }) {
+function buildItem({ id, tmdbId, type, title, date, poster, backdrop, rating, genreText, subTitle, desc, anniversaryTitle }) {
     var metaDescription = date ? `${date} · ${subTitle || '⭐ ' + rating}` : (subTitle || `⭐ ${rating}`);
     return {
         id: String(id),
@@ -128,14 +128,14 @@ function buildItem({ id, tmdbId, type, title, date, poster, backdrop, rating, ge
         mediaType: type,
         title: title,
         
-        // 横版：流派与类型展示
-        genreTitle: genreText || (type === "tv" ? "剧集" : "电影"), 
+        // 那年今日由模块直接提供完整年份行，其他入口仍只显示类型
+        genreTitle: anniversaryTitle || genreText || (type === "tv" ? "剧集" : "电影"), 
         
         // 竖版：将完整日期和特殊原因(如推荐理由)拼接展示
         description: `${desc || "暂无简介"}\n${metaDescription}`,
         
-        // 传递给内核提取横版年份
-        releaseDate: date,
+        // 周年标题已包含年份，置空可避免内核再自动拼接一个重复年份
+        releaseDate: anniversaryTitle ? "" : date,
         
         posterPath: poster ? `https://shrill-poetry-07fc.2407813427.workers.dev/t/p/w500${poster}` : "",
         backdropPath: backdrop ? `https://shrill-poetry-07fc.2407813427.workers.dev/t/p/w780${backdrop}` : "",
@@ -290,6 +290,7 @@ async function loadHistoryTodayTeaBase(params = {}) {
             backdrop: item.backdrop_path,
             rating: item.rating,
             genreText: genreText,
+            anniversaryTitle: `${item.yearStr}年 · ${item.diff}周年🏆 ${genreText || "电影"}`,
             subTitle: `🏆 ${item.diff}周年纪念`,
             desc: item.overview || "暂无简介"
         });
